@@ -4,7 +4,7 @@
   "description": "An NodeJS API client for intercom.io",
   "keywords": ["api", "intercom", "node-intercom", "client", "intercom.io"],
   "author": "Tarun Chaudhry <tarunc92@gmail.com>",
-  "repository": { "type": "git", "url": "git://github.com/tarunc/intercom.io.git" },
+  "repository": { "type": "git", "url": "git://github.com/vnda/vnda.github.io" },
   "dependencies": {
     "request": "2.33.0",
     "qs": "0.6.6",
