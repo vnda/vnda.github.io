@@ -329,7 +329,7 @@ span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
 pre { line-height: 125%; }
 body .docs .pilwrap h2 { font-size: 14px; text-transform: uppercase; }
 body .highlight .hll { background-color: #ffffcc }
-body .highlight  { background: #fff; color:#fff; }
+body .highlight  { background: #272822; color:#fff; }
 body .highlight .c { color: #408080; font-style: italic } /* Comment */
 body .highlight .err { border: 1px solid #FF0000 } /* Error */
 body .highlight .k { color: #008000; font-weight: bold } /* Keyword */
