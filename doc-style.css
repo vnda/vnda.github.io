@@ -99,7 +99,11 @@ h1 {
   margin-top: 5px;
   font-size: 1em; }
 #headings .h3  a {
-  color: #007aff }
+  color: #007aff;
+  font-size: 14px; }
+#headings .h3 > a {
+    font-weight: bold;
+}
 #headings .h3  a:hover {
 text-decoration: underline; }
 #headings .h3:hover {
@@ -117,7 +121,9 @@ text-decoration: underline; }
 #headings .h6 {
   padding-left: 50px;
   font-size: 0.75em; }
-#headings  ul    { padding-left: 10px;  }
+#headings  ul {
+  padding-left: 10px;
+  margin: 0px; }
 #headings  ul li { list-style: none; }
 #headings  ul li a:before {
   content: "-";
@@ -172,8 +178,8 @@ table td {
   padding: 10px 50px; }
 
 td.docs {
-  max-width: 450px;
-  min-width: 450px;
+  max-width: 480px;
+  min-width: 475px;
   min-height: 5px;
   padding: 10px 25px 1px 25px;
   overflow-x: hidden;
