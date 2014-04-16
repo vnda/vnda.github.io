@@ -98,6 +98,14 @@ h1 {
   padding-left: 20px;
   margin-top: 5px;
   font-size: 1em; }
+#headings .h3  a {
+  color: #007aff }
+#headings .h3  a:hover {
+text-decoration: underline; }
+#headings .h3:hover {
+  background-color: #007aff!important; }
+#headings .h3:hover a {
+    color: #fff; }
 #headings .h4 {
   padding-left: 30px;
   margin-top: 3px;
@@ -109,6 +117,13 @@ h1 {
 #headings .h6 {
   padding-left: 50px;
   font-size: 0.75em; }
+#headings  ul    { padding-left: 10px;  }
+#headings  ul li { list-style: none; }
+#headings  ul li a:before {
+  content: "-";
+  display: inline-block;
+  margin-right: 5px;  }
+
 #sidebar-toggle {
   position: fixed;
   top: 0;
@@ -160,7 +175,7 @@ td.docs {
   max-width: 450px;
   min-width: 450px;
   min-height: 5px;
-  padding: 10px 25px 1px 50px;
+  padding: 10px 25px 1px 25px;
   overflow-x: hidden;
   vertical-align: top;
   text-align: left; }
@@ -272,9 +287,6 @@ a {
     color: #252519; }
 
 #tree .file {
-  color: #252519; }
-
-#headings .heading a {
   color: #252519; }
 
 #sidebar-toggle {
