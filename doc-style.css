@@ -375,6 +375,7 @@ body .highlight .vi { color: #1AB0F0 } /* Name.Variable.Instance */
 body .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
 body .highlight .white { color: #fff } /* Literal.Number.Integer.Long */
 
+body a.link { color: #007aff!important; font-weight: bold } /* Literal.String.Interpol */
 .summary code:hover{
   background-color: #BB6688 }
 .summary a {
