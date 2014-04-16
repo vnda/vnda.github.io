@@ -1,10 +1,12 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,700);
 body {
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, FreeSerif, serif;
-  font-size: 15px;
+  font-family: 'Raleway', Geneva, sans-serif;
+  font-size: 13px;
   line-height: 22px;
   margin: 0;
   padding: 0; }
-
+a {
+  text-decoration: none }
 p, h1, h2, h3, h4, h5, h6 {
   margin: 0 0 15px 0; }
 
@@ -107,7 +109,6 @@ h1 {
 #headings .h6 {
   padding-left: 50px;
   font-size: 0.75em; }
-
 #sidebar-toggle {
   position: fixed;
   top: 0;
@@ -218,7 +219,7 @@ td.docs {
     opacity: 1; }
 
 td.code {
-  padding: 8px 15px 8px 25px;
+  padding: 8px 5px 8px 10px;
   width: 100%;
   vertical-align: top;
   border-left: 1px solid; }
@@ -242,10 +243,8 @@ pre, tt, code {
 
 .line-num {
   display: inline-block;
-  width: 50px;
-  text-align: right;
+  text-align: left;
   opacity: 0.3;
-  margin-left: -20px;
   text-decoration: none; }
 
 /* All the stuff that can depend on colour scheme goes below here: */
@@ -310,8 +309,9 @@ td.code, .background {
 td.linenos { background-color: #f0f0f0; padding-right: 10px; }
 span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
 pre { line-height: 125%; }
+body .docs .pilwrap h2 { font-size: 14px; text-transform: uppercase; }
 body .highlight .hll { background-color: #ffffcc }
-body .highlight  { background: #f8f8f8; }
+body .highlight  { background: #272822; color:#fff; }
 body .highlight .c { color: #408080; font-style: italic } /* Comment */
 body .highlight .err { border: 1px solid #FF0000 } /* Error */
 body .highlight .k { color: #008000; font-weight: bold } /* Keyword */
@@ -362,7 +362,8 @@ body .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc
 body .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 body .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
 body .highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
-body .highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .highlight .si { color: #F92672; font-weight: bold } /* Literal.String.Interpol */
+body .highlight .blue { color: #66D9B1; font-weight: bold } /* Literal.String.Interpol */
 body .highlight .sx { color: #008000 } /* Literal.String.Other */
 body .highlight .sr { color: #BB6688 } /* Literal.String.Regex */
 body .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
@@ -370,7 +371,17 @@ body .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 body .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
 body .highlight .vc { color: #19177C } /* Name.Variable.Class */
 body .highlight .vg { color: #19177C } /* Name.Variable.Global */
-body .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+body .highlight .vi { color: #1AB0F0 } /* Name.Variable.Instance */
 body .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+body .highlight .white { color: #fff } /* Literal.Number.Integer.Long */
 
-  
+.summary code:hover{
+  background-color: #BB6688 }
+.summary a {
+  color: #BB6688;
+  font-weight: bold;
+  padding: 5px;
+  text-decoration: none;  }
+.summary code:hover a {
+  color: #fff; }
+
