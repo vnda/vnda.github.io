@@ -247,8 +247,7 @@
               <h2>Listando Menus</h2>
               <p>
                 <b>
-                  Tags de saída:</b> são as etiquetas de saída exibir o líquido encontrado entre ele.
-                  Você também pode usar <b>filtros para alterar a saída retornado.
+                  Atualização indisponível...
                 </b>
               </p>
               </div>
@@ -259,21 +258,26 @@
         <td class="code highlight">
 <div class="highlight">
 <pre><br/><br/><br/>
+Para listar os menus criados pelo admin da loja deve ser informado o parâmetro "position".
+
+* loop para exibir os itens de um menu
+
 {% menus position:"nome_da_posicao_do_menu_no_admin" %}
   {{ menu.url }} {{ menu.title }}
 {% endmenus %}
+
 * menu com submenus (html opcional)
 
 {% menus position:"nome_da_posicao_no_admin" %}
-  {% if forloop.first %}<ul>{% endif %}
-    <li>
+  {% if forloop.first %}[ul]{% endif %}
+    [li]
       {% menus parent_id:menu.id %}
-        {% if forloop.first %}<ul>{% endif %}
-        <li>{{ menu.url }} {{ menu.title }}</li>
-        {% if forloop.last %}</ul>{% endif %}
+        {% if forloop.first %}[ul]{% endif %}
+        [li]{{ menu.url }} {{ menu.title }}[/li]
+        {% if forloop.last %}[/ul]{% endif %}
       {% endmenus %}
-    </li>
-  {% if forloop.last %}</ul>{% endif %}
+    [/li]
+  {% if forloop.last %}[/ul]{% endif %}
 {% endmenus %}
 <!-- <a class="line-num" href="javascript:void(0)">1</a> {% <span class="si">assign</span> <span class="blue">order</span> = "false" %}
 <a class="line-num" href="javascript:void(0)">2</a> {% <span class="si">orders</span> client_id:client.id %}
