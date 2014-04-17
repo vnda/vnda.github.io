@@ -299,6 +299,59 @@ Para listar os menus criados pelo admin da loja deve ser informado o parâmetro 
 </div>
           </td>
       </tr>
+  </tr>
+        <tr>
+        <td class="docs"><div class="pilwrap" id="como-usar">
+            <h3> <a href="#tag-banners" name="tag-banners" class="pilcrow">&#182;</a>  {% banners %}</h3>
+             <div class="dox">
+              <div class="details">
+              <h2>Listando Banners</h2>
+              <p>
+                  Conteúdo Indisponível...
+              </p>
+              </div>
+              <!-- <div class="summary"><p><code><a href="#templates">Template</a></code> ler sobre.</p></div> -->
+            </div>
+          </div>
+        </td>
+        <td class="code highlight">
+<div class="highlight">
+<pre><br/><br/><br/>
+Para listar os banners criados pelo admin da loja deve ser informado o parâmetro "tag".
+
+* loop para exibir os banners
+
+{% banners tag:"nome_da_posicao_no_admin" %}
+  {{ banner.title }}
+  {{ banner.subtitle }}
+  {{ banner.description }}
+  {{ banner.file_url | resize: '990x' }}
+  {{ banner.url }}
+  {% if banner.external %} target="_blank"{% endif %}
+{% endbanners %}
+* aceita o parâmetro “limit:3”
+<!--
+<a class="line-num" href="javascript:void(0)">1</a> {% <span class="si">assign</span> <span class="blue">order</span> = "false" %}
+<a class="line-num" href="javascript:void(0)">2</a> {% <span class="si">orders</span> client_id:client.id %}
+<a class="line-num" href="javascript:void(0)">3</a>  {% <span class="si">assign</span> order = "true" %}
+<a class="line-num" href="javascript:void(0)">4</a>  [<span class="si">tr</span>]
+<a class="line-num" href="javascript:void(0)">5</a>   [<span class="si">td</span>]{{ order.code }}[/<span class="si">td</span>]
+<a class="line-num" href="javascript:void(0)">6</a>   [<span class="si">td</span>]{{ order.received_at }}[/<span class="si">td</span>]
+<a class="line-num" href="javascript:void(0)">7</a>   [<span class="si">td</span>]{{ order | order_status }}[/<span class="si">td</span>]
+<a class="line-num" href="javascript:void(0)">8</a>   [<span class="si">td</span>]{{ order.total | money_format }}[/<span class="si">td</span>]
+<a class="line-num" href="javascript:void(0)">9</a>   [/<span class="si">tr</span>]
+<a class="line-num" href="javascript:void(0)">10</a> {% <span class="si">endorders</span> %}
+<a class="line-num" href="javascript:void(0)">11</a> {% <span class="si">if</span> order == "false" %}
+<a class="line-num" href="javascript:void(0)">12</a>  [<span class="si">tr</span>]
+<a class="line-num" href="javascript:void(0)">13</a>   [<span class="si">td</span> colspan="3"]Você ainda não tem pedidos[/<span class="si">td</span>]
+<a class="line-num" href="javascript:void(0)">14</a>  [/<span class="si">tr</span>]
+<a class="line-num" href="javascript:void(0)">15</a> {% <span class="si">endif</span> %}
+-->
+<br /><br /><br />
+</pre>
+</div>
+          </td>
+      </tr>
       <tr>
         <td class="docs"><div class="pilwrap" id="tag-bannres">
             <h3> <a href="#tag-bannres" name="tag-bannres" class="pilcrow">&#182;</a> {% products %}</h3>
