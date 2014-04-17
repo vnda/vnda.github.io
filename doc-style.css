@@ -104,12 +104,9 @@ h1 {
 #headings .h3 > a {
     font-weight: bold;
 }
-#headings .h3  a:hover {
-text-decoration: underline; }
-#headings .h3:hover {
-  background-color: #007aff!important; }
-#headings .h3:hover a {
-    color: #fff; }
+#headings .h3  a:hover { }
+#headings .h3:hover { }
+#headings .h3:hover a { }
 #headings .h4 {
   padding-left: 30px;
   margin-top: 3px;
