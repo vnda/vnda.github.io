@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+e<!DOCTYPE html>
 <html>
   <head>
   <title>Guides Vnda</title>
@@ -85,7 +85,8 @@
     </div>
     <div class="heading h3"> <a href="#recursos">Recursos</a>
       <ul>
-        <li><a href="#filtros">Filtros</a></li>
+        <li><a href="#recursos-webforms">Webforms</a></li>
+        <li><a href="#recursos-filtros">Filtros</a></li>
       <ul>
     </div>
   </div>
@@ -217,7 +218,7 @@
             <div class="dox">
               <div class="details">
               <p>Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates (exceto 404 e facebook).</p>
-            </div>
+             </div>
             </div>
           </div></td>
         <td class="code highlight"></td>
@@ -455,60 +456,56 @@
         <tr>
         <td class="docs"><div class="pilwrap" id="recursos">
             <h3> <a href="#recursos" name="recursos" class="pilcrow">&#182;</a> Recursos </h3>
+             <div class="dox">
+              <div class="details">
+              <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
+               </div>
+            </div>
           </div></td>
         <td class="code highlight"><div class="highlight">
-          <pre><a class="line-num" href="#line-220" id="line-220">220</a>
-<a class="line-num" href="#line-221" id="line-221">221</a>  <span class="nx">Intercom</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getTag</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-222" id="line-222">222</a>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;recursos&#39;</span><span class="p">,</span> <span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
-<a class="line-num" href="#line-223" id="line-223">223</a>  <span class="p">};</span>
-<a class="line-num" href="#line-224" id="line-224">224</a>
-<a class="line-num" href="#line-225" id="line-225">225</a>  <span class="nx">Intercom</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">createTag</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-226" id="line-226">226</a>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;recursos&#39;</span><span class="p">,</span> <span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
-<a class="line-num" href="#line-227" id="line-227">227</a>  <span class="p">};</span>
-<a class="line-num" href="#line-228" id="line-228">228</a>
-<a class="line-num" href="#line-229" id="line-229">229</a>  <span class="nx">Intercom</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">updateTag</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-230" id="line-230">230</a>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s1">&#39;PUT&#39;</span><span class="p">,</span> <span class="s1">&#39;recursos&#39;</span><span class="p">,</span> <span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
-<a class="line-num" href="#line-231" id="line-231">231</a>  <span class="p">};</span>
-<a class="line-num" href="#line-232" id="line-232">232</a>
-<a class="line-num" href="#line-233" id="line-233">233</a>
-<a class="line-num" href="#line-234" id="line-234">234</a>  </pre>
+
         </div></td>
       </tr>
       <tr>
-        <td class="docs"><div class="pilwrap" id="recursos">
-            <h3> <a href="#filtros" name="filtros" class="pilcrow">&#182;</a> Listando Produtos</h3>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre><a class="line-num" href="#line-220" id="line-220">220</a>
-<a class="line-num" href="#line-221" id="line-221">221</a>  <span class="nx">Intercom</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getTag</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-222" id="line-222">222</a>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;recursos&#39;</span><span class="p">,</span> <span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
-<a class="line-num" href="#line-223" id="line-223">223</a>  <span class="p">};</span>
-<a class="line-num" href="#line-224" id="line-224">224</a>
-<a class="line-num" href="#line-225" id="line-225">225</a>  <span class="nx">Intercom</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">createTag</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-226" id="line-226">226</a>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;recursos&#39;</span><span class="p">,</span> <span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
-<a class="line-num" href="#line-227" id="line-227">227</a>  <span class="p">};</span>
-<a class="line-num" href="#line-228" id="line-228">228</a>
-<a class="line-num" href="#line-229" id="line-229">229</a>  <span class="nx">Intercom</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">updateTag</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-230" id="line-230">230</a>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s1">&#39;PUT&#39;</span><span class="p">,</span> <span class="s1">&#39;recursos&#39;</span><span class="p">,</span> <span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
-<a class="line-num" href="#line-231" id="line-231">231</a>  <span class="p">};</span>
-<a class="line-num" href="#line-232" id="line-232">232</a>
-<a class="line-num" href="#line-233" id="line-233">233</a>
-<a class="line-num" href="#line-234" id="line-234">234</a>  </pre>
-          </div></td>
-      </tr>
-        <tr>
-        <td class="docs"><div class="pilwrap"> <a class="pilcrow" href="#section-25" id="section-25">&#182;</a> </div>
-            <div class="dox">
-            <div class="summary">
-                <p>Expose <code>Intercom</code> Library.</p>
+        <td class="docs">
+        <div class="pilwrap" id="recursos-webforms">
+            <h3> <a href="#recursos-webforms" name="recursos-webforms" class="pilcrow">&#182;</a>Utilizando os WebForms</h3>
+             <div class="dox">
+              <div class="details">
+              <p>* Os forms de contato devem usar a action /webform<br />
+                  * Deve ser feito o cadastro do form no admin para pegar a key
+              </p>
               </div>
-            <div class="body"> </div>
+            </div>
           </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre><a class="line-num" href="#line-235" id="line-235">235</a>
-<a class="line-num" href="#line-236" id="line-236">236</a>  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">Intercom</span><span class="p">;</span>
-<a class="line-num" href="#line-237" id="line-237">237</a>  </pre>
+        <td class="code highlight">
+<div class="highlight">
+<pre><br /><br /><br />
+<a class="line-num" href="javascript:void(0)">1</a> <code><</code>form action="/webform" method="post"<code>></code>
+<a class="line-num" href="javascript:void(0)">2</a>  <code><</code>input type="hidden" name="key" value="nome-da-loja-nome-do-form"<code>></code>
+<a class="line-num" href="javascript:void(0)">3</a>  <code><</code>input type="submit"<code>></code>
+<a class="line-num" href="javascript:void(0)">4</a> <code><</code>/form<code>></code>
+</pre>
+</div>
+          </td>
+      </tr>
+      <tr>
+        <td class="docs"><div class="pilwrap" id="recursos-filtros">
+            <h3> <a href="#recursos-filtros" name="recursos-filtros" class="pilcrow">&#182;</a>Filtro</h3>
           </div></td>
+        <td class="code highlight">
+          <div class="highlight">
+
+          </div>
+          </td>
+      </tr>
+      <tr>
+        <td class="docs" style="height:400px;"> </td>
+        <td class="code highlight" style="height:400px;">
+          <div class="highlight" style="height:400px;">
+
+          </div>
+          </td>
       </tr>
       </tbody>
   </table>

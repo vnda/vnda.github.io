@@ -264,7 +264,8 @@ pre, tt, code {
   display: inline-block;
   text-align: left;
   opacity: 0.3;
-  text-decoration: none; }
+  text-decoration: none;
+  color: #fff !important }
 
 /* All the stuff that can depend on colour scheme goes below here: */
 body {
