@@ -200,7 +200,7 @@ e<!DOCTYPE html>
           </pre>
           </div>
           </td>
-      </tr>
+         </tr>
          <tr>
         <td class="docs"><div class="pilwrap" id="templates">
             <h3> <a href="#templates" name="templates" class="pilcrow">&#182;</a> Templates </h3>
@@ -419,7 +419,32 @@ e<!DOCTYPE html>
 <br /><br /><br />
 </pre>
 </div>
-          </td>
+  </td>
+  </tr>
+  <tr>
+        <td class="docs"><div class="pilwrap" id="tag-cartitems">
+            <h3> <a href="#tag-cartitems" name="tag-cartitems" class="pilcrow">&#182;</a> {% cartitems %}</h3>
+             <div class="dox">
+              <div class="details">
+              <p>* loop para exibir os itens do Carrinho</p>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td class="code highlight">
+<div class="highlight">
+<pre><br /><br /><br />
+<a class="line-num" href="javascript:void(0)">1</a> {% <span class="si">cartitems</span>  %}
+<a class="line-num" href="javascript:void(0)">2</a>  {{  <span class="vi">item</span>.image_url | resize: '234x' }}
+<a class="line-num" href="javascript:void(0)">3</a>  {{ <span class="vi">item</span>.product_name }}
+<a class="line-num" href="javascript:void(0)">4</a>  {{ <span class="vi">item</span>.id }}
+<a class="line-num" href="javascript:void(0)">5</a>  {{ <span class="vi">item</span>.quantity }}
+ <a class="line-num" href="javascript:void(0)">6</a>  {{<span class="vi">item</span>.subtotal | <span class="vi">money_format</span> }}
+ <a class="line-num" href="javascript:void(0)">7</a> {{ <span class="vi">item</span>.variant_name | <span class="vi">money_format</span> }}
+<a class="line-num" href="javascript:void(0)">8</a> {% <span class="si ">endcartitems</span> %}
+<br /><br /><br />
+</pre>
+</div></td>
       </tr>
       <tr>
         <td class="docs"><div class="pilwrap" id="tag-products">
