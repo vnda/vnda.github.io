@@ -387,9 +387,11 @@ body .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 body .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
 body .highlight .vc { color: #19177C } /* Name.Variable.Class */
 body .highlight .vg { color: #19177C } /* Name.Variable.Global */
-body .highlight .vi { color: #1AB0F0 } /* Name.Variable.Instance */
+body .highlight .vi { color: #66D9EF; } /* Name.Variable.Instance */
 body .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
-body .highlight .white { color: #fff } /* Literal.Number.Integer.Long */
+body .highlight .white { color: #fff }
+body .highlight .yellow { color: #E6DB74 }
+.italic { font-style: italic; }
 
 body a.link { color: #007aff!important; font-weight: bold } /* Literal.String.Interpol */
 .summary code:hover{
