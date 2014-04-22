@@ -23,7 +23,7 @@
     <div id="headings">
     <div class="heading h3"> <a href="#design">Design</a> </div>
     <div class="heading h3"> <a href="#front">Front-end (HTML, CSS & JS)</a> </div>
-    <div class="heading h3"> <a href="#sobre">Sobre liquid</a></div>
+    <div class="heading h3"> <a href="#sobre">Sobre Liquid</a></div>
     <div class="heading h3">
     <a href="#templates">Templates</a>
       <ul>
@@ -40,7 +40,11 @@
         <li><a href="#page">Page</a></li>
       <ul>
     </div>
-    <div class="heading h3"> <a href="#como-usar">Como Usar o Liquid?</a></div>
+    <div class="heading h3"> <a href="#como-usar">Como Usar o Liquid?</a>
+     <ul>
+        <li><a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers" title="Ir para">Liquid para Designers</a></li>
+      </ul>
+    </div>
     <div class="heading h3"> <a href="#tags-vnda">Tags Personalizadas da Vnda</a>
     <ul>
        <li><a href="#tag-orders">{% orders %}</a></li>
@@ -81,7 +85,6 @@
     </div>
     <div class="heading h3"> <a href="#recursos">Recursos</a>
       <ul>
-        <li><a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers" title="Ir para">Liquid para Designers</a></li>
         <li><a href="#filtros">Filtros</a></li>
       <ul>
     </div>
@@ -170,10 +173,8 @@
               <div class="details">
               <p><b>Liquid</b> é responsável por implementar os templates desenvolvidos e utilizados pela Vnda.
               Ele processa arquivos de modelo com a extensão ".liquid".</p>
-              <p><b>Liquid</b> é uma linguagem de programação simples, que diz exatamente o que fazer.
-              Ele é utilizado em conjunto com HTML tornando a aplicação Dinamica.</p>
               </div>
-              <div class="summary"><p><code><a href="#templates">Template</a></code> ler sobre.</p></div>
+              <div class="summary"><p><code><a href="#como-usar">Como Usar</a></code> ler sobre.</p></div>
             </div>
           </div>
         </td>
@@ -199,9 +200,79 @@
           </div>
           </td>
       </tr>
+         <tr>
+        <td class="docs"><div class="pilwrap" id="templates">
+            <h3> <a href="#templates" name="templates" class="pilcrow">&#182;</a> Templates </h3>
+            <div class="dox">
+              <div class="details">
+              <p>Os templates devem ficar na raiz da pasta compartilhada no Dropbox e os nomes dos arquivos deve respeitar a lista abaixo:</p>
+              </div>
+            </div>
+          </div></td>
+        <td class="code highlight"></td>
+      </tr>
+      <tr>
+        <td class="docs"><div class="pilwrap" id="templates">
+            <h3> <a href="#templates" name="templates" class="pilcrow">&#182;</a> Layout.liquid </h3>
+            <div class="dox">
+              <div class="details">
+              <p>Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates (exceto 404 e facebook).</p>
+            </div>
+            </div>
+          </div></td>
+        <td class="code highlight"></td>
+      </tr>
+      <tr>
+        <td class="docs"><div class="pilwrap" id="home">
+            <h3> <a href="#home" name="home" class="pilcrow">&#182;</a> Home.liquid </h3>
+            <div class="dox">
+              <div class="details">
+              <p>Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates (exceto 404 e facebook).</p>
+            </div>
+            </div>
+          </div></td>
+        <td class="code highlight"></td>
+      </tr>
+      <tr>
+        <td class="docs"><div class="pilwrap" id="home">
+            <h3> <a href="#tag" name="tag" class="pilcrow">&#182;</a> Tag.liquid </h3>
+            <div class="dox">
+              <div class="details">
+              <p>Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates (exceto 404 e facebook).</p>
+            </div>
+            </div>
+          </div></td>
+        <td class="code highlight"></td>
+      </tr>
+      <tr>
+        <td class="docs"><div class="pilwrap" id="home">
+            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Product.liquid </h3>
+            <div class="dox">
+              <div class="details">
+                tela que exibe os detalhes dos produtos. Aqui ele pode selecionar as variantes e adicionar a variante selecionada ao carrinho.
+               </div>
+            </div>
+          </div></td>
+        <td class="code highlight">
+          <div class="highlight">
+            <pre></pre>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs"><div class="pilwrap" id="home">
+            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Cart.liquid </h3>
+            <div class="dox">
+              <div class="details">
+              <p>Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates (exceto 404 e facebook).</p>
+            </div>
+            </div>
+          </div></td>
+        <td class="code highlight"></td>
+      </tr>
           <tr>
         <td class="docs"><div class="pilwrap" id="como-usar">
-            <h3> <a href="#como-usar" name="como-usar" class="pilcrow">&#182;</a> Como eu faço para usar o Liquid?</h3>
+            <h3> <a href="#como-usar" name="como-usar" class="pilcrow">&#182;</a>Como Usar o Liquid?</h3>
              <div class="dox">
               <div class="details">
               <h2>Existem dois tipos de marcação no líquido:</h2>
@@ -246,9 +317,13 @@
             <h3> <a href="#tag-menus" name="tag-menus" class="pilcrow">&#182;</a> Tags Personalizadas da Vnda</h3>
              <div class="dox">
               <div class="details">
-              <h2>Conheça mais</h2>
+              <h2>Entendo sobre a tags personalizadas</h2>
               <p>
-                Conteúdo Indiponível...
+                 A plataforma atende com um conjunto de tags responsável pela integração
+                 do Html Estático com a plataforma. É importante seguir aprender sobre o uso das mesmas
+                 para que sua aplicação funcione corretamente junto as configurações do painel como
+                 <a href="tag-banners">Listagem de Banner</a>, <a href="tags-produtos">Tags de Produtos</a>, <a id="tags-orders">Ordens de Pedido</a>
+                 <a href="tags-menu">Criação de Menu</a>.
               </p>
               </div>
              </div>
@@ -409,76 +484,6 @@
 <a class="line-num" href="javascript:void(0)">15</a> {% <span class="si ">endproducts</span> %}
 </pre>
 </div></td>
-      </tr>
-      <tr>
-        <td class="docs"><div class="pilwrap" id="templates">
-            <h3> <a href="#templates" name="templates" class="pilcrow">&#182;</a> Templates </h3>
-            <div class="dox">
-              <div class="details">
-              <p>Os templates devem ficar na raiz da pasta compartilhada no Dropbox e os nomes dos arquivos deve respeitar a lista abaixo:</p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"></td>
-      </tr>
-      <tr>
-        <td class="docs"><div class="pilwrap" id="templates">
-            <h3> <a href="#templates" name="templates" class="pilcrow">&#182;</a> Layout.liquid </h3>
-            <div class="dox">
-              <div class="details">
-              <p>Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates (exceto 404 e facebook).</p>
-            </div>
-            </div>
-          </div></td>
-        <td class="code highlight"></td>
-      </tr>
-      <tr>
-        <td class="docs"><div class="pilwrap" id="home">
-            <h3> <a href="#home" name="home" class="pilcrow">&#182;</a> Home.liquid </h3>
-            <div class="dox">
-              <div class="details">
-              <p>Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates (exceto 404 e facebook).</p>
-            </div>
-            </div>
-          </div></td>
-        <td class="code highlight"></td>
-      </tr>
-      <tr>
-        <td class="docs"><div class="pilwrap" id="home">
-            <h3> <a href="#tag" name="tag" class="pilcrow">&#182;</a> Tag.liquid </h3>
-            <div class="dox">
-              <div class="details">
-              <p>Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates (exceto 404 e facebook).</p>
-            </div>
-            </div>
-          </div></td>
-        <td class="code highlight"></td>
-      </tr>
-      <tr>
-        <td class="docs"><div class="pilwrap" id="home">
-            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Product.liquid </h3>
-            <div class="dox">
-              <div class="details">
-                tela que exibe os detalhes dos produtos. Aqui ele pode selecionar as variantes e adicionar a variante selecionada ao carrinho.
-               </div>
-            </div>
-          </div></td>
-        <td class="code highlight">
-          <div class="highlight">
-            <pre></pre>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="docs"><div class="pilwrap" id="home">
-            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Cart.liquid </h3>
-            <div class="dox">
-              <div class="details">
-              <p>Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates (exceto 404 e facebook).</p>
-            </div>
-            </div>
-          </div></td>
-        <td class="code highlight"></td>
       </tr>
         <tr>
         <td class="docs"><div class="pilwrap" id="recursos">
