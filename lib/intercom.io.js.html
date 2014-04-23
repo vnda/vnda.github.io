@@ -129,34 +129,7 @@ e<!DOCTYPE html>
           </div></td>
         <td class="code highlight">
         <div class="highlight">
-            <pre><a class="line-num" href="#line-171" id="line-171">171</a>
-<a class="line-num" href="#line-172" id="line-172">172</a>  <span class="nx">Intercom</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getdesign</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-173" id="line-173">173</a>    <span class="k">if</span> <span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">isFunction</span><span class="p">(</span><span class="nx">options</span><span class="p">))</span> <span class="p">{</span>
-<a class="line-num" href="#line-174" id="line-174">174</a>      <span class="nx">cb</span> <span class="o">=</span> <span class="nx">options</span><span class="p">;</span>
-<a class="line-num" href="#line-175" id="line-175">175</a>      <span class="nx">options</span> <span class="o">=</span> <span class="p">{};</span>
-<a class="line-num" href="#line-176" id="line-176">176</a>    <span class="p">}</span>
-<a class="line-num" href="#line-177" id="line-177">177</a>
-<a class="line-num" href="#line-178" id="line-178">178</a>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;design&#39;</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
-<a class="line-num" href="#line-179" id="line-179">179</a>  <span class="p">};</span>
-<a class="line-num" href="#line-180" id="line-180">180</a>
-<a class="line-num" href="#line-181" id="line-181">181</a>  <span class="nx">Intercom</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getUser</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-182" id="line-182">182</a>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;design&#39;</span><span class="p">,</span> <span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
-<a class="line-num" href="#line-183" id="line-183">183</a>  <span class="p">};</span>
-<a class="line-num" href="#line-184" id="line-184">184</a>
-<a class="line-num" href="#line-185" id="line-185">185</a>  <span class="nx">Intercom</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">createUser</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-186" id="line-186">186</a>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;design&#39;</span><span class="p">,</span> <span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
-<a class="line-num" href="#line-187" id="line-187">187</a>  <span class="p">};</span>
-<a class="line-num" href="#line-188" id="line-188">188</a>
-<a class="line-num" href="#line-189" id="line-189">189</a>  <span class="nx">Intercom</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">updateUser</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-190" id="line-190">190</a>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s1">&#39;PUT&#39;</span><span class="p">,</span> <span class="s1">&#39;design&#39;</span><span class="p">,</span> <span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
-<a class="line-num" href="#line-191" id="line-191">191</a>  <span class="p">};</span>
-<a class="line-num" href="#line-192" id="line-192">192</a>
-<a class="line-num" href="#line-193" id="line-193">193</a>  <span class="nx">Intercom</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">deleteUser</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-194" id="line-194">194</a>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s1">&#39;DELETE&#39;</span><span class="p">,</span> <span class="s1">&#39;design&#39;</span><span class="p">,</span> <span class="nx">userObj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
-<a class="line-num" href="#line-195" id="line-195">195</a>  <span class="p">};</span>
-<a class="line-num" href="#line-196" id="line-196">196</a>
-<a class="line-num" href="#line-197" id="line-197">197</a>
-<a class="line-num" href="#line-198" id="line-198">198</a>  </pre>
+            <pre> </pre>
           </div>
           </td>
       </tr>
