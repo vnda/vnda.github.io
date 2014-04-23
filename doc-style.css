@@ -406,3 +406,6 @@ body a.link { color: #007aff!important; font-weight: bold } /* Literal.String.In
 .summary code:hover a {
   color: #fff; }
 
+.hide {
+  display: none;
+}

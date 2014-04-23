@@ -74,13 +74,13 @@ e<!DOCTYPE html>
     </div>
     <div class="heading h3"> <a href="#">Processos Checkout .liquid</a>
       <ul>
-        <li><a href="#">Adicionando produtos no carrinho</a></li>
-        <li><a href="#">Removendo produtos do carrinho</a></li>
-        <li><a href="#">Listando Métodos de Envio</a></li>
-        <li><a href="#">Enviando Cupom de Desconto</a></li>
-        <li><a href="#">Salvando dados de endereço</a></li>
-        <li><a href="#">Enviando dados de pagamento</a></li>
-        <li><a href="#">Adicionando Loading no Checkout</a></li>
+        <li><a href="#processo-add">Adicionando produtos no carrinho</a></li>
+        <li><a href="#processo-remover">Removendo produtos do carrinho</a></li>
+        <li><a href="#processo-envio">Listando Métodos de Envio</a></li>
+        <li><a href="#processo-desconto">Enviando Cupom de Desconto</a></li>
+        <li><a href="#processo-salvar-endereco">Salvando dados de endereço</a></li>
+        <li><a href="#processo-pagamento">Enviando dados de pagamento</a></li>
+        <li><a href="#processo-loading">Adicionando Loading no Checkout</a></li>
       <ul>
     </div>
     <div class="heading h3"> <a href="#recursos">Recursos</a>
@@ -88,6 +88,7 @@ e<!DOCTYPE html>
         <li><a href="#recursos-webforms">Webforms</a></li>
         <li><a href="#recursos-filtros">Filtros</a></li>
         <li><a href="#recursos-itemscope">Itemscope</a></li>
+        <li><a href="#recursos-store">{{ store }}</a></li>
       <ul>
     </div>
   </div>
@@ -167,6 +168,7 @@ e<!DOCTYPE html>
             <pre> </pre>
           </div></td>
       </tr>
+
       <tr>
         <td class="docs"><div class="pilwrap" id="sobre">
             <h3> <a href="#sobre" name="sobre" class="pilcrow">&#182;</a> Sobre liquid</h3>
@@ -426,7 +428,15 @@ e<!DOCTYPE html>
             <h3> <a href="#tag-cartitems" name="tag-cartitems" class="pilcrow">&#182;</a> {% cartitems %}</h3>
              <div class="dox">
               <div class="details">
-              <p>* loop para exibir os itens do Carrinho</p>
+              <p>* Loop para exibir os itens do Carrinho</p>
+              <p style="margin:0px;">Para informar que o carrinho esta vazio deve-se usar</p>
+<code>
+{% if cart.items_count > 0 %}
+  ....
+{% else %}
+  Carrinho Vazio
+{% endif %}
+</code>
               </div>
             </div>
           </div>
@@ -478,6 +488,59 @@ e<!DOCTYPE html>
 </pre>
 </div></td>
       </tr>
+      <tr>
+        <td class="docs"><div class="pilwrap" id="tag-tags">
+            <h3> <a href="#tag-tags" name="tag-tags" class="pilcrow">&#182;</a> {% tags %}</h3>
+             <div class="dox">
+              <div class="details">
+              <p><b>{% Tags %}</b> Para relacionar um grupo de produtos é preciso utilizar tags e parâmetros.<br /><br />
+              * Só é possível agrupar produtos utilizando {% tags %}<br />
+              * aceita o parâmetro "limit, page, per_page, type, product_id
+              </p>
+              </div>
+              <div class="summary hide"><p><code><a href="#como-usar">Como Usar</a></code> ler sobre.</p></div>
+            </div>
+          </div>
+        </td>
+        <td class="code highlight">
+          <div class="highlight">
+<pre><br /><br /><br />
+
+<a class="line-num" href="javascript:void(0)">1</a>  {% tags product_id:product.id type:"marca" limit:1 %}
+<a class="line-num" href="javascript:void(0)">2</a>    {{ tag.name}}
+<a class="line-num" href="javascript:void(0)">3</a>    {{ tag.type}}
+<a class="line-num" href="javascript:void(0)">4</a>    {{ tag.image_url }}
+<a class="line-num" href="javascript:void(0)">5</a>  {% endtags %}
+</pre>
+          </div>
+          </td>
+         </tr>
+       <tr>
+        <td class="docs"><div class="pilwrap" id="tag-tag">
+            <h3> <a href="#tag-tag" name="tag-tag" class="pilcrow">&#182;</a> {% tag %}</h3>
+             <div class="dox">
+              <div class="details">
+              <p><b>{% Tag %}</b> Pode ser atribuída a uma categoria.</p>
+              </div>
+              <div class="summary hide"><p><code><a href="#como-usar">Como Usar</a></code> ler sobre.</p></div>
+            </div>
+          </div>
+        </td>
+        <td class="code highlight">
+          <div class="highlight">
+<pre><br /><br /><br />
+<a class="line-num" href="javascript:void(0)">1</a> {% tag id:"categoria" %}
+<a class="line-num" href="javascript:void(0)">2</a>   {{ tag.name}}
+<a class="line-num" href="javascript:void(0)">3</a>   {{ tag.title }}
+<a class="line-num" href="javascript:void(0)">4</a>   {{ tag.description}}
+<a class="line-num" href="javascript:void(0)">5</a>   {{ tag.type}}
+<a class="line-num" href="javascript:void(0)">6</a>   {{ tag.image_url }}
+<a class="line-num" href="javascript:void(0)">7</a> {% endtag %}
+</pre>
+          </div>
+          </td>
+         </tr>
+         <tr>
         <tr>
         <td class="docs"><div class="pilwrap" id="recursos">
             <h3> <a href="#recursos" name="recursos" class="pilcrow">&#182;</a> Recursos </h3>
