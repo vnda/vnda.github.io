@@ -87,8 +87,9 @@ e<!DOCTYPE html>
       <ul>
         <li><a href="#recursos-webforms">Webforms</a></li>
         <li><a href="#recursos-filtros">Filtros</a></li>
-        <li><a href="#recursos-itemscope">Itemscope</a></li>
+        <li><a href="#recursos-pagination">{{ pagination }}</a></li>
         <li><a href="#recursos-store">{{ store }}</a></li>
+        <li><a href="#recursos-itemscope">Itemscope</a></li>
       <ul>
     </div>
   </div>
@@ -572,6 +573,39 @@ e<!DOCTYPE html>
         <td class="code highlight">
           <div class="highlight">
 
+          </div>
+          </td>
+      </tr>
+      <tr>
+        <td class="docs"><div class="pilwrap" id="recursos-pagination">
+            <h3> <a href="#recursos-pagination" name="recursos-pagination" class="pilcrow">&#182;</a>{% pagination %}</h3>
+            <div class="dox">
+              <div class="details">
+              <p>
+                Conteúdo indiponível...
+              </p>
+              </div>
+            </div>
+
+          </div></td>
+        <td class="code highlight">
+          <div class="highlight">
+<pre><br /><br /><br />
+ {% if pagination.total_pages > 1 %}
+<code><</code>nav class="pagination"<code>></code>
+    <code><</code>span class="pagination"<code>></code>
+        Página {{ pagination.current_page }} de {{ pagination.total_pages }}
+        {% if pagination.prev_page %}
+            <code><</code>a href="{{ pagination.prev_url }}" class="previous"<code>></code>←<code><</code>/a<code>></code>
+        {% endif %}
+        {% if pagination.next_page %}
+            <code><</code>a href="{{ pagination.next_url }}" class="next"<code>></code>→<code><</code>/a<code>></code>
+        {% endif %}
+    <code><</code>/span<code>></code>
+<code><</code>/nav<code>></code>
+{% endif %}
+
+</pre>
           </div>
           </td>
       </tr>
