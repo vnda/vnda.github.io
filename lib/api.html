@@ -26,6 +26,7 @@
       <div class="heading h3"> <a href="#como-comecar">Como começar</a> </div>
       <div class="heading h3"> <a href="#pedidos">Pedidos</a> </div>
       <div class="heading h3"> <a href="#clientes">Clientes</a> </div>
+      <div class="heading h3"> <a href="#estoque">Estoque</a> </div>
     </div>
   </div>
   <div id="sidebar-toggle"></div>
@@ -191,10 +192,64 @@
 <a class="line-num" href="#line-23">23</a>   -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
 <a class="line-num" href="#line-24">24</a>   'http://demo.vnda.com.br/api<span class="kd">/client?id=1</span>'
 
-<a class="line-num" href="#line-25">25</a> <span class="nx">curl -X GET</span>
+<a class="line-num" href="#line-25">25</a> <span class="nx">curl -X <span class="kd">POST</span></span>
 <a class="line-num" href="#line-26">26</a>   <span class="nx">-H "Accept: application/json"</span>
 <a class="line-num" href="#line-27">27</a>   -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
 <a class="line-num" href="#line-28">28</a>   'http://demo.vnda.com.br/api<span class="kd">/client?email=fulano@empresa.com.br</span>'
+
+</span>
+            </pre>
+          </div>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="docs">
+          <h1 id="estoque">Estoque</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+            <a class="pilcrow" href="#clientes">&#182;</a>
+          </div>
+          <div class="dox">
+            <div class="summary"><p></p>
+            </div>
+            <div class="body">
+              <p>O estoque é ajustado automaticamente, de acordo com as vendas e cancelamentos de pedidos realizados. Entretando, é possível consultar e modificar estas informações pela API.</p>
+              <p>Para consultar o estoque, deve ser informado o SKU desejado. No exemplo, usamos o SKU AB123.</p>
+              <p>A quantidade de itens em estoque pode ser ajustada, envinado um valor no parâmetro "quantity". Neste exemplo, o estoque será modificado para 33 unidades, independentemente do estoque atual aual.</p>
+              <p>Essa quantidade também pode diminuida de forma relativa. Ou seja, o valor informado será diminuído do estoque atual. Neste exemplo, o estoque passará de 99 para 66, pois estamos solicitando a redução de 33 unidades. Se não existir estoque disponível para a quantidade solicitada, será retornado erro.</p>
+              <p></p>
+            </div>
+          </div>
+        </td>
+        <td class="code highlight">
+          <div class="highlight">
+            <pre>
+
+
+
+
+
+
+<a class="line-num" href="#line-29">29</a> <span class="nx">curl -X <span class="s1">GET</span></span>
+<a class="line-num" href="#line-30">30</a>   <span class="nx">-H "Accept: application/json"</span>
+<a class="line-num" href="#line-31">31</a>   -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
+<a class="line-num" href="#line-32">32</a>   'http://demo.vnda.com.br/api<span class="kd">/v2/variants/AB123</span><span class="s1">/quantity</span>'
+
+<a class="line-num" href="#line-33">33</a> <span class="nx">curl -X <span class="s1">POST</span></span>
+<a class="line-num" href="#line-34">34</a>   <span class="nx">-H "Accept: application/json"</span>
+<a class="line-num" href="#line-35">35</a>   -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
+<a class="line-num" href="#line-36">36</a>   'http://demo.vnda.com.br/api<span class="kd">/v2/variants/AB123</span><span class="s1">/quantity?quantity=33</span>'
+
+<a class="line-num" href="#line-33">33</a> <span class="nx">curl -X <span class="s1">POST</span></span>
+<a class="line-num" href="#line-34">34</a>   <span class="nx">-H "Accept: application/json"</span>
+<a class="line-num" href="#line-35">35</a>   -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
+<a class="line-num" href="#line-36">36</a>   'http://demo.vnda.com.br/api<span class="kd">/v2/variants/AB123</span><span class="s1">/sold/33</span>'
 
 </span>
             </pre>
