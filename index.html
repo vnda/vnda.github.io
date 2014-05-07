@@ -5,11 +5,12 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" media="all" href="doc-style.css" />
   <script src="doc-filelist.js"></script>
+  <script src="jquery-1.7.1.min.js"></script>
   <script>
-    var relativeDir = "", thisFile = "index.js", defaultSidebar = true;
+    var relativeDir = "", thisFile = "index.js", defaultSidebar = false;
   </script>
   <script src="doc-script.js"></script>
-  <script src="fileSearch.js"></script>
+
   <script src="goToLine.js"></script>
   <link rel="stylesheet" href="fileSearch.css" />
   <link rel="stylesheet" href="goToLine.css" />
@@ -17,8 +18,8 @@
 <body>
   <div id="sidebar_wrapper">
     <div id="sidebar_switch">
-    <span class="headings"><a href="guides.html">GUIDES</a></span>
-    <span class="headings"><a href="api.html">API</a></span>
+    <span class="headings"><a href="lib/guides.html">GUIDES</a></span>
+    <span class="headings"><a href="lib/api.html">API</a></span>
     </div>
     <div id="tree"></div>
     <div id="headings">
@@ -52,5 +53,14 @@
     </table>
   </div>
 </body>
-<!-- Google Tag Manager --> <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script> <!-- End Google Tag Manager -->
+<script type="text/javascript">
+  $(function() {
+    // $( window ).load(function() {
+    //   $( "body" ).removeClass( "sidebar" );
+    // });
+  });
+</script>
+<!-- Google Tag Manager -->
+<!-- <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script> -->
+ <!-- End Google Tag Manager -->
 </html>
