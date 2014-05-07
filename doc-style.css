@@ -27,7 +27,10 @@ h1 {
   padding: 10px 0;
   position: absolute;
   overflow: auto; }
-
+  #headings .logo {
+    display: block;
+    height: 50px;
+    margin:0 auto; }
 #sidebar_wrapper {
   position: fixed;
   top: 0;
@@ -50,8 +53,9 @@ h1 {
     text-align: center;
     line-height: 29px;
     cursor: pointer; }
-  #sidebar_switch .selected {
-    font-weight: bold; }
+  #sidebar_switch .ativo {
+    font-weight: bold;
+    background-color: #afb4be; }
 
 .slidey #sidebar_wrapper {
   -webkit-transition: width 250ms linear;
@@ -132,7 +136,10 @@ text-decoration: underline; }
 #headings  ul {
   padding-left: 0px;
   margin: 0px;
-  display: none; }
+  display: none;
+-webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.23);
+-moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.23);
+box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.23); }
 
 #headings  ul li { list-style: none; text-indent: 8px; }
 #headings  ul li a:before {
@@ -295,7 +302,7 @@ a {
 
 #sidebar_switch {
   background: #ededec;
-  border-bottom-color: #dededc; }
+  border-bottom: none; }
   #sidebar_switch span {
     color: #2d2d22; }
   #sidebar_switch span a {
