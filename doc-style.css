@@ -6,8 +6,7 @@ font-size: 100%;
 margin: 0;
 outline: 0;
 padding: 0;
-vertical-align: baseline;
-}
+vertical-align: baseline;}
 a {
   text-decoration: none }
 p, h1, h2, h3, h4, h5, h6 {
@@ -93,6 +92,10 @@ h1 {
   padding-left: 0; }
 
 #headings .heading a {
+    -webkit-transition: all 0.3s ease;
+  -moz-transition:    all 0.3s ease;
+  transition: all 0.3s ease;
+
   text-decoration: none;
   padding-left: 10px;
   display: block; }
@@ -141,7 +144,7 @@ text-decoration: underline; }
 -moz-box-shadow:    0px 2px 4px 0px rgba(50, 50, 50, 0.23);
 box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.23); }
 
-#headings  ul li { list-style: none; text-indent: 8px; }
+#headings  ul li { list-style: none; text-indent: 8px; margin-bottom: 0px; }
 #headings  ul li a:before {
   content: "-";
   display: inline-block;
