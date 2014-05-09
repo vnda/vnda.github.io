@@ -359,8 +359,8 @@ td.code, .background {
 td.linenos { background-color: #f0f0f0; padding-right: 10px; }
 span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
 pre { line-height: 125%; }
-body .docs .pilwrap h3 { font-size: 14px; text-transform: capitalize; margin-top: 40px; }
-body .docs .pilwrap h2 { font-size: 14px; text-transform: capitalize; }
+body .docs .pilwrap h3 { font-size: 14px; margin-top: 40px; }
+body .docs .pilwrap h2 { font-size: 14px;  }
 body .highlight .hll { background-color: #ffffcc }
 body .highlight  { background: #272822; color:#fff; }
 body .highlight .c { color: #408080; font-style: italic } /* Comment */
