@@ -11,425 +11,465 @@
     var relativeDir = "../", thisFile = "lib/intercom.io.js", defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
-   <script src="../goToLine.js"></script>
+  <script src="../goToLine.js"></script>
   <link rel="stylesheet" href="../fileSearch.css" />
   <link rel="stylesheet" href="../goToLine.css" />
   </head>
   <body>
 <div id="sidebar_wrapper">
-    <div id="sidebar_switch">
-    <span class="headings"><a href="guides.html" class="ativo">GUIDES</a></span>
-    <span class="headings"><a href="api.html">API</a></span>
-    </div>
-    <div id="tree"></div>
-    <div id="headings">
-      <img class="logo" src="https://avatars2.githubusercontent.com/u/810902?s=200">
-    <div class="heading h3"> <a href="#design">Design</a> </div>
-    <div class="heading h3"> <a href="#front">Front-end (HTML, CSS & JS)</a> </div>
-    <div class="heading h3"> <a href="#sobre">Sobre Liquid</a></div>
-    <div class="heading h3">
-    <a href="#templates">Templates</a>
-      <ul>
-        <li><a href="#layout">Layout</a></li>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#tag">Tag</a></li>
-        <li><a href="#product">Product</a></li>
-        <li><a href="#cart">Cart</a></li>
-        <li><a href="#address">Address</a></li>
-        <li><a href="#payment">Payment</a></li>
-        <li><a href="#finished">Finished</a></li>
-        <li><a href="#account">Account</a></li>
-        <li><a href="#account">Account</a></li>
-        <li><a href="#page">Page</a></li>
-      <ul>
-    </div>
-    <div class="heading h3"> <a href="#como-usar">Como Usar o Liquid?</a>
-     <ul>
-        <li><a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers" title="Ir para">Liquid para Designers</a></li>
-      </ul>
-    </div>
-    <div class="heading h3"> <a href="#tags-vnda">Tags Personalizadas da Vnda</a>
+<div id="sidebar_switch"> <span class="headings"><a href="guides.html" class="ativo">GUIDES</a></span> <span class="headings"><a href="api.html">API</a></span> </div>
+<div id="tree"></div>
+<div id="headings">
+<img class="logo" src="https://avatars2.githubusercontent.com/u/810902?s=200">
+<div class="heading h3"> <a href="#design">Design</a> </div>
+<div class="heading h3"> <a href="#front">Front-end (HTML, CSS & JS)</a> </div>
+<div class="heading h3"> <a href="#sobre">Sobre Liquid</a></div>
+<div class="heading h3">
+<a href="#templates">Templates</a>
+<ul>
+<li><a href="#layout">Layout</a></li>
+<li><a href="#home">Home</a></li>
+<li><a href="#tag">Tag</a></li>
+<li><a href="#product">Product</a></li>
+<li><a href="#cart">Cart</a></li>
+<li><a href="#address">Address</a></li>
+<li><a href="#payment">Payment</a></li>
+<li><a href="#finished">Finished</a></li>
+<li><a href="#account">Account</a></li>
+<li><a href="#login">Login</a></li>
+<li><a href="#searc">Search</a></li>
+<li><a href="#page">Page</a></li>
+<ul>
+</div>
+<div class="heading h3"> <a href="#como-usar">Como Usar o Liquid?</a>
     <ul>
-       <li><a href="#tag-orders">{% orders %}</a></li>
-       <li><a href="#tag-cartitems">{% cartitems %} </a></li>
-       <li><a href="#tag-products">{% products %}</a></li>
-       <li><a href="#tag-tags">{% tags %}</a></li>
-       <li><a href="#tag-tag">{% tag %}</a></li>
-       <li><a href="#tag-menus"> {% menus %}</a></li>
-       <li><a href="#tag-page">{% page" %}</a></li>
-       <li><a href="#tag-banners">{% banners %} </a></li>
-       <li><a href="#tag-images">{% images %}</a></li>
-       <li><a href="#tag-shippingmethods">{% shippingmethods %}</a></li>
-       <li><a href="#tag-variant">{% variant %}</a></li>
-       <li><a href="#tag-variants">{% variants %}</a></li>
-       <li><a href="#tag-videos"> {% videos %}</a></li>
-       <li><a href="#tag-sizes">{% sizes %}</a></li>
-       <li><a href="#tag-colors">{% colors %}</a></li>
-       <li><a href="#tag-opengraphfor">{% opengraphfor %}</a></li>
-       <li><a href="#tag-tags">{% urlfor %}</a></li>
-       <li><a href="#tag-contentfor">{% contentfor %}</a></li>
-    </ul>
-    </div>
-    <div class="heading h3"> <a href="#recursos">Processo de Compra .liquid</a>
-      <ul>
-        <li><a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers" title="Ir para" target="_blank">Enviar Produto no Carrinho</a></li>
-      <ul>
-    </div>
-    <div class="heading h3"> <a href="#">Processos Checkout .liquid</a>
-      <ul>
-        <li><a href="#processo-add">Adicionando produtos no carrinho</a></li>
-        <li><a href="#processo-remover">Removendo produtos do carrinho</a></li>
-        <li><a href="#processo-envio">Listando Métodos de Envio</a></li>
-        <li><a href="#processo-desconto">Enviando Cupom de Desconto</a></li>
-        <li><a href="#processo-salvar-endereco">Salvando dados de endereço</a></li>
-        <li><a href="#processo-pagamento">Enviando dados de pagamento</a></li>
-        <li><a href="#processo-loading">Adicionando Loading no Checkout</a></li>
-      <ul>
-    </div>
-    <div class="heading h3"> <a href="#recursos">Recursos</a>
-      <ul>
-        <li><a href="#recursos-webforms">Webforms</a></li>
-        <li><a href="#recursos-filtros">Filtros</a></li>
-        <li><a href="#recursos-pagination">{{ pagination }}</a></li>
-        <li><a href="#recursos-store">{{ store }}</a></li>
-        <li><a href="#recursos-itemscope">Itemscope</a></li>
-      <ul>
-    </div>
+    <li><a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers" title="Ir para">Liquid para Designers</a></li>
+  </ul>
   </div>
+<div class="heading h3"> <a href="#tags-vnda">Tags Personalizadas da Vnda</a>
+    <ul>
+    <li><a href="#tag-orders">{% orders %}</a></li>
+    <li><a href="#tag-cartitems">{% cartitems %} </a></li>
+    <li><a href="#tag-products">{% products %}</a></li>
+    <li><a href="#tag-tags">{% tags %}</a></li>
+    <li><a href="#tag-tag">{% tag %}</a></li>
+    <li><a href="#tag-menus"> {% menus %}</a></li>
+    <li><a href="#tag-page">{% page" %}</a></li>
+    <li><a href="#tag-banners">{% banners %} </a></li>
+    <li><a href="#tag-images">{% images %}</a></li>
+    <li><a href="#tag-shippingmethods">{% shippingmethods %}</a></li>
+    <li><a href="#tag-variant">{% variant %}</a></li>
+    <li><a href="#tag-variants">{% variants %}</a></li>
+    <li><a href="#tag-videos"> {% videos %}</a></li>
+    <li><a href="#tag-sizes">{% sizes %}</a></li>
+    <li><a href="#tag-colors">{% colors %}</a></li>
+    <li><a href="#tag-opengraphfor">{% opengraphfor %}</a></li>
+    <li><a href="#tag-tags">{% urlfor %}</a></li>
+    <li><a href="#tag-contentfor">{% contentfor %}</a></li>
+  </ul>
   </div>
+<div class="heading h3">
+<a href="#recursos">Processo de Compra .liquid</a>
+<ul>
+<li><a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers" title="Ir para" target="_blank">Enviar Produto no Carrinho</a></li>
+<ul>
+</div>
+<div class="heading h3">
+<a href="#">Processos Checkout .liquid</a>
+<ul>
+<li><a href="#processo-add">Adicionando produtos no carrinho</a></li>
+<li><a href="#processo-remover">Removendo produtos do carrinho</a></li>
+<li><a href="#processo-envio">Listando Métodos de Envio</a></li>
+<li><a href="#processo-desconto">Enviando Cupom de Desconto</a></li>
+<li><a href="#processo-salvar-endereco">Salvando dados de endereço</a></li>
+<li><a href="#processo-pagamento">Enviando dados de pagamento</a></li>
+<li><a href="#processo-loading">Adicionando Loading no Checkout</a></li>
+<ul>
+</div>
+<div class="heading h3">
+<a href="#recursos">Recursos</a>
+<ul>
+<li><a href="#recursos-webforms">Webforms</a></li>
+<li><a href="#recursos-filtros">Filtros</a></li>
+<li><a href="#recursos-pagination">{{ pagination }}</a></li>
+<li><a href="#recursos-store">{{ store }}</a></li>
+<li><a href="#recursos-itemscope">Itemscope</a></li>
+<ul>
+</div>
+</div>
+</div>
 <div id="sidebar-toggle"></div>
 <div id="container">
     <div class="background highlight"></div>
     <table cellpadding="0" cellspacing="0">
     <tbody>
-      <tr id="design">
+        <tr id="design">
         <td class="docs"><div class="pilwrap">
             <h3> <a href="#design" name="design" class="pilcrow">¶</a> Design </h3>
-            <p> Por Padrão os .psd ou .png deve ser enviados de acordo com a nomenclatura abaixo: </p>
-            <div class="dox">
+            <p>Sugerimos a seguinte ordem para criação das telas para os layout de um canal ecommerce que utilize a plataforma Vnda:</p>
+             <div class="dox">
               <div class="details">
                 <ul class="">
-                  <li> <strong> home.psd </strong>
-                    <p> tela inicial do site, pode exibir produtos, banners, entre outras coisas. Esta tela deve considerar, caso exista, uma estrutura de header e footer utilizada em toco o canal. </p>
+                  <li>
+                    <p> <b>Home:</b> tela inicial do site, pode exibir produtos, banners, entre outras coisas. Esta tela deve considerar, caso exista, uma estrutura de header e footer utilizada em toco o canal. </p>
                   </li>
-                  <li> <strong> tag.psd </strong>
-                    <p> tela de "categoria", exibe uma lista de produtos que estão vinculados a tag. Essa página também pode servir para exibir "sub-categorias". </p>
+                  <li>
+                    <p> <b>Categorias (tags):</b> tela de "categoria", exibe uma lista de produtos que estão vinculados a tag. Essa página também pode servir para exibir "sub-categorias". </p>
                   </li>
-                  <li> <strong> product.psd </strong>
-                    <p> tela que exibe os detalhes dos produtos. Aqui ele pode selecionar as variantes e adicionar a variante selecionada ao carrinho. </p>
+                  <li>
+                    <p><b>Produto:</b> tela que exibe os detalhes dos produtos. Aqui ele pode selecionar as variantes e adicionar a variante selecionada ao carrinho.</p>
                   </li>
-                  <li> <strong> product.psd </strong>
-                    <p> tela que exibe os detalhes dos produtos. Aqui ele pode selecionar as variantes e adicionar a variante selecionada ao carrinho. </p>
+                  <li>
+                    <p><b>Carrinho:</b> tela de carrinho, onde ficam listados os produtos comprados, o resumo da compra e onde o cliente faz o cálculo de frete, informando o CEP para entrega. Nesta página também fica o form onde o cliente seleciona o meio de entrega após informar o CEP.</p>
                   </li>
-                  <li> <strong> product.psd </strong>
-                    <p> tela que exibe os detalhes dos produtos. Aqui ele pode selecionar as variantes e adicionar a variante selecionada ao carrinho. </p>
+                  <li>
+                    <p> <b>Pedido:</b> tela com o form no qual o cliente preenche com os dados de entrega do pedido. Geralmente essa página vem depois do cliente ter selecionado a meio de entrega (**cart.erb**)</p>
                   </li>
-                  <li> <strong> product.psd </strong>
-                    <p> tela que exibe os detalhes dos produtos. Aqui ele pode selecionar as variantes e adicionar a variante selecionada ao carrinho. </p>
+                  <li>
+                    <p> <b>Pagamento:</b> tela onde serão exibidas para o cliente as formas de pagamento disponíveis no site. Aqui ele seleciona uma delas e informa os dados necessários para pagar pelo compra. Geralmente essa página vem depois do cliente informar os dados de entrega do pedido (**order.erb**). </p>
+                  </li>
+                  <li>
+                    <p><b>Concluído Cartão:</b> tela de conclusão da compra, onde é exibida a mensagem que a compra foi efetuada com sucesso.</p>
+                  </li>
+                  <li>
+                    <p><b>Concluído Boleto:</b> tela de conclusão da compra, onde é exibida a mensagem que a compra foi efetuada com sucesso deve conter o link para o impressão do boleto.</p>
+                  </li>
+                  <li>
+                    <p><b>Página:</b> através deste template serão exibidas as páginas estáticas criadas no admin.</p>
+                  </li>
+                  <li>
+                    <p><b>Busca:</b> tela que exibe o resultado da busca. Basicamente uma lista de produtos que batem com o termo de busca informado pelo cliente.</p>
+                  </li>
+                  <li>
+                    <p><b>Login:</b> tela onde fica o form de login e signup e Facebook Connect.</p>
+                  </li>
+                  <li>
+                    <p><b>Conta:</b> tela onde são exibidos os dados da conta do cliente, onde ele consulta os pedidos e os pontos adquiridos atráves do indicações do site (se for o caso). Nesta tela também deve ser usada para o form de alteração de nome, email e senha do cliente.</p>
+                  </li>
+                  <li>
+                    <p><b>Erro 404:</b> HTML que será exibido quando uma página não for encontrada. Ele precisa replicar o header e o footer do site.</p>
                   </li>
                 </ul>
               </div>
             </div>
           </div></td>
-        <td class="code highlight">
-        <div class="highlight">
+        <td class="code highlight"><div class="highlight">
             <pre> </pre>
-          </div>
-          </td>
+          </div></td>
       </tr>
         <tr id="front">
         <td class="docs"><div class="pilwrap">
             <h3> <a href="#front" name="front" class="pilcrow">&#182;</a> Front-End (HTML, CSS & JS) </h3>
             <div class="dox">
               <div class="details">
-              <p>
-                  Aguardando Atualização...
-              </p>
+                <p> Aguardando Atualização... </p>
               </div>
-              <div class="summary"><p><code><a href="#como-usar">Como Usar</a></code> ler sobre.</p></div>
+              <div class="summary">
+                <p><code><a href="#como-usar">Como Usar</a></code> ler sobre.</p>
+              </div>
             </div>
           </div></td>
-          <td class="code highlight"><div class="highlight">
+        <td class="code highlight"><div class="highlight">
             <pre> </pre>
-          </div>
-          </td>
+          </div></td>
       </tr>
-
-      <tr id="sobre">
+        <tr id="sobre">
         <td class="docs"><div class="pilwrap">
             <h3> <a href="#sobre" name="sobre" class="pilcrow">&#182;</a> Sobre liquid</h3>
-             <div class="dox">
+            <div class="dox">
               <div class="details">
-              <p><b>Liquid</b> é responsável por implementar os templates desenvolvidos e utilizados pela Vnda.
-              Ele processa arquivos de modelo com a extensão ".liquid".</p>
+                <p><b>Liquid</b> é responsável por implementar os templates desenvolvidos e utilizados pela Vnda, processando os arquivos modelo Ttemp.liquid</p>
               </div>
-              <div class="summary"><p><code><a href="#como-usar">Como Usar</a></code> ler sobre.</p></div>
+              <div class="summary">
+                <p><code><a href="#como-usar">Como Usar</a></code> ler sobre.</p>
+              </div>
             </div>
-          </div>
-        </td>
-        <td class="code highlight">
-          <div class="highlight">
-          <pre>
-            <a class="line-num" href="javascript:void(0)">1</a> {% <span class="si">products</span> tag:tag.name parent_tag:parent_tag_name page:params.page per_page:per_page  %}
-            <a class="line-num" href="javascript:void(0)">2</a>  {{  <span class="vi">product</span>.image_url | resize: '234x' }}
-            <a class="line-num" href="javascript:void(0)">3</a>  {{ <span class="vi">product</span>.url }}
-            <a class="line-num" href="javascript:void(0)">4</a>  {{ <span class="vi">product</span>.reference }}
-            <a class="line-num" href="javascript:void(0)">5</a>  {{ <span class="vi">product</span>.description }}
-            <a class="line-num" href="javascript:void(0)">6</a>  {% <span class="si">if</span> <span class="vi">product</span>.available %}
-            <a class="line-num" href="javascript:void(0)">7</a>   {% <span class="si">if</span> <span class="vi">product</span>.on_sale %}
-            <a class="line-num" href="javascript:void(0)">8</a>    preço original: {{<span class="vi">product</span>.price | <span class="vi">money_format</span> }}
-            <a class="line-num" href="javascript:void(0)">9</a>    preço com desconto: {{ <span class="vi">product | apply_discount | money_format </span> }}
-            <a class="line-num" href="javascript:void(0)">10</a>    preço: {{ <span class="vi">product</span>.price | <span class="vi">money_format</span> }}
-            <a class="line-num" href="javascript:void(0)">11</a>   {% <span class="si">endif</span> %}
-            <a class="line-num" href="javascript:void(0)">12</a>  {% <span class="si">else</span> %}
-            <a class="line-num" href="javascript:void(0)">13</a>  Produto Esgotado
-            <a class="line-num" href="javascript:void(0)">14</a>  {% <span class="si">endif</span> %}
-            <a class="line-num" href="javascript:void(0)">15</a> {% <span class="si ">endproducts</span> %}
-          </pre>
-          </div>
-          </td>
-         </tr>
-         <tr id="templates">
+          </div></td>
+        <td class="code highlight"><div class="highlight"> </div></td>
+      </tr>
+        <tr id="templates">
         <td class="docs"><div class="pilwrap">
             <h3> <a href="#templates" name="templates" class="pilcrow">&#182;</a> Templates </h3>
             <div class="dox">
               <div class="details">
-              <p>Os templates devem ficar na raiz da pasta compartilhada no Dropbox e os nomes dos arquivos deve respeitar a lista abaixo:</p>
+                <p>Os templates ficam na raiz da pasta compartilhada no Dropbox.</p>
+                <p>Todos os arquivo devem ser salvos na extensão .liquid</p>
+                <p>Vejas os templates disponíveis na plataforma <span class="summary"><code><a href="#layout">Iniciar</a></code></span></p>
               </div>
             </div>
           </div></td>
         <td class="code highlight"></td>
       </tr>
-      <tr id="layout">
+        <tr id="layout">
         <td class="docs"><div class="pilwrap">
             <h3> <a href="#templates" name="templates" class="pilcrow">&#182;</a> Layout.liquid </h3>
             <div class="dox">
               <div class="details">
-              <p>Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates (exceto 404 e facebook).</p>
-             </div>
+                <p> Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates (exceto 404 e facebook). </p>
+              </div>
             </div>
           </div></td>
         <td class="code highlight"></td>
       </tr>
-      <tr id="home">
+        <tr id="home">
         <td class="docs"><div class="pilwrap">
             <h3> <a href="#home" name="home" class="pilcrow">&#182;</a> Home.liquid </h3>
             <div class="dox">
               <div class="details">
-              <p>Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates (exceto 404 e facebook).</p>
-            </div>
+                <p>Página inicial da loja, aqui podem ser exibidos produtos em destaque, banners, menus e qualquer outra informação que for necessária para atrair o cliente a navegar no resto do site.</p>
+              </div>
             </div>
           </div></td>
         <td class="code highlight"></td>
       </tr>
-      <tr id="tag">
+        <tr id="tag">
         <td class="docs"><div class="pilwrap">
             <h3> <a href="#tag" name="tag" class="pilcrow">&#182;</a> Tag.liquid </h3>
             <div class="dox">
               <div class="details">
-              <p>Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates (exceto 404 e facebook).</p>
-            </div>
+                <p> Página que exibe produtos relacionados a uma tag. Tag é a forma de categorização utilizada pela Vnda para organizar os produtos. </p>
+              </div>
             </div>
           </div></td>
         <td class="code highlight"></td>
       </tr>
-      <tr id="product">
+        <tr id="product">
         <td class="docs"><div class="pilwrap">
             <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Product.liquid </h3>
             <div class="dox">
-              <div class="details">
-                tela que exibe os detalhes dos produtos. Aqui ele pode selecionar as variantes e adicionar a variante selecionada ao carrinho.
-               </div>
+              <div class="details"> Template para exibição do produto, suas imagens, produtos relacionados. Aqui também fica o formulário que permite adicionar o item ao carrinho, neste formulário o cliente pode selecionar qual variante do produto (cor, tamanho, etc) ele realmente quer. </div>
             </div>
           </div></td>
-        <td class="code highlight">
-          <div class="highlight">
+        <td class="code highlight"><div class="highlight">
             <pre></pre>
-          </div>
-        </td>
+          </div></td>
       </tr>
-      <tr id="cart">
+        <tr id="cart">
         <td class="docs"><div class="pilwrap">
             <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Cart.liquid </h3>
             <div class="dox">
               <div class="details">
-              <p>Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates (exceto 404 e facebook).</p>
-            </div>
+                <p> 1ª etapa do processo de compra. No template do carrinho são exibidos os itens já adicionados e onde pode ser feito o cálculo do frete. Pode exibir também um resumo do total do pedido. </p>
+              </div>
             </div>
           </div></td>
         <td class="code highlight"></td>
       </tr>
-          <tr id="como-usar">
+        <tr id="address">
         <td class="docs"><div class="pilwrap">
-            <h3> <a href="#como-usar" name="como-usar" class="pilcrow">&#182;</a>Como Usar o Liquid?</h3>
-             <div class="dox">
+            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Address.liquid </h3>
+            <div class="dox">
               <div class="details">
-              <h2>Existem dois tipos de marcação no líquido:</h2>
-
-              <p><b>Tags de Lógica:</b> são declarações condicionais. Eles são a afirmação de que diz o código e o que fazer.</p>
-
-              <p><b>Tags de saída:</b> são as etiquetas de saída exibir o líquido encontrado entre ele.
-                  Você também pode usar <b>filtros para alterar a saída retornado.</b></p>
-
-              <p>Para usar o líquido, você vai precisar de recorrer a uma combinação de lógica e de saída de etiquetas usando operadores líquidos. Acções com liquidez muitos dos mesmos operadores como outras linguagens de programação:</p>
-              </p>
+                <p> Template onde é exibido o formulário responsável por capturar as informações para entrega do pedido, assim como dados pessoais do cliente, como e-mail e CPF. </p>
               </div>
-              <div class="summary"><p><code><a href="#templates">Template</a></code> ler sobre.</p></div>
             </div>
-          </div>
-        </td>
-        <td class="code highlight">
-<div class="highlight">
-<pre><br/><br/><br/>
-<a class="line-num" href="javascript:void(0)">1</a> {% <span class="si">assign</span> <span class="blue">order</span> = "false" %}
-<a class="line-num" href="javascript:void(0)">2</a> {% <span class="si">orders</span> client_id:client.id %}
-<a class="line-num" href="javascript:void(0)">3</a>  {% <span class="si">assign</span> order = "true" %}
-<a class="line-num" href="javascript:void(0)">4</a>  [<span class="si">tr</span>]
-<a class="line-num" href="javascript:void(0)">5</a>   [<span class="si">td</span>]{{ order.code }}[/<span class="si">td</span>]
-<a class="line-num" href="javascript:void(0)">6</a>   [<span class="si">td</span>]{{ order.received_at }}[/<span class="si">td</span>]
-<a class="line-num" href="javascript:void(0)">7</a>   [<span class="si">td</span>]{{ order | order_status }}[/<span class="si">td</span>]
-<a class="line-num" href="javascript:void(0)">8</a>   [<span class="si">td</span>]{{ order.total | money_format }}[/<span class="si">td</span>]
-<a class="line-num" href="javascript:void(0)">9</a>   [/<span class="si">tr</span>]
-<a class="line-num" href="javascript:void(0)">10</a> {% <span class="si">endorders</span> %}
-<a class="line-num" href="javascript:void(0)">11</a> {% <span class="si">if</span> order == "false" %}
-<a class="line-num" href="javascript:void(0)">12</a>  [<span class="si">tr</span>]
-<a class="line-num" href="javascript:void(0)">13</a>   [<span class="si">td</span> colspan="3"]Você ainda não tem pedidos[/<span class="si">td</span>]
-<a class="line-num" href="javascript:void(0)">14</a>  [/<span class="si">tr</span>]
-<a class="line-num" href="javascript:void(0)">15</a> {% <span class="si">endif</span> %}
-</pre>
-</div>
-</td>
-  </tr>
-   <tr id="tags-vnda">
-        <td class="docs">
-        <div class="pilwrap">
-            <h3> <a href="#tags-vnda" name="tags-vnda" class="pilcrow">&#182;</a> Tags Personalizadas da Vnda</h3>
-             <div class="dox">
-              <div class="details">
-              <h2>Entendo sobre a tags personalizadas</h2>
-              <p>
-                 A plataforma atende com um conjunto de tags responsável pela integração
-                 do Html Estático com a plataforma. É importante seguir aprender sobre o uso das mesmas
-                 para que sua aplicação funcione corretamente junto as configurações do painel como
-                 <a href="#tag-banners">Listagem de Banner</a>, <a href="#tag-products">Tags de Produtos</a>, <a href="#tag-orders">Ordens de Pedido</a>
-                 <a href="#tags-menu">Criação de Menu</a>.
-              </p>
-              </div>
-             </div>
-          </div>
-        </td>
-        <td class="code highlight">
-<div class="highlight">
-<pre>
-
-</pre>
-</div>
-          </td>
+          </div></td>
+        <td class="code highlight"></td>
       </tr>
-  </tr>
-        <tr id="tag-menus">
-        <td class="docs">
-        <div class="pilwrap">
-            <h3> <a href="#tag-menus" name="tag-menus" class="pilcrow">&#182;</a>  {% Menus %}</h3>
-             <div class="dox">
+        <tr id="payment">
+        <td class="docs"><div class="pilwrap">
+            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Payment.liquid </h3>
+            <div class="dox">
               <div class="details">
-              <h2>Listando Menus</h2>
-              <p>
-                 Para listar os menus criados pelo admin da loja deve ser informado o parâmetro "position".
-                * loop para exibir os itens de um menu
-              </p>
+                <p> 3ª etapa do processo de compra. Aqui o cliente informa os dados do cartão de crédito ou dá inicio a geração do boleto. </p>
               </div>
-              <!-- <div class="summary"><p><code><a href="#templates">Template</a></code> ler sobre.</p></div> -->
             </div>
-             <div class="dox">
-              <div class="details">
-              <h2>Listando Sub Menus</h2>
-              <p>
-                * menu com submenus (html opcional)
-              </p>
-              </div>
-              <!-- <div class="summary"><p><code><a href="#templates">Template</a></code> ler sobre.</p></div> -->
-            </div>
-          </div>
-        </td>
-        <td class="code highlight">
-<div class="highlight">
-<pre><br/><br/><br/>
-{% <span class="si">menus</span> position:<span class="yellow">"nome_da_posicao_do_menu_no_admin"</span> %}
-  {{ menu.<span class="vi italic">url</span> }} {{ menu.<span class="vi italic">title</span> }}
-{% <span class="si">endmenus</span> %}
-<br/><br/><br/><br/><br/><br/>
-{% <span class="si">menus</span> position:<span class="yellow">"nome_da_posicao_do_menu_no_admin"</span> %}
-  {% <span class="si">if</span> <span class="vi italic">forloop</span>.first %}<code><</code><span class="si">ul</span><code>></code>{% <span class="si">endif</span> %}
-    <code><</code><span class="si">li</span><code>></code>
-      {% <span class="si">menus</span> parent_id:menu.id %}
-        {% if <span class="vi italic">forloop</span>.first %}<code><</code><span class="si">ul</span><code>></code>{% <span class="si">endif</span> %}
-        <code><</code><span class="si">li</span><code>></code>{{ menu.<span class="vi italic">url</span> }} {{ menu.<span class="vi italic">title</span> }}<code><</code>/<span class="si">li</span><code>></code>
-        {% if <span class="vi italic">forloop</span>.last %}<code><</code>/<span class="si">ul</span><code>></code>{% <span class="si">endif</span> %}
-      {% <span class="si">endmenus</span> %}
-    <code><</code>/<span class="si">li</span><code>></code>
-  {% <span class="si">if</span> <span class="vi italic">forloop</span>.last %}<code><</code>/<span class="si">ul</span><code>></code>{% <span class="si">endif</span> %}
-{% <span class="si">endmenus</span> %}
-<br /><br /><br />
-</pre>
-</div>
-          </td>
+          </div></td>
+        <td class="code highlight"></td>
       </tr>
-  </tr>
+        <tr id="finished">
+        <td class="docs"><div class="pilwrap">
+            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Finished.liquid </h3>
+            <div class="dox">
+              <div class="details">
+                <p> 4ª e última etapa do processo de compra. Aqui são exibidas as informações do pedido, como o número e/ou o link para impressão do boleto, junto com a mensagem de conclusão da compra. </p>
+              </div>
+            </div>
+          </div></td>
+        <td class="code highlight"></td>
+      </tr>
+        <tr id="account">
+        <td class="docs"><div class="pilwrap">
+            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Account.liquid </h3>
+            <div class="dox">
+              <div class="details">
+                <p> Template usado para exibir os dados da conta do cliente, os pedidos efetuados, assim como a situação deles. Nesta página o cliente também pode alterar os dados pessoais, como nome, e-mail e senha. </p>
+              </div>
+            </div>
+          </div></td>
+        <td class="code highlight"></td>
+      </tr>
+        <tr id="login">
+        <td class="docs"><div class="pilwrap">
+            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Login.liquid </h3>
+            <div class="dox">
+              <div class="details">
+                <p> Template usado tanto para novos cadastros quanto para logins de clientes já cadastrados. Desta página parte também o login via Facebook, que permite que clientes participem de promoções específicas.
+              </div>
+              </p>
+            </div>
+          </div></td>
+        <td class="code highlight"></td>
+      </tr>
+        <tr id="searc">
+        <td class="docs"><div class="pilwrap">
+            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Search.liquid </h3>
+            <div class="dox">
+            <div class="details">
+                <p> Página que exibe o resultado de uma busca, este resultado é uma lista de produtos que fazem match com o termo buscado pelo cliente atráves da URL /busca?q=termo. </p>
+              </div>
+          </div></td>
+        <td class="code highlight"></td>
+      </tr>
+        <tr id="page">
+        <td class="docs"><div class="pilwrap">
+            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Page.liquid </h3>
+            <div class="dox">
+            <div class="details">
+                <p> A Vnda possui um pequeno CMS que pode ser utilizado para customizar certas páginas sem a necessidade de conhecimentos avançados de programação. É neste template que essas páginas são exibidas. </p>
+              </div>
+          </div></td>
+        <td class="code highlight"></td>
+      </tr>
         <tr id="como-usar">
         <td class="docs"><div class="pilwrap">
-            <h3> <a href="#tag-banners" name="tag-banners" class="pilcrow">&#182;</a>  {% banners %}</h3>
-             <div class="dox">
+            <h3> <a href="#como-usar" name="como-usar" class="pilcrow">&#182;</a>Como Usar o Liquid?</h3>
+            <div class="dox">
               <div class="details">
-              <h2>Listando Banners</h2>
-              <p>
-                  Para listar os banners criados pelo admin da loja deve ser informado o parâmetro "tag".
-                  * loop para exibir os banners
-              </p>
+                <h2>Existem dois tipos de marcação no líquido:</h2>
+                <p><b>Tags de Lógica:</b> são declarações condicionais. Eles são a afirmação de que diz o código e o que fazer.</p>
+                <p><b>Tags de saída:</b> são as etiquetas de saída exibir o líquido encontrado entre ele.
+                  Você também pode usar <b>filtros para alterar a saída retornado.</b></p>
+                <p>Para usar o líquido, você vai precisar de recorrer a uma combinação de lógica e de saída de etiquetas usando operadores líquidos. Acções com liquidez muitos dos mesmos operadores como outras linguagens de programação:</p>
+                </p>
+              </div>
+              <div class="summary">
+                <p><code><a href="#templates">Template</a></code> ler sobre.</p>
+              </div>
+            </div>
+          </div></td>
+        <td class="code highlight"><div class="highlight">
+            <pre>
+<span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> assign order <span style='color:#d2cd86; '>=</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>false</span><span style='color:#02d045; '>"</span> <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
+<span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> orders client_id<span style='color:#b060b0; '>:</span>client<span style='color:#d2cd86; '>.</span>id <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
+ <span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> assign order <span style='color:#d2cd86; '>=</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>true</span><span style='color:#02d045; '>"</span> <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
+ <span style='color:#d2cd86; '>&lt;</span>tr<span style='color:#d2cd86; '>></span>
+  <span style='color:#d2cd86; '>&lt;</span>td<span style='color:#d2cd86; '>></span><span style='color:#b060b0; '>{</span><span style='color:#b060b0; '>{</span> order<span style='color:#d2cd86; '>.</span>code <span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>&lt;</span><span style='color:#d2cd86; '>/</span>td<span style='color:#d2cd86; '>></span>
+  <span style='color:#d2cd86; '>&lt;</span>td<span style='color:#d2cd86; '>></span><span style='color:#b060b0; '>{</span><span style='color:#b060b0; '>{</span> order<span style='color:#d2cd86; '>.</span>received_at <span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>&lt;</span><span style='color:#d2cd86; '>/</span>td<span style='color:#d2cd86; '>></span>
+  <span style='color:#d2cd86; '>&lt;</span>td<span style='color:#d2cd86; '>></span><span style='color:#b060b0; '>{</span><span style='color:#b060b0; '>{</span> order <span style='color:#d2cd86; '>|</span> order_status <span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>&lt;</span><span style='color:#d2cd86; '>/</span>td<span style='color:#d2cd86; '>></span>
+  <span style='color:#d2cd86; '>&lt;</span>td<span style='color:#d2cd86; '>></span><span style='color:#b060b0; '>{</span><span style='color:#b060b0; '>{</span> order<span style='color:#d2cd86; '>.</span>total <span style='color:#d2cd86; '>|</span> money_format <span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>&lt;</span><span style='color:#d2cd86; '>/</span>td<span style='color:#d2cd86; '>></span>
+ <span style='color:#d2cd86; '>&lt;</span><span style='color:#d2cd86; '>/</span>tr<span style='color:#d2cd86; '>></span>
+<span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> endorders <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
+<span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> <span style='color:#e66170; font-weight:bold; '>if</span> order <span style='color:#d2cd86; '>==</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>false</span><span style='color:#02d045; '>"</span> <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
+ <span style='color:#d2cd86; '>&lt;</span>tr<span style='color:#d2cd86; '>></span>
+  <span style='color:#d2cd86; '>&lt;</span>td colspan<span style='color:#d2cd86; '>=</span><span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>3</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>></span>Você ainda não tem pedidos<span style='color:#d2cd86; '>&lt;</span><span style='color:#d2cd86; '>/</span>td<span style='color:#d2cd86; '>></span>
+ <span style='color:#d2cd86; '>&lt;</span><span style='color:#d2cd86; '>/</span>tr<span style='color:#d2cd86; '>></span>
+<span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> endif <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
+</pre>
+          </div></td>
+      </tr>
+        <tr id="tags-vnda">
+        <td class="docs"><div class="pilwrap">
+            <h3> <a href="#tags-vnda" name="tags-vnda" class="pilcrow">&#182;</a> Tags Personalizadas da Vnda</h3>
+            <div class="dox">
+              <div class="details">
+                <h2>Entendo sobre a tags personalizadas</h2>
+                <p> A plataforma atende com um conjunto de tags responsável pela integração
+                  do Html Estático com a plataforma. É importante seguir aprender sobre o uso das mesmas
+                  para que sua aplicação funcione corretamente junto as configurações do painel como <a href="#tag-banners">Listagem de Banner</a>, <a href="#tag-products">Tags de Produtos</a>, <a href="#tag-orders">Ordens de Pedido</a> <a href="#tags-menu">Criação de Menu</a>. </p>
+              </div>
+            </div>
+          </div></td>
+        <td class="code highlight"><div class="highlight">
+            <pre>
+
+</pre>
+          </div></td>
+      </tr>
+          </tr>
+
+        <tr id="tag-menus">
+        <td class="docs"><div class="pilwrap">
+            <h3> <a href="#tag-menus" name="tag-menus" class="pilcrow">&#182;</a> {% Menus %}</h3>
+            <div class="dox">
+              <div class="details">
+                <h2>Listando Menus</h2>
+                <p> Para listar os menus criados pelo admin da loja deve ser informado o parâmetro "position".
+                  * loop para exibir os itens de um menu </p>
               </div>
               <!-- <div class="summary"><p><code><a href="#templates">Template</a></code> ler sobre.</p></div> -->
             </div>
-          </div>
-        </td>
-        <td class="code highlight">
-<div class="highlight">
-<pre><br/><br/><br/>
+            <div class="dox">
+              <div class="details">
+                <h2>Listando Sub Menus</h2>
+                <p> * menu com submenus (html opcional) </p>
+              </div>
+              <!-- <div class="summary"><p><code><a href="#templates">Template</a></code> ler sobre.</p></div> -->
+            </div>
+          </div></td>
+        <td class="code highlight"><div class="highlight">
+            <pre>
+<span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> menus position<span style='color:#b060b0; '>:</span><span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>nome_da_posicao_do_menu_no_admin</span><span style='color:#02d045; '>"</span> <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
+  <span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> <span style='color:#e66170; font-weight:bold; '>if</span> forloop<span style='color:#d2cd86; '>.</span>first <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>&lt;</span>ul<span style='color:#d2cd86; '>></span><span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> endif <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
+    <span style='color:#d2cd86; '>&lt;</span>li<span style='color:#d2cd86; '>></span>
+      <span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> menus parent_id<span style='color:#b060b0; '>:</span>menu<span style='color:#d2cd86; '>.</span>id <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
+        <span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> <span style='color:#e66170; font-weight:bold; '>if</span> forloop<span style='color:#d2cd86; '>.</span>first <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>&lt;</span>ul<span style='color:#d2cd86; '>></span><span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> endif <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
+        <span style='color:#d2cd86; '>&lt;</span>li<span style='color:#d2cd86; '>></span><span style='color:#b060b0; '>{</span><span style='color:#b060b0; '>{</span> menu<span style='color:#d2cd86; '>.</span>url <span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>}</span> <span style='color:#b060b0; '>{</span><span style='color:#b060b0; '>{</span> menu<span style='color:#d2cd86; '>.</span>title <span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>&lt;</span><span style='color:#d2cd86; '>/</span>li<span style='color:#d2cd86; '>></span>
+        <span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> <span style='color:#e66170; font-weight:bold; '>if</span> forloop<span style='color:#d2cd86; '>.</span>last <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>&lt;</span><span style='color:#d2cd86; '>/</span>ul<span style='color:#d2cd86; '>></span><span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> endif <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
+      <span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> endmenus <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
+    <span style='color:#d2cd86; '>&lt;</span><span style='color:#d2cd86; '>/</span>li<span style='color:#d2cd86; '>></span>
+  <span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> <span style='color:#e66170; font-weight:bold; '>if</span> forloop<span style='color:#d2cd86; '>.</span>last <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>&lt;</span><span style='color:#d2cd86; '>/</span>ul<span style='color:#d2cd86; '>></span><span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> endif <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
+<span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> endmenus <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
+</pre>
+          </div></td>
+      </tr>
+          </tr>
 
-{% banners tag:"nome_da_posicao_no_admin" %}
-  {{ banner.title }}
-  {{ banner.subtitle }}
-  {{ banner.description }}
-  {{ banner.file_url | resize: '990x' }}
-  {{ banner.url }}
-  {% if banner.external %} target="_blank"{% endif %}
-{% endbanners %}
+        <tr id="tag-banners">
+        <td class="docs"><div class="pilwrap">
+            <h3> <a href="#" name="tag-banners" class="pilcrow">&#182;</a> {% banners %}</h3>
+            <div class="dox">
+              <div class="details">
+                <h2>Listando Banners</h2>
+                <p> Para listar os banners criados pelo admin da loja deve ser informado o parâmetro "tag".
+                  * loop para exibir os banners </p>
+              </div>
+              <!-- <div class="summary"><p><code><a href="#templates">Template</a></code> ler sobre.</p></div> -->
+            </div>
+          </div></td>
+        <td class="code highlight"><div class="highlight">
+            <pre><br/><br/><br/>
+<pre>
+<span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> banners tag<span style='color:#b060b0; '>:</span><span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>nome_da_posicao_no_admin</span><span style='color:#02d045; '>"</span> <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
+  <span style='color:#b060b0; '>{</span><span style='color:#b060b0; '>{</span> banner<span style='color:#d2cd86; '>.</span>title <span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>}</span>
+  <span style='color:#b060b0; '>{</span><span style='color:#b060b0; '>{</span> banner<span style='color:#d2cd86; '>.</span>subtitle <span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>}</span>
+  <span style='color:#b060b0; '>{</span><span style='color:#b060b0; '>{</span> banner<span style='color:#d2cd86; '>.</span>description <span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>}</span>
+  <span style='color:#b060b0; '>{</span><span style='color:#b060b0; '>{</span> banner<span style='color:#d2cd86; '>.</span>file_url <span style='color:#d2cd86; '>|</span> resize<span style='color:#b060b0; '>:</span> <span style='color:#00c4c4; '>'990x'</span> <span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>}</span>
+  <span style='color:#b060b0; '>{</span><span style='color:#b060b0; '>{</span> banner<span style='color:#d2cd86; '>.</span>url <span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>}</span>
+  <span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> <span style='color:#e66170; font-weight:bold; '>if</span> banner<span style='color:#d2cd86; '>.</span>external <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span> target<span style='color:#d2cd86; '>=</span><span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>_blank</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> endif <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
+<span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> endbanners <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
+</pre>
 * aceita o parâmetro “limit:3”
 <br /><br /><br />
 </pre>
-</div>
-  </td>
-  </tr>
-  <tr id="tag-cartitems">
+          </div></td>
+      </tr>
+        <tr id="tag-cartitems">
         <td class="docs"><div class="pilwrap" >
             <h3> <a href="#tag-cartitems" name="tag-cartitems" class="pilcrow">&#182;</a> {% cartitems %}</h3>
-             <div class="dox">
+            <div class="dox">
               <div class="details">
-              <p>* Loop para exibir os itens do Carrinho</p>
-              <p style="margin:0px;">Para informar que o carrinho esta vazio deve-se usar</p>
-<code>
-{% if cart.items_count > 0 %}
-  ....
-{% else %}
-  Carrinho Vazio
-{% endif %}
-</code>
-              </div>
+                <p>* Loop para exibir os itens do Carrinho</p>
+                <p style="margin:0px;">Para informar que o carrinho esta vazio deve-se usar</p>
+                <code> {% if cart.items_count > 0 %}
+                ....
+                {% else %}
+                Carrinho Vazio
+                {% endif %} </code> </div>
             </div>
-          </div>
-        </td>
-        <td class="code highlight">
-<div class="highlight">
-<pre><br /><br /><br />
+          </div></td>
+        <td class="code highlight"><div class="highlight">
+            <pre><br /><br /><br />
 <a class="line-num" href="javascript:void(0)">1</a> {% <span class="si">cartitems</span>  %}
 <a class="line-num" href="javascript:void(0)">2</a>  {{  <span class="vi">item</span>.image_url | resize: '234x' }}
 <a class="line-num" href="javascript:void(0)">3</a>  {{ <span class="vi">item</span>.product_name }}
@@ -440,21 +480,19 @@
 <a class="line-num" href="javascript:void(0)">8</a> {% <span class="si ">endcartitems</span> %}
 <br /><br /><br />
 </pre>
-</div></td>
+          </div></td>
       </tr>
-      <tr id="tag-products">
+        <tr id="tag-products">
         <td class="docs"><div class="pilwrap">
             <h3> <a href="#tag-products" name="tag-products" class="pilcrow">&#182;</a> {% products %}</h3>
-             <div class="dox">
+            <div class="dox">
               <div class="details">
-              <p>Conceito uma visão geral das funcionalidades e caracteristicas do liquid</p>
+                <p>Conceito uma visão geral das funcionalidades e caracteristicas do liquid</p>
               </div>
             </div>
-          </div>
-        </td>
-        <td class="code highlight">
-<div class="highlight">
-<pre><br /><br /><br />
+          </div></td>
+        <td class="code highlight"><div class="highlight">
+            <pre><br /><br /><br />
 <a class="line-num" href="javascript:void(0)">1</a> {% <span class="si">products</span> tag:tag.name parent_tag:parent_tag_name page:params.page per_page:per_page  %}
 <a class="line-num" href="javascript:void(0)">2</a>  {{  <span class="vi">product</span>.image_url | resize: '234x' }}
 <a class="line-num" href="javascript:void(0)">3</a>  {{ <span class="vi">product</span>.url }}
@@ -472,25 +510,25 @@
 <a class="line-num" href="javascript:void(0)">15</a> {% <span class="si ">endproducts</span> %}
 <br /><br /><br />
 </pre>
-</div></td>
+          </div></td>
       </tr>
-      <tr id="tag-tags">
+        <tr id="tag-tags">
         <td class="docs"><div class="pilwrap">
             <h3> <a href="#tag-tags" name="tag-tags" class="pilcrow">&#182;</a> {% tags %}</h3>
-             <div class="dox">
+            <div class="dox">
               <div class="details">
-              <p><b>{% Tags %}</b> Para relacionar um grupo de produtos é preciso utilizar tags e parâmetros.<br /><br />
-              * Só é possível agrupar produtos utilizando {% tags %}<br />
-              * aceita o parâmetro "limit, page, per_page, type, product_id
-              </p>
+                <p><b>{% Tags %}</b> Para relacionar um grupo de produtos é preciso utilizar tags e parâmetros.<br />
+                  <br />
+                  * Só é possível agrupar produtos utilizando {% tags %}<br />
+                  * aceita o parâmetro "limit, page, per_page, type, product_id </p>
               </div>
-              <div class="summary hide"><p><code><a href="#como-usar">Como Usar</a></code> ler sobre.</p></div>
+              <div class="summary hide">
+                <p><code><a href="#como-usar">Como Usar</a></code> ler sobre.</p>
+              </div>
             </div>
-          </div>
-        </td>
-        <td class="code highlight">
-          <div class="highlight">
-<pre><br /><br /><br />
+          </div></td>
+        <td class="code highlight"><div class="highlight">
+            <pre><br /><br /><br />
 
 <a class="line-num" href="javascript:void(0)">1</a>  {% tags product_id:product.id type:"marca" limit:1 %}
 <a class="line-num" href="javascript:void(0)">2</a>    {{ tag.name}}
@@ -498,23 +536,23 @@
 <a class="line-num" href="javascript:void(0)">4</a>    {{ tag.image_url }}
 <a class="line-num" href="javascript:void(0)">5</a>  {% endtags %}
 </pre>
-          </div>
-          </td>
-         </tr>
-       <tr id="tag-tag">
+          </div></td>
+      </tr>
+        <tr id="tag-tag">
         <td class="docs"><div class="pilwrap">
             <h3> <a href="#tag-tag" name="tag-tag" class="pilcrow">&#182;</a> {% tag %}</h3>
-             <div class="dox">
+            <div class="dox">
               <div class="details">
-              <p><b>{% Tag %}</b> Pode ser atribuída a uma categoria.</p>
+                <p><b>{% Tag %}</b> Pode ser atribuída a uma categoria.</p>
               </div>
-              <div class="summary hide"><p><code><a href="#como-usar">Como Usar</a></code> ler sobre.</p></div>
+              <div class="summary hide">
+                <p><code><a href="#como-usar">Como Usar</a></code> ler sobre.</p>
+              </div>
             </div>
-          </div>
-        </td>
-        <td class="code highlight">
-          <div class="highlight">
-<pre><pre>
+          </div></td>
+        <td class="code highlight"><div class="highlight">
+            <pre>
+            <pre>
 <span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> tag id<span style='color:#b060b0; '>:</span><span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>categoria</span><span style='color:#02d045; '>"</span> <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
  <span style='color:#b060b0; '>{</span><span style='color:#b060b0; '>{</span> tag<span style='color:#d2cd86; '>.</span>name<span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>}</span>
  <span style='color:#b060b0; '>{</span><span style='color:#b060b0; '>{</span> tag<span style='color:#d2cd86; '>.</span>title <span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>}</span>
@@ -523,86 +561,65 @@
  <span style='color:#b060b0; '>{</span><span style='color:#b060b0; '>{</span> tag<span style='color:#d2cd86; '>.</span>image_url <span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>}</span>
 <span style='color:#b060b0; '>{</span><span style='color:#d2cd86; '>%</span> endtag <span style='color:#d2cd86; '>%</span><span style='color:#b060b0; '>}</span>
 </pre>
-          </div>
-          </td>
-         </tr>
-         <tr>
-        <tr id="recursos">
+          </div></td>
+      </tr>
+        <tr>
+      <tr id="recursos">
         <td class="docs"><div class="pilwrap">
             <h3> <a href="#recursos" name="recursos" class="pilcrow">&#182;</a> Recursos </h3>
-             <div class="dox">
+            <div class="dox">
               <div class="details">
-              <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
-               </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-
-        </div></td>
-      </tr>
-      <tr id="recursos-webforms">
-        <td class="docs">
-        <div class="pilwrap">
-            <h3> <a href="#recursos-webforms" name="recursos-webforms" class="pilcrow">&#182;</a>Utilizando os WebForms</h3>
-             <div class="dox">
-              <div class="details">
-              <p>* Os forms de contato devem usar a action /webform<br />
-                  * Deve ser feito o cadastro do form no admin para pegar a key
-              </p>
+                <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
               </div>
             </div>
           </div></td>
-        <td class="code highlight">
-<div class="highlight">
-<pre><br /><br /><br />
+        <td class="code highlight"><div class="highlight"> </div></td>
+      </tr>
+        <tr id="recursos-webforms">
+        <td class="docs"><div class="pilwrap">
+            <h3> <a href="#recursos-webforms" name="recursos-webforms" class="pilcrow">&#182;</a>Utilizando os WebForms</h3>
+            <div class="dox">
+              <div class="details">
+                <p>* Os forms de contato devem usar a action /webform<br />
+                  * Deve ser feito o cadastro do form no admin para pegar a key </p>
+              </div>
+            </div>
+          </div></td>
+        <td class="code highlight"><div class="highlight">
+            <pre><br /><br /><br />
 <a class="line-num" href="javascript:void(0)">1</a> <code><</code>form action="/webform" method="post"<code>></code>
 <a class="line-num" href="javascript:void(0)">2</a>  <code><</code>input type="hidden" name="key" value="nome-da-loja-nome-do-form"<code>></code>
 <a class="line-num" href="javascript:void(0)">3</a>  <code><</code>input type="submit"<code>></code>
 <a class="line-num" href="javascript:void(0)">4</a> <code><</code>/form<code>></code>
 </pre>
-</div>
-          </td>
+          </div></td>
       </tr>
-      <tr id="recursos-filtros">
+        <tr id="recursos-filtros">
         <td class="docs"><div class="pilwrap">
             <h3> <a href="#recursos-filtros" name="recursos-filtros" class="pilcrow">&#182;</a>Filtros</h3>
-          <div class="dox">
+            <div class="dox">
               <div class="details">
-              <p>
-              Conteúdo indiposnível...
-              </p>
+                <p> Conteúdo indiposnível... </p>
               </div>
             </div>
           </div></td>
-        <td class="code highlight">
-          <div class="highlight">
-
-          </div>
-          </td>
+        <td class="code highlight"><div class="highlight"> </div></td>
       </tr>
-      <tr>
-        <td class="docs"> </td>
-        <td class="code highlight">
-          <div class="highlight">
-
-          </div>
-          </td>
+        <tr>
+        <td class="docs"></td>
+        <td class="code highlight"><div class="highlight"> </div></td>
       </tr>
-      <tr  id="recursos-pagination">
+        <tr  id="recursos-pagination">
         <td class="docs"><div class="pilwrap">
             <h3> <a href="#recursos-pagination" name="recursos-pagination" class="pilcrow">&#182;</a>{% pagination %}</h3>
             <div class="dox">
               <div class="details">
-              <p>
-                Conteúdo indiponível...
-              </p>
+                <p> Conteúdo indiponível... </p>
               </div>
             </div>
-
           </div></td>
-        <td class="code highlight">
-          <div class="highlight">
-<pre><br /><br /><br />
+        <td class="code highlight"><div class="highlight">
+            <pre><br /><br /><br />
  {% if pagination.total_pages > 1 %}
 <code><</code>nav class="pagination"<code>></code>
     <code><</code>span class="pagination"<code>></code>
@@ -618,46 +635,35 @@
 {% endif %}
 
 </pre>
-          </div>
-          </td>
+          </div></td>
       </tr>
-      <tr id="recursos-itemscope">
+        <tr id="recursos-itemscope">
         <td class="docs"><div class="pilwrap">
             <h3> <a href="#recursos-itemscope" name="recursos-itemscope" class="pilcrow">&#182;</a>ItemScope</h3>
             <div class="dox">
               <div class="details">
-              <p>
-                * o logo do site não pode ser em background <br />
-                * o código abaixo deve ser incluído, estando visível ou não
-              </p>
+                <p> * o logo do site não pode ser em background <br />
+                  * o código abaixo deve ser incluído, estando visível ou não </p>
               </div>
             </div>
-
           </div></td>
-        <td class="code highlight">
-          <div class="highlight">
-<pre><br /><br /><br />
+        <td class="code highlight"><div class="highlight">
+            <pre><br /><br /><br />
 <a class="line-num" href="javascript:void(0)">1</a> <code><</code>div itemscope itemtype="http://schema.org/Organization"<code>></code>
 <a class="line-num" href="javascript:void(0)">2</a>  <code><</code>a itemprop="url" href="{{ home_url }}">{{store.name}}<code><</code>/a<code>></code>
 <a class="line-num" href="javascript:void(0)">3</a>  <code><</code>img itemprop="logo" src="{{store.logo_url}}"/<code>></code>
 <a class="line-num" href="javascript:void(0)">4</a> <code><</code>/div<code>></code>
 </pre>
-          </div>
-          </td>
+          </div></td>
       </tr>
-      <tr>
-        <td class="docs" style="height:400px;"> </td>
-        <td class="code highlight" style="height:400px;">
-          <div class="highlight" style="height:400px;">
-
-          </div>
-          </td>
+        <tr>
+        <td class="docs" style="height:400px;"></td>
+        <td class="code highlight" style="height:400px;"><div class="highlight" style="height:400px;"> </div></td>
       </tr>
       </tbody>
   </table>
   </div>
 </body>
-<!-- Google Tag Manager -->
-<!-- <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script> <!-- End Google Tag Manager --> -->
-
+  <!-- Google Tag Manager -->
+  <!-- <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script> <!-- End Google Tag Manager -->-->
 </html>
