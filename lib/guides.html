@@ -499,14 +499,15 @@
 <a class="line-num" href="javascript:void(0)">5</a>  {{ <span class="vi">product</span>.description }}
 <a class="line-num" href="javascript:void(0)">6</a>  {% <span class="si">if</span> <span class="vi">product</span>.available %}
 <a class="line-num" href="javascript:void(0)">7</a>   {% <span class="si">if</span> <span class="vi">product</span>.on_sale %}
-<a class="line-num" href="javascript:void(0)">8</a>    preço original: {{<span class="vi">product</span>.price | <span class="vi">money_format</span> }}
-<a class="line-num" href="javascript:void(0)">9</a>    preço com desconto: {{ <span class="vi">product | apply_discount | money_format </span> }}
-<a class="line-num" href="javascript:void(0)">10</a>   {% <span class="si">endif</span> %}
+<a class="line-num" href="javascript:void(0)">8</a>     preço original: {{<span class="vi">product</span>.price | <span class="vi">money_format</span> }}
+<a class="line-num" href="javascript:void(0)">9</a>     preço com desconto: {{ <span class="vi">product | apply_discount | money_format </span> }}
+<a class="line-num" href="javascript:void(0)">10</a>  {% <span class="si">else</span> %}
 <a class="line-num" href="javascript:void(0)">11</a>    preço: {{ <span class="vi">product</span>.price | <span class="vi">money_format</span> }}
-<a class="line-num" href="javascript:void(0)">12</a>  {% <span class="si">else</span> %}
-<a class="line-num" href="javascript:void(0)">13</a>  Produto Esgotado
-<a class="line-num" href="javascript:void(0)">14</a>  {% <span class="si">endif</span> %}
-<a class="line-num" href="javascript:void(0)">15</a> {% <span class="si ">endproducts</span> %}
+<a class="line-num" href="javascript:void(0)">13</a>  {% <span class="si">endif</span> %}
+<a class="line-num" href="javascript:void(0)">14</a> {% <span class="si">else</span> %}
+<a class="line-num" href="javascript:void(0)">15</a>  Produto Esgotado
+<a class="line-num" href="javascript:void(0)">16</a> {% <span class="si">endif</span> %}
+<a class="line-num" href="javascript:void(0)">17</a> {% <span class="si ">endproducts</span> %}
 <br /><br /><br />
 </pre>
           </div></td>
