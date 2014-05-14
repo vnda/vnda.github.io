@@ -563,6 +563,34 @@
 </pre>
           </div></td>
       </tr>
+       <tr id="tag-variants">
+        <td class="docs"><div class="pilwrap">
+            <h3> <a href="#tag-tag" name="tag-tag" class="pilcrow">&#182;</a> {% tag %}</h3>
+            <div class="dox">
+              <div class="details">
+                <p><b>{% variantes %}</b> Listar Atributos do produtos</p>
+              </div>
+            </div>
+          </div></td>
+        <td class="code highlight"><div class="highlight">
+            <pre>
+ EXIBIR VARIANTES
+* Exibir todas as variantes de um produto
+{% variants product_id:product.id %}
+  {{ variant }}
+{% else %}
+  nenhuma variante encontrada
+{% endvariants %}
+
+* Exibir uma variante, pelo SKU
+{% variant sku:12001 %}
+  {{ variant }}
+{% else %}
+  variante não encontrada
+{% endvariant %}
+</pre>
+          </div></td>
+      </tr>
         <tr>
       <tr id="recursos">
         <td class="docs"><div class="pilwrap">
