@@ -162,15 +162,45 @@
             <h3> <a href="#front" name="front" class="pilcrow">&#182;</a> Front-End (HTML, CSS & JS) </h3>
             <div class="dox">
               <div class="details">
-                <p> Aguardando Atualização... </p>
+                <p>
+                  Segue abaixo  as premissas básicas para o envio do html.
+                </p>
+                 <p>
+                  *  Hierarquia das pastas conforme grid ao lado >><br>
+                  * Validar o HTML 5 conforme padrão W3C <br>
+               * Separar o html em módulos o <b> _header.php e _foorter.php</b><br>
+               * Use o nome dos arquivos de acordo com o <a href="#templates" style="color:blue !important">templates do .liquid</a>
+                </p>
+                <p>
+                  (*) apenas altere de <b>.liquid</b> para <b>.php</b> <br>
+                  Página da Home: <a href="#home" style="color:blue !important">home.liquid</a><br>
+                  Página Categoria do Produtos: <a href="#tag" style="color:blue !important">tag.liquid</a><br>
+                  Página de Detalhes do Produto: <a href="#product" style="color:blue !important">product.liquid</a><br>
+                  Página de Carrinho: <a href="#cart" style="color:blue !important">cart.liquid</a><br>
+                  Página de Endereço: <a href="#address" style="color:blue !important">address.liquid</a><br>
+                  Página de Pagamento: <a href="#payment" style="color:blue !important">payment.liquid</a><br>
+                  Página de Pedido Finalizado: <a href="#finished" style="color:blue !important">finished.liquid</a><br>
+                  Página de login: <a href="#login" style="color:blue !important">login.liquid</a><br>
+                  Página da Meus Pedidos: <a href="#login" style="color:blue !important">account.liquid</a><br>
+                 </p>
+                 <p>
+                  * Gerar e incluir favico.ico <br>
+                  * Incluir apple-touch-icon 144x144<br>
+                 </p>
               </div>
-              <div class="summary">
+              <div class="summary hidden">
                 <p><code><a href="#como-usar">Como Usar</a></code> ler sobre.</p>
               </div>
             </div>
           </div></td>
         <td class="code highlight"><div class="highlight">
-            <pre> </pre>
+        <br><br><br>
+            <pre>
+vnda_stg_nome-loja/ *todos os arquivos <b>com o html</b> ficam na raiz do site
+vnda_stg_nome-loja/public/images/
+vnda_stg_nome-loja/public/javascripts/
+vnda_stg_nome-loja/public/stylesheets/
+            </pre>
           </div></td>
       </tr>
         <tr id="sobre">
@@ -569,7 +599,7 @@
             <div class="dox">
               <div class="details">
                 <p><b>{% variantes %}</b> <br />
-                 Tag responsável por listar variantes de um produto.
+                 Tag responsável por listar as informações de uma variante: preço, nome , sku etc..
                 </p>
               </div>
             </div>
