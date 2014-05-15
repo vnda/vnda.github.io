@@ -89,12 +89,16 @@
 <div class="heading h3">
 <a href="#recursos">Recursos</a>
 <ul>
+<li><a href="#recursos-notificacoes-email">Notificações de Emails</a></li>
 <li><a href="#recursos-webforms">Webforms</a></li>
 <li><a href="#recursos-filtros">Filtros</a></li>
 <li><a href="#recursos-pagination">{{ pagination }}</a></li>
 <li><a href="#recursos-store">{{ store }}</a></li>
 <li><a href="#recursos-itemscope">Itemscope</a></li>
 <ul>
+</div>
+<div class="heading h3">
+<a href="#dns">DNS</a>
 </div>
 </div>
 </div>
@@ -166,7 +170,7 @@
                   Segue abaixo  as premissas básicas para o envio do html.
                 </p>
                  <p>
-                  *  Hierarquia das pastas conforme grid ao lado >><br>
+                  * Hierarquia das pastas conforme grid ao lado >><br>
                   * Validar o HTML 5 conforme padrão W3C <br>
                * Separar o html em módulos o <b> _header.php e _foorter.php</b><br>
                * Use o nome dos arquivos de acordo com o <a href="#templates" style="color:blue !important">templates do .liquid</a>
@@ -637,6 +641,46 @@ vnda_stg_nome-loja/public/stylesheets/
           </div></td>
         <td class="code highlight"><div class="highlight"> </div></td>
       </tr>
+      <tr id="recursos-notificacoes-email">
+        <td class="docs"><div class="pilwrap">
+            <h3> <a href="notificacoes-email" class="pilcrow">&#182;</a>Notificações de e-mails</h3>
+            <div class="dox">
+              <div class="details">
+               <p>A plataforma possui integração com <a href="https://madmimi.com/" target="_blank">Madmimi</a>, ferramenta que gerencia as campanhas de e-mails dos nossos clientes.</p>
+               <p>Atualmente disponibilizamos as seguintes notificações: </p>
+               <p>
+                * Pedido Recebido<br />
+                * Pedido Confirmado<br />
+                * Pedido Enviado<br />
+                * Pedido Entegue<br /></p>
+              </div>
+            </div>
+          </div></td>
+        <td class="code highlight"><div class="highlight">
+            <pre>
+
+ </pre>
+          </div></td>
+      </tr>
+       <tr id="recursos-webforms">
+        <td class="docs"><div class="pilwrap">
+            <h3> <a href="#recursos-webforms" name="recursos-webforms" class="pilcrow">&#182;</a>Utilizando os WebForms</h3>
+            <div class="dox">
+              <div class="details">
+                <p>* Os forms de contato devem usar a action /webform<br />
+                  * Deve ser feito o cadastro do form no admin para pegar a key </p>
+              </div>
+            </div>
+          </div></td>
+        <td class="code highlight"><div class="highlight">
+            <pre><br /><br /><br />
+<a class="line-num" href="javascript:void(0)">1</a> <code><</code>form action="/webform" method="post"<code>></code>
+<a class="line-num" href="javascript:void(0)">2</a>  <code><</code>input type="hidden" name="key" value="nome-da-loja-nome-do-form"<code>></code>
+<a class="line-num" href="javascript:void(0)">3</a>  <code><</code>input type="submit"<code>></code>
+<a class="line-num" href="javascript:void(0)">4</a> <code><</code>/form<code>></code>
+</pre>
+          </div></td>
+      </tr>
         <tr id="recursos-webforms">
         <td class="docs"><div class="pilwrap">
             <h3> <a href="#recursos-webforms" name="recursos-webforms" class="pilcrow">&#182;</a>Utilizando os WebForms</h3>
@@ -716,6 +760,22 @@ vnda_stg_nome-loja/public/stylesheets/
 <a class="line-num" href="javascript:void(0)">3</a>  <code><</code>img itemprop="logo" src="{{store.logo_url}}"/<code>></code>
 <a class="line-num" href="javascript:void(0)">4</a> <code><</code>/div<code>></code>
 </pre>
+          </div></td>
+      </tr>
+           </tr>
+        <tr id="dns">
+        <td class="docs"><div class="pilwrap">
+            <h3> <a href="#recursos-itemscope" name="dns" class="pilcrow">&#182;</a>DNS</h3>
+            <div class="dox">
+              <div class="details">
+                <p>Para que você possa o usar seu próprio domínio na sua loja,
+                 você precisa alterar o DNS desse domínio. Para ip 54.232.217.234..</p>
+              </div>
+            </div>
+          </div></td>
+        <td class="code highlight"><div class="highlight">
+            <pre>
+ </pre>
           </div></td>
       </tr>
         <tr>

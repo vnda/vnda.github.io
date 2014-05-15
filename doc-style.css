@@ -230,6 +230,10 @@ td.docs {
   .dox .details {
     padding: 10px;
     margin-bottom: 10px; }
+    .dox .details a {
+      color: blue;
+    }
+
   .dox .dox_tag_title {
     font-weight: bold; }
   .dox .dox_tag_detail {
