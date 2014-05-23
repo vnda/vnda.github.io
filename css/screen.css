@@ -1,4 +1,5 @@
-/*! normalize.css v2.0.1 | MIT License | git.io/normalize */article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+/*! normalize.css v2.0.1 | MIT License | git.io/normalize */
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
 	display: block
 }
 audio, canvas, video {
@@ -16,14 +17,21 @@ html {
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%
 }
+.clear{
+	clear: both; }
 body {
 	margin: 0
 }
+a {
+  color: #261a3b; }
+  a:visited {
+    color: #261a3b; }
 a:focus {
-	outline: thin dotted
+	outline: thin dotted;
+
 }
 a:active, a:hover {
-	outline: 0
+	outline: 0;
 }
 h1 {
 	font-size: 2em
@@ -126,8 +134,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0
 }
+.tocify-extend-page { display: none !important }
 .content h1, .content h2, .content h3, html, body {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "montserratregular", Helvetica, Arial, sans-serif;
 	font-size: 13px
 }
 .content h1, .content h2, .content h3 {
@@ -146,7 +155,7 @@ table {
 	hyphens: auto
 }
 .content h1, .content h2, .content h3, html, body {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "montserratregular", Helvetica, Arial, sans-serif;
 	font-size: 13px
 }
 .content h1, .content h2, .content h3 {
@@ -251,15 +260,44 @@ table {
 .highlight, .highlight .w {
 	background-color: #083c59
 }
+/* montserrat regular */
 @font-face {
-	font-family: 'icomoon';
-	src: url("../fonts/icomoon.eot");
-	src: url("../fonts/icomoon.eot?#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf") format("truetype"), url("../fonts/icomoon.woff") format("woff"), url("../fonts/icomoon.svg#icomoon") format("svg");
-	font-weight: normal;
-	font-style: normal
+    font-family: 'montserratregular';
+    src: url('../fonts/montserrat/montserrat-regular-webfont.eot');
+    src: url('../fonts/montserrat/montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/montserrat/montserrat-regular-webfont.woff') format('woff'),
+         url('../fonts/montserrat/montserrat-regular-webfont.ttf') format('truetype'),
+         url('../fonts/montserrat/montserrat-regular-webfont.svg#montserratregular') format('svg');
+    font-weight: 400;
+    font-style: normal;
 }
+
+/* signika */
+@font-face {
+    font-family: 'signikaregular';
+    src: url('../fonts/signika/signika-regular-webfont.eot');
+    src: url('../fonts/signika/signika-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/signika/signika-regular-webfont.woff') format('woff'),
+         url('../fonts/signika/signika-regular-webfont.ttf') format('truetype'),
+         url('../fonts/signika/signika-regular-webfont.svg#signikaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* fontello icon font */
+@font-face {
+  font-family: 'fontello';
+  src: url('../fonts/fontello/fontello.eot?42728077');
+  src: url('../fonts/fontello/fontello.eot?42728077#iefix') format('embedded-opentype'),
+       url('../fonts/fontello/fontello.woff?42728077') format('woff'),
+       url('../fonts/fontello/fontello.ttf?42728077') format('truetype'),
+       url('../fonts/fontello/fontello.svg?42728077#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .content aside.warning:before, .content aside.notice:before, .content aside.success:before {
-	font-family: 'icomoon';
+	font-family: 'montserratregular';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
@@ -276,6 +314,11 @@ table {
 .content aside.success:before {
 	content: "\e606"
 }
+
+.logo {
+  display: block;
+  height: 50px;
+  margin:0 auto; }
 html, body {
 	color: #333333;
 	padding: 0;
@@ -291,8 +334,8 @@ html, body {
 	top: 0;
 	left: 0;
 	bottom: 0;
-	width: 200px;
-	background-color: #073650;
+	width: 250px;
+	background-color: #afb4be;
 	font-size: 13px;
 	font-weight: bold
 }
@@ -306,7 +349,11 @@ html, body {
 	display: block;
 	overflow-x: hidden;
 	white-space: nowrap;
-	text-overflow: ellipsis
+	text-overflow: ellipsis;
+	font-weight: normal;
+}
+.tocify-wrapper .tocify-item.active>a, .tocify-wrapper .toc-footer li.active {
+	font-weight: bold
 }
 .tocify-wrapper ul, .tocify-wrapper li {
 	list-style: none;
@@ -315,6 +362,7 @@ html, body {
 	line-height: 28px
 }
 .tocify-wrapper li {
+	padding-left: 10px;
 	color: #e9eef2;
 	-webkit-transition-property: background;
 	-moz-transition-property: background;
@@ -329,23 +377,20 @@ html, body {
 	-o-transition-duration: 230ms;
 	transition-duration: 230ms
 }
-.tocify-wrapper .tocify-focus {
-	-webkit-box-shadow: 0px 1px 0px black;
-	-moz-box-shadow: 0px 1px 0px black;
-	box-shadow: 0px 1px 0px black;
+.tocify-wrapper .tocify-item.active {
 	background-color: #e9eef2;
 	color: black
 }
 .tocify-wrapper .tocify-subheader {
 	display: none;
-	background-color: #073650;
-	font-weight: 500;
-	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #063047), color-stop(10%, #073650), color-stop(90%, #073650), color-stop(100%, #063047));
+/*	background-color: #073650;
+*/	font-weight: 500;
+/*	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #063047), color-stop(10%, #073650), color-stop(90%, #073650), color-stop(100%, #063047));
 	background-image: -webkit-linear-gradient(top, #063047, #073650 10%, #073650 90%, #063047);
 	background-image: -moz-linear-gradient(top, #063047, #073650 10%, #073650 90%, #063047);
 	background-image: -o-linear-gradient(top, #063047, #073650 10%, #073650 90%, #063047);
 	background-image: linear-gradient(top, #063047, #073650 10%, #073650 90%, #063047)
-}
+*/}
 .tocify-wrapper .tocify-subheader .tocify-item>a {
 	padding-left: 25px;
 	font-size: 12px
@@ -375,7 +420,7 @@ html, body {
 	text-decoration: none
 }
 .page-wrapper {
-	margin-left: 200px;
+	margin-left: 250px;
 	min-width: 700px;
 	position: relative;
 	z-index: 10;
@@ -383,8 +428,8 @@ html, body {
 	padding-bottom: 1px
 }
 .page-wrapper .dark-box {
-	width: 40%;
-	background-color: #073650;
+	width: 50%;
+	background-color: #2f2f24;
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -424,7 +469,7 @@ html, body {
 	z-index: 30
 }
 .content>h1, .content>h2, .content>h3, .content>p, .content>table, .content>ul, .content>ol, .content>aside, .content>dl {
-	margin-right: 40%;
+	margin-right: 50%;
 	padding: 0 28px;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -547,11 +592,11 @@ html, body {
 	font-size: 14px
 }
 .content pre, .content blockquote {
-	background-color: #083c59;
+	background-color: #484837;
 	color: #fff;
 	padding: 1em;
 	margin: 0;
-	width: 40%;
+	width: 50%;
 	float: right;
 	clear: right;
 	-webkit-box-sizing: border-box;
@@ -568,8 +613,42 @@ html, body {
 	border-bottom: dashed 1px #ccc
 }
 .content pre {
-	padding-left: 28px
-}
+	padding-left: 28px;
+  }
 .content blockquote>p {
 	color: #ccc
 }
+
+#sidebar_switch {
+position: relative;
+top: 0;
+left: 0;
+width: 250px;
+height: 29px;
+margin-bottom: 20px; }
+  #sidebar_switch span {
+    display: block;
+    float: left;
+    width: 50%;
+    text-align: center;
+    line-height: 29px;
+    cursor: pointer; }
+  #sidebar_switch .ativo {
+    font-weight: bold;
+    background-color: #afb4be; }
+
+#sidebar_switch {
+  background: #ededec;
+  border-bottom: none; }
+  #sidebar_switch span {
+    color: #2d2d22; }
+  #sidebar_switch span a {
+    display: block;
+    line-height: 29px;
+   text-decoration: none; }
+
+  #sidebar_switch span:hover {
+    background: #f4f4f3; }
+  #sidebar_switch .selected {
+    background: #fafafa;
+    color: #252519; }

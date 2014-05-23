@@ -3,167 +3,76 @@
   <head>
   <title>Guides Vnda</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <link rel="stylesheet" media="all" href="doc-style.css" />
-  <script src="jquery-1.7.1.min.js"></script>
-  <script src="main.js"></script>
-  <script src="doc-filelist.js"></script>
-  <script>
-    var relativeDir = "../", thisFile = "lib/intercom.io.js", defaultSidebar = true;
-  </script>
-  <script src="doc-script.js"></script>
-  <script src="goToLine.js"></script>
-  <link rel="stylesheet" href="fileSearch.css" />
-  <link rel="stylesheet" href="goToLine.css" />
+
+  <link rel="stylesheet" media="all" href="css/bootstrap.css" />
+ <link rel="stylesheet" media="all" href="css/screen.css" />
+
+  <script src="jquery-1.8.3.min.js"></script>
+
   </head>
   <body>
-<div id="sidebar_wrapper">
-<div id="sidebar_switch"><span class="headings"><a href="index.html" class="ativo">GUIDES</a></span> <span class="headings"><a href="api.html">API</a></span> </div>
-<div id="tree"></div>
-<div id="headings">
-<img class="logo" src="https://avatars2.githubusercontent.com/u/810902?s=200">
-<div class="heading h3"> <a href="#design">Design</a> </div>
-<div class="heading h3"> <a href="#front">Front-end (HTML, CSS & JS)</a> </div>
-<div class="heading h3"> <a href="#sobre">Sobre Liquid</a></div>
-<div class="heading h3">
-<a href="#templates">Templates</a>
-<ul>
-<li><a href="#layout">Layout</a></li>
-<li><a href="#home">Home</a></li>
-<li><a href="#tag">Tag</a></li>
-<li><a href="#product">Product</a></li>
-<li><a href="#cart">Cart</a></li>
-<li><a href="#address">Address</a></li>
-<li><a href="#payment">Payment</a></li>
-<li><a href="#finished">Finished</a></li>
-<li><a href="#account">Account</a></li>
-<li><a href="#login">Login</a></li>
-<li><a href="#searc">Search</a></li>
-<li><a href="#page">Page</a></li>
-<ul>
-</div>
-<div class="heading h3"> <a href="#como-usar">Como usar o Liquid?</a>
-    <ul>
-    <li><a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers" title="Ir para" target="_blank">Liquid para Designers</a></li>
-  </ul>
+  <div class="tocify-wrapper">
+    <div id="sidebar_switch">
+      <span class="headings selected"><a href="guides.html" class="ativo">GUIDES</a></span>
+      <span class="headings"><a href="api.html">API</a></span>
+    </div>
+    <div id="headings" class="tocify">
+      <img class="logo" src="https://avatars2.githubusercontent.com/u/810902?s=200">
+    </div>
   </div>
-<div class="heading h3"> <a href="#tags-vnda">Tags persnalizadas Vnda</a>
-    <ul>
-    <li><a href="#tag-orders">{% orders %}</a></li>
-    <li><a href="#tag-cartitems">{% cartitems %} </a></li>
-    <li><a href="#tag-products">{% products %}</a></li>
-    <li><a href="#tag-tags">{% tags %}</a></li>
-    <li><a href="#tag-tag">{% tag %}</a></li>
-    <li><a href="#tag-menus"> {% menus %}</a></li>
-    <li><a href="#tag-page">{% page" %}</a></li>
-    <li><a href="#tag-banners">{% banners %} </a></li>
-    <li><a href="#tag-images">{% images %}</a></li>
-    <li><a href="#tag-shippingmethods">{% shippingmethods %}</a></li>
-    <li><a href="#tag-variants">{% variants %}</a></li>
-    <li><a href="#tag-videos"> {% videos %}</a></li>
-    <li><a href="#tag-sizes">{% sizes %}</a></li>
-    <li><a href="#tag-colors">{% colors %}</a></li>
-    <li><a href="#tag-opengraphfor">{% opengraphfor %}</a></li>
-<!--<li><a href="#tag-tags">{% urlfor %}</a></li> -->
-    <li><a href="#tag-contentfor">{% contentfor %}</a></li>
-  </ul>
-  </div>
-<div class="heading h3">
-<a href="#processsos-enviar-produto-carrinho">Processo de Compra .liquid</a>
-<ul>
-<li><a href="#processsos-enviar-produto-carrinho" title="Enviar Produto no Carrinho">Enviar Produto no Carrinho</a></li>
-<ul>
-</div>
-<div class="heading h3">
-<a href="#">Processos Checkout .liquid</a>
-<ul>
-<li><a href="#processo-add">Adicionando produtos no carrinho</a></li>
-<li><a href="#processo-remover">Removendo produtos do carrinho</a></li>
-<li><a href="#processo-envio">Listando Métodos de Envio</a></li>
-<li><a href="#processo-desconto">Enviando Cupom de Desconto</a></li>
-<li><a href="#processo-salvar-endereco">Salvando dados de endereço</a></li>
-<li><a href="#processo-pagamento">Enviando dados de pagamento</a></li>
-<li><a href="#processo-loading">Adicionando Loading no Checkout</a></li>
-<ul>
-</div>
-<div class="heading h3">
-<a href="#recursos">Recursos</a>
-<ul>
-<li><a href="#recursos-notificacoes-email">Notificações de Emails</a></li>
-<li><a href="#recursos-webforms">Webforms</a></li>
-<li><a href="#recursos-filtros">Filtros</a></li>
-<li><a href="#recursos-pagination">{{ pagination }}</a></li>
-<li><a href="#recursos-store">{{ store }}</a></li>
-<li><a href="#recursos-itemscope">Itemscope</a></li>
-<ul>
-</div>
-<div class="heading h3"> <a href="#dns">DNS</a> </div>
-</div>
-</div>
-<div id="sidebar-toggle"></div>
-<div id="container">
-    <div class="background highlight"></div>
-    <table cellpadding="0" cellspacing="0">
-    <tbody>
-        <tr id="design">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#design" name="design" class="pilcrow">¶</a> Design </h3>
-            <p>Sugerimos a seguinte ordem para criação das telas para os layout de um canal ecommerce que utilize a plataforma Vnda:</p>
-            <div class="dox">
-              <div class="details">
-                <ul class="">
-                  <li>
-                    <p> <b>Home:</b> tela inicial do site, pode exibir produtos, banners, entre outras coisas. Esta tela deve considerar, caso exista, uma estrutura de header e footer utilizada em toco o canal. </p>
-                  </li>
-                  <li>
-                    <p> <b>Categorias (tags):</b> tela de "categoria", exibe uma lista de produtos que estão vinculados a tag. Essa página também pode servir para exibir "sub-categorias". </p>
-                  </li>
-                  <li>
-                    <p><b>Produto:</b> tela que exibe os detalhes dos produtos. Aqui ele pode selecionar as variantes e adicionar a variante selecionada ao carrinho.</p>
-                  </li>
-                  <li>
-                    <p><b>Carrinho:</b> tela de carrinho, onde ficam listados os produtos comprados, o resumo da compra e onde o cliente faz o cálculo de frete, informando o CEP para entrega. Nesta página também fica o form onde o cliente seleciona o meio de entrega após informar o CEP.</p>
-                  </li>
-                  <li>
-                    <p> <b>Pedido:</b> tela com o form no qual o cliente preenche com os dados de entrega do pedido. Geralmente essa página vem depois do cliente ter selecionado a meio de entrega (**cart.erb**)</p>
-                  </li>
-                  <li>
-                    <p> <b>Pagamento:</b> tela onde serão exibidas para o cliente as formas de pagamento disponíveis no site. Aqui ele seleciona uma delas e informa os dados necessários para pagar pelo compra. Geralmente essa página vem depois do cliente informar os dados de entrega do pedido (**order.erb**). </p>
-                  </li>
-                  <li>
-                    <p><b>Concluído Cartão:</b> tela de conclusão da compra, onde é exibida a mensagem que a compra foi efetuada com sucesso.</p>
-                  </li>
-                  <li>
-                    <p><b>Concluído Boleto:</b> tela de conclusão da compra, onde é exibida a mensagem que a compra foi efetuada com sucesso deve conter o link para o impressão do boleto.</p>
-                  </li>
-                  <li>
-                    <p><b>Página:</b> através deste template serão exibidas as páginas estáticas criadas no admin.</p>
-                  </li>
-                  <li>
-                    <p><b>Busca:</b> tela que exibe o resultado da busca. Basicamente uma lista de produtos que batem com o termo de busca informado pelo cliente.</p>
-                  </li>
-                  <li>
-                    <p><b>Login:</b> tela onde fica o form de login e signup e Facebook Connect.</p>
-                  </li>
-                  <li>
-                    <p><b>Conta:</b> tela onde são exibidos os dados da conta do cliente, onde ele consulta os pedidos e os pontos adquiridos atráves do indicações do site (se for o caso). Nesta tela também deve ser usada para o form de alteração de nome, email e senha do cliente.</p>
-                  </li>
-                  <li>
-                    <p><b>Erro 404:</b> HTML que será exibido quando uma página não for encontrada. Ele precisa replicar o header e o footer do site.</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre> </pre>
-          </div></td>
-      </tr>
-        <tr id="front">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#front" name="front" class="pilcrow">&#182;</a> Front-End (HTML, CSS & JS) </h3>
-            <div class="dox">
-              <div class="details">
-                <p> Segue abaixo  as premissas básicas para o envio do html. </p>
+  <div class="page-wrapper">
+    <div class="content">
+      <h2> Design </h2>
+        <p>Sugerimos a seguinte ordem para criação das telas para os layout de um canal ecommerce que utilize a plataforma Vnda:</p>
+            <ul class="">
+              <li>
+                <p> <b>Home:</b> tela inicial do site, pode exibir produtos, banners, entre outras coisas. Esta tela deve considerar, caso exista, uma estrutura de header e footer utilizada em toco o canal. </p>
+              </li>
+              <li>
+                <p> <b>Categorias (tags):</b> tela de "categoria", exibe uma lista de produtos que estão vinculados a tag. Essa página também pode servir para exibir "sub-categorias". </p>
+              </li>
+              <li>
+                <p><b>Produto:</b> tela que exibe os detalhes dos produtos. Aqui ele pode selecionar as variantes e adicionar a variante selecionada ao carrinho.</p>
+              </li>
+              <li>
+                <p><b>Carrinho:</b> tela de carrinho, onde ficam listados os produtos comprados, o resumo da compra e onde o cliente faz o cálculo de frete, informando o CEP para entrega. Nesta página também fica o form onde o cliente seleciona o meio de entrega após informar o CEP.</p>
+              </li>
+              <li>
+                <p> <b>Pedido:</b> tela com o form no qual o cliente preenche com os dados de entrega do pedido. Geralmente essa página vem depois do cliente ter selecionado a meio de entrega (**cart.erb**)</p>
+              </li>
+              <li>
+                <p> <b>Pagamento:</b> tela onde serão exibidas para o cliente as formas de pagamento disponíveis no site. Aqui ele seleciona uma delas e informa os dados necessários para pagar pelo compra. Geralmente essa página vem depois do cliente informar os dados de entrega do pedido (**order.erb**). </p>
+              </li>
+              <li>
+                <p><b>Concluído Cartão:</b> tela de conclusão da compra, onde é exibida a mensagem que a compra foi efetuada com sucesso.</p>
+              </li>
+              <li>
+                <p><b>Concluído Boleto:</b> tela de conclusão da compra, onde é exibida a mensagem que a compra foi efetuada com sucesso deve conter o link para o impressão do boleto.</p>
+              </li>
+              <li>
+                <p><b>Página:</b> através deste template serão exibidas as páginas estáticas criadas no admin.</p>
+              </li>
+              <li>
+                <p><b>Busca:</b> tela que exibe o resultado da busca. Basicamente uma lista de produtos que batem com o termo de busca informado pelo cliente.</p>
+              </li>
+              <li>
+                <p><b>Login:</b> tela onde fica o form de login e signup e Facebook Connect.</p>
+              </li>
+              <li>
+                <p><b>Conta:</b> tela onde são exibidos os dados da conta do cliente, onde ele consulta os pedidos e os pontos adquiridos atráves do indicações do site (se for o caso). Nesta tela também deve ser usada para o form de alteração de nome, email e senha do cliente.</p>
+              </li>
+              <li>
+                <p><b>Erro 404:</b> HTML que será exibido quando uma página não for encontrada. Ele precisa replicar o header e o footer do site.</p>
+              </li>
+            </ul>
+            <h2>Front-End (HTML, CSS & JS) </h2>
+            <pre>
+vnda_stg_nome-loja/ *todos os arquivos <b>com o html</b> ficam na raiz do site
+vnda_stg_nome-loja/public/images/
+vnda_stg_nome-loja/public/javascripts/
+vnda_stg_nome-loja/public/stylesheets/
+            </pre>
+             <p> Segue abaixo  as premissas básicas para o envio do html. </p>
                 <p> * Hierarquia das pastas conforme grid ao lado >><br>
                   * Validar o HTML 5 conforme padrão W3C <br>
                   * Separar o html em módulos o <b> _header.php e _foorter.php</b><br>
@@ -185,209 +94,56 @@
                   * Incluir apple-touch-icon 144x144<br>
                 </p>
                 <p>*Versão Desktop com 960px de largura</p>
-                <p>*Versão Mobile, criar os break points no css <a href="http://d.pr/i/v4yx"  style="color:blue !important" target="_blank">Veja Aqui</a></p>
-              </div>
-              <div class="summary hide">
-                <p><code><a href="#como-usar">Como Usar</a></code> ler sobre.</p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight"> <br>
-            <br>
-            <br>
-            <pre>
-vnda_stg_nome-loja/ *todos os arquivos <b>com o html</b> ficam na raiz do site
-vnda_stg_nome-loja/public/images/
-vnda_stg_nome-loja/public/javascripts/
-vnda_stg_nome-loja/public/stylesheets/
-            </pre>
-          </div></td>
-      </tr>
-        <tr id="sobre">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#sobre" name="sobre" class="pilcrow">&#182;</a> Sobre o liquid</h3>
-            <div class="dox">
-              <div class="details">
+                <p>*Versão Mobil
+
+                <h2> Sobre o liquid</h2>
                 <p>Liquid é a linguagem de programação é responsável por implementar os templates desenvolvidos e utilizados pela Vnda, processando os arquivos modelo .liquid</p>
-              </div>
-              <div class="summary">
-                <p><code><a href="#como-usar">Como Usar</a></code> ler sobre.</p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight"> </div></td>
-      </tr>
-        <tr id="templates">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#templates" name="templates" class="pilcrow">&#182;</a> Templates </h3>
-            <div class="dox">
-              <div class="details">
+
+                <h2>Templates</h2>
                 <p>Os templates ficam na raiz da pasta compartilhada no Dropbox onde todos
                  os arquivo são salvos na extensão .liquid</p>
                  <p>Dentro da raiz ficam os diretórios "images" "stylesheets" "javascript" e "page"</p>
                  <p>Dentro do diretórios page/ é gerado os arquivos de extensão .html das página que são criados no admin</p>
                  <p>Vejas os templates disponíveis na plataforma <span class="summary"><code><a href="#layout">Iniciar</a></code></span></p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"></td>
-      </tr>
-        <tr id="layout">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#templates" name="templates" class="pilcrow">&#182;</a> Layout.liquid </h3>
-            <div class="dox">
-              <div class="details">
+
+                <h3>Layout.liquid</h3>
                 <p> Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates (exceto 404 e facebook). </p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"></td>
-      </tr>
-        <tr id="home">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#home" name="home" class="pilcrow">&#182;</a> Home.liquid </h3>
-            <div class="dox">
-              <div class="details">
+
+                <h3>Home.liquid</h3>
                 <p>Página inicial da loja, aqui podem ser exibidos produtos em destaque, banners, menus e qualquer outra informação que for necessária para atrair o cliente a navegar no resto do site.</p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"></td>
-      </tr>
-        <tr id="tag">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#tag" name="tag" class="pilcrow">&#182;</a> Tag.liquid </h3>
-            <div class="dox">
-              <div class="details">
+
+                <h3>Tag.liquid</h3>
                 <p> Página que exibe produtos relacionados a uma tag. Tag é a forma de categorização utilizada pela Vnda para organizar os produtos. </p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"></td>
-      </tr>
-        <tr id="product">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Product.liquid </h3>
-            <div class="dox">
-              <div class="details"> Template para exibição do produto, suas imagens, produtos relacionados. Aqui também fica o formulário que permite adicionar o item ao carrinho, neste formulário o cliente pode selecionar qual variante do produto (cor, tamanho, etc) ele realmente quer. </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre></pre>
-          </div></td>
-      </tr>
-        <tr id="cart">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Cart.liquid </h3>
-            <div class="dox">
-              <div class="details">
+
+                <h3>Product.liquid</h3>
+                <p>Template para exibição do produto, suas imagens, produtos relacionados. Aqui também fica o formulário que permite adicionar o item ao carrinho, neste formulário o cliente pode selecionar qual variante do produto (cor, tamanho, etc) ele realmente quer.</p>
+
+                <h3>Cart.liquid</h3>
                 <p> 1ª etapa do processo de compra. No template do carrinho são exibidos os itens já adicionados e onde pode ser feito o cálculo do frete. Pode exibir também um resumo do total do pedido. </p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"></td>
-      </tr>
-        <tr id="address">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Address.liquid </h3>
-            <div class="dox">
-              <div class="details">
-                <p> Template onde é exibido o formulário responsável por capturar as informações para entrega do pedido, assim como dados pessoais do cliente, como e-mail e CPF. </p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"></td>
-      </tr>
-        <tr id="payment">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Payment.liquid </h3>
-            <div class="dox">
-              <div class="details">
+
+                <h3>Address.liquid</h3>
+                <p>Template onde é exibido o formulário responsável por capturar as informações para entrega do pedido, assim como dados pessoais do cliente, como e-mail e CPF.</p>
+
+                <h3>Payment.liquid</h3>
                 <p> 3ª etapa do processo de compra. Aqui o cliente informa os dados do cartão de crédito ou dá inicio a geração do boleto. </p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"></td>
-      </tr>
-        <tr id="finished">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Finished.liquid </h3>
-            <div class="dox">
-              <div class="details">
+
+                <h3>Finished.liquid</h3>
                 <p> 4ª e última etapa do processo de compra. Aqui são exibidas as informações do pedido, como o número e/ou o link para impressão do boleto, junto com a mensagem de conclusão da compra. </p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"></td>
-      </tr>
-        <tr id="account">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Account.liquid </h3>
-            <div class="dox">
-              <div class="details">
+
+                <h3 id="Account.liquid">Account.liquid</h3>
                 <p> Template usado para exibir os dados da conta do cliente, os pedidos efetuados, assim como a situação deles. Nesta página o cliente também pode alterar os dados pessoais, como nome, e-mail e senha. </p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"></td>
-      </tr>
-        <tr id="login">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Login.liquid </h3>
-            <div class="dox">
-              <div class="details">
+
+                <h3>Login.liquid</h3>
                 <p> Template usado tanto para novos cadastros quanto para logins de clientes já cadastrados. Desta página parte também o login via Facebook, que permite que clientes participem de promoções específicas.
-              </div>
-              </p>
-            </div>
-          </div></td>
-        <td class="code highlight"></td>
-      </tr>
-        <tr id="searc">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Search.liquid </h3>
-            <div class="dox">
-            <div class="details">
+
+                <h3>Search.liquid</h3>
                 <p> Página que exibe o resultado de uma busca, este resultado é uma lista de produtos que fazem match com o termo buscado pelo cliente atráves da URL /busca?q=termo. </p>
-              </div>
-          </div></td>
-        <td class="code highlight"></td>
-      </tr>
-        <tr id="page">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#product" name="product" class="pilcrow">&#182;</a> Page.liquid </h3>
-            <div class="dox">
-            <div class="details">
+
+                <h3>Page.liquid </h3>
                 <p> A Vnda possui um pequeno CMS que pode ser utilizado para customizar certas páginas sem a necessidade de conhecimentos avançados de programação. É neste template que essas páginas são exibidas. </p>
-              </div>
-          </div></td>
-        <td class="code highlight"></td>
-      </tr>
-        <tr id="como-usar">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#como-usar" name="como-usar" class="pilcrow">&#182;</a>Como Usar o Liquid?</h3>
-            <div class="dox">
-              <div class="details">
-                <h2>Existem dois tipos de marcação no líquido:</h2>
-                <p><i>Tags de Lógica:</i> são declarações condicionais. Eles são a afirmação de que diz o código e o que fazer.</p>
-                <p><i>Tags de saída:</i> são as etiquetas de saída exibir o líquido encontrado entre ele.
-                  Você também pode usar <b>filtros para alterar a saída retornado.</b></p>
-                <p>Para usar o líquido, você vai precisar de recorrer a uma combinação de lógica e de saída de etiquetas usando operadores líquidos. Acções com liquidez muitos dos mesmos operadores como outras linguagens de programação:</p>
-                </p>
-              </div>
-              <div class="summary">
-                <p><code><a href="#templates">Template</a></code> ler sobre.</p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre>
 
-
-
-
-
-
+                <h2>Como Usar o Liquid?</h3>
+                            <pre>
 {% assign order = "false" %}
 {% orders client_id:client.id %}
  {% assign order = "true" %}
@@ -403,109 +159,43 @@ vnda_stg_nome-loja/public/stylesheets/
   <span><</span>td colspan="3"<span>></span>Você ainda não tem pedidos<span><</span>/td<span>></span>
  <span><</span>/tr<span>></span>
 {% endif %}</pre>
-          </div></td>
-      </tr>
-        <tr id="tags-vnda">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#tags-vnda" name="tags-vnda" class="pilcrow">&#182;</a> Tags personalizadas da Vnda</h3>
-            <div class="dox">
-              <div class="details">
-                <h2>Entendo sobre a tags personalizadas</h2>
+                <p><strong>Existem dois tipos de marcação no líquido:</strong></p>
+                <p><i>Tags de Lógica:</i> são declarações condicionais. Eles são a afirmação de que diz o código e o que fazer.</p>
+                <p><i>Tags de saída:</i> são as etiquetas de saída exibir o líquido encontrado entre ele.
+                  Você também pode usar <b>filtros para alterar a saída retornado.</b></p>
+                <p>Para usar o líquido, você vai precisar de recorrer a uma combinação de lógica e de saída de etiquetas usando operadores líquidos. Acções com liquidez muitos dos mesmos operadores como outras linguagens de programação:</p>
+
+                <h2>Tags personalizadas da Vnda</h2>
                 <p> A plataforma atende com um conjunto de tags responsável por tornar a aplicação dinâmica.</p>
-                <!-- <p>Ao cadastrar <a href="#tag-banners">Banners</a>, <a href="#tag-products">Produtos</a>, <a href="#tag-orders">Pedido</a> <a href="#tags-menu">Menu</a> </p> -->
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre></pre>
-          </div></td>
-      </tr>
-          </tr>
 
-        <tr id="tag-orders">
-        <td class="docs"><div class="pilwrap" >
-            <h3> <a href="#tag-orders" name="tag-orders" class="pilcrow">&#182;</a> {% orders %}</h3>
-            <div class="dox">
-            <div class="details">
-                <p> Listando pedidos que por padrão é utilizado no template <a href="#account">account.liquid</a>. </p>
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <p>obs: no template <a href="#account">account</a> podemos enviar e exibir dados do usuário:</p>
-                <p>* editar senha</p>
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <p>* exibir dados do usuário</p>
-                <p></p>
-              </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre>
-
-
-
-
-
+                <h3>{% orders %}</h3>
+                <pre>
 {% orders client_id:client.id %}
   {{ order.code }}
   {{ order.email }}
   {{ order.received_at | date: '%m/%d/%Y') }}
   {{ order | order_status }}
   {{ order.total | money_format }}
-{% endorders  %}
-
-
-
-
-
-
+{% endorders  %}</pre>
+                <p> Listando pedidos que por padrão é utilizado no template <a href="#Account.liquid">account.liquid</a>. </p>
+                <p>obs: no template <a href="#Account.liquid">account</a> podemos enviar e exibir dados do usuário:</p>
+                <p class="clear">* editar senha</p>
+                <pre>
 <span><</span>form action="{{acount_url}}" method="post"<span>></span>
   <span><</span>input type="text" name="email" /<span>></span>
   <span><</span>input type="password" name="password" /<span>></span>
   <span><</span>input type="password" name="password_confirmation" /<span>></span>
 <span><</span>/form>
-
-
-
-
-
+                </pre>
+                <p class="clear">* exibir dados do usuário</p>
+                <pre>
 {{ client.first_name }}
 {{ client.last_name}}
 {{ client.email }
-</pre>
-          </div></td>
-      </tr>
-        <tr id="tag-cartitems">
-        <td class="docs"><div class="pilwrap" >
-            <h3> <a href="#tag-cartitems" name="tag-cartitems" class="pilcrow">&#182;</a> {% cartitems %}</h3>
-            <div class="dox">
-              <div class="details">
-                <p>* Loop para exibir os itens do Carrinho</p>
-                <p style="margin:0px;">Para informar que o carrinho esta vazio deve-se usar</p>
-                <code>{% if cart.items_count > 0 %}
-                ....
-                {% else %}
-                Carrinho Vazio
-                {% endif %} </code> </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre>
+                </pre>
 
-
-
-
-
+                <h3>{% cartitems %}</h3>
+                <pre>
 {% cartitems  %}
   {{  item.image_url | resize: '234x' }}
   {{ item.product_name }}
@@ -513,67 +203,25 @@ vnda_stg_nome-loja/public/stylesheets/
   {{ item.quantity }}
   {{item.subtotal | money_format }}
   {{ item.variant_name | money_format }}
-{% endcartitems %}</pre>
-          </div></td>
-      </tr>
-        <tr id="tag-products">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#tag-products" name="tag-products" class="pilcrow">&#182;</a> {% products %}</h3>
-            <div class="dox">
-              <div class="details">
+{% endcartitems %}
+                </pre>
+                <p>* Loop para exibir os itens do Carrinho</p>
+                <p>Para informar que o carrinho esta vazio deve-se usar</p>
+                <table>
+                  <tr>
+                    <td>
+                    {% if cart.items_count > 0 %}<br />
+                      ....<br />
+                    {% else %}<br />
+                      Carrinho Vazio<br />
+                    {% endif %}</td>
+                  </tr>
+                </table>
+
+                <h3>{% products %}</h3>
                 <p> Listando produtos<br />
                   * loop para exibir os produto</p>
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <p>Filtrando produtos <br />
-                  ​                 * produtos podem ser filtrados pode e tamanho e faixa de preço</p>
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <p>Ordenar produtos<br />
-                  * por padrão, os produtos são ordenados por importância, que pode ser modificada dentro do admin da loja.<br />
-                  * para usar outra ordenação, basta incluir o parãmetro sort na tag que lista os produtos.<br />
-                  * or produtos podem ser ordenados por “price”, “price,desc”, “newest”, “newest,desc”<br />
-                  (newest é baseado na data de cadastro do produto), “name”, “name,desc”.</p>
-                <br />
-                <br />
-                <br />
-                <br />
-                <p>Quem viu, viu também<br />
-                  * geralmente utilizado na página de produto</p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre>
-
-
-
-
-
+                <pre>
 {% products tag:tag.name parent_tag:parent_tag_name page:params.page per_page:per_page  %}
   {{ product.image_url | resize: '234x' }}
   {{ product.url }}
@@ -590,10 +238,11 @@ vnda_stg_nome-loja/public/stylesheets/
    Produto Esgotado
   {% endif %}
 {% endproducts %}
+                </pre>
 
-
-
-
+                <p class="clear">Filtrando produtos <br />
+                  * produtos podem ser filtrados pode e tamanho e faixa de preço</p>
+<pre>
 {% products tag:tag.name filter:size:GG %}
 {% products tag:tag.name filter:price:0-50 %}
 {% products tag:tag.name filter:price:50-100 %}
@@ -603,29 +252,21 @@ vnda_stg_nome-loja/public/stylesheets/
 {% products tag:tag.name filter:price:params.price %} se o nome do input “price”
 * podem ser listadas todas as opções de tamanho disponíveis por tag
 {% sizes tag:”nome-da-tag ”%}{{size}}{% endsizes %}
-
-
-
-
-
+</pre>
+                <p class="clear">Ordenar produtos<br />
+                  * por padrão, os produtos são ordenados por importância, que pode ser modificada dentro do admin da loja.<br />
+                  * para usar outra ordenação, basta incluir o parãmetro sort na tag que lista os produtos.<br />
+                  * or produtos podem ser ordenados por “price”, “price,desc”, “newest”, “newest,desc”<br />
+                  (newest é baseado na data de cadastro do produto), “name”, “name,desc”.</p>
+<pre>
 {% products tag:tag.name sort:”price” %}
 * da mesma forma que os filtros, a opção de ordenação do usuário pode ser enviada por um form e colocada na tag de produtos.
 {% products tag:tag.name sort:params.ordem %}
  se o nome do field for “ordem”
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</pre>
+                <p class="clear">Quem viu, viu também<br />
+                  * geralmente utilizado na página de produto</p>
+<pre>
 {% get also_viewed from "/product/also_viewed"[id:product.id key:session_id limit:4] %}
 {% if also_viewed.size > 0 %}
   {% for p in also_viewed %}
@@ -635,56 +276,21 @@ vnda_stg_nome-loja/public/stylesheets/
     {{ p.price | money_format }}
   {% endfor %}
 {% endif %}
- </pre>
-          </div></td>
-      </tr>
-        <tr id="tag-tags">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#tag-tags" name="tag-tags" class="pilcrow">&#182;</a> {% tags %}</h3>
-            <div class="dox">
-              <div class="details">
-                <p>Listando tags<br />
-                  * aceita o parâmetro "limit, type, product_id </p>
-              </div>
-              <div class="summary hide">
-                <p><code><a href="#como-usar">Como Usar</a></code> ler sobre.</p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre>
+</pre>
 
-
-
-
-
+                <h3>{% tags %}</h3>
+                <pre>
 {% tags product_id:product.id type:"marca" limit:1 %}
   {{ tag.name}}
   {{ tag.type}}
   {{ tag.image_url }}
 {% endtags %}
-</pre>
-          </div></td>
-      </tr>
-        <tr id="tag-tag">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#tag-tag" name="tag-tag" class="pilcrow">&#182;</a> {% tag %}</h3>
-            <div class="dox">
-              <div class="details">
-                <p>Listando tag pelo "id"</p>
-                <p>Assim que uma tag é cadastrado no admin se torna acessível desde que seja no .liquid informado o parêmentro id</p>
-              </div>
-              <div class="summary hide">
-                <p><code><a href="#como-usar">Como Usar</a></code> ler sobre.</p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre>
+                </pre>
+                <p>Listando tags<br />
+                  * aceita o parâmetro "limit, type, product_id </p>
 
-
-
-
+                <h3>{% tag %}</h3>
+                <pre>
 {% tag id:"categoria" %}
  {{ tag.name}}
  {{ tag.title }}
@@ -692,36 +298,21 @@ vnda_stg_nome-loja/public/stylesheets/
  {{ tag.type}}
  {{ tag.image_url }}
 {% endtag %}
-</pre>
-          </div></td>
-      </tr>
-        <tr id="tag-menus">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#tag-menus" name="tag-menus" class="pilcrow">&#182;</a> {% Menus %}</h3>
-            <div class="dox">
-              <div class="details">
-                <p>Listando menus<br>
-                  * loop para exibir os itens de um menu </p>
-                <br />
-                <br />
-                <br />
-                <p>Listando sub menus<br />
-                  * menu com submenus (html opcional)</p>
-              </div>
-              <!-- <div class="summary"><p><code><a href="#templates">Template</a></code> ler sobre.</p></div> -->
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
+                </pre>
+                <p>Listando tag pelo "id"</p>
+                <p>Assim que uma tag é cadastrado no admin se torna acessível desde que seja no .liquid informado o parêmentro id</p>
+
+                <h3>{% Menus %}</h3>
             <pre>
-
-
-
-
-
 {% menus position:"nome_da_posicao_do_menu_no_admin" %}
   {{ menu.url }} {{ menu.title }}
 {% endmenus %}
-<br /><br /><br />
+</pre>
+                <p>Listando menus<br>
+                  * loop para exibir os itens de um menu </p>
+                <p>Listando sub menus<br />
+                  * menu com submenus (html opcional)</p>
+<pre>
 {% menus position:"nome_da_posicao_do_menu_no_admin" %}
   {% if forloop.first %}<span><</span>ul<span>></span>{% endif %}
     <span><</span>li<span>></span>
@@ -732,49 +323,14 @@ vnda_stg_nome-loja/public/stylesheets/
       {% endmenus %}
     <span><</span>/li<span>></span>
   {% if forloop.last %}<span><</span>/ul<span>></span>{% endif %}
-{% endmenus %}</pre>
-          </div></td>
-      </tr>
-          </tr>
-
-        <tr id="tag-page">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#" name="tag-page" class="pilcrow">&#182;</a> {% page %}</h3>
-            <div class="dox">
-              <div class="details">
-                <p>Listando conteúdo de uma page<br />
-                </p>
-              </div>
-              <!-- <div class="summary"><p><code><a href="#templates">Template</a></code> ler sobre.</p></div> -->
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre>
-
-
-
-
-{% page id:'bloco' %}
+{% endmenus %}
 </pre>
-          </div></td>
-      </tr>
-        <tr id="tag-banners">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#" name="tag-banners" class="pilcrow">&#182;</a> {% banners %}</h3>
-            <div class="dox">
-              <div class="details">
-                <p>Listando banners<br />
-                  * loop para exibir os banners </p>
-              </div>
-              <!-- <div class="summary"><p><code><a href="#templates">Template</a></code> ler sobre.</p></div> -->
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight"> <br/>
-            <pre>
+                  <h3>{% page %}</h3>
+                  <pre>{% page id:'bloco' %}</pre>
+                  <p>Listando conteúdo de uma page<br />
 
-
-
-
+                  <h3>{% banners %}</h3>
+                  <pre>
 {% banners tag:"nome_da_posicao_no_admin" %}
   {{ banner.title }}
   {{ banner.subtitle }}
@@ -784,48 +340,21 @@ vnda_stg_nome-loja/public/stylesheets/
   {% if banner.external %} target="_blank"{% endif %}
 {% endbanners %}<br />
 * aceita o parâmetro “limit:3”
-</pre>
-          </div></td>
-      </tr>
-        <tr id="tag-images">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#" name="tag-images" class="pilcrow">&#182;</a> {% images %}</h3>
-            <div class="dox">
-              <div class="details">
-                <p>Listando imagens do produto<br />
-                  * deve estar dentro de um loop {% products %}</p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight"> <br/>
-            <pre>
+                  </pre>
+                <p>Listando banners<br />
+                  * loop para exibir os banners </p>
 
-
-
-
-
+                <h3>{% images %}</h3>
+                <pre>
 {% images %}
   {{image}}
 {% endimages %}
-</pre>
-          </div></td>
-      </tr>
-        <tr id="tag-shippingmethods">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#" name="tag-shippingmethods" class="pilcrow">&#182;</a> {% shippingmethods %}</h3>
-            <div class="dox">
-              <div class="details">
-                <p>Listando métodos de entrega<br />
-                  * Após o envio do form frete adicionar esse código para listar métodos de entrega <br />
-                  * Não avançar nas etapas do carrinho sem ao menos um método escolhido</p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight"> <br/>
-            <pre>
+                </pre>
+                <p>Listando imagens do produto<br />
+                  * deve estar dentro de um loop {% products %}</p>
 
-
-
+                <h3>{% shippingmethods %}</h3>
+                <pre>
 {% shippingmethods %}
   {% if forloop.first %}
     <span><</span>fieldset class="shipping-method"<span>></span>
@@ -839,128 +368,67 @@ vnda_stg_nome-loja/public/stylesheets/
   <span><</span>/fieldset<span>></span>
  {% endif %}
 {% endshippingmethods %}
-</pre>
-          </div></td>
-      </tr>
-        <tr id="tag-variants">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#tag-variants" name="tag-variants" class="pilcrow">&#182;</a> {% variants  %}</h3>
-            <div class="dox">
-              <div class="details">
-                <p>Listando as variantes de um produto<br>
-                * Um produto pode conter uma ou mais variantes cadastradas no admin,
-                  através do liquid é possível acessar todos os dados que contém uma variante
-                  como por exemplo preço, atributos, imagem, dispononibilidade...</p><br />
-                <p>Listando variantes pelo SKU do produto<br />
-                  * É possivel acessar uma variant </p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre>
+                </pre>
+                <p>Listando métodos de entrega<br />
+                  * Após o envio do form frete adicionar esse código para listar métodos de entrega <br />
+                  * Não avançar nas etapas do carrinho sem ao menos um método escolhido</p>
 
-
-
-
+                <h3>{% variants %}</h3>
+                <pre>
 * Exibir todas as variantes de um produto
 {% variants product_id:product.id %}
   {{ variant }}
 {% else %}
   nenhuma variante encontrada
 {% endvariants %}
-<br /><br />
-* Exibir uma variante, pelo SKU
+
+                </pre>
+                <p>Listando as variantes de um produto<br>
+                * Um produto pode conter uma ou mais variantes cadastradas no admin,
+                  através do liquid é possível acessar todos os dados que contém uma variante
+                  como por exemplo preço, atributos, imagem, dispononibilidade...</p><br />
+                <p>Listando variantes pelo SKU do produto<br />
+                  * É possivel acessar uma variant </p>
+
+                  <h3>{% variant %}</h3>
+<pre>
 {% variant sku:12001 %}
   {{ variant }}
 {% else %}
   variante não encontrada
 {% endvariant %}
 </pre>
-          </div></td>
-      </tr>
-          <tr id="tag-videos">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#tag-videos" name="tag-videos" class="pilcrow">&#182;</a> {% videos %}</h3>
-            <div class="dox">
-              <div class="details">
-                <p>Listando vídeos de um produto</p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre>
+                  <p>* Exibir uma variante, pelo SKU</p>
 
-
-
-
+                  <h3>{% videos %}</h3>
+                  <pre>
 {% videos %}
   {{video.embed_url}} // lista a url cadastrada no painel
   {{video.thumbnail_url}} // lista a imagem gerada pelo painel
 {% endvideos %}
-</pre>
-          </div></td>
-      </tr>
-      <tr id="tag-sizes">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#tag-sizes" name="tag-sizes" class="pilcrow">&#182;</a> {% sizes %}</h3>
-            <div class="dox">
-              <div class="details">
-                <p>Listando atributos tamanhos (deprecate)</p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre>
+                  </pre>
+                  <p>Listando vídeos de um produto</p>
 
-
-
-
+                  <h3>{% sizes %}</h3>
+<pre>
 {% sizes tag:’nome-da-tag’, parent_tag:’outra-tag’ %}
   {{ size.value }}
   {{ size.available }}
 {% endsizes %}
 </pre>
-          </div></td>
-      </tr>
-      <tr id="tag-colors">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#tag-colors" name="tag-colors" class="pilcrow">&#182;</a> {% colors %}</h3>
-            <div class="dox">
-              <div class="details">
-                <p>Listando atributos cor (deprecate)</p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre>
+                  <p>Listando atributos tamanhos (deprecate)</p>
 
-
-
-
+                  <h3>{% colors %}</h3>
+<pre>
 {% colors tag:'nome-da-tag' %}
   {{ color.value }}
   {{ color.available }}
 {% endcolors %}
+                <p>Listando atributos cor (deprecate)</p>
 </pre>
-          </div></td>
-      </tr>
-       <tr id="tag-opengraphfor">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#tag-opengraphfor " name="tag-opengraphfor " class="pilcrow">&#182;</a> {% opengraphfor  %}</h3>
-            <div class="dox">
-              <div class="details">
-                <p>Listando meta tags opengraph para facebook<br />
-                * Meta tags e opengraph devem ser dinâmicas <br />
-                * Usar {% opengraphfor %} para aplicar Meta Title e Description nas páginas internas da loja.</p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre>
 
-
-
-
+                <h3>{% opengraphfor  %}</h3>
+                <pre>
 {% unless opengraph %}
   {% if template == "tag" %}
     {% opengraphfor tag %}
@@ -981,102 +449,41 @@ vnda_stg_nome-loja/public/stylesheets/
   {% endif %}
 {% endunless %}
 {{ opengraph }}
-</pre>
-          </div></td>
-      </tr>
-       <tr id="tag-contentfor">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#tag-contentfor" name="tag-contentfor" class="pilcrow">&#182;</a> {% contentfor  %}</h3>
-            <div class="dox">
-              <div class="details">
-                <p>Armazendo conteúdo com a tag {% contentfor %}<br />
-                *Salvar e exibir conteúdo em outros locais do template .liquid
-                </p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre>
+                </pre>
+                <p>Listando meta tags opengraph para facebook<br />
+                * Meta tags e opengraph devem ser dinâmicas <br />
+                * Usar {% opengraphfor %} para aplicar Meta Title e Description nas páginas internas da loja.</p>
 
-
-
-
+                <h3>{% contentfor  %}</h3>
+                <pre>
 {% contentfor exemplo %}
   ... conteúdo armazenado na varianvel "exemplo"
 {% endcontentfor %}
 
 {{ exemplo }} // exibindo contéudo
-</pre>
-          </div></td>
-      </tr>
-      <tr>
-      <tr id="processsos-enviar-produto-carrinho">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#processsos-enviar-produto-carrinho" name="processsos-enviar-produto-carrinho" class="pilcrow">&#182;</a> Enviar Produto ao Carrinho ( depracate )</h3>
-            <div class="dox">
-              <div class="details">
+                </pre>
+                <p>Armazendo conteúdo com a tag {% contentfor %}<br />
+                *Salvar e exibir conteúdo em outros locais do template .liquid</p>
+
+                <h2>Enviar Produto ao Carrinho ( depracate )</h2>
                 <p>
                   Para adicionar itens ao carrinho, você precisa fazer um POST para a URL definida na variável {{ cart_url }}, passando dois campos:<p>
 
                 <p>* product_id: ID do produto selecionado pelo usuário<br />
                    * quantity: Quantidade de itens que o usuário deseja comprar</p>
-
-                 <p>Os campos product_id e quantity são obrigatório, mesmo que o produto tenha apenas uma variante.
+                 <p class="clear">Os campos product_id e quantity são obrigatório, mesmo que o produto tenha apenas uma variante.
                   Caso sua loja não permita que o usuário compre mais de um item, você deve informar este campo com o valor 1.
                   </p>
-                  <p> Isso pode ser feito utilizando um formulário &raquo;</p>
-                  <br /><br /><br /><br /><br /><br /><br />
-                  <p>Em caso de o produto ter variantes &raquo; </p>
-                  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                  <p>OU via AJAX &raquo;</p>
-                  <br /><br /><br /><br /><br />
-                  <p>
-                    Caso o produto possua variantes, você deve enviá-las junto com os parâmetros obrigatórios, da seguinte forma:
-                  </p>
-                  <p>
-                    * attributes[cor]: Valor do atributo cor da variante<br />
-                    * attributes[tamanho]: Valor do atributo tamanho da variante<br />
-                   </p>
-                   <p>E assim para cada atributo configurado no admin.</p>
-                   <p>
-                      Além disso, você pode adicionar informações extras a cada item do carrinho.
-                      Essas informações podem ser, por exemplo,
-                      uma observação do cliente ou ainda uma imagem para ser impressa no produto.
-                      Para enviar essas informações, basta criar os campos a seguinte forma &raquo;
-                  </p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                <pre>
 <span><</span>form action="{{ cart_url }}" method="POST"<span>></span>
   <span><</span>input type="hidden" name="product_id" value="{{ product.id }}"/<span>></span>
   <span><</span>input type="number" name="quantity" min="1"/<span>></span>
   <span><</span>input type="submit" value="Adicionar"/<span>></span>
 <span><</span>/form<span>></span>
-
-
-
-
-
+                </pre>
+                  <p> Isso pode ser feito utilizando um formulário &raquo;</p>
+                  <br /><br /><br /><br /><br /><br />
+                  <pre>
 <span><</span>form action="{{ cart_url }}" method="POST"<span>></span>
   <span><</span>input type="hidden" name="product_id" value="{{ product.id }}"/<span>></span>
   <span><</span>input type="number" name="quantity" min="1"/<span>></span>
@@ -1087,77 +494,47 @@ vnda_stg_nome-loja/public/stylesheets/
   <span><</span>/select<span>></span>
   <span><</span>input type="submit" value="Adicionar"/<span>></span>
 <span><</span>/form<span>></span>
-
-
-
+                  </pre>
+                  <p>Em caso de o produto ter variantes &raquo; </p>
+                  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<pre>
 $.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
   alert("Item adicionado com sucesso");
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</pre>
+                  <p>OU via AJAX &raquo;</p>
+                  <br /><br /><br /><br /><br />
+                  <p>
+                    Caso o produto possua variantes, você deve enviá-las junto com os parâmetros obrigatórios, da seguinte forma:
+                  </p>
+                  <p>
+                    * attributes[cor]: Valor do atributo cor da variante<br />
+                    * attributes[tamanho]: Valor do atributo tamanho da variante<br />
+                   </p>
+                   <p>E assim para cada atributo configurado no admin.</p>
+                  <pre>
 <span><</span>form action="{{ cart_url }}" method="POST">
   …
   <span><</span>textarea name="extras[Observação]"><span><</span>/textarea<span>></span>
   <span><</span>input type="file" name="extras[Imagem]"/<span>></span>
   <span><</span>input type="submit" value="Adicionar"/<span>></span>
 <span><</span>/form<span>></span>
-</pre>
-          </div></td>
-      </tr>
-        <tr>
-      <tr id="recursos">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#recursos" name="recursos" class="pilcrow">&#182;</a> Recursos </h3>
-            <div class="dox">
-              <div class="details">
-                <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight"> </div></td>
-      </tr>
-        <tr id="recursos-notificacoes-email">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="notificacoes-email" class="pilcrow">&#182;</a>Notificações de e-mails</h3>
-            <div class="dox">
-              <div class="details">
-                <p>A plataforma possui integração com <a href="https://madmimi.com/" target="_blank">Madmimi</a>, ferramenta que gerencia as campanhas de e-mails dos nossos clientes.</p>
-                <p>Atualmente disponibilizamos as seguintes notificações: </p>
-                <p>O nome das campanhas &raquo;</p>
- <br ><br ><br ><br ><br ><br ><br ><br ><br ><br ><br ><br >
-                <p>Os campos que podem ser enviados nos emails de noviticação &raquo;</p>
 
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre>
+                  </pre>
+                   <p>
+                      Além disso, você pode adicionar informações extras a cada item do carrinho.
+                      Essas informações podem ser, por exemplo,
+                      uma observação do cliente ou ainda uma imagem para ser impressa no produto.
+                      Para enviar essas informações, basta criar os campos a seguinte forma &raquo;
+                  </p>
 
+                  <h2>Recursos</h3>
+                  <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
 
-
-
-
-
-
-
-
-
-
+                  <h3>Notificações de e-mails</h3>
+                  <p>A plataforma possui integração com <a href="https://madmimi.com/" target="_blank">Madmimi</a>, ferramenta que gerencia as campanhas de e-mails dos nossos clientes.</p>
+                  <p>Atualmente disponibilizamos as seguintes notificações: </p>
+                  <pre>
 exemplo-pedido-recebido
 exemplo-pedido-recebido-deposito
 exemplo-pedido-recebido-boleto
@@ -1167,11 +544,10 @@ exemplo-pedido-confirmado
 exemplo-pedido-cancelado
 exemplo-novo-cliente
 exemplo-senha-cliente
-
-
-
-
-
+                  </pre>
+                  <p>O nome das campanhas &raquo;</p>
+ <br ><br ><br ><br ><br ><br ><br ><br ><br ><br ><br ><br >
+ <pre>
 "nome",
 "sobrenome",
 "pedido",
@@ -1192,73 +568,22 @@ exemplo-senha-cliente
 "cidadecobranca",
 "estadocobranca",
 "linkdoboleto"
-              </pre>
-          </div></td>
-      </tr>
-        <tr id="recursos-webforms">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#recursos-webforms" name="recursos-webforms" class="pilcrow">&#182;</a>Utilizando os WebForms</h3>
-            <div class="dox">
-              <div class="details">
-                <p>* Os forms de contato devem usar a action /webform<br />
-                  * Deve ser feito o cadastro do form no admin para pegar a key </p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre><br /><br /><br />
-<a class="line-num" href="javascript:void(0)">1</a> <code><</code>form action="/webform" method="post"<code>></code>
-<a class="line-num" href="javascript:void(0)">2</a>  <code><</code>input type="hidden" name="key" value="nome-da-loja-nome-do-form"<code>></code>
-<a class="line-num" href="javascript:void(0)">3</a>  <code><</code>input type="submit"<code>></code>
-<a class="line-num" href="javascript:void(0)">4</a> <code><</code>/form<code>></code>
+ </pre>
+                <p>Os campos que podem ser enviados nos emails de noviticação &raquo;</p>
+
+                <h3>Utilizando os WebForms</h3>
+                <pre>
+<span><</span>form action="/webform" method="post"<span>></span>
+<span><</span>input type="hidden" name="key" value="nome-da-loja-nome-do-form"<span>></span>
+<span><</span>input type="submit"<span>></span>
+<span><</span>/form<span>></span>
 </pre>
-          </div></td>
-      </tr>
-        <tr id="recursos-webforms">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#recursos-webforms" name="recursos-webforms" class="pilcrow">&#182;</a>Utilizando os WebForms</h3>
-            <div class="dox">
-              <div class="details">
-                <p>* Os forms de contato devem usar a action /webform<br />
+                 <p>* Os forms de contato devem usar a action /webform<br />
                   * Deve ser feito o cadastro do form no admin para pegar a key </p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre><br /><br /><br />
-<a class="line-num" href="javascript:void(0)">1</a> <code><</code>form action="/webform" method="post"<code>></code>
-<a class="line-num" href="javascript:void(0)">2</a>  <code><</code>input type="hidden" name="key" value="nome-da-loja-nome-do-form"<code>></code>
-<a class="line-num" href="javascript:void(0)">3</a>  <code><</code>input type="submit"<code>></code>
-<a class="line-num" href="javascript:void(0)">4</a> <code><</code>/form<code>></code>
-</pre>
-          </div></td>
-      </tr>
-        <tr id="recursos-filtros">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#recursos-filtros" name="recursos-filtros" class="pilcrow">&#182;</a>Filtros</h3>
-            <div class="dox">
-              <div class="details">
-                <p> Conteúdo indiposnível... </p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight"> </div></td>
-      </tr>
-        <tr>
-        <td class="docs"></td>
-        <td class="code highlight"><div class="highlight"> </div></td>
-      </tr>
-        <tr  id="recursos-pagination">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#recursos-pagination" name="recursos-pagination" class="pilcrow">&#182;</a>{% pagination %}</h3>
-            <div class="dox">
-              <div class="details">
-                <p> Conteúdo indiponível... </p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre><br /><br /><br />
+
+                  <h3>Filtros</h3>
+                  <h3>Paginação</h3>
+                  <pre>
  {% if pagination.total_pages > 1 %}
 <span><</span>nav class="pagination"<span>></span>
     <span><</span>span class="pagination"<span>></span>
@@ -1272,54 +597,51 @@ exemplo-senha-cliente
     <span><</span>/span<span>></span>
 <span><</span>/nav<span>></span>
 {% endif %}
+                  </pre>
+                  <p>O código da páginação deve ficar dentro do loop {% products %}</p>
 
-</pre>
-          </div></td>
-      </tr>
-        <tr id="recursos-itemscope">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#recursos-itemscope" name="recursos-itemscope" class="pilcrow">&#182;</a>ItemScope</h3>
-            <div class="dox">
-              <div class="details">
-                <p> * o logo do site não pode ser em background <br />
+                  <h3>ItemScope</h3>
+                  <pre>
+<span><</span>div itemscope itemtype="http://schema.org/Organization"<span>></span>
+  <span><</span>a itemprop="url" href="{{ home_url }}">{{store.name}}<span><</span>/a<span>></span>
+  <span><</span>img itemprop="logo" src="{{store.logo_url}}"/<span>></span>
+<span><</span>/div<span>></span>
+
+                  </pre>
+                  <p> * o logo do site não pode ser em background <br />
                   * o código abaixo deve ser incluído, estando visível ou não </p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre><br /><br /><br />
-<a class="line-num" href="javascript:void(0)">1</a> <code><</code>div itemscope itemtype="http://schema.org/Organization"<code>></code>
-<a class="line-num" href="javascript:void(0)">2</a>  <code><</code>a itemprop="url" href="{{ home_url }}">{{store.name}}<code><</code>/a<code>></code>
-<a class="line-num" href="javascript:void(0)">3</a>  <code><</code>img itemprop="logo" src="{{store.logo_url}}"/<code>></code>
-<a class="line-num" href="javascript:void(0)">4</a> <code><</code>/div<code>></code>
-</pre>
-          </div></td>
-      </tr>
-          </tr>
 
-        <tr id="dns">
-        <td class="docs"><div class="pilwrap">
-            <h3> <a href="#recursos-itemscope" name="dns" class="pilcrow">&#182;</a>DNS</h3>
-            <div class="dox">
-              <div class="details">
-                <p>Para que você possa o usar seu próprio domínio na sua loja,
+                  <h3>DNS</h3>
+                  <pre>
+ ip 54.232.217.234..
+                  </pre>
+                  <p>Para que você possa o usar seu próprio domínio na sua loja,
                   você precisa alterar o DNS desse domínio. Para ip 54.232.217.234..</p>
-              </div>
-            </div>
-          </div></td>
-        <td class="code highlight"><div class="highlight">
-            <pre>
- </pre>
-          </div></td>
-      </tr>
-        <tr>
-        <td class="docs" style="height:400px;"></td>
-        <td class="code highlight" style="height:400px;"><div class="highlight" style="height:400px;"> </div></td>
-      </tr>
-      </tbody>
-  </table>
+
+
+
+     </div><!-- content -->
+    <div class="dark-box">
+
+    </div>
   </div>
-</body>
   <!-- Google Tag Manager -->
-  <!-- <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script> <!-- End Google Tag Manager -->-->
+  <!-- <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script> -->
+  <!-- End Google Tag Manager -->
+
+  <script src="jquery-ui-1.9.1.custom.min.js"></script>
+  <script src="jquery.tocify.js"></script>
+
+  <script>
+    $(function() {
+      var toc = $("#headings").tocify({
+        selectors: "h2,h3,h4,h5"
+      }).data("toc-tocify");
+    });
+    $( document ).load(function() {
+      var heightBodyHtml =  $( ".sidebar #container" ).height();
+      $( "html,body" ).height( heightBodyHtml )
+    });
+  </script>
+</body>
 </html>
