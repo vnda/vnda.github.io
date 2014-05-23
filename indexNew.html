@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Guides Vnda</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  <link rel="stylesheet" media="all" href="bootstrap.css" />
+ <link rel="stylesheet" media="all" href="css/screen.css" />
+
+  <script src="jquery-1.8.3.min.js"></script>
+
+  </head>
+  <body>
+  <div class="tocify-wrapper">
+    <div id="headings" class="tocify">
+      <img class="logo" src="https://avatars2.githubusercontent.com/u/810902?s=200">
+    </div>
+  </div>
+  <div class="page-wrapper">
+    <div class="content">
+      <h2> Design </h2>
+        <p>Sugerimos a seguinte ordem para criação das telas para os layout de um canal ecommerce que utilize a plataforma Vnda:</p>
+            <ul class="">
+              <li>
+                <p> <b>Home:</b> tela inicial do site, pode exibir produtos, banners, entre outras coisas. Esta tela deve considerar, caso exista, uma estrutura de header e footer utilizada em toco o canal. </p>
+              </li>
+              <li>
+                <p> <b>Categorias (tags):</b> tela de "categoria", exibe uma lista de produtos que estão vinculados a tag. Essa página também pode servir para exibir "sub-categorias". </p>
+              </li>
+              <li>
+                <p><b>Produto:</b> tela que exibe os detalhes dos produtos. Aqui ele pode selecionar as variantes e adicionar a variante selecionada ao carrinho.</p>
+              </li>
+              <li>
+                <p><b>Carrinho:</b> tela de carrinho, onde ficam listados os produtos comprados, o resumo da compra e onde o cliente faz o cálculo de frete, informando o CEP para entrega. Nesta página também fica o form onde o cliente seleciona o meio de entrega após informar o CEP.</p>
+              </li>
+              <li>
+                <p> <b>Pedido:</b> tela com o form no qual o cliente preenche com os dados de entrega do pedido. Geralmente essa página vem depois do cliente ter selecionado a meio de entrega (**cart.erb**)</p>
+              </li>
+              <li>
+                <p> <b>Pagamento:</b> tela onde serão exibidas para o cliente as formas de pagamento disponíveis no site. Aqui ele seleciona uma delas e informa os dados necessários para pagar pelo compra. Geralmente essa página vem depois do cliente informar os dados de entrega do pedido (**order.erb**). </p>
+              </li>
+              <li>
+                <p><b>Concluído Cartão:</b> tela de conclusão da compra, onde é exibida a mensagem que a compra foi efetuada com sucesso.</p>
+              </li>
+              <li>
+                <p><b>Concluído Boleto:</b> tela de conclusão da compra, onde é exibida a mensagem que a compra foi efetuada com sucesso deve conter o link para o impressão do boleto.</p>
+              </li>
+              <li>
+                <p><b>Página:</b> através deste template serão exibidas as páginas estáticas criadas no admin.</p>
+              </li>
+              <li>
+                <p><b>Busca:</b> tela que exibe o resultado da busca. Basicamente uma lista de produtos que batem com o termo de busca informado pelo cliente.</p>
+              </li>
+              <li>
+                <p><b>Login:</b> tela onde fica o form de login e signup e Facebook Connect.</p>
+              </li>
+              <li>
+                <p><b>Conta:</b> tela onde são exibidos os dados da conta do cliente, onde ele consulta os pedidos e os pontos adquiridos atráves do indicações do site (se for o caso). Nesta tela também deve ser usada para o form de alteração de nome, email e senha do cliente.</p>
+              </li>
+              <li>
+                <p><b>Erro 404:</b> HTML que será exibido quando uma página não for encontrada. Ele precisa replicar o header e o footer do site.</p>
+              </li>
+            </ul>
+            <h2>Front-End (HTML, CSS & JS) </h2>
+
+     </div><!-- content -->
+    <div class="dark-box">
+
+    </div>
+  </div>
+  <!-- Google Tag Manager -->
+  <!-- <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script> -->
+  <!-- End Google Tag Manager -->
+
+  <script src="jquery-ui-1.9.1.custom.min.js"></script>
+  <script src="jquery.tocify.js"></script>
+
+  <script>
+    $(function() {
+      var toc = $("#headings").tocify({
+        selectors: "h2,h3,h4,h5"
+      }).data("toc-tocify");
+    });
+    $( document ).load(function() {
+      var heightBodyHtml =  $( ".sidebar #container" ).height();
+      $( "html,body" ).height( heightBodyHtml )
+    });
+  </script>
+</body>
+</html>

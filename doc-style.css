@@ -180,7 +180,8 @@ box-shadow:         0px 2px 4px 0px rgba(50, 50, 50, 0.23); }
   right: 0;
   top: 0;
   bottom: 0;
-  overflow: auto; }
+  overflow: auto;
+  background-color: #fff; }
 
 .sidebar #container {
   left: 295px; }
