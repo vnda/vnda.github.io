@@ -403,6 +403,9 @@ html, body {
 	border-bottom: 0px solid #003f61;
 	box-shadow: none
 }
+.tocify-wrapper .tocify-subheader .tocify-subheader li{
+	padding-left: 25px
+}
 .tocify-wrapper .toc-footer {
 	padding: 1em 0;
 	margin-top: 1em;
@@ -469,7 +472,7 @@ html, body {
 	position: relative;
 	z-index: 30
 }
-.content>h1, .content>h2, .content>h3, .content>p, .content>table, .content>ul, .content>ol, .content>aside, .content>dl {
+.content>h1, .content>h2, .content>h3, .content>h4,.content>p, .content>table, .content>ul, .content>ol, .content>aside, .content>dl {
 	margin-right: 50%;
 	padding: 0 28px;
 	-webkit-box-sizing: border-box;
@@ -514,7 +517,8 @@ html, body {
 	margin-top: -21px;
 	border-top: none
 }
-.content h3 {
+.content h3,
+.content h4 {
 	font-size: 12px;
 	margin-top: 2.5em;
 	margin-bottom: 0.8em;
@@ -560,6 +564,16 @@ html, body {
 .content p, .content li, .content dt, .content dd {
 	line-height: 1.6;
 	margin-top: 0
+}
+.content pre ul {
+	margin:0px !important;
+	padding:0px 0px 0px 20px !important;
+}
+.content pre li {
+	padding:0px !important;;
+	margin:0px !important;;
+	height:0px;
+	line-height: 10px
 }
 .content img {
 	max-width: 100%
@@ -716,3 +730,4 @@ body  .vi { color: #66D9EF; } /* Name.Variable.Instance */
 body  .il { color: #666666 } /* Literal.Number.Integer.Long */
 body  .white { color: #fff }
 body  .yellow { color: #E6DB74 }
+body  .laranja 	 {color: #b24d19}
