@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>Guides Vnda</title>
+  <title>Guides editar senhanda</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
   <link rel="stylesheet" media="all" href="css/bootstrap.css" />
@@ -179,7 +179,7 @@ vnda_stg_nome-loja/public/stylesheets/
 {% endorders  %}</pre>
                 <p> Listando pedidos que por padrão é utilizado no template <a href="#Account.liquid">account.liquid</a>. </p>
                 <p>obs: no template <a href="#Account.liquid">account</a> podemos enviar e exibir dados do usuário:</p>
-                <p class="clear">* editar senha</p>
+                <div></div><br>
                 <pre>
 <span><</span>form action="{{acount_url}}" method="post"<span>></span>
   <span><</span>input type="text" name="email" /<span>></span>
@@ -187,12 +187,14 @@ vnda_stg_nome-loja/public/stylesheets/
   <span><</span>input type="password" name="password_confirmation" /<span>></span>
 <span><</span>/form>
                 </pre>
-                <p class="clear">* exibir dados do usuário</p>
+                <p>* editar senha</p>
+                <div></div><br>
                 <pre>
 {{ client.first_name }}
 {{ client.last_name}}
 {{ client.email }
                 </pre>
+                <p>* exibir dados do usuário</p>
 
                 <h3>{% cartitems %}</h3>
                 <pre>
@@ -219,8 +221,6 @@ vnda_stg_nome-loja/public/stylesheets/
                 </table>
 
                 <h3>{% products %}</h3>
-                <p> Listando produtos<br />
-                  * loop para exibir os produto</p>
                 <pre>
 {% products tag:tag.name parent_tag:parent_tag_name page:params.page per_page:per_page  %}
   {{ product.image_url | resize: '234x' }}
@@ -239,9 +239,9 @@ vnda_stg_nome-loja/public/stylesheets/
   {% endif %}
 {% endproducts %}
                 </pre>
-
-                <p class="clear">Filtrando produtos <br />
-                  * produtos podem ser filtrados pode e tamanho e faixa de preço</p>
+                <p> Listando produtos<br />
+                  * loop para exibir os produto</p>
+<div></div><br>
 <pre>
 {% products tag:tag.name filter:size:GG %}
 {% products tag:tag.name filter:price:0-50 %}
@@ -253,20 +253,23 @@ vnda_stg_nome-loja/public/stylesheets/
 * podem ser listadas todas as opções de tamanho disponíveis por tag
 {% sizes tag:”nome-da-tag ”%}{{size}}{% endsizes %}
 </pre>
-                <p class="clear">Ordenar produtos<br />
-                  * por padrão, os produtos são ordenados por importância, que pode ser modificada dentro do admin da loja.<br />
-                  * para usar outra ordenação, basta incluir o parãmetro sort na tag que lista os produtos.<br />
-                  * or produtos podem ser ordenados por “price”, “price,desc”, “newest”, “newest,desc”<br />
-                  (newest é baseado na data de cadastro do produto), “name”, “name,desc”.</p>
+                <p>Filtrando produtos <br />
+                  * produtos podem ser filtrados pode e tamanho e faixa de preço</p>
+                  <div></div><br>
 <pre>
 {% products tag:tag.name sort:”price” %}
 * da mesma forma que os filtros, a opção de ordenação do usuário pode ser enviada por um form e colocada na tag de produtos.
 {% products tag:tag.name sort:params.ordem %}
  se o nome do field for “ordem”
 </pre>
-                <p class="clear">Quem viu, viu também<br />
-                  * geralmente utilizado na página de produto</p>
+                <p>Ordenar produtos<br />
+                  * por padrão, os produtos são ordenados por importância, que pode ser modificada dentro do admin da loja.<br />
+                  * para usar outra ordenação, basta incluir o parãmetro sort na tag que lista os produtos.<br />
+                  * or produtos podem ser ordenados por “price”, “price,desc”, “newest”, “newest,desc”<br />
+                  (newest é baseado na data de cadastro do produto), “name”, “name,desc”.</p>
+                  <div></div><br>
 <pre>
+<b>// API V1</b>(deprecate)
 {% get also_viewed from "/product/also_viewed"[id:product.id key:session_id limit:4] %}
 {% if also_viewed.size > 0 %}
   {% for p in also_viewed %}
@@ -276,7 +279,14 @@ vnda_stg_nome-loja/public/stylesheets/
     {{ p.price | money_format }}
   {% endfor %}
 {% endif %}
+
+<b>// API V2</b>
+{% also_viewed id:product.id key:session_id limit:1 %}
+{{product}}
+{% endalso_viewed %}
 </pre>
+                <p>Quem viu, viu também<br />
+                  * geralmente utilizado na página de produto</p>
 
                 <h3>{% tags %}</h3>
                 <pre>
@@ -465,7 +475,7 @@ vnda_stg_nome-loja/public/stylesheets/
                 <p>Armazendo conteúdo com a tag {% contentfor %}<br />
                 *Salvar e exibir conteúdo em outros locais do template .liquid</p>
 
-                <h2>Enviar Produto ao Carrinho ( depracate )</h2>
+                <h2>Enviar Produto ao Carrinho</h2>
                 <p>
                   Para adicionar itens ao carrinho, você precisa fazer um POST para a URL definida na variável {{ cart_url }}, passando dois campos:<p>
 
@@ -475,6 +485,7 @@ vnda_stg_nome-loja/public/stylesheets/
                   Caso sua loja não permita que o usuário compre mais de um item, você deve informar este campo com o valor 1.
                   </p>
                 <pre>
+// deprecate, atributos modelo antigo
 <span><</span>form action="{{ cart_url }}" method="POST"<span>></span>
   <span><</span>input type="hidden" name="product_id" value="{{ product.id }}"/<span>></span>
   <span><</span>input type="number" name="quantity" min="1"/<span>></span>
@@ -482,8 +493,9 @@ vnda_stg_nome-loja/public/stylesheets/
 <span><</span>/form<span>></span>
                 </pre>
                   <p> Isso pode ser feito utilizando um formulário &raquo;</p>
-                  <br /><br /><br /><br /><br /><br />
+                  <div></div><br>
                   <pre>
+// deprecate, atributos modelo antigo
 <span><</span>form action="{{ cart_url }}" method="POST"<span>></span>
   <span><</span>input type="hidden" name="product_id" value="{{ product.id }}"/<span>></span>
   <span><</span>input type="number" name="quantity" min="1"/<span>></span>
@@ -496,14 +508,15 @@ vnda_stg_nome-loja/public/stylesheets/
 <span><</span>/form<span>></span>
                   </pre>
                   <p>Em caso de o produto ter variantes &raquo; </p>
-                  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                  <div></div><br>
 <pre>
+// deprecate, atributos com modelo antigo
 $.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
   alert("Item adicionado com sucesso");
 });
 </pre>
                   <p>OU via AJAX &raquo;</p>
-                  <br /><br /><br /><br /><br />
+                 <div></div><br>
                   <p>
                     Caso o produto possua variantes, você deve enviá-las junto com os parâmetros obrigatórios, da seguinte forma:
                   </p>
@@ -513,6 +526,7 @@ $.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
                    </p>
                    <p>E assim para cada atributo configurado no admin.</p>
                   <pre>
+// deprecate, atributos com modelo antigo
 <span><</span>form action="{{ cart_url }}" method="POST">
   …
   <span><</span>textarea name="extras[Observação]"><span><</span>/textarea<span>></span>
