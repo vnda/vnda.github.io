@@ -177,7 +177,7 @@ vnda_stg_nome-loja/public/stylesheets/
   {{ order | order_status }}
   {{ order.total | money_format }}
 {% endorders  %}</pre>
-                <p> Listando pedidos que por padrão é utilizado no template <a href="#Account.liquid">account.liquid</a>. </p>
+                <p> Listar pedidos que por padrão é utilizado no template <a href="#Account.liquid">account.liquid</a>. </p>
                 <p>obs: no template <a href="#Account.liquid">account</a> podemos enviar e exibir dados do usuário:</p>
                 <div></div><br>
                 <pre>
@@ -239,7 +239,7 @@ vnda_stg_nome-loja/public/stylesheets/
   {% endif %}
 {% endproducts %}
                 </pre>
-                <p> Listando produtos<br />
+                <p> Listar produtos<br />
                   * loop para exibir os produto</p>
 <div></div><br>
 <pre>
@@ -253,7 +253,7 @@ vnda_stg_nome-loja/public/stylesheets/
 * podem ser listadas todas as opções de tamanho disponíveis por tag
 {% sizes tag:”nome-da-tag ”%}{{size}}{% endsizes %}
 </pre>
-                <p>Filtrando produtos <br />
+                <p>Filtrar produtos <br />
                   * produtos podem ser filtrados pode e tamanho e faixa de preço</p>
                   <div></div><br>
 <pre>
@@ -296,7 +296,7 @@ vnda_stg_nome-loja/public/stylesheets/
   {{ tag.image_url }}
 {% endtags %}
                 </pre>
-                <p>Listando tags<br />
+                <p>Listar tags<br />
                   * aceita o parâmetro "limit, type, product_id </p>
 
                 <h3>{% tag %}</h3>
@@ -309,7 +309,7 @@ vnda_stg_nome-loja/public/stylesheets/
  {{ tag.image_url }}
 {% endtag %}
                 </pre>
-                <p>Listando tag pelo "id"</p>
+                <p>Listar tag pelo "id"</p>
                 <p>Assim que uma tag é cadastrado no admin se torna acessível desde que seja no .liquid informado o parêmentro id</p>
 
                 <h3>{% Menus %}</h3>
@@ -318,9 +318,9 @@ vnda_stg_nome-loja/public/stylesheets/
   {{ menu.url }} {{ menu.title }}
 {% endmenus %}
 </pre>
-                <p>Listando menus<br>
+                <p>Listar menus<br>
                   * loop para exibir os itens de um menu </p>
-                <p>Listando sub menus<br />
+                <p>Listar sub menus<br />
                   * menu com submenus (html opcional)</p>
 <pre>
 {% menus position:"nome_da_posicao_do_menu_no_admin" %}
@@ -337,7 +337,7 @@ vnda_stg_nome-loja/public/stylesheets/
 </pre>
                   <h3>{% page %}</h3>
                   <pre>{% page id:'bloco' %}</pre>
-                  <p>Listando conteúdo de uma page<br />
+                  <p>Listar conteúdo de uma page<br />
 
                   <h3>{% banners %}</h3>
                   <pre>
@@ -351,7 +351,7 @@ vnda_stg_nome-loja/public/stylesheets/
 {% endbanners %}<br />
 * aceita o parâmetro “limit:3”
                   </pre>
-                <p>Listando banners<br />
+                <p>Listar banners<br />
                   * loop para exibir os banners </p>
 
                 <h3>{% images %}</h3>
@@ -360,7 +360,7 @@ vnda_stg_nome-loja/public/stylesheets/
   {{image}}
 {% endimages %}
                 </pre>
-                <p>Listando imagens do produto<br />
+                <p>Listar imagens do produto<br />
                   * deve estar dentro de um loop {% products %}</p>
 
                 <h3>{% shippingmethods %}</h3>
@@ -379,7 +379,7 @@ vnda_stg_nome-loja/public/stylesheets/
  {% endif %}
 {% endshippingmethods %}
                 </pre>
-                <p>Listando métodos de entrega<br />
+                <p>Listar métodos de entrega<br />
                   * Após o envio do form frete adicionar esse código para listar métodos de entrega <br />
                   * Não avançar nas etapas do carrinho sem ao menos um método escolhido</p>
 
@@ -393,11 +393,11 @@ vnda_stg_nome-loja/public/stylesheets/
 {% endvariants %}
 
                 </pre>
-                <p>Listando as variantes de um produto<br>
+                <p>Listar as variantes de um produto<br>
                 * Um produto pode conter uma ou mais variantes cadastradas no admin,
                   através do liquid é possível acessar todos os dados que contém uma variante
                   como por exemplo preço, atributos, imagem, dispononibilidade...</p><br />
-                <p>Listando variantes pelo SKU do produto<br />
+                <p>Listar variantes pelo SKU do produto<br />
                   * É possivel acessar uma variant </p>
 
                   <h3>{% variant %}</h3>
@@ -417,7 +417,7 @@ vnda_stg_nome-loja/public/stylesheets/
   {{video.thumbnail_url}} // lista a imagem gerada pelo painel
 {% endvideos %}
                   </pre>
-                  <p>Listando vídeos de um produto</p>
+                  <p>Listar vídeos de um produto</p>
 
                   <h3>{% sizes %}</h3>
 <pre>
@@ -426,7 +426,7 @@ vnda_stg_nome-loja/public/stylesheets/
   {{ size.available }}
 {% endsizes %}
 </pre>
-                  <p>Listando atributos tamanhos (deprecate)</p>
+                  <p>Listar atributos tamanhos (deprecate)</p>
 
                   <h3>{% colors %}</h3>
 <pre>
@@ -434,7 +434,7 @@ vnda_stg_nome-loja/public/stylesheets/
   {{ color.value }}
   {{ color.available }}
 {% endcolors %}
-                <p>Listando atributos cor (deprecate)</p>
+                <p>Listar atributos cor (deprecate)</p>
 </pre>
 
                 <h3>{% opengraphfor  %}</h3>
@@ -460,7 +460,7 @@ vnda_stg_nome-loja/public/stylesheets/
 {% endunless %}
 {{ opengraph }}
                 </pre>
-                <p>Listando meta tags opengraph para facebook<br />
+                <p>Listar meta tags opengraph para facebook<br />
                 * Meta tags e opengraph devem ser dinâmicas <br />
                 * Usar {% opengraphfor %} para aplicar Meta Title e Description nas páginas internas da loja.</p>
 
