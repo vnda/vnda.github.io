@@ -433,7 +433,7 @@ html, body {
 }
 .page-wrapper .dark-box {
 	width: 50%;
-	background-color: #2f2f24;
+	background-color: #243546;
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -607,7 +607,7 @@ html, body {
 	font-size: 14px
 }
 .content pre, .content blockquote {
-	background-color: #484837;
+	background-color: #34495e;
 	color: #fff;
 	padding: 1em;
 	margin: 0;
