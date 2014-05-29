@@ -65,38 +65,62 @@
                 <p><b>Erro 404:</b> HTML que será exibido quando uma página não for encontrada. Ele precisa replicar o header e o footer do site.</p>
               </li>
             </ul>
-            <h2>Front-End (HTML, CSS & JS) </h2>
-            <pre>
-vnda_stg_nome-loja/ *todos os arquivos <b>com o html</b> ficam na raiz do site
-vnda_stg_nome-loja/public/images/
-vnda_stg_nome-loja/public/javascripts/
-vnda_stg_nome-loja/public/stylesheets/
-            </pre>
-             <p> Segue abaixo  as premissas básicas para o envio do html. </p>
-                <p> * Hierarquia das pastas conforme grid ao lado >><br>
-                  * Validar o HTML 5 conforme padrão W3C <br>
-                  * Separar o html em módulos o <b> _header.php e _foorter.php</b><br>
-                </p>
-                <p>
-  * Use o nome dos arquivos de acordo com o <a href="#templates" style="color:blue !important">templates do .liquid</a> <br />
-                 obs: apenas altere de <b>.liquid</b> para <b>.php</b> <br>
-                  &nbsp;Página da Home: <a href="#home" style="color:blue !important">home.liquid</a><br>
-                  &nbsp;Página Categoria do Produtos: <a href="#tag" style="color:blue !important">tag.liquid</a><br>
-                  &nbsp;Página de Detalhes do Produto: <a href="#product" style="color:blue !important">product.liquid</a><br>
-                  &nbsp;Página de Carrinho: <a href="#cart" style="color:blue !important">cart.liquid</a><br>
-                  &nbsp;Página de Endereço: <a href="#address" style="color:blue !important">address.liquid</a><br>
-                  &nbsp;Página de Pagamento: <a href="#payment" style="color:blue !important">payment.liquid</a><br>
-                  &nbsp;Página de Pedido Finalizado: <a href="#finished" style="color:blue !important">finished.liquid</a><br>
-                  &nbsp;Página de login: <a href="#login" style="color:blue !important">login.liquid</a><br>
-                  &nbsp;Página da Meus Pedidos: <a href="#login" style="color:blue !important">account.liquid</a><br>
-                </p>
-                <p> * Gerar e incluir favico.ico <br>
-                  * Incluir apple-touch-icon 144x144<br>
-                </p>
-                <p>*Versão Desktop com 960px de largura</p>
-                <p>*Versão Mobil
 
-                <h2> Sobre o liquid</h2>
+              <h2>Front-End (HTML, CSS & JS) </h2>
+              <p>Para melhorar a experiência no Setup da loja cabe ao desenvolvedor html respeitar as premissas abaixo e nos enviar o html conforme o padrão exigido pela vnda.</p>
+
+              <h3>Entregar html em módulos</h3>
+              <p>A utilização do comando include em PHP é essencial para a entrega do Html, pois possibilita a inclusão de várias partes de um documento em arquivos externos</p>
+              <p>Enviar os módulos separados do <b> header.php e foorter.php</b><br>
+                <small>Fica livre o uso dos includes demais trechos de código repitidos</small>
+              </p>
+
+              <h3>Nomenclatura dos diretórios</h3>
+              <pre>
+  vnda_stg_nome-loja/ *todos os arquivos <b>com o html</b> ficam na raiz do site
+  vnda_stg_nome-loja/public/images/
+  vnda_stg_nome-loja/public/javascripts/
+  vnda_stg_nome-loja/public/stylesheets/
+              </pre>
+              <p>
+                * Hierarquia e nomenclaturas das pastas conforme grid ao lado >><br>
+              </p>
+
+              <h3>Nomenclatura dos arquivos</h3>
+              <p>
+                Use o nome dos arquivos de acordo com o <a href="#templates" style="color:blue !important">templates do .liquid</a> <br />
+               obs: <b>.liquid</b> para <b>.php</b> <br>
+                &nbsp;Página da Home: <a href="#home" style="color:blue !important">home.liquid</a><br>
+                &nbsp;Página Categoria do Produtos: <a href="#tag" style="color:blue !important">tag.liquid</a><br>
+                &nbsp;Página de Detalhes do Produto: <a href="#product" style="color:blue !important">product.liquid</a><br>
+                &nbsp;Página de Carrinho: <a href="#cart" style="color:blue !important">cart.liquid</a><br>
+                &nbsp;Página de Endereço: <a href="#address" style="color:blue !important">address.liquid</a><br>
+                &nbsp;Página de Pagamento: <a href="#payment" style="color:blue !important">payment.liquid</a><br>
+                &nbsp;Página de Pedido Finalizado: <a href="#finished" style="color:blue !important">finished.liquid</a><br>
+                &nbsp;Página de login: <a href="#login" style="color:blue !important">login.liquid</a><br>
+                &nbsp;Página da Meus Pedidos: <a href="#login" style="color:blue !important">account.liquid</a><br>
+                </p>
+
+                <h3>Html 5 Padrão 3WC</h3>
+                <p>Os Padrões Web são recomendações do W3C (World Wide Web Consortium), as quais são destinadas a orientar os desenvolvedores para o uso de boas práticas que tornam a web acessível para todos.</p>
+                <h4>Validar HTML 5</h4>
+                <p>Validador Online   <a href="http://validator.w3.org/" target="_blank">http://validator.w3.org/</a></p>
+                <h3>ItemScope</h3>
+                  <pre>
+<span><</span>div itemscope itemtype="http://schema.org/Organization"<span>></span>
+  <span><</span>a itemprop="url" href="{{ home_url }}">{{store.name}}<span><</span>/a<span>></span>
+  <span><</span>img itemprop="logo" src="{{store.logo_url}}"/<span>></span>
+<span><</span>/div<span>></span>
+                  </pre>
+                <p> * o logo do site não pode ser em background <br />
+                  * o código abaixo deve ser incluído, estando visível ou não
+                </p>
+                <h3>Assinatura Vnda no Rodapé</h3>
+                <pre>
+Todos os direitos reservados - <a target="_blank" href="http://www.vnda.com.br/‎">Vnda Tecnologia de E-commerce</a>
+                </pre>
+                <p>* assinatura da Vnda no rodapé, usando uma cor para destacar (um pouco) o link</p>
+                 <h2> Sobre o liquid</h2>
                 <p>Liquid é a linguagem de programação é responsável por implementar os templates desenvolvidos e utilizados pela Vnda, processando os arquivos modelo .liquid</p>
 
                 <h2>Templates</h2>
@@ -237,6 +261,16 @@ vnda_stg_nome-loja/public/stylesheets/
   {% else %}
    Produto Esgotado
   {% endif %}
+{% endproducts %}
+
+*listar produtos por id sendo assim possível buscar determinado produto ou uma lista deles
+ex:
+{% products ids:"1,2,3,4,5" %}
+  {{product}}
+{% endproducts %}
+OU
+{% products ids:"5" %}
+  {{product}}
 {% endproducts %}
                 </pre>
                 <p> Listar produtos<br />
@@ -563,6 +597,28 @@ $.post("{{ cart_url }}", { variant_id: 999, cart_method: "Delete" }, function() 
 </pre>
                   <p>Ou via AJAX:</p>
 
+                  <h2>Calcular frete</h2>
+                  <pre>
+<span><</span>form action="{{ shipping_zip_url }}" method="pos"<span>></span>
+  <span><</span>fieldset<span>></span>
+    <span><</span>p<span>></span>
+      <span><</span>input  type="text" name="zip" value="{{ shipping_address.zip }}"<span>></span>
+      <span><</span>button type="submit" name="submit-cep"<span>></span>Calcule seu frete<span><</span>/button<span>></span>
+    <span><</span>/p<span>></span>
+  <span><</span>/fieldset<span>></span>
+ <span><</span>/form<span>></span>
+                  </pre>
+                  <p>Utilizar o {{ shipping_zip_url }} na action * validar cep pode ser utilizado o flash.zip.error</p>
+                  <div></div><br>
+                  <pre>
+{{ flash.zip.error }} // exibi mensagem de erro padrão
+  ou
+{% if flash.zip.error %}
+  ....
+{% endif %}
+                  </pre>
+                  <p>Quando existir algum erro no calculo do frete >></p>
+
                   <h2>Salvar Dados do Endereço</h2>
                   <p>A plataforma Vnda permite que pedidos sejam feitos tanto para pessoas físicas, quanto jurídicas. O que define quando é um ou outro é o campo documents, se ele possuir a chave cpf e for um CPF válido, então é pessoa física, se ele possuir a chave cnpj e for um CNPJ válido, é pessoa júridica.</p>
                   <pre>
@@ -716,6 +772,108 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
                   <h2>Recursos</h3>
                   <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
 
+                  <h3>Formulário de Cadastro</h3>
+                  <pre>
+<span><</span>form action="{{ login_url }}" method="post"<span>></span>
+  <span><</span>input id="new_client_terms" name="new_client[terms]" type="hidden" value="on"<span>></span>
+  <span><</span>input type="text" name="email" required="required"<span>></span>
+  <span><</span>input type="text" name="password" required="required"<span>></span>
+  <span><</span>input type="text" name="password_confirmation" required="required"<span>></span>
+  <span><</span>input type="checkbox" name="terms"<span>></span>
+<span><</span>/form<span>></span>
+                  </pre>
+                  <p>O form de cadastro deve usar a action {{ login_url }}</p>
+
+                  <h3>Formulário de Login</h3>
+                  <pre>
+<span><</span>form action="{{ login_url }}" method="post"<span>></span>
+  <span><</span>input type="hidden" name="_method" value="put"<span>></span>
+  <span><</span>input type="text" name="password" required="required"<span>></span>
+  <span><</span>input type="text" name="password_confirmation" required="required"<span>></span>
+ <span><</span>/form<span>></span>
+                  </pre>
+                  <p>O form de login deve usar a action {{ login_url }}</p>
+                  <div></div><br>
+                  <pre>
+{{ flash.signup.error }}
+{{ flash.login.error }}
+                  </pre>
+                  <p>Quando existir algum erro no formulário de login ou cadastro.>> </p>
+
+                  <h3>Formulário de Recuperar Senha </h3>
+                  <pre>
+{{ flash.recover_password.ok }}
+{{ flash.recover_password.error }}
+                  </pre>
+                  <p>Outra coisa que incluímos, foi uma mensagem de sucesso para o form de recuperar senha, além da mensagem de erro que já existia.</p>
+
+                  <h3>Formulários WebForms</h3>
+                  <pre>
+<span><</span>form action="/webform" method="post"<span>></span>
+<span><</span>input type="hidden" name="key" value="nome-da-loja-nome-do-form"<span>></span>
+<span><</span>input type="submit"<span>></span>
+<span><</span>/form<span>></span>
+                  </pre>
+                  <p>* Os forms de contato devem usar a action /webform<br />
+                  * Deve ser feito o cadastro do form no admin para pegar a key </p>
+
+                  <h3>Paginação</h3>
+                  <pre>
+ {% if pagination.total_pages > 1 %}
+<span><</span>nav class="pagination"<span>></span>
+    <span><</span>span class="pagination"<span>></span>
+        Página {{ pagination.current_page }} de {{ pagination.total_pages }}
+        {% if pagination.prev_page %}
+            <span><</span>a href="{{ pagination.prev_url }}" class="previous"<span>></span>←<span><</span>/a<span>></span>
+        {% endif %}
+        {% if pagination.next_page %}
+            <span><</span>a href="{{ pagination.next_url }}" class="next"<span>></span>→<span><</span>/a<span>></span>
+        {% endif %}
+    <span><</span>/span<span>></span>
+<span><</span>/nav<span>></span>
+{% endif %}
+                  </pre>
+                  <p>O código da páginação deve ficar dentro do loop {% products %}</p>
+
+                  <h3>Descrição do produto com múltiplas seções</h3>
+                  <pre>
+{% if product.description %}
+  {% assign descParts = product.description | split:"linhadecorte" %}
+  {% for desc in descParts %}
+    {% if forloop.index == 1 %}{% assign desc1 = desc %}{% endif %}
+    {% if forloop.index == 2 %}{% assign desc2 = desc %}{% endif %}
+    {% if forloop.index == 3 %}{% assign desc3 = desc %}{% endif %}
+  {% endfor %}
+{% endif %}
+...
+{{ desc1 }}
+...
+{{ desc2 }}
+...
+{{ desc3 }}
+                  </pre>
+                  <p>Para determinar o o local onde a descrição será dividida, deve-se colocar o texto “linhadecorte” na descrição do produto</p>
+
+                  <h3>Montar o wishlist</h3>
+                  <pre>
+{% products ids:"1,2,3,4,5" %}
+  {{product}}
+{% endproducts %}
+OU
+{% products ids:"5" %}
+  {{product}}
+{% endproducts %}
+                  </pre>
+                  <p>Listar produto para montar uma wishlist </p>
+
+                  <h3>Exibindo imagens estáticas</h3>
+                  <p>* devem estar no diretório /public/images</p>
+
+                  <pre>
+{{ “nome_do_arquivo.ext” | image_tag: “Texto alternativo” }}
+<span><</span>img src="{{ “nome_do_arquivo.ext” | image_url }}" alt=“Texto alternativo”/<span>></span>
+                  </pre>
+                  </p>
                   <h3>Notificações de e-mails</h3>
                   <p>A plataforma possui integração com <a href="https://madmimi.com/" target="_blank">Madmimi</a>, ferramenta que gerencia as campanhas de e-mails dos nossos clientes.</p>
                   <p>Atualmente disponibilizamos as seguintes notificações: </p>
@@ -753,47 +911,8 @@ exemplo-senha-cliente
 "cidadecobranca",
 "estadocobranca",
 "linkdoboleto"
- </pre>
-                <p>Os campos que podem ser enviados nos emails de noviticação &raquo;</p>
-
-                <h3>Utilizando os WebForms</h3>
-                <pre>
-<span><</span>form action="/webform" method="post"<span>></span>
-<span><</span>input type="hidden" name="key" value="nome-da-loja-nome-do-form"<span>></span>
-<span><</span>input type="submit"<span>></span>
-<span><</span>/form<span>></span>
-</pre>
-                 <p>* Os forms de contato devem usar a action /webform<br />
-                  * Deve ser feito o cadastro do form no admin para pegar a key </p>
-
-                  <h3>Paginação</h3>
-                  <pre>
- {% if pagination.total_pages > 1 %}
-<span><</span>nav class="pagination"<span>></span>
-    <span><</span>span class="pagination"<span>></span>
-        Página {{ pagination.current_page }} de {{ pagination.total_pages }}
-        {% if pagination.prev_page %}
-            <span><</span>a href="{{ pagination.prev_url }}" class="previous"<span>></span>←<span><</span>/a<span>></span>
-        {% endif %}
-        {% if pagination.next_page %}
-            <span><</span>a href="{{ pagination.next_url }}" class="next"<span>></span>→<span><</span>/a<span>></span>
-        {% endif %}
-    <span><</span>/span<span>></span>
-<span><</span>/nav<span>></span>
-{% endif %}
                   </pre>
-                  <p>O código da páginação deve ficar dentro do loop {% products %}</p>
-
-                  <h3>ItemScope</h3>
-                  <pre>
-<span><</span>div itemscope itemtype="http://schema.org/Organization"<span>></span>
-  <span><</span>a itemprop="url" href="{{ home_url }}">{{store.name}}<span><</span>/a<span>></span>
-  <span><</span>img itemprop="logo" src="{{store.logo_url}}"/<span>></span>
-<span><</span>/div<span>></span>
-
-                  </pre>
-                  <p> * o logo do site não pode ser em background <br />
-                  * o código abaixo deve ser incluído, estando visível ou não </p>
+                  <p>Os campos que podem ser enviados nos emails de noviticação &raquo;</p>
 
                   <h3>DNS</h3>
                   <pre>
@@ -802,7 +921,12 @@ exemplo-senha-cliente
                   <p>Para que você possa o usar seu próprio domínio na sua loja,
                   você precisa alterar o DNS desse domínio. Para ip 54.232.217.234..</p>
 
+                  <h2>Dicas</h2>
+                  <h3>Como listar produtos em promoção</h3>
+                  <p>aguardando atualização...</p>
 
+                  <h3>Como relacionar produtos</h3>
+                  <p>aguardando atualização...</p>
 
      </div><!-- content -->
     <div class="dark-box">
