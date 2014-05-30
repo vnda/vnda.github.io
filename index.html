@@ -576,22 +576,32 @@ $.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
                       Para enviar essas informações, basta criar os campos a seguinte forma &raquo;
                   </p>
                   <h2>Atualizar item do carrinho</h2>
-                  <pre>//código</pre>
-                  <p>conteúdo indisponível...</p>
-                  <h2>Remover item do carrinho</h2>
                   <pre>
-<span><</span>form action="{{ cart_url }}" method="POST"<span>></span>
-  <span><</span>input type="hidden" name="product_id" value="{{ product.id }}"/<span>></span>
-  <span><</span>input type="number" name="quantity" min="1"/<span>></span>
-  <span><</span>input type="submit" value="Adicionar"/<span>></span>
+<span><</span>form action="{{ cart_url }}" method="post"<span>></span>
+  <span><</span>input type="hidden" name="_method" value="patch" /<span>></span>
+  <span><</span>input type="hidden" name="item_id" value="999" /<span>></span>
+  <span><</span>input type="hidden" name="quantity" value="1" /<span>></span>
+  <span><</span>input type="submit" value="Alterar"/<span>></span>
 <span><</span>/form<span>></span>
                   </pre>
-                  <p>Para remover um produto do carrinho, você precisa fazer um POST para a URL definida na variável {{ cart_url }}, passando dois campos:
-product_id: ID do produto selecionado pelo usuário
-cart_method: Informar o value "Delete"</p>
+                  <p>Para alterar a quantidade  de item do carrinho,
+             você precisa fazer um POST para a URL definida na variável {{ cart_url }}<br>
+                  <h2>Remover item do carrinho</h2>
+                  <pre>
+<span><</span>form action="{{ cart_url }}" method="post"<span>></span>
+  <span><</span>input type="hidden" name="_method" value="patch" /<span>></span>
+  <span><</span>input type="hidden" name="item_id" value="999" /<span>></span>
+  <span><</span>input type="submit" value="Excluir"/<span>></span>
+<span><</span>/form<span>></span>
+                  </pre>
+             <p>Para Remover um produto do carrinho,
+             você precisa fazer um POST para a URL definida na variável {{ cart_url }},
+              passando dois campos:<br>
+* item_id: Id do item selecionado pelo usuário<br>
+* _method: Informar o value "Delete"</p>
                   <div></div><br>
 <pre>
-$.post("{{ cart_url }}", { variant_id: 999, cart_method: "Delete" }, function() {
+$.post("{{ cart_url }}", { item_id: 999, cart_method: "Delete" }, function() {
   alert("Produto Removido com sucesso");
 });
 </pre>
@@ -599,7 +609,7 @@ $.post("{{ cart_url }}", { variant_id: 999, cart_method: "Delete" }, function() 
 
                   <h2>Calcular frete</h2>
                   <pre>
-<span><</span>form action="{{ shipping_zip_url }}" method="pos"<span>></span>
+<span><</span>form action="{{ shipping_zip_url }}" method="post"<span>></span>
   <span><</span>fieldset<span>></span>
     <span><</span>p<span>></span>
       <span><</span>input  type="text" name="zip" value="{{ shipping_address.zip }}"<span>></span>
