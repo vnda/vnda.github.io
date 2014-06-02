@@ -128,7 +128,7 @@ Todos os direitos reservados - <a target="_blank" href="http://www.vnda.com.br/�
                  os arquivo são salvos na extensão .liquid</p>
                  <p>Dentro da raiz ficam os diretórios "images" "stylesheets" "javascript" e "page"</p>
                  <p>Dentro do diretórios page/ é gerado os arquivos de extensão .html das página que são criados no admin</p>
-                 <p>Vejas os templates disponíveis na plataforma <span class="summary"><code><a href="#layout">Iniciar</a></code></span></p>
+                 <p>Segue abaixo os templates disponíveis na plataforma:</p>
 
                 <h3>Layout.liquid</h3>
                 <p> Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates (exceto 404 e facebook). </p>
@@ -138,28 +138,34 @@ Todos os direitos reservados - <a target="_blank" href="http://www.vnda.com.br/�
 
                 <h3>Tag.liquid</h3>
                 <p> Página que exibe produtos relacionados a uma tag. Tag é a forma de categorização utilizada pela Vnda para organizar os produtos. </p>
+                <p><span class="summary"><code><a href="#tags" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
 
                 <h3>Product.liquid</h3>
                 <p>Template para exibição do produto, suas imagens, produtos relacionados. Aqui também fica o formulário que permite adicionar o item ao carrinho, neste formulário o cliente pode selecionar qual variante do produto (cor, tamanho, etc) ele realmente quer.</p>
+                <p><span class="summary"><code><a href="#products" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
 
                 <h3>Cart.liquid</h3>
                 <p> 1ª etapa do processo de compra. No template do carrinho são exibidos os itens já adicionados e onde pode ser feito o cálculo do frete. Pode exibir também um resumo do total do pedido. </p>
+                <p><span class="summary"><code><a href="#cartitems" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
 
                 <h3>Address.liquid</h3>
                 <p>Template onde é exibido o formulário responsável por capturar as informações para entrega do pedido, assim como dados pessoais do cliente, como e-mail e CPF.</p>
+                <p><span class="summary"><code><a href="#address" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
 
                 <h3>Payment.liquid</h3>
                 <p> 3ª etapa do processo de compra. Aqui o cliente informa os dados do cartão de crédito ou dá inicio a geração do boleto. </p>
+                <p><span class="summary"><code><a href="#payment" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
 
                 <h3>Finished.liquid</h3>
                 <p> 4ª e última etapa do processo de compra. Aqui são exibidas as informações do pedido, como o número e/ou o link para impressão do boleto, junto com a mensagem de conclusão da compra. </p>
 
                 <h3 id="Account.liquid">Account.liquid</h3>
                 <p> Template usado para exibir os dados da conta do cliente, os pedidos efetuados, assim como a situação deles. Nesta página o cliente também pode alterar os dados pessoais, como nome, e-mail e senha. </p>
+                <p><span class="summary"><code><a href="#ordes" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
 
                 <h3>Login.liquid</h3>
                 <p> Template usado tanto para novos cadastros quanto para logins de clientes já cadastrados. Desta página parte também o login via Facebook, que permite que clientes participem de promoções específicas.
-
+                <p><span class="summary"><code><a href="#login" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
                 <h3>Search.liquid</h3>
                 <p> Página que exibe o resultado de uma busca, este resultado é uma lista de produtos que fazem match com o termo buscado pelo cliente atráves da URL /busca?q=termo. </p>
 
@@ -192,7 +198,7 @@ Todos os direitos reservados - <a target="_blank" href="http://www.vnda.com.br/�
                 <h2>Tags personalizadas da Vnda</h2>
                 <p> A plataforma atende com um conjunto de tags responsável por tornar a aplicação dinâmica.</p>
 
-                <h3>{% orders %}</h3>
+                <h3 id="orders">{% orders %}</h3>
                 <pre>
 {% orders client_id:client.id %}
   {{ order.code }}
@@ -220,7 +226,7 @@ Todos os direitos reservados - <a target="_blank" href="http://www.vnda.com.br/�
                 </pre>
                 <p>* exibir dados do usuário</p>
 
-                <h3>{% cartitems %}</h3>
+                <h3 id="cartitems">{% cartitems %}</h3>
                 <pre>
 {% cartitems  %}
   {{  item.image_url | resize: '234x' }}
@@ -244,8 +250,8 @@ Todos os direitos reservados - <a target="_blank" href="http://www.vnda.com.br/�
                   </tr>
                 </table>
 
-                <h3>{% products %}</h3>
-                <pre id="listar-produtos-por-id">
+                <h3 id="products">{% products %}</h3>
+                <pre>
 {% products tag:tag.name parent_tag:parent_tag_name page:params.page per_page:per_page  %}
   {{ product.image_url | resize: '234x' }}
   {{ product.url }}
@@ -322,7 +328,7 @@ OU
                 <p>Quem viu, viu também<br />
                   * geralmente utilizado na página de produto</p>
 
-                <h3>{% tags %}</h3>
+                <h3 id="tags">{% tags %}</h3>
                 <pre>
 {% tags product_id:product.id type:"marca" limit:1 %}
   {{ tag.name}}
@@ -629,7 +635,7 @@ $.post("{{ cart_url }}", { item_id: 999, cart_method: "Delete" }, function() {
                   </pre>
                   <p>Quando existir algum erro no calculo do frete >></p>
 
-                  <h2>Salvar Dados do Endereço</h2>
+                  <h2 id="address">Salvar Dados do Endereço</h2>
                   <p>A plataforma Vnda permite que pedidos sejam feitos tanto para pessoas físicas, quanto jurídicas. O que define quando é um ou outro é o campo documents, se ele possuir a chave cpf e for um CPF válido, então é pessoa física, se ele possuir a chave cnpj e for um CNPJ válido, é pessoa júridica.</p>
                   <pre>
 <span><</span>form action="{{ shipping_address_url }}" method="POST"<span>></span>
@@ -686,7 +692,7 @@ $.post("{{ cart_url }}", { item_id: 999, cart_method: "Delete" }, function() {
                   <p>Esse cadastro ainda pode ter os mesmos campos opcionais que o cadastro de pessoa fisica tem, além de seguir a mesma regra para os campos <i>city</i> e <i>state</i>.</p>
                   <p>O campo documents permite que você envie até cinco tipos de documentos diferentes. Você pode solicitar no cadastro documentos como, por exemplo, <i>RG e/ou Inscrição Estadual.</i></p>
 
-                  <h2>Enviar dados para pagamento</h2>
+                  <h2 id="payment">Enviar dados para pagamento</h2>
                   <pre>
 <span><</span>form action="{{ payment_url }}" method="POST"<span>></span>
   …
@@ -782,7 +788,7 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
                   <h2>Recursos</h3>
                   <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
 
-                  <h3>Formulário de Cadastro</h3>
+                  <h3 id="login">Formulário de Cadastro</h3>
                   <pre>
 <span><</span>form action="{{ login_url }}" method="post"<span>></span>
   <span><</span>input id="new_client_terms" name="new_client[terms]" type="hidden" value="on"<span>></span>
@@ -882,9 +888,8 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
     nada
 {% endwishlist %}
 
-para a listagem dos produtos utilize a tag {% products %}
-<a href="#listar-produtos-por-id" class="laranja">listar produtos por id's</a>
-                  </pre>
+* para a listagem dos produtos utilize a tag {% products %} <a href="#products">&raquo; ver código</a>
+                   </pre>
                   <p>* Mostrar lista do cliente</p>
                   <div></div><br>
                   <pre>
