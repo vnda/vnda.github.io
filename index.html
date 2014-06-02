@@ -245,7 +245,7 @@ Todos os direitos reservados - <a target="_blank" href="http://www.vnda.com.br/�
                 </table>
 
                 <h3>{% products %}</h3>
-                <pre>
+                <pre id="listar-produtos-por-id">
 {% products tag:tag.name parent_tag:parent_tag_name page:params.page per_page:per_page  %}
   {{ product.image_url | resize: '234x' }}
   {{ product.url }}
@@ -881,6 +881,9 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
 {% else %}
     nada
 {% endwishlist %}
+
+para a listagem dos produtos utilize a tag {% products %}
+<a href="#listar-produtos-por-id" class="laranja">listar produtos por id's</a>
                   </pre>
                   <p>* Mostrar lista do cliente</p>
                   <div></div><br>
@@ -912,14 +915,6 @@ $.post(
 )
                   </pre>
                   <p>* Adicionar via JS</p>
-
-<!-- {% products ids:"1,2,3,4,5" %}
-  {{product}}
-{% endproducts %}
-OU
-{% products ids:"5" %}
-  {{product}}
-{% endproducts %} -->
 
                   <h3>Notificações de e-mails</h3>
                   <p>A plataforma possui integração com <a href="https://madmimi.com/" target="_blank">Madmimi</a>, ferramenta que gerencia as campanhas de e-mails dos nossos clientes.</p>

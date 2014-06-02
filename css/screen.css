@@ -730,4 +730,4 @@ body  .vi { color: #66D9EF; } /* Name.Variable.Instance */
 body  .il { color: #666666 } /* Literal.Number.Integer.Long */
 body  .white { color: #fff }
 body  .yellow { color: #E6DB74 }
-body  .laranja 	 {color: #b24d19}
+body  .laranja 	 {color: #b24d19 !important}
