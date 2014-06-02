@@ -24,47 +24,24 @@
     <div class="content">
       <h2> Design </h2>
         <p>Sugerimos a seguinte ordem para criação das telas para os layout de um canal ecommerce que utilize a plataforma Vnda:</p>
-            <ul class="">
-              <li>
-                <p> <b>Home:</b> tela inicial do site, pode exibir produtos, banners, entre outras coisas. Esta tela deve considerar, caso exista, uma estrutura de header e footer utilizada em toco o canal. </p>
-              </li>
-              <li>
-                <p> <b>Categorias (tags):</b> tela de "categoria", exibe uma lista de produtos que estão vinculados a tag. Essa página também pode servir para exibir "sub-categorias". </p>
-              </li>
-              <li>
-                <p><b>Produto:</b> tela que exibe os detalhes dos produtos. Aqui ele pode selecionar as variantes e adicionar a variante selecionada ao carrinho.</p>
-              </li>
-              <li>
-                <p><b>Carrinho:</b> tela de carrinho, onde ficam listados os produtos comprados, o resumo da compra e onde o cliente faz o cálculo de frete, informando o CEP para entrega. Nesta página também fica o form onde o cliente seleciona o meio de entrega após informar o CEP.</p>
-              </li>
-              <li>
-                <p> <b>Pedido:</b> tela com o form no qual o cliente preenche com os dados de entrega do pedido. Geralmente essa página vem depois do cliente ter selecionado a meio de entrega (**cart.erb**)</p>
-              </li>
-              <li>
-                <p> <b>Pagamento:</b> tela onde serão exibidas para o cliente as formas de pagamento disponíveis no site. Aqui ele seleciona uma delas e informa os dados necessários para pagar pelo compra. Geralmente essa página vem depois do cliente informar os dados de entrega do pedido (**order.erb**). </p>
-              </li>
-              <li>
-                <p><b>Concluído Cartão:</b> tela de conclusão da compra, onde é exibida a mensagem que a compra foi efetuada com sucesso.</p>
-              </li>
-              <li>
-                <p><b>Concluído Boleto:</b> tela de conclusão da compra, onde é exibida a mensagem que a compra foi efetuada com sucesso deve conter o link para o impressão do boleto.</p>
-              </li>
-              <li>
-                <p><b>Página:</b> através deste template serão exibidas as páginas estáticas criadas no admin.</p>
-              </li>
-              <li>
-                <p><b>Busca:</b> tela que exibe o resultado da busca. Basicamente uma lista de produtos que batem com o termo de busca informado pelo cliente.</p>
-              </li>
-              <li>
-                <p><b>Login:</b> tela onde fica o form de login e signup e Facebook Connect.</p>
-              </li>
-              <li>
-                <p><b>Conta:</b> tela onde são exibidos os dados da conta do cliente, onde ele consulta os pedidos e os pontos adquiridos atráves do indicações do site (se for o caso). Nesta tela também deve ser usada para o form de alteração de nome, email e senha do cliente.</p>
-              </li>
-              <li>
-                <p><b>Erro 404:</b> HTML que será exibido quando uma página não for encontrada. Ele precisa replicar o header e o footer do site.</p>
-              </li>
-            </ul>
+        <h3>Nomenclatura dos arquivos</h3>
+            <p>
+              &nbsp;Página da Home: <a href="#home" style="color:blue !important">home.psd</a><br>
+              &nbsp;Página Categoria do Produtos: <a href="#tags" style="color:blue !important">tag.psd</a><br>
+              &nbsp;Página de Busca do Produto: <a href="#search" style="color:blue !important">search.psd</a><br>
+              &nbsp;Página de Detalhes do Produto: <a href="#products" style="color:blue !important">product.psd</a><br>
+              &nbsp;Página de Carrinho: <a href="#cartitems" style="color:blue !important">cart.psd</a><br>
+              &nbsp;Página de Endereço: <a href="#address" style="color:blue !important">address.psd</a><br>
+              &nbsp;Página de Pagamento: <a href="#payment" style="color:blue !important">payment.psd</a><br>
+              &nbsp;Página de Pedido Finalizado: <a href="#finished" style="color:blue !important">finished.psd</a><br>
+              &nbsp;Página de login: <a href="#login" style="color:blue !important">login.psd</a><br>
+              &nbsp;Página da Meus Pedidos: <a href="#login" style="color:blue !important">account.psd</a><br>
+              </p>
+        <h3>Dimensões para Mobile e Desktop </h3>
+        <p>Para melhorar a experiência em nossos site para versão mobile, utilizamos as seguintes dimensões de largura para a criação dos layouts</p>
+        <p>Dipositios celulares: menor 768px de largura</p>
+        <p>Tablets: maior ou igual 768px de largura</p>
+        <p>Desktop com maior ou igual 992px de largura</p>
 
               <h2>Front-End (HTML, CSS & JS) </h2>
               <p>Para melhorar a experiência no Setup da loja cabe ao desenvolvedor html respeitar as premissas abaixo e nos enviar o html conforme o padrão exigido pela vnda.</p>
