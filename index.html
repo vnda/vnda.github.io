@@ -864,26 +864,63 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
                   </pre>
                   <p>Para determinar o o local onde a descrição será dividida, deve-se colocar o texto “linhadecorte” na descrição do produto</p>
 
-                  <h3>Montar o wishlist</h3>
+                  <h3>Wishlist</h3>
                   <pre>
-{% products ids:"1,2,3,4,5" %}
+<span><</span>form action="{{ wishlist_url }}" method="POST"<span>></span>
+  <span><</span>input type="hidden" name="_method" value="DELETE"/<span>></span>
+  <span><</span>input type="hidden" name="client_id" value="{{client.id}}"/<span>></span>
+  <span><</span>input type="hidden" name="variant_id" value="{{wish.variant_id}}"/<span>></span>
+  <span><</span>button type="submit"<span>></span>Remover<span><</span>/button<span>></span>
+<span><</span>/form<span>></span>
+                  </pre>
+                  <p>* Deletar produto da lista (também pode ser por JS)</p>
+                  <div></div><br>
+                  <pre>
+{% wishlist client_id:client.id %}
+    {{wish}}
+{% else %}
+    nada
+{% endwishlist %}
+                  </pre>
+                  <p>* Mostrar lista do cliente</p>
+                  <div></div><br>
+                  <pre>
+{% wishlist client_id:client.id variant_id:2 %}
+    {{wish}}
+{% endwishlist %}}
+                  </pre>
+                  <p>* Consultar se produto está na lista</p>
+                  <div></div><br>
+
+                  <pre>
+<span><</span>form action="{{ wishlist_url }}" method="POST"<span>></span>
+  <span><</span>input type="text" name="client_id" value="{{client.id}}"/<span>></span>
+  <span><</span>input type="text" name="variant_id"/<span>></span>
+  <span><</span>button type="submit" value="Enviar"<span>></span>Enviar<span><</span>/button<span>></span>
+<span><</span>/form<span>></span>
+                  </pre>
+                  <p>* Adicionar na lista com html</p>
+                  <div></div><br>
+                  <pre>
+$.post(
+  "/lista_de_desejos",
+  { client_id: "15", variant_id: "4" },
+  function( data ) {
+    console.log("success");;
+  },
+  "json"
+)
+                  </pre>
+                  <p>* Adicionar via JS</p>
+
+<!-- {% products ids:"1,2,3,4,5" %}
   {{product}}
 {% endproducts %}
 OU
 {% products ids:"5" %}
   {{product}}
-{% endproducts %}
-                  </pre>
-                  <p>Listar produto para montar uma wishlist </p>
+{% endproducts %} -->
 
-                  <h3>Exibindo imagens estáticas</h3>
-                  <p>* devem estar no diretório /public/images</p>
-
-                  <pre>
-{{ “nome_do_arquivo.ext” | image_tag: “Texto alternativo” }}
-<span><</span>img src="{{ “nome_do_arquivo.ext” | image_url }}" alt=“Texto alternativo”/<span>></span>
-                  </pre>
-                  </p>
                   <h3>Notificações de e-mails</h3>
                   <p>A plataforma possui integração com <a href="https://madmimi.com/" target="_blank">Madmimi</a>, ferramenta que gerencia as campanhas de e-mails dos nossos clientes.</p>
                   <p>Atualmente disponibilizamos as seguintes notificações: </p>
@@ -932,6 +969,13 @@ exemplo-senha-cliente
                   você precisa alterar o DNS desse domínio. Para ip 54.232.217.234..</p>
 
                   <h2>Dicas</h2>
+                  <h3>Exibindo imagens estáticas</h3>
+                  <p>* devem estar no diretório /public/images</p>
+
+                  <pre>
+{{ “nome_do_arquivo.ext” | image_tag: “Texto alternativo” }}
+<span><</span>img src="{{ “nome_do_arquivo.ext” | image_url }}" alt=“Texto alternativo”/<span>></span>
+                  </pre>
                   <h3>Como listar produtos em promoção</h3>
                   <p>aguardando atualização...</p>
 
