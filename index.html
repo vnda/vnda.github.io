@@ -130,9 +130,9 @@ Todos os direitos reservados - <a target="_blank" href="http://www.vnda.com.br/�
   Carrinho Vazio
 {% endif %}
                 </pre>
-                <p>* O campo do CEP só deve aparecer quando o carrinho possuir ao menos 1 item, utilize {% if cart.items_count > 0 %}</p>
+                <p>* O campo do CEP só deve aparecer quando o carrinho possuir ao menos 1 item adicionado. Para verificar use {% if cart.items_count > 0 %} no .liquid.</p>
                 <div></div><br>
-                <p>Para excluir ou adicionar itens no carrinho é preciso informar através do formulário <span class="summary"><code><a href="#atualizar-item-carrinho" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
+                <p>Para excluir ou adicionar itens no carrinho é preciso informar através do formulário <span class="summary"><code><a href="#atualizar-item-carrinho" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
                 <pre>
 {% if template == "cart" %}
   {% unless shipping_address.zip %}
@@ -140,32 +140,60 @@ Todos os direitos reservados - <a target="_blank" href="http://www.vnda.com.br/�
 {% endunless %}
 {% endif %}
                 </pre>
-                <p>* O cupom de desconto só deve aparecer neste template, umas das formas é verificando se a tag "template" é igual a "cart" e se o cep ainda não foi informado.</p>
+                <p>* O cupom de desconto só deve aparecer neste template, umas das formas é verificando se a tag "template" é igual a "cart" e se o cep ainda não foi informado.<br>
+                 <span class="summary"><code><a href="#cupom-de-desconto" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
                 <div></div><br>
-                <p>Ápós o preechimento do CEP a url da loja é redirecionada para /frete. Também é listado o conteúdo da variável {{ shipping_method }} que contém os dados para montar o html do formulário de frete.<br> * use no action {{ shipping_method_url }} <span class="summary"><code><a href="#shippingmethods" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
+                <p>Ápós o preechimento do CEP a url da loja é redirecionada para /frete. Também é listado o conteúdo da variável {{ shipping_method }} que contém os dados para montar o html do formulário de frete.<br> * use no action {{ shipping_method_url }} <span class="summary"><code><a href="#shippingmethods" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
                 <p>Após validar e enviar o formulário do frete o site é redirencionado para a próxima etapa.</p>
                 <h3>Address.liquid</h3>
                 <p>3ª etapa do processo de compra</p>
                 <p>Template onde é exibido o formulário responsável por capturar as informações para entrega do pedido, assim como dados pessoais do cliente, como e-mail e CPF.</p>
-                <p><span class="summary"><code><a href="#address" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
+                <p><span class="summary"><code><a href="#address" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
 
                 <h3>Payment.liquid</h3>
                 <p> 3ª etapa do processo de compra. Aqui o cliente informa os dados do cartão de crédito ou dá inicio a geração do boleto. </p>
-                <p><span class="summary"><code><a href="#payment" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
+                <p><span class="summary"><code><a href="#payment" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
 
                 <h3>Finished.liquid</h3>
                 <p> 4ª e última etapa do processo de compra. Aqui são exibidas as informações do pedido, como o número e/ou o link para impressão do boleto, junto com a mensagem de conclusão da compra. </p>
 
                 <h3 id="Account.liquid">Account.liquid</h3>
                 <p> Template usado para exibir os dados da conta do cliente, os pedidos efetuados, assim como a situação deles. Nesta página o cliente também pode alterar os dados pessoais, como nome, e-mail e senha. </p>
-                <p><span class="summary"><code><a href="#ordes" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
+                <p><span class="summary"><code><a href="#ordes" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
 
                 <h3>Login.liquid</h3>
                 <p> Template usado tanto para novos cadastros quanto para logins de clientes já cadastrados. Desta página parte também o login via Facebook, que permite que clientes participem de promoções específicas.
-                <p><span class="summary"><code><a href="#login" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
+                <p><span class="summary"><code><a href="#login" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
                 <h3>Search.liquid</h3>
                 <p> Página que exibe o resultado de uma busca, este resultado é uma lista de produtos que fazem match com o termo buscado pelo cliente atráves da URL /busca?q=termo. </p>
-
+                <p>Os resultados da busca ficam armezanados na variável {{ products }}.</p>
+                <pre>
+{% for product in products %}
+  {{ product.image_url | resize: '234x' }}
+    {{ product.url }}
+    {{ product.reference }}
+    {{ product.description }}
+    {% if product.available %}
+      {% if product.on_sale %}
+        preço original: {{product.price | money_format}}
+        preço desconto: {{ product | apply_discount | money_format }}
+      {% else %}
+        preço: {{ product.price | money_format }}
+      {% endif %}
+    {% else %}
+     Produto Esgotado
+    {% endif %}
+{% endfor %}
+                </pre>
+                <p>Para montar o resultado da busca utilize {% for product in products %}, e detro desse loop é necessário chamas as tags corretas:</p>
+                <div></div><br>
+                <pre>
+{% if flash.search.error %}
+ {{ flash.search.error }}
+{% endif %}
+                </pre>
+                <p>Se não exister resultados na busca usar {{ flash.search.error }}.</p>
+                <p>Para mostrar o termo da busca  {{ params.q | strip_html }}</p>
                 <h3>Page.liquid </h3>
                 <p> A Vnda possui um pequeno CMS que pode ser utilizado para customizar certas páginas sem a necessidade de conhecimentos avançados de programação. É neste template que essas páginas são exibidas. </p>
 
@@ -797,6 +825,13 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
 <span><</span>/form<span>></span>
                   </pre>
                   <p>O form de cadastro deve usar a action {{ login_url }}</p>
+                  <div></div><br>
+                  <pre>
+{% if flash.signup.error %}
+  {{ flash.signup.error }}
+{% endif %}}
+                  </pre>
+                  <p>Quando existir algum erro no formulário de cadastro &raquo;</p>
 
                   <h3>Formulário de Login</h3>
                   <pre>
@@ -809,17 +844,38 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
                   <p>O form de login deve usar a action {{ login_url }}</p>
                   <div></div><br>
                   <pre>
-{{ flash.signup.error }}
-{{ flash.login.error }}
+{% if flash.login.error %}
+  {{ flash.login.error }}
+{% endif %}
                   </pre>
-                  <p>Quando existir algum erro no formulário de login ou cadastro.>> </p>
+                  <p>Quando existir algum erro no formulário de login &raquo;</p>
 
                   <h3>Formulário de Recuperar Senha </h3>
                   <pre>
 {{ flash.recover_password.ok }}
 {{ flash.recover_password.error }}
                   </pre>
-                  <p>Outra coisa que incluímos, foi uma mensagem de sucesso para o form de recuperar senha, além da mensagem de erro que já existia.</p>
+                  <p>Mensagem de sucesso e de erro para o form de recuperar senha.</p>
+
+                  <h3 id="cupom-de-desconto">Formulário de Cupom de Desconto</h3>
+                  <pre>
+<span><</span>form action="{{ coupon_url }}" method="post" class="coupon-form">
+    <span><</span>fieldset>
+        <span><</span>label for="coupon-code" class="coupon-label">INSIRA SEU CUPOM DE DESCONTO<span><</span>/label<span>></span>
+        <span><</span>input type="text" name="code" id="coupon-code" value="{{ cart.coupon_code }}"<span><</span>span>></span>
+        <span><</span>button type="submit" class="ir">OK<span><</span>/button<span>></span>
+    <span><</span>/fieldset<span>></span>
+<span><</span>/form<span>></span>
+                  </pre>
+                  <p>O form de cupom de desconto deve usar a action {{ coupon_url  }}</p>
+                  <div></div><br>
+
+                  <pre>
+{% if flash.coupon.error %}
+  {{ flash.coupon.error }}
+{% endif %}
+                  </pre>
+                  <p>Quando existir algum erro no formulário de cupom de desconto &raquo;</p>
 
                   <h3>Formulários WebForms</h3>
                   <pre>
