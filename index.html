@@ -109,24 +109,43 @@ Todos os direitos reservados - <a target="_blank" href="http://www.vnda.com.br/�
                  <p>Segue abaixo os templates disponíveis na plataforma:</p>
 
                 <h3>Layout.liquid</h3>
-                <p> Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates (exceto 404 e facebook). </p>
+                <p> Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates. </p>
 
                 <h3>Home.liquid</h3>
                 <p>Página inicial da loja, aqui podem ser exibidos produtos em destaque, banners, menus e qualquer outra informação que for necessária para atrair o cliente a navegar no resto do site.</p>
 
                 <h3>Tag.liquid</h3>
                 <p> Página que exibe produtos relacionados a uma tag. Tag é a forma de categorização utilizada pela Vnda para organizar os produtos. </p>
-                <p><span class="summary"><code><a href="#tags" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
 
                 <h3>Product.liquid</h3>
-                <p>Template para exibição do produto, suas imagens, produtos relacionados. Aqui também fica o formulário que permite adicionar o item ao carrinho, neste formulário o cliente pode selecionar qual variante do produto (cor, tamanho, etc) ele realmente quer.</p>
-                <p><span class="summary"><code><a href="#products" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
+                <p>Template para exibição do produto, suas imagens, produtos relacionados. Aqui também fica o formulário que permite adicionar o item ao carrinho, neste formulário o cliente pode selecionar qual atributo do produto (cor, tamanho, etc) ele realmente quer.</p>
 
                 <h3>Cart.liquid</h3>
-                <p> 1ª etapa do processo de compra. No template do carrinho são exibidos os itens já adicionados e onde pode ser feito o cálculo do frete. Pode exibir também um resumo do total do pedido. </p>
-                <p><span class="summary"><code><a href="#cartitems" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
-
+                <p>1ª etapa do processo de compra. <br>
+                Neste template é listados os produtos do carrinho que ficam armazenados na váriavel {{ cart }}, o resumo do carrinho(padrão no layout), o campo input para o cálcudo do CEP e o formulário de frete(métodos de entrega).<p>
+                <pre>
+{% if cart.items_count > 0 %}
+  ....
+{% else %}
+  Carrinho Vazio
+{% endif %}
+                </pre>
+                <p>* O campo do CEP só deve aparecer quando o carrinho possuir ao menos 1 item, utilize {% if cart.items_count > 0 %}</p>
+                <div></div><br>
+                <p>Para excluir ou adicionar itens no carrinho é preciso informar através do formulário <span class="summary"><code><a href="#atualizar-item-carrinho" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
+                <pre>
+{% if template == "cart" %}
+  {% unless shipping_address.zip %}
+    ...cupom de desconto
+{% endunless %}
+{% endif %}
+                </pre>
+                <p>* O cupom de desconto só deve aparecer neste template, umas das formas é verificando se a tag "template" é igual a "cart" e se o cep ainda não foi informado.</p>
+                <div></div><br>
+                <p>Ápós o preechimento do CEP a url da loja é redirecionada para /frete. Também é listado o conteúdo da variável {{ shipping_method }} que contém os dados para montar o html do formulário de frete.<br> * use no action {{ shipping_method_url }} <span class="summary"><code><a href="#shippingmethods" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
+                <p>Após validar e enviar o formulário do frete o site é redirencionado para a próxima etapa.</p>
                 <h3>Address.liquid</h3>
+                <p>3ª etapa do processo de compra</p>
                 <p>Template onde é exibido o formulário responsável por capturar as informações para entrega do pedido, assim como dados pessoais do cliente, como e-mail e CPF.</p>
                 <p><span class="summary"><code><a href="#address" class="laranja">&raquo; ver código no .liquid</a></code></span></p>
 
@@ -381,7 +400,7 @@ OU
                 <p>Listar imagens do produto<br />
                   * deve estar dentro de um loop {% products %}</p>
 
-                <h3>{% shippingmethods %}</h3>
+                <h3 id="shippingmethods">{% shippingmethods %}</h3>
                 <pre>
 {% shippingmethods %}
   {% if forloop.first %}
@@ -399,7 +418,8 @@ OU
                 </pre>
                 <p>Listar métodos de entrega<br />
                   * Após o envio do form frete adicionar esse código para listar métodos de entrega <br />
-                  * Não avançar nas etapas do carrinho sem ao menos um método escolhido</p>
+                  * Não avançar nas etapas do carrinho sem ao menos um método escolhido<br>
+                  * Use no action do form {{ shipping_method_url }}</p>
 
                 <h3>{% variants %}</h3>
                 <pre>
@@ -559,7 +579,7 @@ $.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
                       uma observação do cliente ou ainda uma imagem para ser impressa no produto.
                       Para enviar essas informações, basta criar os campos a seguinte forma &raquo;
                   </p>
-                  <h2>Atualizar item do carrinho</h2>
+                  <h2 id="atualizar-item-carrinho">Atualizar item do carrinho</h2>
                   <pre>
 <span><</span>form action="{{ cart_url }}" method="post"<span>></span>
   <span><</span>input type="hidden" name="_method" value="patch" /<span>></span>
@@ -591,7 +611,7 @@ $.post("{{ cart_url }}", { item_id: 999, cart_method: "Delete" }, function() {
 </pre>
                   <p>Ou via AJAX:</p>
 
-                  <h2>Calcular frete</h2>
+                  <h2 id="calcular-frete">Calcular frete</h2>
                   <pre>
 <span><</span>form action="{{ shipping_zip_url }}" method="post"<span>></span>
   <span><</span>fieldset<span>></span>
