@@ -158,8 +158,8 @@ Todos os direitos reservados - <a target="_blank" href="http://www.vnda.com.br/�
                 <p> 4ª e última etapa do processo de compra. Aqui são exibidas as informações do pedido, como o número e/ou o link para impressão do boleto, junto com a mensagem de conclusão da compra. </p>
 
                 <h3 id="Account.liquid">Account.liquid</h3>
-                <p> Template usado para exibir os dados da conta do cliente, os pedidos efetuados, assim como a situação deles. Nesta página o cliente também pode alterar os dados pessoais, como nome, e-mail e senha. </p>
-                <p><span class="summary"><code><a href="#ordes" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
+                <p>Template usado para exibir os dados da conta do cliente, os pedidos efetuados, assim como a situação deles. Nesta página o cliente também pode alterar os dados pessoais, como nome, e-mail e senha. </p>
+                <p>Os dados do pedido ficam armezados na variável {{ order }}<br><span class="summary"><code><a href="#orders" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
 
                 <h3>Login.liquid</h3>
                 <p> Template usado tanto para novos cadastros quanto para logins de clientes já cadastrados. Desta página parte também o login via Facebook, que permite que clientes participem de promoções específicas.
@@ -173,7 +173,7 @@ Todos os direitos reservados - <a target="_blank" href="http://www.vnda.com.br/�
     {{ product.url }}
     {{ product.reference }}
     {{ product.description }}
-    {% if product.available %}
+    {% if product .available %}
       {% if product.on_sale %}
         preço original: {{product.price | money_format}}
         preço desconto: {{ product | apply_discount | money_format }}
@@ -232,8 +232,8 @@ Todos os direitos reservados - <a target="_blank" href="http://www.vnda.com.br/�
   {{ order | order_status }}
   {{ order.total | money_format }}
 {% endorders  %}</pre>
-                <p> Listar pedidos que por padrão é utilizado no template <a href="#Account.liquid">account.liquid</a>. </p>
-                <p>obs: no template <a href="#Account.liquid">account</a> podemos enviar e exibir dados do usuário:</p>
+                <p>Listar pedidos é utilizado no template account.liquid. </p>
+                <p>* No template account.liquid é possível enviar e exibir dados do usuário:</p>
                 <div></div><br>
                 <pre>
 <span><</span>form action="{{acount_url}}" method="post"<span>></span>
