@@ -116,10 +116,32 @@ Todos os direitos reservados - <a target="_blank" href="http://www.vnda.com.br/�
 
                 <h3>Tag.liquid</h3>
                 <p> Página que exibe produtos relacionados a uma tag. Tag é a forma de categorização utilizada pela Vnda para organizar os produtos. </p>
+                <h4>Listar Produtos</h4>
+                <p>Aguardando atualizaçao...</p>
+                <h4>Criar Páginação</h4>
+                <pre>
+ {% if pagination.total_pages > 1 %}
+<span><</span>nav class="pagination"<span>></span>
+    <span><</span>span class="pagination"<span>></span>
+        Página {{ pagination.current_page }} de {{ pagination.total_pages }}
+        {% if pagination.prev_page %}
+            <span><</span>a href="{{ pagination.prev_url }}" class="previous"<span>></span>←<span><</span>/a<span>></span>
+        {% endif %}
+        {% if pagination.next_page %}
+            <span><</span>a href="{{ pagination.next_url }}" class="next"<span>></span>→<span><</span>/a<span>></span>
+        {% endif %}
+    <span><</span>/span<span>></span>
+<span><</span>/nav<span>></span>
+{% endif %}
+                  </pre>
+                  <p>O código da páginação deve ficar dentro do loop {% products %}</p>
 
                 <h3>Product.liquid</h3>
                 <p>Template para exibição do produto, suas imagens, produtos relacionados. Aqui também fica o formulário que permite adicionar o item ao carrinho, neste formulário o cliente pode selecionar qual atributo do produto (cor, tamanho, etc) ele realmente quer.</p>
-
+                <h4>Listar atributos no .liquid</h4>
+                <p>aguardando atualização...</p>
+                <h4>Listar atributos por javascript</h4>
+                <p>aguardando atualização...</p>
                 <h3>Cart.liquid</h3>
                 <p>1ª etapa do processo de compra. <br>
                 Neste template é listados os produtos do carrinho que ficam armazenados na váriavel {{ cart }}, o resumo do carrinho(padrão no layout), o campo input para o cálcudo do CEP e o formulário de frete(métodos de entrega).<p>
@@ -886,24 +908,6 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
                   </pre>
                   <p>* Os forms de contato devem usar a action /webform<br />
                   * Deve ser feito o cadastro do form no admin para pegar a key </p>
-
-                  <h3>Paginação</h3>
-                  <pre>
- {% if pagination.total_pages > 1 %}
-<span><</span>nav class="pagination"<span>></span>
-    <span><</span>span class="pagination"<span>></span>
-        Página {{ pagination.current_page }} de {{ pagination.total_pages }}
-        {% if pagination.prev_page %}
-            <span><</span>a href="{{ pagination.prev_url }}" class="previous"<span>></span>←<span><</span>/a<span>></span>
-        {% endif %}
-        {% if pagination.next_page %}
-            <span><</span>a href="{{ pagination.next_url }}" class="next"<span>></span>→<span><</span>/a<span>></span>
-        {% endif %}
-    <span><</span>/span<span>></span>
-<span><</span>/nav<span>></span>
-{% endif %}
-                  </pre>
-                  <p>O código da páginação deve ficar dentro do loop {% products %}</p>
 
                   <h3>Descrição do produto com múltiplas seções</h3>
                   <pre>
