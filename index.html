@@ -874,6 +874,14 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
 
                   <h3>Formulário de Recuperar Senha </h3>
                   <pre>
+<span><</span>form action="{{recover_password_url}}" method="post""<span>></span>
+  <span><</span>input type="text" name="email" required="required"<span>></span>
+  <span><</span>input type="submit" value="RECUPERAR SENHA"<span>></span>
+<span><</span>/form<span>></span>
+                  </pre>
+                  <p>O formulário de recuperar a senha deve usar action {{recover_password_url}}</p>
+                   <p>O usuário vai receber um email com a nova senha</p>
+                  <pre>
 {{ flash.recover_password.ok }}
 {{ flash.recover_password.error }}
                   </pre>
