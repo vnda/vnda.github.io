@@ -25,7 +25,7 @@
       <h2> Design </h2>
         <p>Sugerimos a seguinte ordem para criação das telas para os layout de um canal ecommerce que utilize a plataforma Vnda:</p>
         <h3>Nomenclatura dos arquivos</h3>
-            <p>
+            <!-- <p>
               &nbsp;Página da Home: <span class="laranja">home.psd</span><br>
               &nbsp;Página Categoria do Produtos: <span class="laranja">tag.psd</span><br>
               &nbsp;Página de Busca do Produto: <span class="laranja">search.psd</span><br>
@@ -36,39 +36,191 @@
               &nbsp;Página de Pedido Finalizado: <span class="laranja">finished.psd</span><br>
               &nbsp;Página de login: <span class="laranja">login.psd</span><br>
               &nbsp;Página da Meus Pedidos: <span class="laranja">account.psd</span><br>
-              </p>
-        <h3>Dimensões parass Mobile e Desktop </h3>
-        <p>Para melhorar a experiência em nossos site para versão mobile, utilizamos as seguintes dimensões de largura para a criação dos layouts</p>
-        <p>Dipositios celulares: menor 768px de largura</p>
-        <p>Tablets: maior ou igual 768px de largura</p>
-        <p>Desktop com maior ou igual 992px de largura</p>
+              </p> -->
+               <table>
+                <thead>
+                  <td style="width:200px;">Página</td>
+                  <td style="width:280px;"><span class="laranja">Entrega Layout(.psd ou .png)</span></td>
+                 </thead>
+                <tr>
+                  <td>Home</td>
+                   <td>
+                    <span class="laranja">home.psd</span>
+                   </td>
+                </tr>
+                <tr>
+                  <td>Categoria</td>
+                    <td>
+                    <span class="laranja">tag.psd</span>
+                   </td>
+                </tr>
+                <tr>
+                  <td>Busca do Produto</td>
+                   <td>
+                    <span class="laranja">search.psd</span>
+                   </td>
+                </tr>
+                <tr>
+                  <td>Detalhes do Produto</td>
+                   <td>
+                    <span class="laranja">product.psd</span>
+                   </td>
+                </tr>
+                <tr>
+                  <td>Checkout(Carrinho)</td>
+                    <td>
+                    <span class="laranja">cart.psd</span>
+                   </td>
+                </tr>
+                <tr>
+                  <td>Checkout(Endereço)</td>
+                     <td>
+                    <span class="laranja">address.psd</span>
+                   </td>
+                </tr>
+                <tr>
+                  <td>Checkout(Pagamento)</td>
+                  <td>
+                    <span class="laranja">payment.psd</span>
+                   </td>
+                </tr>
+                <tr>
+                  <td>Checkout(Pagamento)</td>
+                  <td>
+                    <span class="laranja">finished.psd</span>
+                   </td>
+                </tr>
+                <tr>
+                  <td>Login</td>
+                  <td>
+                    <span class="laranja">login.psd</span>
+                   </td>
+                </tr>
+                <tr>
+                  <td>Meus Pedidos</td>
+                   <td>
+                    <span class="laranja">account.psd</span>
+                   </td>
+                </tr>
+              </table>
+
+          <h3>Dimensões parass Mobile e Desktop </h3>
+          <p>Para melhorar a experiência em nossos site para versão mobile, utilizamos as seguintes dimensões de largura para a criação dos layouts</p>
+          <p>Dipositios celulares: menor 768px de largura</p>
+          <p>Tablets: maior ou igual 768px de largura</p>
+          <p>Desktop com maior ou igual 992px de largura</p>
 
               <h2>Front-End (HTML, CSS & JS) </h2>
               <p>Para melhorar a experiência no Setup da loja cabe ao desenvolvedor html respeitar as premissas abaixo e nos enviar o html conforme o padrão exigido pela vnda.</p>
 
-              <h3>Entregar html em módulos</h3>
+              <h3>Módulos e/ou includes</h3>
               <p>A utilização do comando include em PHP é essencial para a entrega do Html, pois possibilita a inclusão de várias partes de um documento em arquivos externos</p>
               <p>Enviar os módulos separados do <b> header.php e foorter.php</b><br>
                 <small>Fica livre o uso dos includes demais trechos de código repitidos</small>
               </p>
-
-              <h3>Nomenclatura dos diretórios</h3>
-              <pre>
-  vnda_stg_nome-loja/ *todos os arquivos <b>com o html</b> ficam na raiz do site
-  vnda_stg_nome-loja/public/images/
-  vnda_stg_nome-loja/public/javascripts/
-  vnda_stg_nome-loja/public/stylesheets/
-              </pre>
-              <p>
-                * Hierarquia e nomenclaturas das pastas conforme grid ao lado >><br>
-              </p>
-
               <h3>Nomenclatura dos arquivos</h3>
-              <p>
-                Use o nome dos arquivos de acordo com o <span class="laranja">templates do .liquid</span> <br />
+               <p>
+                Utilize o nome dos arquivos de acordo com os <span class="laranja">templates</span> usados na plataforma ecommerce da <span class="laranja"><a class="laranja" href="http://www.vnda.com.br" target="_blank">vnda</a>.</span> <br />
                obs: <b>.liquid</b> para <b>.php</b> <br>
-                &nbsp;Página da Home: <span class="laranja">home.liquid</span><br>
-                &nbsp;Página Categoria do Produtos: <span class="laranja">tag.liquid</span><br>
+               </p>
+               <table>
+                <thead>
+                  <td style="width:190px;">Página</td>
+                  <td><span class="laranja">Entrega(front-end)</span></td>
+                  <td>Setup(plataforma)</td>
+                </thead>
+                <tr>
+                  <td>Home</td>
+                   <td>
+                    <span class="laranja">home.php</span>
+                   </td>
+                  <td>
+                    <span class="">home.liquid</span>
+                   </td>
+                </tr>
+                <tr>
+                  <td>Categoria</td>
+                    <td>
+                    <span class="laranja">tag.php</span>
+                   </td>
+                  <td>
+                    <span class="">tag.liquid</span>
+                   </td>
+                </tr>
+                <tr>
+                  <td>Busca do Produto</td>
+                   <td>
+                    <span class="laranja">search.php</span>
+                   </td>
+                  <td>
+                    <span class="">search.liquid</span>
+                   </td>
+                </tr>
+                <tr>
+                  <td>Detalhes do Produto</td>
+                   <td>
+                    <span class="laranja">product.php</span>
+                   </td>
+                  <td>
+                    <span class="">product.liquid</span>
+                   </td>
+                </tr>
+                <tr>
+                  <td>Checkout(Carrinho)</td>
+                    <td>
+                    <span class="laranja">cart.php</span>
+                   </td>
+                  <td>
+                    <span class="">cart.liquid</span>
+                   </td>
+                </tr>
+                <tr>
+                  <td>Checkout(Endereço)</td>
+                     <td>
+                    <span class="laranja">address.php</span>
+                   </td>
+                  <td>
+                    <span class="">address.liquid</span>
+                   </td>
+                </tr>
+                <tr>
+                  <td>Checkout(Pagamento)</td>
+                  <td>
+                    <span class="laranja">payment.php</span>
+                   </td>
+                  <td>
+                    <span class="">payment.liquid</span>
+                   </td>
+                </tr>
+                <tr>
+                  <td>Checkout(Pagamento)</td>
+                  <td>
+                    <span class="laranja">finished.php</span>
+                   </td>
+                  <td>
+                    <span class="">finished.liquid</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Login</td>
+                  <td>
+                    <span class="laranja">login.php</span>
+                   </td>
+                  <td>
+                    <span class="">login.liquid</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Meus Pedidos</td>
+                   <td>
+                    <span class="laranja">account.php</span>
+                   </td>
+                  <td>
+                    <span class="">account.liquid</span>
+                   </td>
+                </tr>
+              </table>
+               <!--   &nbsp;<br>
                 &nbsp;Página de Busca do Produto: <span class="laranja">search.liquid</span><br>
                 &nbsp;Página de Detalhes do Produto: <span class="laranja">product.liquid</span><br>
                 &nbsp;Página de Carrinho: <span class="laranja">cart.liquid</span><br>
@@ -77,12 +229,33 @@
                 &nbsp;Página de Pedido Finalizado: <span class="laranja">finished.liquid</span><br>
                 &nbsp;Página de login: <span class="laranja">login.liquid</span><br>
                 &nbsp;Página da Meus Pedidos: <span class="laranja">account.liquid</span><br>
-                </p>
+                </p> -->
+
+              <h3>Nomenclatura dos diretórios</h3>
+              <table>
+                <thead>
+                  <td>Hierarquia e Nomenclaturas </td>
+                </thead>
+                <tr>
+                  <td style="width:480px;">
+                    vnda_stg_nome-loja/ *todos os arquivos <b>com o html</b>
+                   </td>
+                </tr>
+                  <tr>
+                  <td>vnda_stg_nome-loja/public/javascripts/</td>
+                </tr>
+                <tr>
+                  <td>vnda_stg_nome-loja/public/stylesheets/</td>
+                </tr>
+                <tr>
+                  <td>vnda_stg_nome-loja/public/images/</td>
+                </tr>
+              </table>
 
                 <h3>Html 5 Padrão 3WC</h3>
                 <p>Os Padrões Web são recomendações do W3C (World Wide Web Consortium), as quais são destinadas a orientar os desenvolvedores para o uso de boas práticas que tornam a web acessível para todos.</p>
                 <h4>Validar HTML 5</h4>
-                <p>Validador Online   <a href="http://validator.w3.org/" target="_blank">http://validator.w3.org/</a></p>
+                <p>Validador Online   <a href="http://validator.w3.org/" class="default" target="_blank">http://validator.w3.org/</a></p>
                 <h3>ItemScope</h3>
                   <pre>
 <span><</span>div itemscope itemtype="http://schema.org/Organization"<span>></span>
@@ -1054,8 +1227,8 @@ exemplo-senha-cliente
     </div>
   </div>
   <!-- Google Tag Manager -->
-  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script>
-  <!-- End Google Tag Manager -->
+<!--   <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script>
+ -->  <!-- End Google Tag Manager -->
 
   <script src="js/jquery-ui-1.9.1.custom.min.js"></script>
   <script src="js/jquery.tocify.js"></script>
