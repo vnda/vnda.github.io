@@ -302,7 +302,11 @@
   <script>
     $(function() {
       var toc = $("#headings").tocify({
-        selectors: "h2,h3,h4,h5"
+        selectors: "h2,h3,h4,h5",
+        scrollHistory: true,
+        hashGenerator: function(text, element) {
+          return element[0].getAttribute('id');
+        }
       }).data("toc-tocify");
     });
     $( document ).load(function() {
