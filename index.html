@@ -22,9 +22,9 @@
   </div>
   <div class="page-wrapper">
     <div class="content">
-      <h2> Design </h2>
+      <h2 id="Design">Design</h2>
         <p>Sugerimos a seguinte ordem para criação das telas para os layout de um canal ecommerce que utilize a plataforma Vnda:</p>
-        <h3>Nomenclatura dos arquivos</h3>
+        <h3 id="Nome dos arquivos">Nome dos arquivos</h3>
             <!-- <p>
               &nbsp;Página da Home: <span class="laranja">home.psd</span><br>
               &nbsp;Página Categoria do Produtos: <span class="laranja">tag.psd</span><br>
@@ -40,7 +40,7 @@
                <table>
                 <thead>
                   <td style="width:200px;">Página</td>
-                  <td style="width:280px;"><span class="laranja">Entrega Layout(.psd ou .png)</span></td>
+                  <td style="width:280px;"><span class="laranja">Arquivo(.psd ou .png)</span></td>
                  </thead>
                 <tr>
                   <td>Home</td>
@@ -104,35 +104,38 @@
                 </tr>
               </table>
 
-              <h3>Dimensões parass Mobile e Desktop </h3>
+              <h3 id="Dimensões parass Mobile e Desktop">Dimensões parass Mobile e Desktop </h3>
               <p>Para melhorar a experiência em nossos site para versão mobile, utilizamos as seguintes dimensões de largura para a criação dos layouts</p>
               <p>Dipositios celulares: menor 768px de largura</p>
               <p>Tablets: maior ou igual 768px de largura</p>
               <p>Desktop com maior ou igual 992px de largura</p>
 
-              <h3>Requisitos do layout</h3>
+              <h3 id="Requisitos do layout">Requisitos do layout</h3>
+              <p>
+                Podemos destacar alguns pontos básicos que devem estar visível na entrega do layout:<br>
+              </p>
 
-              <h4>Assinatura Vnda no Rodapé</h3>
+              <h4 id="Assinatura Vnda no rodapé">Assinatura Vnda no rodapé</h3>
               <pre>
     Todos os direitos reservados - <a target="_blank" href="http://www.vnda.com.br/‎">Vnda Tecnologia de E-commerce</a>
               </pre>
               <p>* assinatura da Vnda no rodapé, usando uma cor para destacar (um pouco) o link</p>
 
-              <h4>Enviar Favico</h4>
+              <h4 id="Enviar Favico">Enviar Favico</h4>
               <p>Criar uma imagem png e enviar em um arquivo separado na dimensão 16x16 ou 32x32.</p>
 
-              <h2>Front-End (HTML, CSS & JS) </h2>
+              <h2 id="Front-End (HTML, CSS & JS)">Front-End (HTML, CSS & JS)</h2>
               <p>Para melhorar a experiência no Setup da loja cabe ao desenvolvedor html respeitar as premissas abaixo e nos enviar o html conforme o padrão exigido pela vnda.</p>
 
-              <h3>Módulos</h3>
+              <h3 id="Módulos">Módulos</h3>
               <p>Módulo  é a parte do site responsável por uma tarefa bem definida e que pode ser acoplado a um site para permitir ao mesmo usar um determinado bloco de código.<br>
                <small>Ex: Topo e Rodapé.</small></p>
-              <h4>Includes topo.php e footer.php</h4>
+              <h4 id="Includes topo.php e footer.php">Includes topo.php e footer.php</h4>
               <p>Tratando-se um linguagem de simples configuração e fácil execução do comando básico "include", utilizamos como padrão parar a entrega(front-end) <span class="laranja">.php</span>.
               <p>Criar um arquivo topo.php e outro footer.php<br>
                 <small>Fica livre o uso dos includes demais trechos de código repitidos</small>
               </p>
-              <h3>Nome dos arquivos</h3>
+              <h3 id="Nome dos arquivos">Nome dos arquivos</h3>
                <p>
                 Utilize o nome dos arquivos de acordo com os <span class="laranja">templates</span> usados na plataforma ecommerce da <span class="laranja"><a class="laranja" href="http://www.vnda.com.br" target="_blank">vnda</a>.</span> <br />
                obs: <b>.liquid</b> para <b>.php</b> <br>
@@ -245,7 +248,7 @@
                 &nbsp;Página da Meus Pedidos: <span class="laranja">account.liquid</span><br>
                 </p> -->
 
-              <h3>Nome dos diretórios</h3>
+              <h3 id="Nome dos diretórios">Nome dos diretórios</h3>
               <table>
                 <thead>
                   <td>Hierarquia e Nomenclaturas </td>
@@ -266,12 +269,15 @@
                 </tr>
               </table>
 
-                <h3>Requisitos Html</h3>
-                <h4>Html 5 Padrão 3WC</h4>
+                <h3 id="Requisitos Html">Requisitos Html</h3>
+                <p>Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+                Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum</p>
+
+                <h4 id="Html 5 Padrão 3WC">Html 5 Padrão 3WC</h4>
                 <p>Os Padrões Web são recomendações do W3C (World Wide Web Consortium), as quais são destinadas a orientar os desenvolvedores para o uso de boas práticas que tornam a web acessível para todos.</p>
-                <h4>Validar HTML 5</h4>
+                <h4 id="Validar HTML 5">Validar HTML 5</h4>
                 <p>Validador Online   <a href="http://validator.w3.org/" class="default" target="_blank">http://validator.w3.org/</a></p>
-                <h4>ItemScope</h4>
+                <h4 id="ItemScope">ItemScope</h4>
                   <pre>
 <span><</span>div itemscope itemtype="http://schema.org/Organization"<span>></span>
   <span><</span>a itemprop="url" href="{{ home_url }}">{{store.name}}<span><</span>/a<span>></span>
@@ -282,27 +288,27 @@
                   * o código abaixo deve ser incluído, estando visível ou não
                 </p>
 
-                <h2> Sobre o liquid</h2>
+                <h2 id="Sobre o liquid">Sobre o liquid</h2>
                 <p>Liquid é a linguagem de programação é responsável por implementar os templates desenvolvidos e utilizados pela Vnda, processando os arquivos modelo .liquid</p>
 
-                <h2>Templates</h2>
+                <h2 id="Templates">Templates</h2>
                 <p>Os templates ficam na raiz da pasta compartilhada no Dropbox onde todos
                  os arquivo são salvos na extensão .liquid</p>
                  <p>Dentro da raiz ficam os diretórios "images" "stylesheets" "javascript" e "page"</p>
                  <p>Dentro do diretórios page/ é gerado os arquivos de extensão .html das página que são criados no admin</p>
                  <p>Segue abaixo os templates disponíveis na plataforma:</p>
 
-                <h3>Layout.liquid</h3>
+                <h3 id="Layout.liquid">Layout.liquid</h3>
                 <p> Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates. </p>
 
-                <h3>Home.liquid</h3>
+                <h3 id="Home.liquid">Home.liquid</h3>
                 <p>Página inicial da loja, aqui podem ser exibidos produtos em destaque, banners, menus e qualquer outra informação que for necessária para atrair o cliente a navegar no resto do site.</p>
 
-                <h3>Tag.liquid</h3>
+                <h3 id="Tag.liquid">Tag.liquid</h3>
                 <p> Página que exibe produtos relacionados a uma tag. Tag é a forma de categorização utilizada pela Vnda para organizar os produtos. </p>
-                <h4>Listar Produtos</h4>
+                <h4 id="Listar Produtos">Listar Produtos</h4>
                 <p>Aguardando atualizaçao...</p>
-                <h4>Criar Páginação</h4>
+                <h4 id="Criar Páginação">Criar Páginação</h4>
                 <pre>
  {% if pagination.total_pages > 1 %}
 <span><</span>nav class="pagination"<span>></span>
@@ -320,13 +326,13 @@
                   </pre>
                   <p>O código da páginação deve ficar dentro do loop {% products %}</p>
 
-                <h3>Product.liquid</h3>
+                <h3 id="Product.liquid">Product.liquid</h3>
                 <p>Template para exibição do produto, suas imagens, produtos relacionados. Aqui também fica o formulário que permite adicionar o item ao carrinho, neste formulário o cliente pode selecionar qual atributo do produto (cor, tamanho, etc) ele realmente quer.</p>
-                <h4>Listar atributos no .liquid</h4>
+                <h4 id="Listar atributos no .liquid">Listar atributos no .liquid</h4>
                 <p>aguardando atualização...</p>
-                <h4>Listar atributos por javascript</h4>
+                <h4 id="Listar atributos por javascript">Listar atributos por javascript</h4>
                 <p>aguardando atualização...</p>
-                <h3>Cart.liquid</h3>
+                <h3 id="Cart.liquid">Cart.liquid</h3>
                 <p>1ª etapa do processo de compra. <br>
                 Neste template é listados os produtos do carrinho que ficam armazenados na váriavel {{ cart }}, o resumo do carrinho(padrão no layout), o campo input para o cálcudo do CEP e o formulário de frete(métodos de entrega).<p>
                 <pre>
@@ -338,7 +344,7 @@
                 </pre>
                 <p>* O campo do CEP só deve aparecer quando o carrinho possuir ao menos 1 item adicionado. Para verificar use {% if cart.items_count > 0 %} no .liquid.</p>
                 <div></div><br>
-                <p>Para excluir ou adicionar itens no carrinho é preciso informar através do formulário <span class="summary"><code><a href="#atualizar-item-carrinho" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
+                <p>Para excluir ou adicionar itens no carrinho é preciso informar através do formulário <span class="summary"><code><a href="#Atualizar item do carrinho" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
                 <pre>
 {% if template == "cart" %}
   {% unless shipping_address.zip %}
@@ -347,30 +353,31 @@
 {% endif %}
                 </pre>
                 <p>* O cupom de desconto só deve aparecer neste template, umas das formas é verificando se a tag "template" é igual a "cart" e se o cep ainda não foi informado.<br>
-                 <span class="summary"><code><a href="#cupom-de-desconto" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
+                 <span class="summary"><code><a href="#Formulário de Cupom de Desconto" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
                 <div></div><br>
-                <p>Ápós o preechimento do CEP a url da loja é redirecionada para /frete. Também é listado o conteúdo da variável {{ shipping_method }} que contém os dados para montar o html do formulário de frete.<br> * use no action {{ shipping_method_url }} <span class="summary"><code><a href="#shippingmethods" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
+                <p>Ápós o preechimento do CEP a url da loja é redirecionada para /frete. Também é listado o conteúdo da variável {{ shipping_method }} que contém os dados para montar o html do formulário de frete.<br> * use no action {{ shipping_method_url }} <span class="summary"><code><a href="{% shippingmethods %}" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
                 <p>Após validar e enviar o formulário do frete o site é redirencionado para a próxima etapa.</p>
-                <h3>Address.liquid</h3>
+
+                <h3 id="Address.liquid">Address.liquid</h3>
                 <p>3ª etapa do processo de compra</p>
                 <p>Template onde é exibido o formulário responsável por capturar as informações para entrega do pedido, assim como dados pessoais do cliente, como e-mail e CPF.</p>
-                <p><span class="summary"><code><a href="#address" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
+                <p><span class="summary"><code><a href="#Salvar Dados do Endereço" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
 
-                <h3>Payment.liquid</h3>
+                <h3 id="Payment.liquid">Payment.liquid</h3>
                 <p> 3ª etapa do processo de compra. Aqui o cliente informa os dados do cartão de crédito ou dá inicio a geração do boleto. </p>
-                <p><span class="summary"><code><a href="#payment" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
+                <p><span class="summary"><code><a href="#Enviar dados para pagamento" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
 
-                <h3>Finished.liquid</h3>
+                <h3 id="Finished.liquid">Finished.liquid</h3>
                 <p> 4ª e última etapa do processo de compra. Aqui são exibidas as informações do pedido, como o número e/ou o link para impressão do boleto, junto com a mensagem de conclusão da compra. </p>
 
                 <h3 id="Account.liquid">Account.liquid</h3>
                 <p>Template usado para exibir os dados da conta do cliente, os pedidos efetuados, assim como a situação deles. Nesta página o cliente também pode alterar os dados pessoais, como nome, e-mail e senha. </p>
                 <p>Os dados do pedido ficam armezados na variável {{ order }}<br><span class="summary"><code><a href="#orders" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
 
-                <h3>Login.liquid</h3>
+                <h3 id="Login.liquid">Login.liquid</h3>
                 <p> Template usado tanto para novos cadastros quanto para logins de clientes já cadastrados. Desta página parte também o login via Facebook, que permite que clientes participem de promoções específicas.
-                <p><span class="summary"><code><a href="#login" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
-                <h3>Search.liquid</h3>
+                <p><span class="summary"><code><a href="#Formulário de Cadastro" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
+                <h3 id="Search.liquid">Search.liquid</h3>
                 <p> Página que exibe o resultado de uma busca, este resultado é uma lista de produtos que fazem match com o termo buscado pelo cliente atráves da URL /busca?q=termo. </p>
                 <p>Os resultados da busca ficam armezanados na variável {{ products }}.</p>
                 <pre>
@@ -400,10 +407,10 @@
                 </pre>
                 <p>Se não exister resultados na busca usar {{ flash.search.error }}.</p>
                 <p>Para mostrar o termo da busca  {{ params.q | strip_html }}</p>
-                <h3>Page.liquid </h3>
+                <h3 id="Page.liquid">Page.liquid</h3>
                 <p> A Vnda possui um pequeno CMS que pode ser utilizado para customizar certas páginas sem a necessidade de conhecimentos avançados de programação. É neste template que essas páginas são exibidas. </p>
 
-                <h2>Como Usar o Liquid?</h3>
+                <h2 id="Como Usar o Liquid?">Como Usar o Liquid?</h3>
                             <pre>
 {% assign order = "false" %}
 {% orders client_id:client.id %}
@@ -426,7 +433,7 @@
                   Você também pode usar <b>filtros para alterar a saída retornado.</b></p>
                 <p>Para usar o líquido, você vai precisar de recorrer a uma combinação de lógica e de saída de etiquetas usando operadores líquidos. Acções com liquidez muitos dos mesmos operadores como outras linguagens de programação:</p>
 
-                <h2>Tags personalizadas da Vnda</h2>
+                <h2 id="Tags personalizadas da Vnda">Tags personalizadas da Vnda</h2>
                 <p> A plataforma atende com um conjunto de tags responsável por tornar a aplicação dinâmica.</p>
 
                 <h3 id="orders">{% orders %}</h3>
@@ -570,7 +577,7 @@ OU
                 <p>Listar tags<br />
                   * aceita o parâmetro "limit, type, product_id </p>
 
-                <h3>{% tag %}</h3>
+                <h3 id="{% tag %}">{% tag %}</h3>
                 <pre>
 {% tag id:"categoria" %}
  {{ tag.name}}
@@ -583,7 +590,7 @@ OU
                 <p>Listar tag pelo "id"</p>
                 <p>Assim que uma tag é cadastrado no admin se torna acessível desde que seja no .liquid informado o parêmentro id</p>
 
-                <h3>{% Menus %}</h3>
+                <h3 id="{% Menus %}">{% Menus %}</h3>
             <pre>
 {% menus position:"nome_da_posicao_do_menu_no_admin" %}
   {{ menu.url }} {{ menu.title }}
@@ -606,11 +613,11 @@ OU
   {% if forloop.last %}<span><</span>/ul<span>></span>{% endif %}
 {% endmenus %}
 </pre>
-                  <h3>{% page %}</h3>
+                  <h3 id="{% page %}">{% page %}</h3>
                   <pre>{% page id:'bloco' %}</pre>
                   <p>Listar conteúdo de uma page<br />
 
-                  <h3>{% banners %}</h3>
+                  <h3 id="{% banners %}">{% banners %}</h3>
                   <pre>
 {% banners tag:"nome_da_posicao_no_admin" %}
   {{ banner.title }}
@@ -625,7 +632,7 @@ OU
                 <p>Listar banners<br />
                   * loop para exibir os banners </p>
 
-                <h3>{% images %}</h3>
+                <h3 id="{% images %}">{% images %}</h3>
                 <pre>
 {% images %}
   {{image}}
@@ -634,7 +641,7 @@ OU
                 <p>Listar imagens do produto<br />
                   * deve estar dentro de um loop {% products %}</p>
 
-                <h3 id="shippingmethods">{% shippingmethods %}</h3>
+                <h3 id="{% shippingmethods %}">{% shippingmethods %}</h3>
                 <pre>
 {% shippingmethods %}
   {% if forloop.first %}
@@ -655,7 +662,7 @@ OU
                   * Não avançar nas etapas do carrinho sem ao menos um método escolhido<br>
                   * Use no action do form {{ shipping_method_url }}</p>
 
-                <h3>{% variants %}</h3>
+                <h3 id="{% variants %}">{% variants %}</h3>
                 <pre>
 * Exibir todas as variantes de um produto
 {% variants product_id:product.id %}
@@ -672,17 +679,17 @@ OU
                 <p>Listar variantes pelo SKU do produto<br />
                   * É possivel acessar uma variant </p>
 
-                  <h3>{% variant %}</h3>
-<pre>
+                  <h3 id="{% variant %}">{% variant %}</h3>
+                  <pre>
 {% variant sku:12001 %}
   {{ variant }}
 {% else %}
   variante não encontrada
 {% endvariant %}
-</pre>
+                  </pre>
                   <p>* Exibir uma variante, pelo SKU</p>
 
-                  <h3>{% videos %}</h3>
+                  <h3 id="{% videos %}">{% videos %}</h3>
                   <pre>
 {% videos %}
   {{video.embed_url}} // lista a url cadastrada no painel
@@ -691,7 +698,7 @@ OU
                   </pre>
                   <p>Listar vídeos de um produto</p>
 
-                  <h3>{% sizes %}</h3>
+                  <h3 id="{% sizes %}">{% sizes %}</h3>
 <pre>
 {% sizes tag:’nome-da-tag’, parent_tag:’outra-tag’ %}
   {{ size.value }}
@@ -700,7 +707,7 @@ OU
 </pre>
                   <p>Listar atributos tamanhos (deprecate)</p>
 
-                  <h3>{% colors %}</h3>
+                  <h3 id="{% colors %}">{% colors %}</h3>
 <pre>
 {% colors tag:'nome-da-tag' %}
   {{ color.value }}
@@ -709,7 +716,7 @@ OU
                 <p>Listar atributos cor (deprecate)</p>
 </pre>
 
-                <h3>{% opengraphfor  %}</h3>
+                <h3 id="{% opengraphfor %}">{% opengraphfor %}</h3>
                 <pre>
 {% unless opengraph %}
   {% if template == "tag" %}
@@ -736,7 +743,7 @@ OU
                 * Meta tags e opengraph devem ser dinâmicas <br />
                 * Usar {% opengraphfor %} para aplicar Meta Title e Description nas páginas internas da loja.</p>
 
-                <h3>{% contentfor  %}</h3>
+                <h3 id="{% contentfor %}">{% contentfor %}</h3>
                 <pre>
 {% contentfor exemplo %}
   ... conteúdo armazenado na varianvel "exemplo"
@@ -747,7 +754,7 @@ OU
                 <p>Armazendo conteúdo com a tag {% contentfor %}<br />
                 *Salvar e exibir conteúdo em outros locais do template .liquid</p>
 
-                <h2>Enviar Produto ao Carrinho</h2>
+                <h2 id="Enviar Produto ao Carrinho">Enviar Produto ao Carrinho</h2>
                 <p>
                   Para adicionar itens ao carrinho, você precisa fazer um POST para a URL definida na variável {{ cart_url }}, passando dois campos:<p>
 
@@ -781,12 +788,12 @@ OU
                   </pre>
                   <p>Em caso de o produto ter variantes &raquo; </p>
                   <div></div><br>
-<pre>
+                  <pre>
 // deprecate, atributos com modelo antigo
 $.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
   alert("Item adicionado com sucesso");
 });
-</pre>
+                  </pre>
                   <p>OU via AJAX &raquo;</p>
                  <div></div><br>
                   <p>
@@ -813,7 +820,7 @@ $.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
                       uma observação do cliente ou ainda uma imagem para ser impressa no produto.
                       Para enviar essas informações, basta criar os campos a seguinte forma &raquo;
                   </p>
-                  <h2 id="atualizar-item-carrinho">Atualizar item do carrinho</h2>
+                  <h2 id="Atualizar item do carrinho">Atualizar item do carrinho</h2>
                   <pre>
 <span><</span>form action="{{ cart_url }}" method="post"<span>></span>
   <span><</span>input type="hidden" name="_method" value="patch" /<span>></span>
@@ -824,7 +831,8 @@ $.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
                   </pre>
                   <p>Para alterar a quantidade  de item do carrinho,
              você precisa fazer um POST para a URL definida na variável {{ cart_url }}<br>
-                  <h2>Remover item do carrinho</h2>
+
+                  <h2 id="Remover item do carrinho">Remover item do carrinho</h2>
                   <pre>
 <span><</span>form action="{{ cart_url }}" method="post"<span>></span>
   <span><</span>input type="hidden" name="_method" value="patch" /<span>></span>
@@ -845,7 +853,7 @@ $.post("{{ cart_url }}", { item_id: 999, cart_method: "Delete" }, function() {
 </pre>
                   <p>Ou via AJAX:</p>
 
-                  <h2 id="calcular-frete">Calcular frete</h2>
+                  <h2 id="Calcular frete">Calcular frete</h2>
                   <pre>
 <span><</span>form action="{{ shipping_zip_url }}" method="post"<span>></span>
   <span><</span>fieldset<span>></span>
@@ -867,7 +875,7 @@ $.post("{{ cart_url }}", { item_id: 999, cart_method: "Delete" }, function() {
                   </pre>
                   <p>Quando existir algum erro no calculo do frete >></p>
 
-                  <h2 id="address">Salvar Dados do Endereço</h2>
+                  <h2 id="Salvar Dados do Endereço">Salvar Dados do Endereço</h2>
                   <p>A plataforma Vnda permite que pedidos sejam feitos tanto para pessoas físicas, quanto jurídicas. O que define quando é um ou outro é o campo documents, se ele possuir a chave cpf e for um CPF válido, então é pessoa física, se ele possuir a chave cnpj e for um CNPJ válido, é pessoa júridica.</p>
                   <pre>
 <span><</span>form action="{{ shipping_address_url }}" method="POST"<span>></span>
@@ -877,54 +885,129 @@ $.post("{{ cart_url }}", { item_id: 999, cart_method: "Delete" }, function() {
 
                   <p>O formulário deve ser enviado para a URL definida na variável {{ shipping_address_url }}.</p></p>
                   <div></div><br />
-                  <h3>Pessoa Física</h3>
-                  <pre>
-                    <ul>
-                      <li>first_name: Primeiro nome do cliente.</li>
-                      <li>last_name: Sobrenome do cliente.</li>
-                      <li>email: Um e-mail válido.</li>
-                      <li>documents[cpf]: CPF válido.</li>
-                      <li>phone_area: Código de área do um telefone do cliente.</li>
-                      <li>phone: Número de um telefone do cliente.</li>
-                      <li>street_name: Nome da rua que o pedido será enviado.</li>
-                      <li>street_number: Número da casa/prédio que o pedido será enviado.</li>
-                      <li>neighborhood: Nome do bairro que o pedido será enviado.</li>
-                    </ul>
-                 </pre>
-                  <p>O cadastro de pessoa fisica, exige os seguinte campos:</p>
+                  <h3 id="Pessoa Física">Pessoa Física</h3>
 
-                  <div></div><br />
-                  <pre>
-<ul>
-  <li>cellphone_area: Código de área de um celular do cliente.</li>
-  <li>cellphone: Número de um telefone celular do cliente.</li>
-  <li>complement: Informação como número apartamento/casa/lote do cliente. Ou qualquer outra informação necessária para a entrega do pedido.</li>
-</ul>
-                  </pre>
-                  <p>Campos opcionais:</p>
-                  <div></div><br />
-                  <p>Os campos <i>city</i> e <i>state</i> são sempre extraídos do CEP que foi informado pelo cliente e não podem ser alterado sem que o CEP seja informado novamente e o frete seja recalculado.</p>
-                  <h3>Pessoa Júridica</h3>
-                  <pre>
-                  <ul>
-                    <li>first_name: Primeiro nome da pessoa que está realizando a compra.</li>
-                    <li>last_name: Sobrenome da pessoa que está realizando a compra.</li>
-                    <li>company_name: Nome da empresa.</li>
-                    <li>email: Um e-mail válido.</li>
-                    <li>documents[cnpj]: CNPJ válido.</li>
-                    <li>phone_area: Código de área do telefone da empresa.</li>
-                    <li>phone: Número do telefone da empresa.</li>
-                    <li>street_name: Nome da rua que o pedido será enviado.</li>
-                    <li>street_number: Número da casa/prédio que o pedido será enviado.</li>
-                    <li>neighborhood: Nome do bairro que o pedido será enviado.</li>
-                  </ul>
-                  </pre>
+                  <p>O cadastro de pessoa fisica, exige os seguinte campos:</p>
+                  <p>Antes de confirir a tabela abaixo, é importante para seu conhecimento compreender que os campos <i class="laranja">zip</i> e <i class="laranja">state</i> são sempre extraídos do CEP que foi informado pelo cliente e não podem ser alterado sem que o CEP seja informado novamente e o frete seja recalculado.</p>
+                  <table>
+                    <thead>
+                    <tr>
+                      <td style="width:160px;">Input "name"</td>
+                      <td>Descrição</td>
+                    </tr>
+                    </thead>
+                      <tr>
+                        <td>first_name</td>
+                        <td>Primeiro nome do cliente.</td>
+                      </tr>
+                      <tr>
+                        <td>last_name</td>
+                        <td>Sobrenome do cliente.</td>
+                      </tr>
+                      <tr>
+                        <td>email</td>
+                        <td>Um e-mail válido.</td>
+                      </tr>
+                      <tr>
+                        <td>documents[cpf]</td>
+                        <td>CPF válido.</td>
+                      </tr>
+                      <tr>
+                        <td>phone_area</td>
+                        <td>Código de área do um telefone do cliente.</td>
+                      </tr>
+                      <tr>
+                        <td>phone</td>
+                        <td>Número de um telefone do cliente.</td>
+                      </tr>
+                      <tr>
+                        <td>street_name</td>
+                        <td>Nome da rua que o pedido será enviado.</td>
+                      </tr>
+                      <tr>
+                        <td>street_number</td>
+                        <td>Número da casa/prédio que o pedido será enviado.</td>
+                      </tr>
+                      <tr>
+                        <td>neighborhood</td>
+                        <td>Nome do bairro que o pedido será enviado.</td>
+                      </tr>
+                      <tfoot>
+                        <tr>
+                          <td class="title"><span class="laranja">**Campos opcionais</span></td>
+                          <td class="title">Descrição</td>
+                        </tr>
+                        <tr>
+                          <td>cellphone_area</td>
+                          <td>Código de área de um celular do cliente.</td>
+                        </tr>
+                         <tr>
+                          <td>cellphone</td>
+                          <td>Número de um telefone celular do cliente.</td>
+                         </tr>
+                         <tr>
+                          <td>complement</td>
+                          <td>Informação como número apartamento/casa/lote do cliente. Ou qualquer outra informação necessária para a entrega do pedido.</td>
+                        </tr>
+                      </tfoot>
+                 </table>
+                  <h3 id="Pessoa Júridica">Pessoa Júridica</h3>
                   <p>O cadastro de pessoa júridica necessita dos seguintes campos:</p>
 
                   <p>Esse cadastro ainda pode ter os mesmos campos opcionais que o cadastro de pessoa fisica tem, além de seguir a mesma regra para os campos <i>city</i> e <i>state</i>.</p>
                   <p>O campo documents permite que você envie até cinco tipos de documentos diferentes. Você pode solicitar no cadastro documentos como, por exemplo, <i>RG e/ou Inscrição Estadual.</i></p>
 
-                  <h2 id="payment">Enviar dados para pagamento</h2>
+                  <table>
+                  <thead>
+                  <tr>
+                    <td>Input "name"</td>
+                    <td>Descrição</td>
+                  </tr>
+                  </thead>
+                  <tr>
+                    <td>first_name</td>
+                    <td>Primeiro nome da pessoa que está realizando a compra.</td>
+                   </tr>
+                   <tr>
+                    <td>last_name</td>
+                     <td>Sobrenome da pessoa que está realizando a compra.</td>
+                   </tr>
+                   <tr>
+                    <td>company_name</td>
+                    <td>Nome da empresa.</td>
+                   </tr>
+                   <tr>
+                    <td>email</td>
+                    <td>Um e-mail válido.</td>
+                   </tr>
+                   <tr>
+                    <td>documents[cnpj]</td>
+                    <td>CNPJ válido.</td>
+                   </tr>
+                    <tr>
+                      <td>phone_area</td>
+                      <td>Código de área do telefone da empresa.</td>
+                    </tr>
+                    <tr>
+                      <td>phone</td>
+                      <td>Número do telefone da empresa.</td>
+                    </tr>
+                    <tr>
+                      <td>street_name</td>
+                      <td>Nome da rua que o pedido será enviado.</td>
+                    </tr>
+                    <tr>
+                      <td>street_number</td>
+                      <td>Número da casa/prédio que o pedido será enviado.</td>
+                    </tr>
+                    <tr>
+                      <td>neighborhood</td>
+                      <td>Nome do bairro que o pedido será enviado.</td>
+                    </tr>
+
+                  </table>
+
+                  <h2 id="Enviar dados para pagamento">Enviar dados para pagamento</h2>
                   <pre>
 <span><</span>form action="{{ payment_url }}" method="POST"<span>></span>
   …
@@ -933,24 +1016,54 @@ $.post("{{ cart_url }}", { item_id: 999, cart_method: "Delete" }, function() {
                   <p>
                   O form usado para enviar esses dados deve estar com o atributo action definido para o valor da variável {{ payment_url }}, dessa forma
                   </p>
-                  <h3>Cartão Crédito</h3>
-<pre>
-<ul>
-  <li>payment_method: O valor desse campo deve ser sempre <b class="laranja">credit</b> para compras com cartão de crédito.</li>
-  <li>card_flag: É bandeira do cartão do cliente, ele deve selecionar isso em campos do tipo select ou radio.</li>
-  <li>card_number: Campo onde o cliente informa o número do cartão.</li>
-  <li>card_code: Campo para o código de segurança do cartão.</li>
-  <li>card_owner_name: Campo onde o cliente informa o nome impresso no cartão.</li>
-  <li>card_month: Número mês que vence o cartão do cliente.</li>
-  <li>card_year: Número do ano, começando no ano atual, que vence o cartão do cliente.</li>
-  <li>installments: Número de parcelas que o cliente deseja fazer a compra.</li>
-</ul>
-</pre>
-                  <p>Para enviar dados de pagamento usando cartão de crédito, os seguintes campos são obrigatórios:</p>
-<p>O form usado para enviar esses dados deve estar com o atributo action definido para o valor da variável {{ payment_url }}, dessa forma:</p>
-<p>Caso a transação seja efetuada com sucesso, o cliente é automaticamente redirecionado para a página de conclusão da compra.</p>
 
-                  <h4>Dados para teste</h4>
+                  <h3 id="Cartão Crédito">Cartão Crédito</h3>
+                  <p>Para enviar dados de pagamento usando cartão de crédito, os seguintes campos são obrigatórios:</p>
+                  <p>O form usado para enviar esses dados deve estar com o atributo action definido para o valor da variável {{ payment_url }}, dessa forma:</p>
+                  <p>Caso a transação seja efetuada com sucesso, o cliente é automaticamente redirecionado para a página de conclusão da compra.</p>
+
+                  <table>
+                  <thead>
+                    <tr>
+                      <td>Input "name"</td>
+                      <td>Descrição</td>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td>payment_method</td>
+                    <td>O valor desse campo deve ser sempre <b class="laranja">credit</b> para compras com cartão de crédito.</td>
+                  </tr>
+                  <tr>
+                    <td>card_flag</td>
+                    <td> É bandeira do cartão do cliente, ele deve selecionar isso em campos do tipo select ou radio.</td>
+                  </tr>
+                  <tr>
+                    <td>card_number</td>
+                    <td>Campo onde o cliente informa o número do cartão.</td>
+                  </tr>
+                  <tr>
+                    <td>card_code</td>
+                    <td>Campo para o código de segurança do cartão.</td>
+                  </tr>
+                  <tr>
+                    <td>card_owner_name</td>
+                    <td>Campo onde o cliente informa o nome impresso no cartão.</td>
+                  </tr>
+                  <tr>
+                    <td>card_month</td>
+                    <td>Número mês que vence o cartão do cliente.</td>
+                  </tr>
+                  <tr>
+                    <td>card_year</td>
+                    <td>Número do ano, começando no ano atual, que vence o cartão do cliente.</td>
+                  </tr>
+                  <tr>
+                    <td>installments</td>
+                    <td>Número de parcelas que o cliente deseja fazer a compra.</td>
+                  </tr>
+                  </table>
+
+                  <h4 id="Dados para teste">Dados para teste</h4>
                   <pre>
 Visa
 <ul>
@@ -1008,7 +1121,7 @@ Elo
 </ul>
 </pre>
 
-                  <h3>Boleto</h3>
+                  <h3 id="Boleto">Boleto</h3>
                   <pre>
 payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> para compras com no boleto.
 
@@ -1017,10 +1130,10 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
 
 </p>
 
-                  <h2>Recursos</h3>
+                  <h2 id="Recursos">Recursos</h3>
                   <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
 
-                  <h3 id="login">Formulário de Cadastro</h3>
+                  <h3 id="Formulário de Cadastro">Formulário de Cadastro</h3>
                   <pre>
 <span><</span>form action="{{ login_url }}" method="post"<span>></span>
   <span><</span>input id="new_client_terms" name="new_client[terms]" type="hidden" value="on"<span>></span>
@@ -1039,7 +1152,7 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
                   </pre>
                   <p>Quando existir algum erro no formulário de cadastro &raquo;</p>
 
-                  <h3>Formulário de Login</h3>
+                  <h3 id="Formulário de Login">Formulário de Login</h3>
                   <pre>
 <span><</span>form action="{{ login_url }}" method="post"<span>></span>
   <span><</span>input type="hidden" name="_method" value="put"<span>></span>
@@ -1056,7 +1169,7 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
                   </pre>
                   <p>Quando existir algum erro no formulário de login &raquo;</p>
 
-                  <h3>Formulário de Recuperar Senha </h3>
+                  <h3 id="Formulário de Recuperar Senha">Formulário de Recuperar Senha</h3>
                   <pre>
 <span><</span>form action="{{recover_password_url}}" method="post""<span>></span>
   <span><</span>input type="text" name="email" required="required"<span>></span>
@@ -1071,7 +1184,7 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
                   </pre>
                   <p>Mensagem de sucesso e de erro para o form de recuperar senha.</p>
 
-                  <h3 id="cupom-de-desconto">Formulário de Cupom de Desconto</h3>
+                  <h3 id="Formulário de Cupom de Desconto">Formulário de Cupom de Desconto</h3>
                   <pre>
 <span><</span>form action="{{ coupon_url }}" method="post" class="coupon-form">
     <span><</span>fieldset>
@@ -1091,7 +1204,7 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
                   </pre>
                   <p>Quando existir algum erro no formulário de cupom de desconto &raquo;</p>
 
-                  <h3>Formulários WebForms</h3>
+                  <h3 id="Formulários WebForms">Formulários WebForms</h3>
                   <pre>
 <span><</span>form action="/webform" method="post"<span>></span>
 <span><</span>input type="hidden" name="key" value="nome-da-loja-nome-do-form"<span>></span>
@@ -1101,7 +1214,7 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
                   <p>* Os forms de contato devem usar a action /webform<br />
                   * Deve ser feito o cadastro do form no admin para pegar a key </p>
 
-                  <h3>Descrição do produto com múltiplas seções</h3>
+                  <h3 id="Descrição do produto com múltiplas seções">Descrição do produto com múltiplas seções</h3>
                   <pre>
 {% if product.description %}
   {% assign descParts = product.description | split:"linhadecorte" %}
@@ -1120,7 +1233,7 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
                   </pre>
                   <p>Para determinar o o local onde a descrição será dividida, deve-se colocar o texto “linhadecorte” na descrição do produto</p>
 
-                  <h3>Wishlist(lista de desejos)</h3>
+                  <h3 id="Wishlist(lista de desejos)">Wishlist(lista de desejos)</h3>
                   <pre>
 <span><</span>form action="{{ wishlist_url }}" method="POST"<span>></span>
   <span><</span>input type="hidden" name="_method" value="DELETE"/<span>></span>
@@ -1171,7 +1284,7 @@ $.post(
                   </pre>
                   <p>* Adicionar via JS</p>
 
-                  <h3>Notificações de e-mails</h3>
+                  <h3 id="Notificações de e-mails">Notificações de e-mails</h3>
                   <p>A plataforma possui integração com <a href="https://madmimi.com/" target="_blank">Madmimi</a>, ferramenta que gerencia as campanhas de e-mails dos nossos clientes.</p>
                   <p>Atualmente disponibilizamos as seguintes notificações: </p>
                   <pre>
@@ -1211,25 +1324,26 @@ exemplo-senha-cliente
                   </pre>
                   <p>Os campos que podem ser enviados nos emails de noviticação &raquo;</p>
 
-                  <h3>DNS</h3>
+                  <h3 id="DNS">DNS</h3>
                   <pre>
  ip 54.232.217.234..
                   </pre>
                   <p>Para que você possa o usar seu próprio domínio na sua loja,
                   você precisa alterar o DNS desse domínio. Para ip 54.232.217.234..</p>
 
-                  <h2>Dicas</h2>
-                  <h3>Exibindo imagens estáticas</h3>
+                  <h2 id="Dicas Setup/Admin">Dicas Setup/Admin</h2>
+                  <p>Seção de dicas para integrar tanto no setup da loja ou para o admin.</p>
+                  <h3 id="Exibindo imagens estáticas">Exibindo imagens estáticas</h3>
                   <p>* devem estar no diretório /public/images</p>
 
                   <pre>
 {{ “nome_do_arquivo.ext” | image_tag: “Texto alternativo” }}
 <span><</span>img src="{{ “nome_do_arquivo.ext” | image_url }}" alt=“Texto alternativo”/<span>></span>
                   </pre>
-                  <h3>Como listar produtos em promoção</h3>
+                  <h3 id="Como listar produtos em promoção">Como listar produtos em promoção</h3>
                   <p>aguardando atualização...</p>
 
-                  <h3>Como relacionar produtos</h3>
+                  <h3 id="Como relacionar produtos">Como relacionar produtos</h3>
                   <p>aguardando atualização...</p>
 
      </div><!-- content -->

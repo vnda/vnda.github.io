@@ -136,9 +136,14 @@ table {
 	border-spacing: 0
 }
 .tocify-extend-page { display: none !important }
-.content h1, .content h2, .content h3, html, body {
+.content h1, .content h2, .content h3, html, body,
+table thead td {
 	font-family: "montserratregular", Helvetica, Arial, sans-serif;
 	font-size: 13px
+}
+table thead td,
+table tfoot td.title  {
+	font-weight: bold;
 }
 .content h1, .content h2, .content h3 {
 	font-weight: bold
