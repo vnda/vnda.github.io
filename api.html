@@ -250,9 +250,21 @@
 <a class="line-num" href="#line-90">90</a>   <span class="nx">-H "Accept: application/json"</span>
 <a class="line-num" href="#line-91">91</a>   -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
 <a class="line-num" href="#line-92">92</a>   'http://demo.vnda.com.br/api<span class="kd">/v2/variants</span><span class="s1">/A1S2D3</span>
+
+<a class="line-num" href="#line-89">89</a> <span class="nx">curl -X <span class="s1">PUT</span></span>
+<a class="line-num" href="#line-90">90</a>   <span class="nx">-H "Accept: application/json"</span>
+<a class="line-num" href="#line-91">91</a>   -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
+<a class="line-num" href="#line-92">92</a>   'http://demo.vnda.com.br/api<span class="kd">/product</span><span class="s1">?id=123&variant_id=22&price=159.23</span>
             </pre>
               <p>Lista as variantes de um produto.</p>
+              <br />
+              <br />
+              <br />
               <p>Para ver uma variante em expecífico, basca colocar o sku na url.</p>
+              <br />
+              <br />
+              <br />
+              <p>Também é possível ajustar o preço de uma variante. Será necessário informar o ID do produto, o ID da variante e o NOVO PREÇO.</p>
 
               <h2 id="Imagens">Imagens</h2>
             <pre>
