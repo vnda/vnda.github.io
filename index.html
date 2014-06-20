@@ -490,7 +490,7 @@
 
                 <h3 id="products">{% products %}</h3>
                 <pre>
-{% products tag:tag.name parent_tag:parent_tag_name page:params.page per_page:per_page  %}
+{% products tag:tag.name parent_tag:parent_tag.name page:params.page per_page:per_page  %}
   {{ product.image_url | resize: '234x' }}
   {{ product.url }}
   {{ product.reference }}
@@ -1333,7 +1333,18 @@ exemplo-senha-cliente
 
                   <h2 id="Dicas Setup/Admin">Dicas Setup/Admin</h2>
                   <p>Seção de dicas para integrar tanto no setup da loja ou para o admin.</p>
-                  <h3 id="Exibindo imagens estáticas">Exibindo imagens estáticas</h3>
+                  <h3 id="Verificar usuário logado">Verificar usuário logado</h3>
+                  <pre>
+{% if logged_in %}
+  <span><<span>a href="{{ account_url }}" title="minha conta">minha conta<span><<span>/a<span>><span>
+  <span><<span>a href="{{ logout_url }}" title="sair">sair<span><<span>/a<span>><span>
+{% else %}
+  <span><<span>a href="{{ login_url }}" title="">minha conta<span><<span>/a<span>><span>
+{% endif %}
+                  </pre>
+                  <p>Após um usuário enviar seus dados de login e o mesmo ser validado pela api, a váriavel "logged_in" retorna valor verdadeiro.</p>
+                  <p>Ao adicionar uma verificação no .liquid é possível redirecionar e/ou deslogar.</p>
+                  <h3 id="Exibir imagens estáticas">Exibir imagens estáticas</h3>
                   <p>* devem estar no diretório /public/images</p>
 
                   <pre>
