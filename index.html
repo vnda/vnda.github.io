@@ -329,8 +329,22 @@
                 <h3 id="Product.liquid">Product.liquid</h3>
                 <p>Template para exibição do produto, suas imagens, produtos relacionados. Aqui também fica o formulário que permite adicionar o item ao carrinho, neste formulário o cliente pode selecionar qual atributo do produto (cor, tamanho, etc) ele realmente quer.</p>
                 <h4 id="Listar atributos no .liquid">Listar atributos no .liquid</h4>
-                <p>aguardando atualização...</p>
+                <p>aguardando atualização...<br><br><br><br><br><br></p>
                 <h4 id="Listar atributos por javascript">Listar atributos por javascript</h4>
+                <p>aguardando atualização...<br><br><br><br><br></p>
+                <h4 id="Listar imagens do produto">Listar imagens do produto</h4>
+                <pre>
+{% images %}
+  {{ image.url }}
+{% endimages %}
+      ou
+{% images sku:sku %}
+  {{ image.url }}
+{% endimages %}
+                </pre>
+                <p>Para exibir todas imagens cadastradas de um produto deve-se utilizar o tag {% imagens %}. Se prefirir listar apenas as imagens de uma variante x, utilize o parâmetro "sku"
+                {% images sku:sku %}.
+                </p>
                 <p>aguardando atualização...</p>
                 <h3 id="Cart.liquid">Cart.liquid</h3>
                 <p>1ª etapa do processo de compra. <br>
@@ -1325,11 +1339,9 @@ exemplo-senha-cliente
                   <p>Os campos que podem ser enviados nos emails de noviticação &raquo;</p>
 
                   <h3 id="DNS">DNS</h3>
-                  <pre>
- ip 54.232.217.234..
-                  </pre>
-                  <p>Para que você possa o usar seu próprio domínio na sua loja,
-                  você precisa alterar o DNS desse domínio. Para ip 54.232.217.234..</p>
+                  <p>- Criar uma entrada (ou alterar uma já existente) do tipo A,
+                   apontando para o IP 174.129.25.170.</p>
+                  <p>- Criar uma entrada www (ou alterar uma já existente) do tipo CNAME, apontando para o domínio vnda.com.br.</p>
 
                   <h2 id="Dicas Setup/Admin">Dicas Setup/Admin</h2>
                   <p>Seção de dicas para integrar tanto no setup da loja ou para o admin.</p>
