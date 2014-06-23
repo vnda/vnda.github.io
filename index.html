@@ -328,6 +328,7 @@
 
                 <h3 id="Product.liquid">Product.liquid</h3>
                 <p>Template para exibição do produto, suas imagens, produtos relacionados. Aqui também fica o formulário que permite adicionar o item ao carrinho, neste formulário o cliente pode selecionar qual atributo do produto (cor, tamanho, etc) ele realmente quer.</p>
+                <p>Para exibir o nome, preço, remarcações, disponibilidade,  utilize  tags dentro do loop <a href="#products" class="laranja">{% product %}</a></p>
                 <h4 id="Listar atributos no .liquid">Listar atributos no .liquid</h4>
                 <p>aguardando atualização...<br><br><br><br><br><br></p>
                 <h4 id="Listar atributos por javascript">Listar atributos por javascript</h4>
@@ -345,13 +346,33 @@
                 <p>Para exibir todas imagens cadastradas de um produto deve-se utilizar o tag {% imagens %}. Se prefirir listar apenas as imagens de uma variante x, utilize o parâmetro "sku"
                 {% images sku:sku %}.
                 </p>
-                <p>aguardando atualização...</p>
+                <h4 id="Quem viu, viu também">Quem viu, viu também</h4>
+                <pre>
+<b>// API V1</b>(deprecate)
+{% get also_viewed from "/product/also_viewed"[id:product.id key:session_id limit:4] %}
+{% if also_viewed.size > 0 %}
+  {% for p in also_viewed %}
+    {{ p.url }}
+    {{ p.image_uid | image_url: '100x100' }}
+    {{ p.name }}
+    {{ p.price | money_format }}
+  {% endfor %}
+{% endif %}
+
+<b>// API V2</b>
+{% also_viewed id:product.id key:session_id limit:1 %}
+{{product}}
+{% endalso_viewed %}
+              </pre>
+                <p>Quem viu, viu também<br />
+                  * geralmente utilizado na página de produto</p>
+
                 <h3 id="Cart.liquid">Cart.liquid</h3>
                 <p>1ª etapa do processo de compra. <br>
                 Neste template é listados os produtos do carrinho que ficam armazenados na váriavel {{ cart }}, o resumo do carrinho(padrão no layout), o campo input para o cálcudo do CEP e o formulário de frete(métodos de entrega).<p>
                 <pre>
 {% if cart.items_count > 0 %}
-  ....
+  {{ cartitems }}
 {% else %}
   Carrinho Vazio
 {% endif %}
@@ -560,25 +581,6 @@ OU
                   * or produtos podem ser ordenados por “price”, “price,desc”, “newest”, “newest,desc”<br />
                   (newest é baseado na data de cadastro do produto), “name”, “name,desc”.</p>
                   <div></div><br>
-<pre>
-<b>// API V1</b>(deprecate)
-{% get also_viewed from "/product/also_viewed"[id:product.id key:session_id limit:4] %}
-{% if also_viewed.size > 0 %}
-  {% for p in also_viewed %}
-    {{ p.url }}
-    {{ p.image_uid | image_url: '100x100' }}
-    {{ p.name }}
-    {{ p.price | money_format }}
-  {% endfor %}
-{% endif %}
-
-<b>// API V2</b>
-{% also_viewed id:product.id key:session_id limit:1 %}
-{{product}}
-{% endalso_viewed %}
-</pre>
-                <p>Quem viu, viu também<br />
-                  * geralmente utilizado na página de produto</p>
 
                 <h3 id="tags">{% tags %}</h3>
                 <pre>
@@ -591,7 +593,7 @@ OU
                 <p>Listar tags<br />
                   * aceita o parâmetro "limit, type, product_id </p>
 
-                <h3 id="{% tag %}">{% tag %}</h3>
+                <h3 id="tag">{% tag %}</h3>
                 <pre>
 {% tag id:"categoria" %}
  {{ tag.name}}
@@ -604,7 +606,7 @@ OU
                 <p>Listar tag pelo "id"</p>
                 <p>Assim que uma tag é cadastrado no admin se torna acessível desde que seja no .liquid informado o parêmentro id</p>
 
-                <h3 id="{% Menus %}">{% Menus %}</h3>
+                <h3 id="menus">{% menus %}</h3>
             <pre>
 {% menus position:"nome_da_posicao_do_menu_no_admin" %}
   {{ menu.url }} {{ menu.title }}
@@ -627,11 +629,11 @@ OU
   {% if forloop.last %}<span><</span>/ul<span>></span>{% endif %}
 {% endmenus %}
 </pre>
-                  <h3 id="{% page %}">{% page %}</h3>
+                  <h3 id="page">{% page %}</h3>
                   <pre>{% page id:'bloco' %}</pre>
                   <p>Listar conteúdo de uma page<br />
 
-                  <h3 id="{% banners %}">{% banners %}</h3>
+                  <h3 id="banners">{% banners %}</h3>
                   <pre>
 {% banners tag:"nome_da_posicao_no_admin" %}
   {{ banner.title }}
@@ -646,7 +648,7 @@ OU
                 <p>Listar banners<br />
                   * loop para exibir os banners </p>
 
-                <h3 id="{% images %}">{% images %}</h3>
+                <h3 id="images">{% images %}</h3>
                 <pre>
 {% images %}
   {{image}}
@@ -655,7 +657,7 @@ OU
                 <p>Listar imagens do produto<br />
                   * deve estar dentro de um loop {% products %}</p>
 
-                <h3 id="{% shippingmethods %}">{% shippingmethods %}</h3>
+                <h3 id="shippingmethods">{% shippingmethods %}</h3>
                 <pre>
 {% shippingmethods %}
   {% if forloop.first %}
@@ -676,7 +678,7 @@ OU
                   * Não avançar nas etapas do carrinho sem ao menos um método escolhido<br>
                   * Use no action do form {{ shipping_method_url }}</p>
 
-                <h3 id="{% variants %}">{% variants %}</h3>
+                <h3 id="variants">{% variants %}</h3>
                 <pre>
 * Exibir todas as variantes de um produto
 {% variants product_id:product.id %}
@@ -693,7 +695,7 @@ OU
                 <p>Listar variantes pelo SKU do produto<br />
                   * É possivel acessar uma variant </p>
 
-                  <h3 id="{% variant %}">{% variant %}</h3>
+                  <h3 id="variant">{% variant %}</h3>
                   <pre>
 {% variant sku:12001 %}
   {{ variant }}
@@ -703,7 +705,7 @@ OU
                   </pre>
                   <p>* Exibir uma variante, pelo SKU</p>
 
-                  <h3 id="{% videos %}">{% videos %}</h3>
+                  <h3 id="videos">{% videos %}</h3>
                   <pre>
 {% videos %}
   {{video.embed_url}} // lista a url cadastrada no painel
@@ -712,7 +714,7 @@ OU
                   </pre>
                   <p>Listar vídeos de um produto</p>
 
-                  <h3 id="{% sizes %}">{% sizes %}</h3>
+                  <h3 id="sizes">{% sizes %}</h3>
 <pre>
 {% sizes tag:’nome-da-tag’, parent_tag:’outra-tag’ %}
   {{ size.value }}
@@ -721,7 +723,7 @@ OU
 </pre>
                   <p>Listar atributos tamanhos (deprecate)</p>
 
-                  <h3 id="{% colors %}">{% colors %}</h3>
+                  <h3 id="colors">{% colors %}</h3>
 <pre>
 {% colors tag:'nome-da-tag' %}
   {{ color.value }}
@@ -730,7 +732,7 @@ OU
                 <p>Listar atributos cor (deprecate)</p>
 </pre>
 
-                <h3 id="{% opengraphfor %}">{% opengraphfor %}</h3>
+                <h3 id="opengraphfor">{% opengraphfor %}</h3>
                 <pre>
 {% unless opengraph %}
   {% if template == "tag" %}
@@ -757,7 +759,7 @@ OU
                 * Meta tags e opengraph devem ser dinâmicas <br />
                 * Usar {% opengraphfor %} para aplicar Meta Title e Description nas páginas internas da loja.</p>
 
-                <h3 id="{% contentfor %}">{% contentfor %}</h3>
+                <h3 id="contentfor">{% contentfor %}</h3>
                 <pre>
 {% contentfor exemplo %}
   ... conteúdo armazenado na varianvel "exemplo"
