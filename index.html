@@ -408,6 +408,15 @@
                 <h3 id="Account.liquid">Account.liquid</h3>
                 <p>Template usado para exibir os dados da conta do cliente, os pedidos efetuados, assim como a situação deles. Nesta página o cliente também pode alterar os dados pessoais, como nome, e-mail e senha. </p>
                 <p>Os dados do pedido ficam armezados na variável {{ order }}<br><span class="summary"><code><a href="#orders" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
+                <pre>
+<span><</span>form action="{{ account_url }}" method="post"<span>></span>
+   <span><</span>input type="text" name="email" value="{{ client.email }}"<span>></span>
+  <span><</span>input type="text" name="password" <span>></span>
+  <span><</span>input type="text" name="password_confirmation" <span>></span>
+  <span><</span>input type="checkbox" name="terms"<span>></span>
+<span><</span>/form<span>></span>
+                </pre>
+                <p>Para alterar  os dados pessoais crie um form com o action {{ account_url }} e envie os dados nome, email, senha.</p>
 
                 <h3 id="Login.liquid">Login.liquid</h3>
                 <p> Template usado tanto para novos cadastros quanto para logins de clientes já cadastrados. Desta página parte também o login via Facebook, que permite que clientes participem de promoções específicas.
@@ -665,7 +674,7 @@ OU
     <span><</span>legend<span>></span>Selecione o método de entrega:<span><</span>/legend<span>></span>
   {% endif %}
   <span><</span>label for="delivery-{{ shipping_method.name }}"<span>></span>
-  <span><</span>input type="radio" class="radio-field" id="delivery-{{ shipping_method.name }}" name="type" value="{{ shipping_method.value }}" required="required"<span>></span>
+  <span><</span>input type="radio" class="radio-field" id="delivery-{{ shipping_method.name }}" name="type" value="{{ shipping_method.value }}" <span>></span>
     {{ shipping_method.name }} {{ shipping_method.price | money_format }} {{ shipping_method.description }}
    <span><</span>/label<span>></span>
  {% if forloop.last %}
@@ -1153,9 +1162,9 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
                   <pre>
 <span><</span>form action="{{ login_url }}" method="post"<span>></span>
   <span><</span>input id="new_client_terms" name="new_client[terms]" type="hidden" value="on"<span>></span>
-  <span><</span>input type="text" name="email" required="required"<span>></span>
-  <span><</span>input type="text" name="password" required="required"<span>></span>
-  <span><</span>input type="text" name="password_confirmation" required="required"<span>></span>
+  <span><</span>input type="text" name="email" <span>></span>
+  <span><</span>input type="text" name="password" <span>></span>
+  <span><</span>input type="text" name="password_confirmation" <span>></span>
   <span><</span>input type="checkbox" name="terms"<span>></span>
 <span><</span>/form<span>></span>
                   </pre>
@@ -1172,8 +1181,8 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
                   <pre>
 <span><</span>form action="{{ login_url }}" method="post"<span>></span>
   <span><</span>input type="hidden" name="_method" value="put"<span>></span>
-  <span><</span>input type="text" name="password" required="required"<span>></span>
-  <span><</span>input type="text" name="password_confirmation" required="required"<span>></span>
+  <span><</span>input type="text" name="password" <span>></span>
+  <span><</span>input type="text" name="password_confirmation" <span>></span>
  <span><</span>/form<span>></span>
                   </pre>
                   <p>O form de login deve usar a action {{ login_url }}</p>
@@ -1188,7 +1197,7 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
                   <h3 id="Formulário de Recuperar Senha">Formulário de Recuperar Senha</h3>
                   <pre>
 <span><</span>form action="{{recover_password_url}}" method="post""<span>></span>
-  <span><</span>input type="text" name="email" required="required"<span>></span>
+  <span><</span>input type="text" name="email" <span>></span>
   <span><</span>input type="submit" value="RECUPERAR SENHA"<span>></span>
 <span><</span>/form<span>></span>
                   </pre>
