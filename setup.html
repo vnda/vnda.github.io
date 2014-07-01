@@ -35,11 +35,10 @@
     <p>Liquid é a linguagem de programação é responsável por implementar os templates desenvolvidos e utilizados pela Vnda, processando os arquivos modelo .liquid</p>
 
     <h2 id="Templates">Templates</h2>
-    <p>Os templates ficam na raiz da pasta compartilhada no Dropbox onde todos
-     os arquivo são salvos na extensão .liquid</p>
-     <p>Dentro da raiz ficam os diretórios "images" "stylesheets" "javascript" e "page"</p>
-     <p>Dentro do diretórios page/ é gerado os arquivos de extensão .html das página que são criados no admin</p>
-     <p>Segue abaixo os templates disponíveis na plataforma:</p>
+    <p>Os templates ficam na raiz da pasta compartilhada no Dropbox onde todos os arquivo são salvos na extensão .liquid</p>
+    <p>Dentro da raiz ficam os diretórios "images" "stylesheets" "javascript" e "page"</p>
+    <p>Dentro do diretórios page/ é gerado os arquivos de extensão .html das página que são criados no admin</p>
+    <p>Segue abaixo os templates disponíveis na plataforma:</p>
 
     <h3 id="Layout.liquid">Layout.liquid</h3>
     <p> Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates. </p>
@@ -49,8 +48,9 @@
 
     <h3 id="Tag.liquid">Tag.liquid</h3>
     <p> Página que exibe produtos relacionados a uma tag. Tag é a forma de categorização utilizada pela Vnda para organizar os produtos. </p>
+
     <h4 id="Listar Produtos">Listar Produtos</h4>
-    <p>Aguardando atualizaçao...</p>
+    <p>Listagem de produtos com a tag {% products %}</p>
     <h4 id="Criar Páginação">Criar Páginação</h4>
     <pre>
  {% if pagination.total_pages > 1 %}
