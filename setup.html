@@ -20,7 +20,7 @@
         <label>Documentação:</label>
         <select>
           <option value="index.html">CRIAÇÃO</option>
-          <option value="setup.html">SETUP</option>
+          <option value="setup.html" selected>SETUP</option>
           <option value="api.html">API</option>
         </select>
       </div>
@@ -30,313 +30,29 @@
   </div>
   <div class="page-wrapper">
     <div class="content">
-      <h2 id="Design">Design</h2>
-        <p>Sugerimos a seguinte ordem para criação das telas para os layout de um canal ecommerce que utilize a plataforma Vnda:</p>
-        <h3 id="Nome dos arquivos">Nome dos arquivos</h3>
-            <!-- <p>
-              &nbsp;Página da Home: <span class="laranja">home.psd</span><br>
-              &nbsp;Página Categoria do Produtos: <span class="laranja">tag.psd</span><br>
-              &nbsp;Página de Busca do Produto: <span class="laranja">search.psd</span><br>
-              &nbsp;Página de Detalhes do Produto: <span class="laranja">product.psd</span><br>
-              &nbsp;Página de Carrinho: <span class="laranja">cart.psd</span><br>
-              &nbsp;Página de Endereço: <span class="laranja">address.psd</span><br>
-              &nbsp;Página de Pagamento: <span class="laranja">payment.psd</span><br>
-              &nbsp;Página de Pedido Finalizado: <span class="laranja">finished.psd</span><br>
-              &nbsp;Página de login: <span class="laranja">login.psd</span><br>
-              &nbsp;Página da Meus Pedidos: <span class="laranja">account.psd</span><br>
-              </p> -->
-               <table>
-                <thead>
-                  <td style="width:200px;">Página</td>
-                  <td style="width:280px;"><span class="laranja">Arquivo(.psd ou .png)</span></td>
-                 </thead>
-                <tr>
-                  <td>Home</td>
-                   <td>
-                    <span class="laranja">home.psd</span>
-                   </td>
-                </tr>
-                <tr>
-                  <td>Categoria</td>
-                    <td>
-                    <span class="laranja">tag.psd</span>
-                   </td>
-                </tr>
-                <tr>
-                  <td>Busca do Produto</td>
-                   <td>
-                    <span class="laranja">search.psd</span>
-                   </td>
-                </tr>
-                <tr>
-                  <td>Detalhes do Produto</td>
-                   <td>
-                    <span class="laranja">product.psd</span>
-                   </td>
-                </tr>
-                <tr>
-                  <td>Checkout(Carrinho)</td>
-                    <td>
-                    <span class="laranja">cart.psd</span>
-                   </td>
-                </tr>
-                <tr>
-                  <td>Checkout(Endereço)</td>
-                     <td>
-                    <span class="laranja">address.psd</span>
-                   </td>
-                </tr>
-                <tr>
-                  <td>Checkout(Pagamento)</td>
-                  <td>
-                    <span class="laranja">payment.psd</span>
-                   </td>
-                </tr>
-                <tr>
-                  <td>Checkout(Pagamento)</td>
-                  <td>
-                    <span class="laranja">finished.psd</span>
-                   </td>
-                </tr>
-                <tr>
-                  <td>Login</td>
-                  <td>
-                    <span class="laranja">login.psd</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Meus Pedidos</td>
-                   <td>
-                    <span class="laranja">account.psd</span>
-                   </td>
-                </tr>
-              </table>
 
-              <h3 id="Dimensões parass Mobile e Desktop">Dimensões parass Mobile e Desktop </h3>
-              <p>Para melhorar a experiência em nossos site para versão mobile, utilizamos as seguintes dimensões de largura para a criação dos layouts</p>
-              <p>Dipositios celulares: menor 768px de largura</p>
-              <p>Tablets: maior ou igual 768px de largura</p>
-              <p>Desktop com maior ou igual 992px de largura</p>
+    <h2 id="Sobre o liquid">Sobre o liquid</h2>
+    <p>Liquid é a linguagem de programação é responsável por implementar os templates desenvolvidos e utilizados pela Vnda, processando os arquivos modelo .liquid</p>
 
-              <h3 id="Requisitos do layout">Requisitos do layout</h3>
-              <p>
-                Podemos destacar alguns pontos básicos que devem estar visível na entrega do layout:<br>
-              </p>
+    <h2 id="Templates">Templates</h2>
+    <p>Os templates ficam na raiz da pasta compartilhada no Dropbox onde todos
+     os arquivo são salvos na extensão .liquid</p>
+     <p>Dentro da raiz ficam os diretórios "images" "stylesheets" "javascript" e "page"</p>
+     <p>Dentro do diretórios page/ é gerado os arquivos de extensão .html das página que são criados no admin</p>
+     <p>Segue abaixo os templates disponíveis na plataforma:</p>
 
-              <h4 id="grid960">Grid 960</h3>
-              <p>
-               Afim de atender os padrões web atuais e tendo em vista a facilitar a criação e manutençao do html/css das nossas lojas,
-               deve-se levar em considereção no momento da criação do wireframe/designer a utilização do grid 960 layout com 12 colunas.
-              </p>
-              <p>
-                <img src="960.png">
-              </p>
-              <p>A largura total do layout com 960px e o conteúdo deve respeitar os 940px de largura e as
-              margins da esquerda e direita com 10px.</p>
-              <p>
-                <img src="grid-layout.png">
-              </p>
-              <p>Referencias:
-                <a href="http://960.gs/"class="laranja" target="_blank">960.gs</a>,
-                <a href=""class="laranja">Links</a>,
-                <a href=""class="laranja">Links</a>,
-                <a href=""class="laranja">Links</a>
-              </p>
-              <h4 id="Assinatura Vnda no rodapé">Assinatura Vnda no rodapé</h3>
-              <pre>
-    Todos os direitos reservados - <a target="_blank" href="http://www.vnda.com.br/‎">Vnda Tecnologia de E-commerce</a>
-              </pre>
-              <p>* assinatura da Vnda no rodapé, usando uma cor para destacar (um pouco) o link</p>
+    <h3 id="Layout.liquid">Layout.liquid</h3>
+    <p> Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates. </p>
 
-              <h4 id="Enviar Favico">Enviar Favico</h4>
-              <p>Criar uma imagem png e enviar em um arquivo separado na dimensão 16x16 ou 32x32.</p>
+    <h3 id="Home.liquid">Home.liquid</h3>
+    <p>Página inicial da loja, aqui podem ser exibidos produtos em destaque, banners, menus e qualquer outra informação que for necessária para atrair o cliente a navegar no resto do site.</p>
 
-              <h2 id="Front-End (HTML, CSS & JS)">Front-End (HTML, CSS & JS)</h2>
-              <p>Para melhorar a experiência no Setup da loja cabe ao desenvolvedor html respeitar as premissas abaixo e nos enviar o html conforme o padrão exigido pela vnda.</p>
-
-              <h3 id="Módulos">Módulos</h3>
-              <p>Módulo  é a parte do site responsável por uma tarefa bem definida e que pode ser acoplado a um site para permitir ao mesmo usar um determinado bloco de código.<br>
-               <small>Ex: Topo e Rodapé.</small></p>
-              <h4 id="Includes topo.php e footer.php">Includes topo.php e footer.php</h4>
-              <p>Tratando-se um linguagem de simples configuração e fácil execução do comando básico "include", utilizamos como padrão parar a entrega(front-end) <span class="laranja">.php</span>.
-              <p>Criar um arquivo topo.php e outro footer.php<br>
-                <small>Fica livre o uso dos includes demais trechos de código repitidos</small>
-              </p>
-              <h3 id="Nome dos arquivos">Nome dos arquivos</h3>
-               <p>
-                Utilize o nome dos arquivos de acordo com os <span class="laranja">templates</span> usados na plataforma ecommerce da <span class="laranja"><a class="laranja" href="http://www.vnda.com.br" target="_blank">vnda</a>.</span> <br />
-               obs: <b>.liquid</b> para <b>.php</b> <br>
-               </p>
-               <table>
-                <thead>
-                  <td style="width:190px;">Página</td>
-                  <td><span class="laranja">Entrega(front-end)</span></td>
-                  <td>Setup(plataforma)</td>
-                </thead>
-                <tr>
-                  <td>Home</td>
-                   <td>
-                    <span class="laranja">home.php</span>
-                   </td>
-                  <td>
-                    <span class="">home.liquid</span>
-                   </td>
-                </tr>
-                <tr>
-                  <td>Categoria</td>
-                    <td>
-                    <span class="laranja">tag.php</span>
-                   </td>
-                  <td>
-                    <span class="">tag.liquid</span>
-                   </td>
-                </tr>
-                <tr>
-                  <td>Busca do Produto</td>
-                   <td>
-                    <span class="laranja">search.php</span>
-                   </td>
-                  <td>
-                    <span class="">search.liquid</span>
-                   </td>
-                </tr>
-                <tr>
-                  <td>Detalhes do Produto</td>
-                   <td>
-                    <span class="laranja">product.php</span>
-                   </td>
-                  <td>
-                    <span class="">product.liquid</span>
-                   </td>
-                </tr>
-                <tr>
-                  <td>Checkout(Carrinho)</td>
-                    <td>
-                    <span class="laranja">cart.php</span>
-                   </td>
-                  <td>
-                    <span class="">cart.liquid</span>
-                   </td>
-                </tr>
-                <tr>
-                  <td>Checkout(Endereço)</td>
-                     <td>
-                    <span class="laranja">address.php</span>
-                   </td>
-                  <td>
-                    <span class="">address.liquid</span>
-                   </td>
-                </tr>
-                <tr>
-                  <td>Checkout(Pagamento)</td>
-                  <td>
-                    <span class="laranja">payment.php</span>
-                   </td>
-                  <td>
-                    <span class="">payment.liquid</span>
-                   </td>
-                </tr>
-                <tr>
-                  <td>Checkout(Pagamento)</td>
-                  <td>
-                    <span class="laranja">finished.php</span>
-                   </td>
-                  <td>
-                    <span class="">finished.liquid</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Login</td>
-                  <td>
-                    <span class="laranja">login.php</span>
-                   </td>
-                  <td>
-                    <span class="">login.liquid</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Meus Pedidos</td>
-                   <td>
-                    <span class="laranja">account.php</span>
-                   </td>
-                  <td>
-                    <span class="">account.liquid</span>
-                   </td>
-                </tr>
-              </table>
-               <!--   &nbsp;<br>
-                &nbsp;Página de Busca do Produto: <span class="laranja">search.liquid</span><br>
-                &nbsp;Página de Detalhes do Produto: <span class="laranja">product.liquid</span><br>
-                &nbsp;Página de Carrinho: <span class="laranja">cart.liquid</span><br>
-                &nbsp;Página de Endereço: <span class="laranja">address.liquid</span><br>
-                &nbsp;Página de Pagamento: <span class="laranja">payment.liquid</span><br>
-                &nbsp;Página de Pedido Finalizado: <span class="laranja">finished.liquid</span><br>
-                &nbsp;Página de login: <span class="laranja">login.liquid</span><br>
-                &nbsp;Página da Meus Pedidos: <span class="laranja">account.liquid</span><br>
-                </p> -->
-
-              <h3 id="Nome dos diretórios">Nome dos diretórios</h3>
-              <table>
-                <thead>
-                  <td>Hierarquia e Nomenclaturas </td>
-                </thead>
-                <tr>
-                  <td style="width:480px;">
-                    vnda_stg_nome-loja/ *todos os arquivos <b>com o html</b>
-                   </td>
-                </tr>
-                  <tr>
-                  <td>vnda_stg_nome-loja/public/javascripts/</td>
-                </tr>
-                <tr>
-                  <td>vnda_stg_nome-loja/public/stylesheets/</td>
-                </tr>
-                <tr>
-                  <td>vnda_stg_nome-loja/public/images/</td>
-                </tr>
-              </table>
-
-                <h3 id="Requisitos Html">Requisitos Html</h3>
-                <p>Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
-                Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum</p>
-
-                <h4 id="Html 5 Padrão 3WC">Html 5 Padrão 3WC</h4>
-                <p>Os Padrões Web são recomendações do W3C (World Wide Web Consortium), as quais são destinadas a orientar os desenvolvedores para o uso de boas práticas que tornam a web acessível para todos.</p>
-                <h4 id="Validar HTML 5">Validar HTML 5</h4>
-                <p>Validador Online   <a href="http://validator.w3.org/" class="default" target="_blank">http://validator.w3.org/</a></p>
-                <h4 id="ItemScope">ItemScope</h4>
-                  <pre>
-<span><</span>div itemscope itemtype="http://schema.org/Organization"<span>></span>
-  <span><</span>a itemprop="url" href="{{ home_url }}">{{store.name}}<span><</span>/a<span>></span>
-  <span><</span>img itemprop="logo" src="{{store.logo_url}}"/<span>></span>
-<span><</span>/div<span>></span>
-                  </pre>
-                <p> * o logo do site não pode ser em background <br />
-                  * o código abaixo deve ser incluído, estando visível ou não
-                </p>
-
-                <h2 id="Sobre o liquid">Sobre o liquid</h2>
-                <p>Liquid é a linguagem de programação é responsável por implementar os templates desenvolvidos e utilizados pela Vnda, processando os arquivos modelo .liquid</p>
-
-                <h2 id="Templates">Templates</h2>
-                <p>Os templates ficam na raiz da pasta compartilhada no Dropbox onde todos
-                 os arquivo são salvos na extensão .liquid</p>
-                 <p>Dentro da raiz ficam os diretórios "images" "stylesheets" "javascript" e "page"</p>
-                 <p>Dentro do diretórios page/ é gerado os arquivos de extensão .html das página que são criados no admin</p>
-                 <p>Segue abaixo os templates disponíveis na plataforma:</p>
-
-                <h3 id="Layout.liquid">Layout.liquid</h3>
-                <p> Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates. </p>
-
-                <h3 id="Home.liquid">Home.liquid</h3>
-                <p>Página inicial da loja, aqui podem ser exibidos produtos em destaque, banners, menus e qualquer outra informação que for necessária para atrair o cliente a navegar no resto do site.</p>
-
-                <h3 id="Tag.liquid">Tag.liquid</h3>
-                <p> Página que exibe produtos relacionados a uma tag. Tag é a forma de categorização utilizada pela Vnda para organizar os produtos. </p>
-                <h4 id="Listar Produtos">Listar Produtos</h4>
-                <p>Aguardando atualizaçao...</p>
-                <h4 id="Criar Páginação">Criar Páginação</h4>
-                <pre>
+    <h3 id="Tag.liquid">Tag.liquid</h3>
+    <p> Página que exibe produtos relacionados a uma tag. Tag é a forma de categorização utilizada pela Vnda para organizar os produtos. </p>
+    <h4 id="Listar Produtos">Listar Produtos</h4>
+    <p>Aguardando atualizaçao...</p>
+    <h4 id="Criar Páginação">Criar Páginação</h4>
+    <pre>
  {% if pagination.total_pages > 1 %}
 <span><</span>nav class="pagination"<span>></span>
     <span><</span>span class="pagination"<span>></span>
