@@ -135,6 +135,27 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0
 }
+.tocify-wrapper #sidebar_switch .titulo {
+	display: block;
+	float: none;
+	width: auto;
+	background-color: transparent; }
+	.tocify-wrapper #sidebar_switch .titulo a {
+		text-align: center; }
+	.tocify-wrapper #sidebar_switch .nav {
+		margin: 10px;
+		overflow: hidden; }
+		.tocify-wrapper #sidebar_switch .nav label {
+			font-weight: normal; }
+		.tocify-wrapper #sidebar_switch .nav select {
+			font-family: "montserratregular", Helvetica, Arial, sans-serif;
+			font-size: 13px;
+			border: none;
+			padding: 2px 5px;
+			background-color: #e9eef2;
+			width: 120px;
+			float: right; }
+
 .tocify-extend-page { display: none !important }
 .content h1, .content h2, .content h3, html, body,
 table thead td {
@@ -646,7 +667,7 @@ top: 0;
 left: 0;
 width: 250px;
 height: 29px;
-margin-bottom: 20px; }
+margin-bottom: 40px; }
   #sidebar_switch span {
     display: block;
     float: left;
@@ -659,7 +680,6 @@ margin-bottom: 20px; }
     background-color: #afb4be; }
 
 #sidebar_switch {
-  background: #ededec;
   border-bottom: none; }
   #sidebar_switch span {
     color: #2d2d22; }
