@@ -191,7 +191,7 @@ $.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
                  </p>
                  <p>Para montar um sku existe 3 formas e isso vai depender de quantos atributos e variantes forão cadastradas no produto.</p>
 
-                 <p><strong>Possibilidade 1</strong></p>
+                 <h5 id="Possibilidade 1">Possibilidade 1</h5>
                  <pre>
 {% variants product_id:product.id %}
   {{ variant.sku  }}
@@ -200,9 +200,9 @@ $.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
                  <p>
                    Caso exista apenas uma variante cadastrada para um produtos basta buscar {{ variant.sku }} e informar no campo do formulário
                  </p>
-                 <p><strong>Possibilidade 2</strong></p>
+                 <h5 id="Possibilidade 2">Possibilidade 2</h5>
                  <p>
-                    Dentro desta possibilidade existe mais 2 outras situações ou seja ou um produto tem 1 atributo ou tem 2 atributos.
+                    Dentro desta possibilidade existe mais 2 outras posibilidades ou seja ou um produto tem 1 atributo ou tem 2 atributos.
                  </p>
                  <p>Agora é preciso montar a chave(o valor enviado no campo sku do form) e essa é a parte mais importante que exige um conhecimento básico de O.O em javascript para acessar as todas as informações das variantes de um produtos e montar o html e o sku.
                  <pre>
@@ -219,7 +219,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
                  <div></div><br>
                  <p>Ao executar esse comando é <strong>gerado uma chave</strong>, e será essa chave que deve ser enviada para o campo sku do formulário.</p>
                  <p>Dica: essa chave deve ser enviado no submit do formulário<br>.
-                  Veja <a href="#Atributos(montar de sku)" class="laranja">aqui</a> algumas funções e exemplos que podem servir de base para criar suas funções.</p>
+                  Veja <a href="#Atributos(montar de sku)" class="laranja">aqui</a>algumas funções e exemplos que podem servir de base para criar suas funções.</p>
 
                  <h4 id="Listar imagens do produto">Listar imagens do produto</h4>
                 <pre>
@@ -479,7 +479,7 @@ $.post("{{ cart_url }}", { item_id: 999, cart_method: "Delete" }, function() {
 
                 <h3 id="Payment.liquid">Payment.liquid</h3>
                 <p> 3ª etapa do processo de compra. Aqui o cliente informa os dados do cartão de crédito ou dá inicio a geração do boleto. </p>
- <h4 id="Enviar dados para pagamento">Enviar dados para pagamento</h4>
+ <h2 id="Enviar dados para pagamento">Enviar dados para pagamento</h2>
                   <pre>
 <span><</span>form action="{{ payment_url }}" method="POST"<span>></span>
   …
@@ -489,7 +489,7 @@ $.post("{{ cart_url }}", { item_id: 999, cart_method: "Delete" }, function() {
                   O form usado para enviar esses dados deve estar com o atributo action definido para o valor da variável {{ payment_url }}, dessa forma
                   </p>
 
-                  <h5 id="Cartão Crédito">Cartão Crédito</h5>
+                  <h3 id="Cartão Crédito">Cartão Crédito</h3>
                   <p>Para enviar dados de pagamento usando cartão de crédito, os seguintes campos são obrigatórios:</p>
                   <p>O form usado para enviar esses dados deve estar com o atributo action definido para o valor da variável {{ payment_url }}, dessa forma:</p>
                   <p>Caso a transação seja efetuada com sucesso, o cliente é automaticamente redirecionado para a página de conclusão da compra.</p>
@@ -593,7 +593,7 @@ Elo
 </ul>
 </pre>
 
-                  <h5 id="Boleto">Boleto</h5>
+                  <h4 id="Boleto">Boleto</h4>
                   <pre>
 payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> para compras com no boleto.
 
