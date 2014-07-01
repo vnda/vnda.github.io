@@ -499,7 +499,7 @@ html, body {
 	position: relative;
 	z-index: 30
 }
-.content>h1, .content>h2, .content>h3, .content>h4,.content>p, .content>table, .content>ul, .content>ol, .content>aside, .content>dl {
+.content>h1, .content>h2, .content>h3, .content>h4, .content>h5,.content>p, .content>table, .content>ul, .content>ol, .content>aside, .content>dl {
 	margin-right: 50%;
 	padding: 0 28px;
 	-webkit-box-sizing: border-box;
@@ -548,9 +548,9 @@ html, body {
 .content h4 {
 	font-size: 12px;
 	margin-top: 2.5em;
-	margin-bottom: 0.8em;
-	text-transform: uppercase
-}
+	margin-bottom: 0.8em; }
+.content h3{
+	text-transform: uppercase }
 .content hr {
 	margin: 2em 0;
 	border-top: 2px solid #073650;

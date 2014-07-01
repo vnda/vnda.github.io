@@ -1222,20 +1222,9 @@ $(function(){
       fill_sku_with_variant();
   }
 
-  $( "form" ).on('submit',function(){
-    if( quantity_of_properties() >= 2 ) {
-      var atributo_1 =  $( ".cor input[type=radio]:checked").val();
-      var atributo_2 = $( ".tamanho option:checked" ).val();
-      variant = vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
-      if(variant){
-        sku = variant.sku
-        $( "form" ).find( "#sku" ).val( sku );
-      } else{
-        return false
-      }
-    }
-  })
-}
+
+
+
                  </pre>
                 <p>Etapa 1 -  onde são chamadas as funções para criar as combinações, sku e enviar o formulário de compra:</p>
                 <div></div><br>
@@ -1259,20 +1248,6 @@ function create_color_radios(variants){
     radios += ' <span><</span>a href="#">'
     radios += '<span><</span>input type="radio" value="'+desired_color+'">'
     radios += ' </a>'
-  }
-  return radios
-}
-
-// se existir apenas o atributo cor
-function create_absolute_color_radios(variants){
-  radios = ""
-  for(variant in variants) {
-    if( variants[variant].available == false ) {
-      var desired_color = variants[variant].properties.property1.value
-      radios += '<span><</span>li style="background-color:'+desired_color+'">'
-      // use como name "sku"
-      radios += '<span><</span>input name="sku" type="radio>'
-     }
   }
   return radios
 }
@@ -1310,26 +1285,9 @@ function create_size_select(variants){
   return select
 }
 
-// se existir apenas o atributo tamanho
-function create_absolute_size_radios(variants){
-  select = '<span><</span>label>Tamanho:</label>'
-  // use como name "sku"
-  select += '<span><</span>select name="sku" required>'
-  for(variant in variants) {
-    if( variants[variant].available == true ) {
-      var desired_size = variants[variant].properties.property2.value
-       select += '<span><</span>option id="size_'+desired_size+'"  data-name="tamamho" data-size="'+desired_size+'"  value="'+variants[variant].sku+'">'
-       select += desired_size
-      select += '<span><</span>/option>'
-     }
-    }
-  select += '<span><</span>/select>'
-  return select
-}
-
 function fill_sku_with_variant(){
   variant = vnda.variants.all()[0]
-  $( "form" ).find("#sku").val(variant.sku)
+  $( "#form-product" ).find("#sku").val(variant.sku)
 }
 
 function quantity_of_properties(){

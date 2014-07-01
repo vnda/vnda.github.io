@@ -1157,6 +1157,19 @@ exemplo-senha-cliente
                   <h2 id="Dicas Setup/Admin">Dicas Setup/Admin</h2>
                   <p>Seção de dicas para integrar tanto no setup da loja ou para o admin.</p>
 
+                  <h3 id="Atributos(montar de sku)">Atributos(montar de sku)</h3>
+                  <pre>
+
+                 </pre>
+                  <p>
+                    Partindo da premissão em que os atributos de um produtos podem ser Cor(atributo_1) e Tamanho(atributo_2) respectivamente,
+                    e que ao abrir a página de produtos é listado apenas as cores e ao selecionar uma cor é listados as combinações de tamanho compátiveis com este atributo.
+                  </p>
+
+                 <p>Para isso criaremos um arquivo atributos.js com as seguintes funções</p>
+                 <p><strong>Passo 1 </strong> - </p>
+
+
                   <h3 id="Verificar usuário logado">Verificar usuário logado</h3>
                   <pre>
 {% if logged_in %}
@@ -1176,185 +1189,10 @@ exemplo-senha-cliente
 <span><</span>img src="{{ “nome_do_arquivo.ext” | image_url }}" alt=“Texto alternativo”/<span>></span>
                   </pre>
                   <h3 id="Como listar produtos em promoção">Como listar produtos em promoção</h3>
-                  <p>aguardando atualização...<br><br><br><br><br></p>
+                  <p>aguardando atualização...</p>
 
                   <h3 id="Como relacionar produtos">Como relacionar produtos</h3>
-                  <p>aguardando atualização...<br><br><br><br><br></p>
-
-                  <h3 id="Atributos(montar de sku)">Atributos(montar de sku)</h3>
-
-                  <p>
-                    Partindo da premissa em que os atributos de um produtos são Cor(atributo_1) e Tamanho(atributo_2) respectivamente,
-                    e que ao abrir a página de produtos é listado apenas as cores e ao selecionar uma cor é listados as combinações de tamanho compátiveis com este atributo.
-                  </p>
-                  <p>Para isso criaremos um arquivo atributos.js com as seguintes funções e manipulações de dado.</p>
-                  <pre>
-$(function(){
-
-  // variável que recebe os objetos com as informaçoes de cada variante
-  variants = vnda.variants.all()
-
-  var cor = variants[0].properties.property1;
-  var tamanho = variants[0].properties.property2;
-
-  // verifica a quantidade de atributos do produto
-  properties_count = quantity_of_properties()
-
-  // produto com 2 atritubos
-  if(properties_count >= 2) {
-   $(".cores").html(
-    '<span><</span>label>Cor:<span><</span>/label><span><</span>ul>'+create_color_radios(variants)+'<span><</span>/ul>'
-        );
-    // chamada da função que lista os tamanhos de uma cor selecionada
-    enable_sizes_per_color()
-    }
-  } else if(properties_count == 1){   // produto com 1 atritubo
-
-     // verifica qual html atributo deve ser criado no html
-      if ( cor.value != null ) {
-        $(".cor").html(
-        '<span><</span>label>Cor:</label><span><</span>ul>'+create_absolute_color_radios(variants)+'<span><</span>/ul>'
-        );
-      } else {
-        $('.tamanho').html(create_absolute_size_radios(variants))
-      }
-    } else {
-      fill_sku_with_variant();
-  }
-
-  $( "form" ).on('submit',function(){
-    if( quantity_of_properties() >= 2 ) {
-      var atributo_1 =  $( ".cor input[type=radio]:checked").val();
-      var atributo_2 = $( ".tamanho option:checked" ).val();
-      variant = vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
-      if(variant){
-        sku = variant.sku
-        $( "form" ).find( "#sku" ).val( sku );
-      } else{
-        return false
-      }
-    }
-  })
-}
-                 </pre>
-                <p>Etapa 1 -  onde são chamadas as funções para criar as combinações, sku e enviar o formulário de compra:</p>
-                <div></div><br>
-
-                <pre>
-// função que monta o html das cores
-function create_color_radios(variants){
-  colors = [];
-  radios = ""
-  for(variant in variants) {
-    if( variants[variant].available == true ) {
-      if(variants[variant].properties) {
-        colors.push(variants[variant].properties.property1.value)
-      }
-    }
-  }
-  unique_colors = colors.filter(onlyUnique);
-  for(color in unique_colors){
-    desired_color = unique_colors[color]
-    radios += '<span><</span>li style="background-color:'+desired_color+'">'
-    radios += ' <span><</span>a href="#">'
-    radios += '<span><</span>input type="radio" value="'+desired_color+'">'
-    radios += ' </a>'
-  }
-  return radios
-}
-
-// se existir apenas o atributo cor
-function create_absolute_color_radios(variants){
-  radios = ""
-  for(variant in variants) {
-    if( variants[variant].available == false ) {
-      var desired_color = variants[variant].properties.property1.value
-      radios += '<span><</span>li style="background-color:'+desired_color+'">'
-      // use como name "sku"
-      radios += '<span><</span>input name="sku" type="radio>'
-     }
-  }
-  return radios
-}
-
-function enable_sizes_per_color(){
-  $('.cor input').click(function(){
-    var elm = $( this );
-    // add a variável apenas os tamanhos da cor selecionada
-    variants = vnda.variants.find({Cor: elm.val()})
-    // insere o html de tamanhos
-    $('.tamanho').html(create_size_select(variants))
-  });
-}
-
-// função que monta o html do tamanho
-function create_size_select(variants){
-  sizes = [];
-  for(variant in variants) {
-    if( variants[variant].available == true ) {
-     if(variants[variant].properties) sizes.push(variants[variant].properties.property2.value);
-    }
-  }
-  unique_sizes = sizes.filter(onlyUnique);
-  select = '<span><</<span>label>Tamanho:<span><</<span>/label>'
-  select += '<span><</<span>select>'
-  for(size in unique_sizes){
-    if ( variants[variant].available == true ) {
-     desired_size = unique_sizes[size]
-     select += '<span><</<span>option value="'+desired_size+'">'
-     select += desired_size
-     select += '<span><</<span>/option>'
-   }
-  }
-  select += '<span><</<span>/select>'
-  return select
-}
-
-// se existir apenas o atributo tamanho
-function create_absolute_size_radios(variants){
-  select = '<span><</span>label>Tamanho:</label>'
-  // use como name "sku"
-  select += '<span><</span>select name="sku" required>'
-  for(variant in variants) {
-    if( variants[variant].available == true ) {
-      var desired_size = variants[variant].properties.property2.value
-       select += '<span><</span>option id="size_'+desired_size+'"  data-name="tamamho" data-size="'+desired_size+'"  value="'+variants[variant].sku+'">'
-       select += desired_size
-      select += '<span><</span>/option>'
-     }
-    }
-  select += '<span><</span>/select>'
-  return select
-}
-
-function fill_sku_with_variant(){
-  variant = vnda.variants.all()[0]
-  $( "form" ).find("#sku").val(variant.sku)
-}
-
-function quantity_of_properties(){
-  property_count = 0
-  variants = vnda.variants.all()
-  if(exists(variants[0].properties.property1)) property_count++
-  if(exists(variants[0].properties.property2)) property_count++
-  if(exists(variants[0].properties.property3)) property_count++
-  return property_count
-}
-
-function exists(property){
-  if(!property) return false;
-  value = property.value
-  if(value && property.defining && (value !== null || value !== ""))
-    return true;
-  else
-    return false;
-}
-
-function onlyUnique(value, index, self) {
-  return self.indexOf(value) === index;
-}
-                </pre>
-                <p>Etapa 2 - Nessa etapa estão as funções:</p>
+                  <p>aguardando atualização...</p>
 
      </div><!-- content -->
     <div class="dark-box">
