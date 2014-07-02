@@ -737,7 +737,7 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
 
                 <h3 id="products">{% products %}</h3>
                 <pre>
-{% products tag:tag.name parent_tag:parent_tag.name page:params.page per_page:20  %}
+{% products tag:tag.name parent_tag:parent_tag.name page:params.page per_page:25 %}
   {{ product.image_url | resize: '234x' }}
   {{ product.url }}
   {{ product.reference }}
