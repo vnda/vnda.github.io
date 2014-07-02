@@ -33,6 +33,8 @@
     <h2 id="Entendendo o .liquid">Entendendo o .liquid</h2>
     <p>Liquid é a linguagem de programação responsável por implementar os templates desenvolvidos e utilizados pela Vnda.</p>
 
+    <h3 id="Liquid para Designers">Liquid para Designers(filtros)</h3>
+    <p><a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers#standard-filters" target="_blank" class="laranja">Clique aqui</a> para ver os filtros disponíveis para usar no .liquid.</p>
     <pre>
 {% assign order = "false" %}
 {% orders client_id:client.id %}
@@ -62,15 +64,30 @@
     <p>Segue abaixo os templates disponíveis na plataforma:</p>
 
     <h3 id="Layout.liquid">Layout.liquid</h3>
-    <p> Neste template ficam o header e o footer do site, é onde as partes comuns do HTML são colocadas para serem utilizadas por todos os templates. </p>
+    <p>Neste template ficam devem ficar o html do topo e do rodapé e a tag<br> <strong>{{ yield }}</strong> responsável por incluir o conteúdo dos demais template.</p>
 
     <h3 id="Home.liquid">Home.liquid</h3>
     <p>Página inicial da loja, aqui podem ser exibidos produtos em destaque, banners, menus e qualquer outra informação que for necessária para atrair o cliente a navegar no resto do site.</p>
 
     <h3 id="Tag.liquid">Tag.liquid</h3>
-    <p> Página que exibe produtos relacionados a uma tag. Tag é a forma de categorização utilizada pela Vnda para organizar os produtos. </p>
-
+    <p>Página que exibe produtos relacionados a uma tag. Tag é a forma de categorização utilizada pela Vnda para organizar os produtos. </p>
+    <pre>
+  {% assign banner_tag_name = "categoria-" | append: tag.name %}
+  {% banners position:banner_tag_name %}
+    ....
+  {% endbanners %}
+    </pre>
+    <p>
+      Nesse template pode chamar um posição de banner de tag,
+      basta criar uma variável com o nome da tag e chamar esta posição de banner.<br>
+    </p>
     <h4 id="Listar Produtos">Listar produtos</h4>
+    <pre>
+
+{% products tag:tag.name parent_tag:parent_tag.name page:params.page %}
+  ...
+{% endproducts %}
+    </pre>
     <p>Listagem de produtos com a tag <a href="#products" class="laranja">{% products %}</a><br/><br/><br/><br/></p>
     <h4 id="Criar Páginação">Criar páginação</h4>
     <pre>
@@ -92,30 +109,30 @@
     <h4 id="Filtros">Filtros</h4>
     <p>aguardando atualização...<br/><br/><br/><br/></p>
 
-                <h3 id="Product.liquid">Product.liquid</h3>
-                <p>Template para exibição do produto, suas imagens, produtos relacionados. Aqui também fica o formulário que permite adicionar o item ao carrinho, neste formulário o cliente pode selecionar qual atributo do produto (cor, tamanho, etc) ele realmente quer.</p>
-                <p>Para exibir o nome, preço, remarcações, disponibilidade,  utilize  tags dentro do loop <a href="#products" class="laranja">{% product %}</a></p>
+    <h3 id="Product.liquid">Product.liquid</h3>
+    <p>Template para exibição do produto, suas imagens, produtos relacionados. Aqui também fica o formulário que permite adicionar o item ao carrinho, neste formulário o cliente pode selecionar qual atributo do produto (cor, tamanho, etc) ele realmente quer.</p>
+    <p>Para exibir o nome, preço, remarcações, disponibilidade,  utilize  tags dentro do loop <a href="#products" class="laranja">{% product %}</a></p>
 
-                <h4 id="Enviar Produto ao Carrinho(modelo antigo)">Enviar produto ao carrinho(modelo antigo)</h4>
-                <p>
-                  Para adicionar itens ao carrinho, você precisa fazer um POST para a URL definida na variável {{ cart_url }}, passando dois campos:<p>
+    <h4 id="Enviar Produto ao Carrinho(modelo antigo)">Enviar produto ao carrinho(modelo antigo)</h4>
+    <p>
+      Para adicionar itens ao carrinho, você precisa fazer um POST para a URL definida na variável {{ cart_url }}, passando dois campos:<p>
 
-                <p>* product_id: ID do produto selecionado pelo usuário<br />
-                   * quantity: Quantidade de itens que o usuário deseja comprar</p>
-                 <p class="clear">Os campos product_id e quantity são obrigatório, mesmo que o produto tenha apenas uma variante.
-                  Caso sua loja não permita que o usuário compre mais de um item, você deve informar este campo com o valor 1.
-                  </p>
-                <pre>
+    <p>* product_id: ID do produto selecionado pelo usuário<br />
+       * quantity: Quantidade de itens que o usuário deseja comprar</p>
+     <p class="clear">Os campos product_id e quantity são obrigatório, mesmo que o produto tenha apenas uma variante.
+      Caso sua loja não permita que o usuário compre mais de um item, você deve informar este campo com o valor 1.
+      </p>
+    <pre>
 // deprecate, atributos modelo antigo
 <span><</span>form action="{{ cart_url }}" method="POST"<span>></span>
   <span><</span>input type="hidden" name="product_id" value="{{ product.id }}"/<span>></span>
   <span><</span>input type="number" name="quantity" min="1"/<span>></span>
   <span><</span>input type="submit" value="Adicionar"/<span>></span>
 <span><</span>/form<span>></span>
-                </pre>
-                  <p> Isso pode ser feito utilizando um formulário &raquo;</p>
-                  <div></div><br>
-                  <pre>
+    </pre>
+    <p> Isso pode ser feito utilizando um formulário &raquo;</p>
+    <div></div><br>
+    <pre>
 // deprecate, atributos modelo antigo
 <span><</span>form action="{{ cart_url }}" method="POST"<span>></span>
   <span><</span>input type="hidden" name="product_id" value="{{ product.id }}"/<span>></span>
@@ -127,48 +144,48 @@
   <span><</span>/select<span>></span>
   <span><</span>input type="submit" value="Adicionar"/<span>></span>
 <span><</span>/form<span>></span>
-                  </pre>
-                  <p>Em caso de o produto ter variantes &raquo; </p>
-                  <div></div><br>
-                  <pre>
+    </pre>
+    <p>Em caso de o produto ter variantes &raquo; </p>
+    <div></div><br>
+    <pre>
 // deprecate, atributos com modelo antigo
 $.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
   alert("Item adicionado com sucesso");
 });
-                  </pre>
-                  <p>OU via AJAX &raquo;</p>
-                 <div></div><br>
-                  <p>
-                    Caso o produto possua variantes, você deve enviá-las junto com os parâmetros obrigatórios, da seguinte forma:
-                  </p>
-                  <p>
-                    * attributes[cor]: Valor do atributo cor da variante<br />
-                    * attributes[tamanho]: Valor do atributo tamanho da variante<br />
-                   </p>
-                   <p>E assim para cada atributo configurado no admin.</p>
-                  <pre>
+    </pre>
+    <p>OU via AJAX &raquo;</p>
+   <div></div><br>
+    <p>
+      Caso o produto possua variantes, você deve enviá-las junto com os parâmetros obrigatórios, da seguinte forma:
+    </p>
+    <p>
+      * attributes[cor]: Valor do atributo cor da variante<br />
+      * attributes[tamanho]: Valor do atributo tamanho da variante<br />
+     </p>
+     <p>E assim para cada atributo configurado no admin.</p>
+    <pre>
 // deprecate, atributos com modelo antigo
 <span><</span>form action="{{ cart_url }}" method="POST">
-  …
-  <span><</span>textarea name="extras[Observação]"><span><</span>/textarea<span>></span>
-  <span><</span>input type="file" name="extras[Imagem]"/<span>></span>
-  <span><</span>input type="submit" value="Adicionar"/<span>></span>
+…
+<span><</span>textarea name="extras[Observação]"><span><</span>/textarea<span>></span>
+<span><</span>input type="file" name="extras[Imagem]"/<span>></span>
+<span><</span>input type="submit" value="Adicionar"/<span>></span>
 <span><</span>/form<span>></span>
 
-                  </pre>
-                   <p>
-                      Além disso, você pode adicionar informações extras a cada item do carrinho.
-                      Essas informações podem ser, por exemplo,
-                      uma observação do cliente ou ainda uma imagem para ser impressa no produto.
-                      Para enviar essas informações, basta criar os campos a seguinte forma &raquo;
-                  </p>
+    </pre>
+     <p>
+        Além disso, você pode adicionar informações extras a cada item do carrinho.
+        Essas informações podem ser, por exemplo,
+        uma observação do cliente ou ainda uma imagem para ser impressa no produto.
+        Para enviar essas informações, basta criar os campos a seguinte forma &raquo;
+    </p>
 
-                <h4 id="Enviar Produto ao Carrinho(modelo novo)">Enviar produto ao carrinho(modelo novo)</h4>
-                <p>
-                  **As configurações de atributo devem estar ativadas no admin.
-                </p>
-                <p><img src="atributos.jpg"></p>
-                <pre>
+  <h4 id="Enviar Produto ao Carrinho(modelo novo)">Enviar produto ao carrinho(modelo novo)</h4>
+  <p>
+    **As configurações de atributo devem estar ativadas no admin.
+  </p>
+  <p><img src="atributos.jpg"></p>
+  <pre>
 <span><</span>form action="{{ cart_item_url }}" method="post"<span>></span>
   <span><</span>input type="hidden" name="sku">
   <span><</span>input type="number" name="quantity" value="1">
@@ -191,7 +208,7 @@ $.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
                  </p>
                  <p>Para montar um sku existe 3 formas e isso vai depender de quantos atributos e variantes forão cadastradas no produto.</p>
 
-                 <p><strong>Possibilidade 1</strong></p>
+                 <p><strong>Com apenas uma variante</strong></p>
                  <pre>
 {% variants product_id:product.id %}
   {{ variant.sku  }}
@@ -200,26 +217,35 @@ $.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
                  <p>
                    Caso exista apenas uma variante cadastrada para um produtos basta buscar {{ variant.sku }} e informar no campo do formulário
                  </p>
-                 <p><strong>Possibilidade 2</strong></p>
+                 <div></div><br>
+                 <p><strong>Com mais de uma variante</strong></p>
                  <p>
-                    Dentro desta possibilidade existe mais 2 outras situações ou seja ou um produto tem 1 atributo ou tem 2 atributos.
+                    Neste caso podem existir duas situações: produto com 1 atributos ou com 2 atributos.
                  </p>
-                 <p>Agora é preciso montar a chave(o valor enviado no campo sku do form) e essa é a parte mais importante que exige um conhecimento básico de O.O em javascript para acessar as todas as informações das variantes de um produtos e montar o html e o sku.
                  <pre>
+// montar o sku
+vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
+                 </pre>
+                 <p>
+                 Se existir 2 atributos você deve buscar o valor de cada atributo via javascript.
+                 </p>
+                <div></div><br>
+                <pre>
 vnda.variants.all()
                  </pre>
-                 <p>Antes de começar abra a página de produto no browser e execute no console a seguinte linha de comando:<br>
+                 <p>Antes de começar faça um teste, abra a página de produto e no console execute a seguinte linha de comando:<br>
                   </p>
                  <div></div><br>
-                 <p>Ao executar esse comando é retornado um array de objetos, é nesse array tem todas as informações da variantes e sendo assim é´possível montar o html e principalmente entender a lógica desse modelo.</p>
+                 <p>Ao executar esse comando é retornado um array de objetos com todas as informações de cada variante do produto.</p>
                  <pre>
 vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
                  </pre>
                  <p>Ainda no console você pode montar um sku, basta combinar os valores de atributos da variante.</p>
                  <div></div><br>
                  <p>Ao executar esse comando é <strong>gerado uma chave</strong>, e será essa chave que deve ser enviada para o campo sku do formulário.</p>
-                 <p>Dica: essa chave deve ser enviado no submit do formulário<br>.
-                  Veja <a href="#Atributos(montar de sku)" class="laranja">aqui</a> algumas funções e exemplos que podem servir de base para criar suas funções.</p>
+
+                 <p>Dica: para enviar o sku faça um função no evento submit do formulário.<br>
+                  Veja <a href="#Atributos(montar o sku)" class="laranja">aqui</a> um exemplo pronto que pode servir como base para criar suas próprias funções.</p>
 
                  <h4 id="Listar imagens do produto">Listar imagens do produto</h4>
                 <pre>
@@ -619,6 +645,7 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
                 <h3 id="Login.liquid">Login.liquid</h3>
                 <p> Template usado tanto para novos cadastros quanto para logins de clientes já cadastrados. Desta página parte também o login via Facebook, que permite que clientes participem de promoções específicas.
                 <p><span class="summary"><code><a href="#Formulário de Cadastro" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
+
                 <h3 id="Search.liquid">Search.liquid</h3>
                 <p> Página que exibe o resultado de uma busca, este resultado é uma lista de produtos que fazem match com o termo buscado pelo cliente atráves da URL /busca?q=termo. </p>
                 <p>Os resultados da busca ficam armezanados na variável {{ products }}.</p>
@@ -649,6 +676,7 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
                 </pre>
                 <p>Se não exister resultados na busca usar {{ flash.search.error }}.</p>
                 <p>Para mostrar o termo da busca  {{ params.q | strip_html }}</p>
+
                 <h3 id="Page.liquid">Page.liquid</h3>
                 <p> A Vnda possui um pequeno CMS que pode ser utilizado para customizar certas páginas sem a necessidade de conhecimentos avançados de programação. É neste template que essas páginas são exibidas. </p>
 
@@ -709,7 +737,7 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
 
                 <h3 id="products">{% products %}</h3>
                 <pre>
-{% products tag:tag.name parent_tag:parent_tag.name page:params.page per_page:per_page  %}
+{% products tag:tag.name parent_tag:parent_tag.name page:params.page per_page:20  %}
   {{ product.image_url | resize: '234x' }}
   {{ product.url }}
   {{ product.reference }}
@@ -1182,7 +1210,7 @@ exemplo-senha-cliente
                   <h3 id="Como relacionar produtos">Como relacionar produtos</h3>
                   <p>aguardando atualização...<br><br><br><br><br></p>
 
-                  <h3 id="Atributos(montar de sku)">Atributos(montar de sku)</h3>
+                  <h3 id="Atributos(montar o sku)">Atributos(montar o sku)</h3>
 
                   <p>
                     Partindo da premissa em que os atributos de um produtos são Cor(atributo_1) e Tamanho(atributo_2) respectivamente,
