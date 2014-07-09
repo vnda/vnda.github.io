@@ -1259,6 +1259,37 @@ OU
                     <h3 id="Como relacionar produtos">Como relacionar produtos</h3>
                     <p>aguardando atualização...<br><br><br><br><br></p>
 
+                    <h3 id="Incluir busca swiftype">Incluir busca swiftype</h3>
+                    <pre>
+// mudanças no .liquid
+1) {{ meta_tags }} no layout, dentro do head
+
+2) em product
+{% contentfor meta_tags %}
+  <span><</span>meta property="st:image" content="{{ product.image_url | resize: '185x' }}">
+  <span><</span>meta property='st:type' content='products' />
+  <span><</span>meta class="swiftype" name="name" data-type="string" content="{{ product.name }}" />
+  {% if product.on_sale%}
+  <span><</span>meta class="swiftype" name="price" data-type="float" content="{{ product | apply_discount | money_format }}" />
+  <span><</span>meta class="swiftype" name="original-price" data-type="float" content="{{ product.price  | money_format}}" />
+  {% else %}
+  <span><</span>meta class="swiftype" name="price" data-type="float" content="{{ product.price | money_format }}" />
+  <span><</span>meta class="swiftype" name="original-price" data-type="float" content="{{ product.price | money_format }}" />
+  {% endif %}
+  <span><</span>meta class="swiftype" name="on_sale" data-type="enum" content="{{ product.on_sale }}" />
+  <span><</span>meta class="swiftype" name="available" data-type="enum" content="{{ product.available }}" />
+  <span><</span>meta class="swiftype" name="score_booster" data-type="float" content="{% if product.available %}1{% else %}0{% endif %}" />
+{% endcontentfor %}
+
+3) ajustar meta property="st:image com o tamanho da imagem usada no liquid da busca
+                    </pre>
+                    <p>
+                        Os processos para implementar a busca do swiftype são:<br>
+                        1 - mudanças no .liquid<br>
+                        2 - criar uma engine no swiftype<br>
+                        3 - adicionar filtro na engine para busca somente página començando com /produto/<br>
+                        4 - passar "engine_key" "engine_slug" para cadastro no admin
+                    </p>
                     <h3 id="Atributos(montar o sku)">Atributos(montar o sku)</h3>
 
                     <p>
