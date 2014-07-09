@@ -69,6 +69,11 @@
 <a class="line-num" href="#line-14">14</a>   <span class="nx">-H "Accept: application/json"</span>
 <a class="line-num" href="#line-15">15</a>   -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
 <a class="line-num" href="#line-16">16</a>   'http://demo.vnda.com.br/api<span class="kd">/v2/orders</span><span class="s1">/CBE2F7E7A1</span>'
+
+<a class="line-num" href="#line-13">13</a> <span class="nx">curl -X GET</span>
+<a class="line-num" href="#line-14">14</a>   <span class="nx">-H "Accept: application/json"</span>
+<a class="line-num" href="#line-15">15</a>   -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
+<a class="line-num" href="#line-16">16</a>   'http://demo.vnda.com.br/api<span class="kd">/v2/orders/CBE2F7E7A1</span><span class="s1">/items</span>'
 </pre>
       <p>Os pedidos podem ser listados e filtrados por Status e Cliente.</p>
       <p>Os status aceitos para filtro são "received", "confirmed", "canceled". Também são aceitas combinações destes status, desde que separados por vídgula. Ex: "confirmed,canceled"</p>
