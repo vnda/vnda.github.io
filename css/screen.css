@@ -25,8 +25,7 @@ body {
 }
 a {
   color: #261a3b; }
-  a:visited {
-    color: #261a3b; }
+
 a:focus {
 	outline: thin dotted;
 
@@ -141,7 +140,8 @@ table {
 	width: auto;
 	background-color: transparent; }
 	.tocify-wrapper #sidebar_switch .titulo a {
-		text-align: center; }
+		text-align: center;
+		text-decoration: none; }
 	.tocify-wrapper #sidebar_switch .nav {
 		margin: 10px;
 		overflow: hidden; }
@@ -383,13 +383,14 @@ html, body {
 .tocify-wrapper .tocify-item.active>a, .tocify-wrapper .toc-footer li.active {
 	font-weight: bold
 }
-.tocify-wrapper ul, .tocify-wrapper li {
+.tocify-wrapper #headings ul,
+.tocify-wrapper #headings li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 	line-height: 28px
 }
-.tocify-wrapper li {
+.tocify-wrapper #headings li {
 	padding-left: 10px;
 	color: #e9eef2;
 	-webkit-transition-property: background;
@@ -666,9 +667,9 @@ position: relative;
 top: 0;
 left: 0;
 width: 250px;
-height: 29px;
+height: 100px;
 margin-bottom: 40px; }
-  #sidebar_switch span {
+  #sidebar_switch span.titulo{
     display: block;
     float: left;
     width: 50%;
@@ -681,9 +682,9 @@ margin-bottom: 40px; }
 
 #sidebar_switch {
   border-bottom: none; }
-  #sidebar_switch span {
+  #sidebar_switch span..titulo {
     color: #2d2d22; }
-  #sidebar_switch span a {
+  #sidebar_switch span..titulo a {
     display: block;
     line-height: 29px;
    text-decoration: none; }

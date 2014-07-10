@@ -5,8 +5,10 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" media="all" href="css/bootstrap.css" />
   <link rel="stylesheet" media="all" href="css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="css/component.css" />
   <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
   <script src="js/jquery-1.8.3.min.js"></script>
+  <script src="js/modernizr.custom.js"></script>
   <script src="js/main.js"></script>
   </head>
   <body>
@@ -14,14 +16,13 @@
     <img class="logo" src="https://avatars2.githubusercontent.com/u/810902?s=200">
     <div id="sidebar_switch">
       <span class="headings titulo"><a href="/">GUIDES VNDA</a></span>
-      <div class="nav">
-        <label>Documentação:</label>
-        <select>
-          <option value="index.html">CRIAÇÃO</option>
-          <option value="setup.html" selected>SETUP</option>
-          <option value="api.html">API</option>
-        </select>
-      </div>
+      <section id="set-6">
+        <div class="hi-icon-wrap hi-icon-effect-6 hi-icon-effect-6a">
+          <a href="index.html" class="hi-icon hi-icon-images um">Criação</a>
+          <a href="setup.html" class="hi-icon hi-icon-contract dois select">Setup</a>
+          <a href="api.html" class="hi-icon hi-icon-cog tres">Api</a>
+        </div>
+       </section>
      </div>
     <div id="headings" class="tocify">
     </div>
@@ -1066,201 +1067,201 @@ OU
                   <p>Listar atributos cor (deprecate)</p>
   </pre>
 
-                  <h3 id="opengraphfor">{% opengraphfor %}</h3>
-                  <pre>
-  {% unless opengraph %}
-    {% if template == "tag" %}
-      {% opengraphfor tag %}
+      <h3 id="opengraphfor">{% opengraphfor %}</h3>
+      <pre>
+{% unless opengraph %}
+  {% if template == "tag" %}
+    {% opengraphfor tag %}
 
-    {% elsif template == "product" %}
-      {% opengraphfor product %}
+  {% elsif template == "product" %}
+    {% opengraphfor product %}
 
-    {% else %}
-      <span><</span>title<span>></span>
-        {% case template %}
-          {% when 'cart' %}{% assign pretitle = 'Carrinho' %}
-          {% when 'address' %}{% assign pretitle = 'Entrega' %}
-          {% when 'payment' %}{% assign pretitle = 'Pagamento' %}
-          {% when 'finished' %}{% assign pretitle = 'Concluido' %}
-        {% endcase %}
-        {% if pretitle %}{{ pretitle }} | {% endif %}{{ store.name }}
-      <span><</span>/title<span>></span>
-    {% endif %}
-  {% endunless %}
-  {{ opengraph }}
-                  </pre>
-                  <p>Listar meta tags opengraph para facebook<br />
-                  * Meta tags e opengraph devem ser dinâmicas <br />
-                  * Usar {% opengraphfor %} para aplicar Meta Title e Description nas páginas internas da loja.</p>
-
-                  <h3 id="contentfor">{% contentfor %}</h3>
-                  <pre>
-  {% contentfor exemplo %}
-    ... conteúdo armazenado na varianvel "exemplo"
-  {% endcontentfor %}
-
-  {{ exemplo }} // exibindo contéudo
-                  </pre>
-                  <p>Armazendo conteúdo com a tag {% contentfor %}<br />
-                  *Salvar e exibir conteúdo em outros locais do template .liquid</p>
-
-                    <h2 id="Recursos">Recursos</h3>
-                    <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
-
- <h3 id="Formulários WebForms">Formulários WebForms</h3>
-                    <pre>
-  <span><</span>form action="/webform" method="post"<span>></span>
-  <span><</span>input type="hidden" name="key" value="nome-da-loja-nome-do-form"<span>></span>
-  <span><</span>input type="submit"<span>></span>
-  <span><</span>/form<span>></span>
-                    </pre>
-                    <p>* Os forms de contato devem usar a action /webform<br />
-                    * Deve ser feito o cadastro do form no admin para pegar a key </p>
-
-                    <h3 id="Descrição do produto com múltiplas seções">Descrição do produto com múltiplas seções</h3>
-                    <pre>
-  {% if product.description %}
-    {% assign descParts = product.description | split:"linhadecorte" %}
-    {% for desc in descParts %}
-      {% if forloop.index == 1 %}{% assign desc1 = desc %}{% endif %}
-      {% if forloop.index == 2 %}{% assign desc2 = desc %}{% endif %}
-      {% if forloop.index == 3 %}{% assign desc3 = desc %}{% endif %}
-    {% endfor %}
-  {% endif %}
-  ...
-  {{ desc1 }}
-  ...
-  {{ desc2 }}
-  ...
-  {{ desc3 }}
-                    </pre>
-                    <p>Para determinar o o local onde a descrição será dividida, deve-se colocar o texto “linhadecorte” na descrição do produto</p>
-
-                    <h3 id="Wishlist(lista de desejos)">Wishlist(lista de desejos)</h3>
-                    <pre>
-  <span><</span>form action="{{ wishlist_url }}" method="POST"<span>></span>
-    <span><</span>input type="hidden" name="_method" value="DELETE"/<span>></span>
-    <span><</span>input type="hidden" name="client_id" value="{{client.id}}"/<span>></span>
-    <span><</span>input type="hidden" name="variant_id" value="{{wish.variant_id}}"/<span>></span>
-    <span><</span>button type="submit"<span>></span>Remover<span><</span>/button<span>></span>
-  <span><</span>/form<span>></span>
-                    </pre>
-                    <p>* Deletar produto da lista (também pode ser por JS)</p>
-                    <div></div><br>
-                    <pre>
-  {% wishlist client_id:client.id %}
-      {{wish}}
   {% else %}
-      nada
-  {% endwishlist %}
+    <span><</span>title<span>></span>
+      {% case template %}
+        {% when 'cart' %}{% assign pretitle = 'Carrinho' %}
+        {% when 'address' %}{% assign pretitle = 'Entrega' %}
+        {% when 'payment' %}{% assign pretitle = 'Pagamento' %}
+        {% when 'finished' %}{% assign pretitle = 'Concluido' %}
+      {% endcase %}
+      {% if pretitle %}{{ pretitle }} | {% endif %}{{ store.name }}
+    <span><</span>/title<span>></span>
+  {% endif %}
+{% endunless %}
+{{ opengraph }}
+      </pre>
+      <p>Listar meta tags opengraph para facebook<br />
+      * Meta tags e opengraph devem ser dinâmicas <br />
+      * Usar {% opengraphfor %} para aplicar Meta Title e Description nas páginas internas da loja.</p>
 
-  * para a listagem dos produtos utilize a tag {% products %} <a href="#products">&raquo; ver código</a>
-                     </pre>
-                    <p>* Mostrar lista do cliente</p>
-                    <div></div><br>
-                    <pre>
-  {% wishlist client_id:client.id variant_id:2 %}
-      {{wish}}
-  {% endwishlist %}}
-                    </pre>
-                    <p>* Consultar se produto está na lista</p>
-                    <div></div><br>
+      <h3 id="contentfor">{% contentfor %}</h3>
+      <pre>
+{% contentfor exemplo %}
+  ... conteúdo armazenado na varianvel "exemplo"
+{% endcontentfor %}
 
-                    <pre>
-  <span><</span>form action="{{ wishlist_url }}" method="POST"<span>></span>
-    <span><</span>input type="text" name="client_id" value="{{client.id}}"/<span>></span>
-    <span><</span>input type="text" name="variant_id"/<span>></span>
-    <span><</span>button type="submit" value="Enviar"<span>></span>Enviar<span><</span>/button<span>></span>
-  <span><</span>/form<span>></span>
-                    </pre>
-                    <p>* Adicionar na lista com html</p>
-                    <div></div><br>
-                    <pre>
-  $.post(
-    "/lista_de_desejos",
-    { client_id: "15", variant_id: "4" },
-    function( data ) {
-      console.log("success");;
-    },
-    "json"
-  )
-                    </pre>
-                    <p>* Adicionar via JS</p>
+{{ exemplo }} // exibindo contéudo
+      </pre>
+      <p>Armazendo conteúdo com a tag {% contentfor %}<br />
+      *Salvar e exibir conteúdo em outros locais do template .liquid</p>
 
-                    <h3 id="Notificações de e-mails">Notificações de e-mails</h3>
-                    <p>A plataforma possui integração com <a href="https://madmimi.com/" target="_blank">Madmimi</a>, ferramenta que gerencia as campanhas de e-mails dos nossos clientes.</p>
-                    <p>Atualmente disponibilizamos as seguintes notificações: </p>
-                    <pre>
-  exemplo-pedido-recebido
-  exemplo-pedido-recebido-deposito
-  exemplo-pedido-recebido-boleto
-  exemplo-pedido-entregue
-  exemplo-pedido-enviado
-  exemplo-pedido-confirmado
-  exemplo-pedido-cancelado
-  exemplo-novo-cliente
-  exemplo-senha-cliente
-                    </pre>
-                    <p>O nome das campanhas &raquo;</p>
+      <h2 id="Recursos">Recursos</h3>
+      <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
+
+      <h3 id="Formulários WebForms">Formulários WebForms</h3>
+      <pre>
+<span><</span>form action="/webform" method="post"<span>></span>
+<span><</span>input type="hidden" name="key" value="nome-da-loja-nome-do-form"<span>></span>
+<span><</span>input type="submit"<span>></span>
+<span><</span>/form<span>></span>
+      </pre>
+      <p>* Os forms de contato devem usar a action /webform<br />
+      * Deve ser feito o cadastro do form no admin para pegar a key </p>
+
+      <h3 id="Descrição do produto com múltiplas seções">Descrição do produto com múltiplas seções</h3>
+      <pre>
+{% if product.description %}
+  {% assign descParts = product.description | split:"linhadecorte" %}
+  {% for desc in descParts %}
+    {% if forloop.index == 1 %}{% assign desc1 = desc %}{% endif %}
+    {% if forloop.index == 2 %}{% assign desc2 = desc %}{% endif %}
+    {% if forloop.index == 3 %}{% assign desc3 = desc %}{% endif %}
+  {% endfor %}
+{% endif %}
+...
+{{ desc1 }}
+...
+{{ desc2 }}
+...
+{{ desc3 }}
+      </pre>
+      <p>Para determinar o o local onde a descrição será dividida, deve-se colocar o texto “linhadecorte” na descrição do produto</p>
+
+      <h3 id="Wishlist(lista de desejos)">Wishlist(lista de desejos)</h3>
+      <pre>
+<span><</span>form action="{{ wishlist_url }}" method="POST"<span>></span>
+  <span><</span>input type="hidden" name="_method" value="DELETE"/<span>></span>
+  <span><</span>input type="hidden" name="client_id" value="{{client.id}}"/<span>></span>
+  <span><</span>input type="hidden" name="variant_id" value="{{wish.variant_id}}"/<span>></span>
+  <span><</span>button type="submit"<span>></span>Remover<span><</span>/button<span>></span>
+<span><</span>/form<span>></span>
+      </pre>
+      <p>* Deletar produto da lista (também pode ser por JS)</p>
+      <div></div><br>
+      <pre>
+{% wishlist client_id:client.id %}
+    {{wish}}
+{% else %}
+    nada
+{% endwishlist %}
+
+* para a listagem dos produtos utilize a tag {% products %} <a href="#products">&raquo; ver código</a>
+    </pre>
+    <p>* Mostrar lista do cliente</p>
+    <div></div><br>
+    <pre>
+{% wishlist client_id:client.id variant_id:2 %}
+    {{wish}}
+{% endwishlist %}}
+      </pre>
+      <p>* Consultar se produto está na lista</p>
+      <div></div><br>
+
+      <pre>
+<span><</span>form action="{{ wishlist_url }}" method="POST"<span>></span>
+  <span><</span>input type="text" name="client_id" value="{{client.id}}"/<span>></span>
+  <span><</span>input type="text" name="variant_id"/<span>></span>
+  <span><</span>button type="submit" value="Enviar"<span>></span>Enviar<span><</span>/button<span>></span>
+<span><</span>/form<span>></span>
+      </pre>
+      <p>* Adicionar na lista com html</p>
+      <div></div><br>
+      <pre>
+$.post(
+  "/lista_de_desejos",
+  { client_id: "15", variant_id: "4" },
+  function( data ) {
+    console.log("success");;
+  },
+  "json"
+)
+      </pre>
+      <p>* Adicionar via JS</p>
+
+      <h3 id="Notificações de e-mails">Notificações de e-mails</h3>
+      <p>A plataforma possui integração com <a href="https://madmimi.com/" target="_blank">Madmimi</a>, ferramenta que gerencia as campanhas de e-mails dos nossos clientes.</p>
+      <p>Atualmente disponibilizamos as seguintes notificações: </p>
+      <pre>
+exemplo-pedido-recebido
+exemplo-pedido-recebido-deposito
+exemplo-pedido-recebido-boleto
+exemplo-pedido-entregue
+exemplo-pedido-enviado
+exemplo-pedido-confirmado
+exemplo-pedido-cancelado
+exemplo-novo-cliente
+exemplo-senha-cliente
+      </pre>
+      <p>O nome das campanhas &raquo;</p>
    <br ><br ><br ><br ><br ><br ><br ><br ><br ><br ><br ><br >
    <pre>
-  "nome",
-  "sobrenome",
-  "pedido",
-  "paginadopedido",
-  "experienciadocliente",
-  "valordodesconto",
-  "valordoenvio",
-  "valordopedido",
-  "formadepagamento",
-  "formadeenvio",
-  "itensdopedido",
-  "enderecoentrega",
-  "bairroentrega",
-  "cidadeentrega",
-  "estadoentrega",
-  "enderecocobranca",
-  "bairrocobranca",
-  "cidadecobranca",
-  "estadocobranca",
-  "linkdoboleto"
-                    </pre>
-                    <p>Os campos que podem ser enviados nos emails de noviticação &raquo;</p>
+"nome",
+"sobrenome",
+"pedido",
+"paginadopedido",
+"experienciadocliente",
+"valordodesconto",
+"valordoenvio",
+"valordopedido",
+"formadepagamento",
+"formadeenvio",
+"itensdopedido",
+"enderecoentrega",
+"bairroentrega",
+"cidadeentrega",
+"estadoentrega",
+"enderecocobranca",
+"bairrocobranca",
+"cidadecobranca",
+"estadocobranca",
+"linkdoboleto"
+      </pre>
+      <p>Os campos que podem ser enviados nos emails de noviticação &raquo;</p>
 
-                    <h3 id="DNS">DNS</h3>
-                    <p>- Criar uma entrada (ou alterar uma já existente) do tipo A,
-                     apontando para o IP 174.129.25.170.</p>
-                    <p>- Criar uma entrada www (ou alterar uma já existente) do tipo CNAME, apontando para o domínio vnda.com.br.</p>
+      <h3 id="DNS">DNS</h3>
+      <p>- Criar uma entrada (ou alterar uma já existente) do tipo A,
+       apontando para o IP 174.129.25.170.</p>
+      <p>- Criar uma entrada www (ou alterar uma já existente) do tipo CNAME, apontando para o domínio vnda.com.br.</p>
 
-                    <h2 id="Dicas Setup/Admin">Dicas Setup/Admin</h2>
-                    <p>Seção de dicas para integrar tanto no setup da loja ou para o admin.</p>
+      <h2 id="Dicas Setup/Admin">Dicas Setup/Admin</h2>
+      <p>Seção de dicas para integrar tanto no setup da loja ou para o admin.</p>
 
-                    <h3 id="Verificar usuário logado">Verificar usuário logado</h3>
-                    <pre>
+      <h3 id="Verificar usuário logado">Verificar usuário logado</h3>
+      <pre>
   {% if logged_in %}
     <span><<span>a href="{{ account_url }}" title="minha conta">minha conta<span><<span>/a<span>><span>
     <span><<span>a href="{{ logout_url }}" title="sair">sair<span><<span>/a<span>><span>
   {% else %}
     <span><<span>a href="{{ login_url }}" title="">minha conta<span><<span>/a<span>><span>
   {% endif %}
-                    </pre>
-                    <p>Após um usuário enviar seus dados de login e o mesmo ser validado pela api, a váriavel "logged_in" retorna valor verdadeiro.</p>
-                    <p>Ao adicionar uma verificação no .liquid é possível redirecionar e/ou deslogar.</p>
-                    <h3 id="Exibir imagens estáticas">Exibir imagens estáticas</h3>
-                    <p>* devem estar no diretório /public/images</p>
+      </pre>
+      <p>Após um usuário enviar seus dados de login e o mesmo ser validado pela api, a váriavel "logged_in" retorna valor verdadeiro.</p>
+      <p>Ao adicionar uma verificação no .liquid é possível redirecionar e/ou deslogar.</p>
 
-                    <pre>
+      <h3 id="Exibir imagens estáticas">Exibir imagens estáticas</h3>
+      <p>* devem estar no diretório /public/images</p>
+      <pre>
   {{ “nome_do_arquivo.ext” | image_tag: “Texto alternativo” }}
   <span><</span>img src="{{ “nome_do_arquivo.ext” | image_url }}" alt=“Texto alternativo”/<span>></span>
-                    </pre>
-                    <h3 id="Como listar produtos em promoção">Como listar produtos em promoção</h3>
-                    <p>aguardando atualização...<br><br><br><br><br></p>
+      </pre>
+      <h3 id="Como listar produtos em promoção">Como listar produtos em promoção</h3>
+      <p>aguardando atualização...<br><br><br><br><br></p>
 
-                    <h3 id="Como relacionar produtos">Como relacionar produtos</h3>
-                    <p>aguardando atualização...<br><br><br><br><br></p>
+      <h3 id="Como relacionar produtos">Como relacionar produtos</h3>
+      <p>aguardando atualização...<br><br><br><br><br></p>
 
-                    <h3 id="Incluir busca swiftype">Incluir busca swiftype</h3>
-                    <pre>
+      <h3 id="Incluir busca swiftype">Incluir busca swiftype</h3>
+      <pre>
 // mudanças no .liquid
 1) {{ meta_tags }} no layout, dentro do head
 
@@ -1282,188 +1283,218 @@ OU
 {% endcontentfor %}
 
 3) ajustar meta property="st:image com o tamanho da imagem usada no liquid da busca
-                    </pre>
-                    <p>
-                        Os processos para implementar a busca do swiftype são:<br>
-                        1 - mudanças no .liquid<br>
-                        2 - criar uma engine no swiftype<br>
-                        3 - adicionar filtro na engine para busca somente página començando com /produto/<br>
-                        4 - passar "engine_key" "engine_slug" para cadastro no admin
-                    </p>
-                    <h3 id="Atributos(montar o sku)">Atributos(montar o sku)</h3>
+      </pre>
+      <p>
+        Os processos para implementar a busca do swiftype são:<br>
+        1 - Acrescentar meta tags no .liquid<br>
+      </p>
+      <div></div><br />
+      <pre>
+<a href="http://i.imgur.com/PWX5CGJ.png" target="_blank">print 1</a>
+<a href="http://i.imgur.com/mtFpjMv.png" target="_blank">print 2</a>
+<a href="http://i.imgur.com/WKRvr3b.png" target="_blank">print 3</a>
+<a href="http://i.imgur.com/e1jdz17.png" target="_blank">print 4</a>
+      </pre>
+       <p>
+        2 - Criar engine de busca<br>
+      </p>
+      <div></div><br>
 
-                    <p>
-                      Partindo da premissa em que os atributos de um produtos são Cor(atributo_1) e Tamanho(atributo_2) respectivamente,
-                      e que ao abrir a página de produtos é listado apenas as cores e ao selecionar uma cor é listados as combinações de tamanho compátiveis com este atributo.
-                    </p>
-                    <p>Para isso criaremos um arquivo atributos.js com as seguintes funções e manipulações de dado.</p>
-                    <pre>
-  $(function(){
+      <pre>
+<a href="http://i.imgur.com/zrBgDkJ.png" target="_blank">print 5</a>
+      </pre>
+      <p>
+        3- Nessa etapa, ele vai buscar o conteúdo em todo o site<br>
+      </p>
+      <div></div><br>
+      <pre>
+<a href="http://i.imgur.com/zoozF9K.png" target="_blank">print 6</a>
+<a href="http://i.imgur.com/8TpF6VW.png" target="_blank">print 7</a>
+      </pre>
+      <p>
+        4 - Depois que já tiverem sido encontradas todas as páginas, colocar o filtro<br>
+      </p>
+      <div></div><br>
+      <pre>
+<a href="http://i.imgur.com/xZWgOkE.png" target="_blank">print 8</a>
+      </pre>
+      <p>
+        5 - As informações que precisam ser colocadas no admin
+      </p>
+      <h3 id="Atributos(montar o sku)">Atributos(montar o sku)</h3>
 
-    // variável que recebe os objetos com as informaçoes de cada variante
-    variants = vnda.variants.all()
+      <p>
+        Partindo da premissa em que os atributos de um produtos são Cor(atributo_1) e Tamanho(atributo_2) respectivamente,
+        e que ao abrir a página de produtos é listado apenas as cores e ao selecionar uma cor é listados as combinações de tamanho compátiveis com este atributo.
+      </p>
+      <p>Para isso criaremos um arquivo atributos.js com as seguintes funções e manipulações de dado.</p>
+      <pre>
+$(function(){
 
-    var cor = variants[0].properties.property1;
-    var tamanho = variants[0].properties.property2;
+  // variável que recebe os objetos com as informaçoes de cada variante
+  variants = vnda.variants.all()
 
-    // verifica a quantidade de atributos do produto
-    properties_count = quantity_of_properties()
+  var cor = variants[0].properties.property1;
+  var tamanho = variants[0].properties.property2;
 
-    // produto com 2 atritubos
-    if(properties_count >= 2) {
-     $(".cores").html(
-      '<span><</span>label>Cor:<span><</span>/label><span><</span>ul>'+create_color_radios(variants)+'<span><</span>/ul>'
-          );
-      // chamada da função que lista os tamanhos de uma cor selecionada
-      enable_sizes_per_color()
-      }
-    } else if(properties_count == 1){   // produto com 1 atritubo
+  // verifica a quantidade de atributos do produto
+  properties_count = quantity_of_properties()
 
-       // verifica qual html atributo deve ser criado no html
-        if ( cor.value != null ) {
-          $(".cor").html(
-          '<span><</span>label>Cor:</label><span><</span>ul>'+create_absolute_color_radios(variants)+'<span><</span>/ul>'
-          );
-        } else {
-          $('.tamanho').html(create_absolute_size_radios(variants))
-        }
+  // produto com 2 atritubos
+  if(properties_count >= 2) {
+   $(".cores").html(
+    '<span><</span>label>Cor:<span><</span>/label><span><</span>ul>'+create_color_radios(variants)+'<span><</span>/ul>'
+        );
+    // chamada da função que lista os tamanhos de uma cor selecionada
+    enable_sizes_per_color()
+    }
+  } else if(properties_count == 1){   // produto com 1 atritubo
+
+     // verifica qual html atributo deve ser criado no html
+      if ( cor.value != null ) {
+        $(".cor").html(
+        '<span><</span>label>Cor:</label><span><</span>ul>'+create_absolute_color_radios(variants)+'<span><</span>/ul>'
+        );
       } else {
-        fill_sku_with_variant();
-    }
-
-    $( "form" ).on('submit',function(){
-      if( quantity_of_properties() >= 2 ) {
-        var atributo_1 =  $( ".cor input[type=radio]:checked").val();
-        var atributo_2 = $( ".tamanho option:checked" ).val();
-        variant = vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
-        if(variant){
-          sku = variant.sku
-          $( "form" ).find( "#sku" ).val( sku );
-        } else{
-          return false
-        }
+        $('.tamanho').html(create_absolute_size_radios(variants))
       }
-    })
+    } else {
+      fill_sku_with_variant();
   }
-                   </pre>
-                  <p>Etapa 1 -  onde são chamadas as funções para criar as combinações, sku e enviar o formulário de compra:</p>
-                  <div></div><br>
 
-                  <pre>
-  // função que monta o html das cores
-  function create_color_radios(variants){
-    colors = [];
-    radios = ""
-    for(variant in variants) {
-      if( variants[variant].available == true ) {
-        if(variants[variant].properties) {
-          colors.push(variants[variant].properties.property1.value)
-        }
+  $( "form" ).on('submit',function(){
+    if( quantity_of_properties() >= 2 ) {
+      var atributo_1 =  $( ".cor input[type=radio]:checked").val();
+      var atributo_2 = $( ".tamanho option:checked" ).val();
+      variant = vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
+      if(variant){
+        sku = variant.sku
+        $( "form" ).find( "#sku" ).val( sku );
+      } else{
+        return false
       }
     }
-    unique_colors = colors.filter(onlyUnique);
-    for(color in unique_colors){
-      desired_color = unique_colors[color]
+  })
+}
+      </pre>
+      <p>Etapa 1 -  onde são chamadas as funções para criar as combinações, sku e enviar o formulário de compra:</p>
+      <div></div><br>
+
+      <pre>
+// função que monta o html das cores
+function create_color_radios(variants){
+  colors = [];
+  radios = ""
+  for(variant in variants) {
+    if( variants[variant].available == true ) {
+      if(variants[variant].properties) {
+        colors.push(variants[variant].properties.property1.value)
+      }
+    }
+  }
+  unique_colors = colors.filter(onlyUnique);
+  for(color in unique_colors){
+    desired_color = unique_colors[color]
+    radios += '<span><</span>li style="background-color:'+desired_color+'">'
+    radios += ' <span><</span>a href="#">'
+    radios += '<span><</span>input type="radio" value="'+desired_color+'">'
+    radios += ' </a>'
+  }
+  return radios
+}
+
+// se existir apenas o atributo cor
+function create_absolute_color_radios(variants){
+  radios = ""
+  for(variant in variants) {
+    if( variants[variant].available == false ) {
+      var desired_color = variants[variant].properties.property1.value
       radios += '<span><</span>li style="background-color:'+desired_color+'">'
-      radios += ' <span><</span>a href="#">'
-      radios += '<span><</span>input type="radio" value="'+desired_color+'">'
-      radios += ' </a>'
-    }
-    return radios
+      // use como name "sku"
+      radios += '<span><</span>input name="sku" type="radio>'
+     }
   }
+  return radios
+}
 
-  // se existir apenas o atributo cor
-  function create_absolute_color_radios(variants){
-    radios = ""
-    for(variant in variants) {
-      if( variants[variant].available == false ) {
-        var desired_color = variants[variant].properties.property1.value
-        radios += '<span><</span>li style="background-color:'+desired_color+'">'
-        // use como name "sku"
-        radios += '<span><</span>input name="sku" type="radio>'
-       }
+function enable_sizes_per_color(){
+  $('.cor input').click(function(){
+    var elm = $( this );
+    // add a variável apenas os tamanhos da cor selecionada
+    variants = vnda.variants.find({Cor: elm.val()})
+    // insere o html de tamanhos
+    $('.tamanho').html(create_size_select(variants))
+  });
+}
+
+// função que monta o html do tamanho
+function create_size_select(variants){
+  sizes = [];
+  for(variant in variants) {
+    if( variants[variant].available == true ) {
+     if(variants[variant].properties) sizes.push(variants[variant].properties.property2.value);
     }
-    return radios
   }
-
-  function enable_sizes_per_color(){
-    $('.cor input').click(function(){
-      var elm = $( this );
-      // add a variável apenas os tamanhos da cor selecionada
-      variants = vnda.variants.find({Cor: elm.val()})
-      // insere o html de tamanhos
-      $('.tamanho').html(create_size_select(variants))
-    });
+  unique_sizes = sizes.filter(onlyUnique);
+  select = '<span><</<span>label>Tamanho:<span><</<span>/label>'
+  select += '<span><</<span>select>'
+  for(size in unique_sizes){
+    if ( variants[variant].available == true ) {
+     desired_size = unique_sizes[size]
+     select += '<span><</<span>option value="'+desired_size+'">'
+     select += desired_size
+     select += '<span><</<span>/option>'
+   }
   }
+  select += '<span><</<span>/select>'
+  return select
+}
 
-  // função que monta o html do tamanho
-  function create_size_select(variants){
-    sizes = [];
-    for(variant in variants) {
-      if( variants[variant].available == true ) {
-       if(variants[variant].properties) sizes.push(variants[variant].properties.property2.value);
-      }
-    }
-    unique_sizes = sizes.filter(onlyUnique);
-    select = '<span><</<span>label>Tamanho:<span><</<span>/label>'
-    select += '<span><</<span>select>'
-    for(size in unique_sizes){
-      if ( variants[variant].available == true ) {
-       desired_size = unique_sizes[size]
-       select += '<span><</<span>option value="'+desired_size+'">'
+// se existir apenas o atributo tamanho
+function create_absolute_size_radios(variants){
+  select = '<span><</span>label>Tamanho:</label>'
+  // use como name "sku"
+  select += '<span><</span>select name="sku" required>'
+  for(variant in variants) {
+    if( variants[variant].available == true ) {
+      var desired_size = variants[variant].properties.property2.value
+       select += '<span><</span>option id="size_'+desired_size+'"  data-name="tamamho" data-size="'+desired_size+'"  value="'+variants[variant].sku+'">'
        select += desired_size
-       select += '<span><</<span>/option>'
+      select += '<span><</span>/option>'
      }
     }
-    select += '<span><</<span>/select>'
-    return select
-  }
+  select += '<span><</span>/select>'
+  return select
+}
 
-  // se existir apenas o atributo tamanho
-  function create_absolute_size_radios(variants){
-    select = '<span><</span>label>Tamanho:</label>'
-    // use como name "sku"
-    select += '<span><</span>select name="sku" required>'
-    for(variant in variants) {
-      if( variants[variant].available == true ) {
-        var desired_size = variants[variant].properties.property2.value
-         select += '<span><</span>option id="size_'+desired_size+'"  data-name="tamamho" data-size="'+desired_size+'"  value="'+variants[variant].sku+'">'
-         select += desired_size
-        select += '<span><</span>/option>'
-       }
-      }
-    select += '<span><</span>/select>'
-    return select
-  }
+function fill_sku_with_variant(){
+  variant = vnda.variants.all()[0]
+  $( "form" ).find("#sku").val(variant.sku)
+}
 
-  function fill_sku_with_variant(){
-    variant = vnda.variants.all()[0]
-    $( "form" ).find("#sku").val(variant.sku)
-  }
+function quantity_of_properties(){
+  property_count = 0
+  variants = vnda.variants.all()
+  if(exists(variants[0].properties.property1)) property_count++
+  if(exists(variants[0].properties.property2)) property_count++
+  if(exists(variants[0].properties.property3)) property_count++
+  return property_count
+}
 
-  function quantity_of_properties(){
-    property_count = 0
-    variants = vnda.variants.all()
-    if(exists(variants[0].properties.property1)) property_count++
-    if(exists(variants[0].properties.property2)) property_count++
-    if(exists(variants[0].properties.property3)) property_count++
-    return property_count
-  }
+function exists(property){
+  if(!property) return false;
+  value = property.value
+  if(value && property.defining && (value !== null || value !== ""))
+    return true;
+  else
+    return false;
+}
 
-  function exists(property){
-    if(!property) return false;
-    value = property.value
-    if(value && property.defining && (value !== null || value !== ""))
-      return true;
-    else
-      return false;
-  }
-
-  function onlyUnique(value, index, self) {
-    return self.indexOf(value) === index;
-  }
-                  </pre>
-                  <p>Etapa 2 - Nessa etapa estão as funções:</p>
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
+      </pre>
+      <p>Etapa 2 - Nessa etapa estão as funções:</p>
 
      </div><!-- content -->
     <div class="dark-box">

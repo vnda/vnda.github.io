@@ -1,10 +1,4 @@
 $(function(){
-	$( "select" )
-	  .change(function() {
-	    $( "select option:selected" ).each(function() {
-	      window.location.href = $( this ).val();
-	    });
-	  });
 	  $( window ).load(function(){
 		 	 $( ".tocify-wrapper li" ).each(function() {
 		    var texto = $( this ).find( "a" ).text();
