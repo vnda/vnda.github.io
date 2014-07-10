@@ -387,7 +387,7 @@
 	content: "setup";
 	display: block;
 	position: relative;
-	bottom: -20px;
+	bottom: -10px;
 	font-size: 10px; }
 
 .no-touch .hi-icon-effect-5 .hi-icon:hover {
@@ -592,19 +592,19 @@
 	content: "CRIAÇÃO";
 	display: block;
 	position: relative;
-	bottom: -20px;
+	bottom: -10px;
 	font-size: 10px; }
 .hi-icon-effect-6 .hi-icon.dois:after {
 	content: "SETUP";
 	display: block;
 	position: relative;
-	bottom: -20px;
+	bottom: -10px;
 	font-size: 10px; }
 .hi-icon-effect-6 .hi-icon.tres:after {
 	content: "API";
 	display: block;
 	position: relative;
-	bottom: -20px;
+	bottom: -10px;
 	font-size: 10px; }
 
 /* Effect 7 */
