@@ -593,19 +593,22 @@
 	display: block;
 	position: relative;
 	bottom: -10px;
-	font-size: 10px; }
+	font-size: 10px;
+	left: -8px; }
 .hi-icon-effect-6 .hi-icon.dois:after {
 	content: "SETUP";
 	display: block;
 	position: relative;
 	bottom: -10px;
-	font-size: 10px; }
+	font-size: 10px;
+	left: -3px; }
 .hi-icon-effect-6 .hi-icon.tres:after {
 	content: "API";
 	display: block;
 	position: relative;
 	bottom: -10px;
-	font-size: 10px; }
+	font-size: 10px;
+	left: -1px; }
 
 /* Effect 7 */
 .hi-icon-effect-7 .hi-icon {
