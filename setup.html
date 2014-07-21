@@ -29,10 +29,10 @@
   </div>
   <div class="page-wrapper">
     <div class="content">
-      <h2 id="Entendendo o .liquid">Entendendo o .liquid</h2>
+      <h2 id="entendendo-o-.liquid">Entendendo o .liquid</h2>
       <p>Liquid é a linguagem de programação responsável por implementar os templates desenvolvidos e utilizados pela Vnda.</p>
 
-      <h3 id="Liquid para Designers">Liquid para Designers(filtros)</h3>
+      <h3 id="liquid-para-designers">Liquid para Designers(filtros)</h3>
       <p><a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers#standard-filters" target="_blank" class="laranja">Clique aqui</a> para ver os filtros disponíveis para usar no .liquid.</p>
       <pre>
 {% assign order = "false" %}
@@ -58,22 +58,22 @@
       <p>Para usar o líquido, você vai precisar de recorrer a uma combinação de lógica e de saída de etiquetas usando operadores líquidos. Acções com liquidez muitos dos mesmos operadores como outras linguagens de programação:</p>
       <!-- // -->
 
-      <h2 id="Templates">Templates</h2>
+      <h2 id="templates">Templates</h2>
       <p>Os templates ficam na raiz da pasta compartilhada no Dropbox onde todos os arquivo são salvos na extensão .liquid</p>
       <p>Dentro da raiz ficam os diretórios "images" "stylesheets" "javascript" e "page"</p>
       <p>Dentro do diretórios page/ é gerado os arquivos de extensão .html das página que são criados no admin.</p>
       <p>Segue abaixo os templates disponíveis na plataforma:</p>
       <!-- // -->
 
-      <h3 id="Layout.liquid">Layout.liquid</h3>
+      <h3 id="layout.liquid">Layout.liquid</h3>
       <p>Neste template ficam devem ficar o html do topo e do rodapé e a tag<br> <strong>{{ yield }}</strong> responsável por incluir o conteúdo dos demais template.</p>
       <!-- // -->
 
-      <h3 id="Home.liquid">Home.liquid</h3>
+      <h3 id="home.liquid">Home.liquid</h3>
       <p>Página inicial da loja, aqui podem ser exibidos produtos em destaque, banners, menus e qualquer outra informação que for necessária para atrair o cliente a navegar no resto do site.</p>
       <!-- // -->
 
-      <h3 id="Tag.liquid">Tag.liquid</h3>
+      <h3 id="tag.liquid">Tag.liquid</h3>
       <p>Página que exibe produtos relacionados a uma tag. Tag é a forma de categorização utilizada pela Vnda para organizar os produtos. </p>
       <pre>
 {% assign banner_tag_name = "categoria-" | append: tag.name %}
@@ -85,7 +85,7 @@
         Nesse template é muito comun usar banners de posição de tag.<br>
         basta criar uma variável com o nome da tag e chamar esta posição de banner.<br>
       </p>
-      <h4 id="Listar Produtos">Listar produtos</h4>
+      <h4 id="listar-produtos">Listar produtos</h4>
       <pre>
 {% products tag:tag.name parent_tag:parent_tag.name page:params.page %}
   ...
@@ -94,7 +94,7 @@
       <p>Listagem de produtos com a tag <a href="#products" class="laranja">{% products %}</a><br/><br/><br/><br/></p>
       <!-- // -->
 
-      <h4 id="Criar Páginação">Criar páginação</h4>
+      <h4 id="criar-páginação">Criar páginação</h4>
       <pre>
 {% if pagination.total_pages > 1 %}
 <span><</span>nav class="pagination"<span>></span>
@@ -113,16 +113,16 @@
       <p>O código da páginação deve ficar dentro do loop {% products %}</p>
       <!-- // -->
 
-      <h4 id="Filtros">Filtros</h4>
+      <h4 id="filtros">Filtros</h4>
       <p>aguardando atualização...<br/><br/><br/><br/></p>
       <!-- // -->
 
-      <h3 id="Product.liquid">Product.liquid</h3>
+      <h3 id="product.liquid">Product.liquid</h3>
       <p>Template para exibição do produto, suas imagens, produtos relacionados. Aqui também fica o formulário que permite adicionar o item ao carrinho, neste formulário o cliente pode selecionar qual atributo do produto (cor, tamanho, etc) ele realmente quer.</p>
       <p>Para exibir o nome, preço, remarcações, disponibilidade,  utilize  tags dentro do loop <a href="#products" class="laranja">{% product %}</a></p>
       <!-- // -->
 
-      <h4 id="Enviar Produto ao Carrinho(modelo antigo)">Enviar produto ao carrinho(modelo antigo)</h4>
+      <h4 id="enviar-produto-ao-carrinho(modelo-antigo)">Enviar produto ao carrinho(modelo antigo)</h4>
       <p>
         Para adicionar itens ao carrinho, você precisa fazer um POST para a URL definida na variável {{ cart_url }}, passando dois campos:<p>
 
@@ -189,7 +189,7 @@ $.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
       </p>
       <!-- // -->
 
-      <h4 id="Enviar Produto ao Carrinho(modelo novo)">Enviar produto ao carrinho(modelo novo)</h4>
+      <h4 id="enviar-produto-ao-carrinho(modelo-novo)">Enviar produto ao carrinho(modelo novo)</h4>
       <p>
         **As configurações de atributo devem estar ativadas no admin.
       </p>
@@ -211,7 +211,7 @@ $.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
       </pre>
       <!-- // -->
 
-      <h4 id="Como listar o sku?">Como listar o sku?</h4>
+      <h4 id="como-listar-o-sku">Como listar o sku?</h4>
       <p>
           Para que um item seja adicionado ao carrinho é preciso montar o sku e é através de uma "chave" que é possível
           identificar qual a variante será enviada para a página de carrinho.<br>
@@ -258,7 +258,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
       </p>
       <!-- // -->
 
-      <h4 id="Listar imagens do produto">Listar imagens do produto</h4>
+      <h4 id="listar-imagens-do-produto">Listar imagens do produto</h4>
       <pre>
 {% images %}
   {{ image.url }}
@@ -271,7 +271,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
     <p>Para exibir todas imagens cadastradas de um produto deve-se utilizar o tag {% imagens %}. Se prefirir listar apenas as imagens de uma variante x, utilize o parâmetro "sku"
     {% images sku:sku %}.
     </p>
-    <h4 id="Quem viu, viu também">Quem viu, viu também</h4>
+    <h4 id="produtos-também-vistos">Produtos Também Vistos</h4>
     <pre>
 {% also_viewed id:product.id key:session_id %}
 {{ product }}
@@ -280,7 +280,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
       <p>* geralmente utilizado na página de produto</p>
       <!-- // -->
 
-      <h3 id="Cart.liquid">Cart.liquid</h3>
+      <h3 id="cart.liquid">Cart.liquid</h3>
       <p>1ª etapa do processo de compra. <br>
       Neste template é listados os produtos do carrinho que ficam armazenados na váriavel {{ cart }}, o resumo do carrinho(padrão no layout), o campo input para o cálcudo do CEP e o formulário de frete(métodos de entrega).<p>
       <pre>
@@ -294,7 +294,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
       <div></div><br>
       <!-- // -->
 
-      <h4 id="Atualizar item do carrinho">Atualizar item do carrinho</h4>
+      <h4 id="atualizar-item-do-carrinho">Atualizar item do carrinho</h4>
       <pre>
 <span><</span>form action="{{ cart_url }}" method="post"<span>></span>
   <span><</span>input type="hidden" name="_method" value="patch" /<span>></span>
@@ -308,7 +308,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
       </p>
       <!-- // -->
 
-      <h4 id="Remover item do carrinho">Remover item do carrinho</h4>
+      <h4 id="remover-item-do-carrinho">Remover item do carrinho</h4>
       <pre>
 <span><</span>form action="{{ cart_url }}" method="post"<span>></span>
   <span><</span>input type="hidden" name="_method" value="patch" /<span>></span>
@@ -332,7 +332,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
       <p>Ou via AJAX:</p>
       <!-- // -->
 
-      <h4 id="Calcular frete">Calcular frete</h4>
+      <h4 id="calcular-frete">Calcular frete</h4>
       <pre>
 <span><</span>form action="{{ shipping_zip_url }}" method="post"<span>></span>
   <span><</span>fieldset<span>></span>
@@ -355,7 +355,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
       <p>Quando existir algum erro no calculo do frete >></p>
       <!-- // -->
 
-      <h4 id="Método de entrega">Método de entrega</h4>
+      <h4 id="método-de-entrega">Método de entrega</h4>
       <pre>
 // se o frete já foi calculado
 // exibe no html o formulário com os métodos de
@@ -378,7 +378,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
         Não avançar nas etapas do carrinho sem ao menos um método escolhido<br>
       </p>
       <!-- -->
-      <h4 id="Cupom de Desconto">Cupom de Desconto</h4>
+      <h4 id="cupom-de-desconto">Cupom de Desconto</h4>
       <pre>
 {% if template == "cart" %}
   {% unless shipping_address.zip %}
@@ -420,12 +420,12 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
       <p>Após validar e enviar o formulário do frete o site é redirencionado para a próxima etapa.</p>
       <!-- // -->
 
-      <h3 id="Address.liquid">Address.liquid</h3>
+      <h3 id="address.liquid">Address.liquid</h3>
       <p>3ª etapa do processo de compra</p>
       <p>Template onde é exibido o formulário responsável por capturar as informações para entrega do pedido, assim como dados pessoais do cliente, como e-mail e CPF.</p>
       <!-- // -->
 
-      <h4 id="Salvar Dados do Endereço">Salvar dados do Endereço</h4>
+      <h4 id="salvar-dados-do-endereço">Salvar dados do Endereço</h4>
       <p>A plataforma Vnda permite que pedidos sejam feitos tanto para pessoas físicas, quanto jurídicas. O que define quando é um ou outro é o campo documents, se ele possuir a chave cpf e for um CPF válido, então é pessoa física, se ele possuir a chave cnpj e for um CNPJ válido, é pessoa júridica.</p>
       <pre>
 <span><</span>form action="{{ shipping_address_url }}" method="POST"<span>></span>
@@ -436,7 +436,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
       <div></div><br />
       <!-- // -->
 
-      <h5 id="Pessoa Física">Pessoa Física</h5>
+      <h5 id="pessoa-física">Pessoa Física</h5>
       <p>O cadastro de pessoa fisica, exige os seguinte campos:</p>
       <p>Antes de confirir a tabela abaixo, é importante para seu conhecimento compreender que os campos <i class="laranja">zip</i> e <i class="laranja">state</i> são sempre extraídos do CEP que foi informado pelo cliente e não podem ser alterado sem que o CEP seja informado novamente e o frete seja recalculado.</p>
       <table>
@@ -502,7 +502,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
           </tfoot>
      </table>
      <!-- // -->
-      <h5 id="Pessoa Júridica">Pessoa Júridica</h5>
+      <h5 id="pessoa-júridica">Pessoa Júridica</h5>
       <p>O cadastro de pessoa júridica necessita dos seguintes campos:</p>
 
       <p>Esse cadastro ainda pode ter os mesmos campos opcionais que o cadastro de pessoa fisica tem, além de seguir a mesma regra para os campos <i>city</i> e <i>state</i>.</p>
@@ -558,11 +558,11 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
       </table>
       <!-- // -->
 
-      <h3 id="Payment.liquid">Payment.liquid</h3>
+      <h3 id="payment.liquid">Payment.liquid</h3>
       <p> 3ª etapa do processo de compra. Aqui o cliente informa os dados do cartão de crédito ou dá inicio a geração do boleto. </p>
       <!-- // -->
 
-      <h4 id="Enviar dados para pagamento">Enviar dados para pagamento</h4>
+      <h4 id="enviar-dados-para-pagamento">Enviar dados para pagamento</h4>
       <pre>
 <span><</span>form action="{{ payment_url }}" method="POST"<span>></span>
   …
@@ -572,7 +572,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
       O form usado para enviar esses dados deve estar com o atributo action definido para o valor da variável {{ payment_url }}, dessa forma
       </p>
 
-      <h5 id="Cartão Crédito">Cartão Crédito</h5>
+      <h5 id="cartão-crédito">Cartão Crédito</h5>
       <p>Para enviar dados de pagamento usando cartão de crédito, os seguintes campos são obrigatórios:</p>
       <p>O form usado para enviar esses dados deve estar com o atributo action definido para o valor da variável {{ payment_url }}, dessa forma:</p>
       <p>Caso a transação seja efetuada com sucesso, o cliente é automaticamente redirecionado para a página de conclusão da compra.</p>
@@ -618,7 +618,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
       </tr>
       </table>
 
-      <h4 id="Dados para teste">Dados para teste</h4>
+      <h4 id="dados-para-teste">Dados para teste</h4>
       <pre>
 Visa
 <ul>
@@ -677,7 +677,7 @@ Elo
       </pre>
       <!-- // -->
 
-    <h5 id="Boleto">Boleto</h5>
+    <h5 id="boleto">Boleto</h5>
     <pre>
     payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> para compras com no boleto.
 
@@ -685,11 +685,11 @@ Elo
       <p>O pagamento do boleto necessita apenas o campo:</p>
     <!-- // -->
 
-    <h3 id="Finished.liquid">Finished.liquid</h3>
+    <h3 id="finished.liquid">Finished.liquid</h3>
     <p> 4ª e última etapa do processo de compra. Aqui são exibidas as informações do pedido, como o número e/ou o link para impressão do boleto, junto com a mensagem de conclusão da compra. </p>
     <!-- // -->
 
-    <h3 id="Account.liquid">Account.liquid</h3>
+    <h3 id="account.liquid">Account.liquid</h3>
     <p>Template usado para exibir os dados da conta do cliente, os pedidos efetuados, assim como a situação deles. Nesta página o cliente também pode alterar os dados pessoais, como nome, e-mail e senha. </p>
     <p>Os dados do pedido ficam armezados na variável {{ order }}<br><span class="summary"><code><a href="#orders" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
     <pre>
@@ -702,12 +702,12 @@ Elo
       </pre>
       <p>Para alterar  os dados pessoais crie um form com o action {{ account_url }} e envie os dados nome, email, senha.</p>
 
-      <h3 id="Login.liquid">Login.liquid</h3>
+      <h3 id="login.liquid">Login.liquid</h3>
       <p> Template usado tanto para novos cadastros quanto para logins de clientes já cadastrados. Desta página parte também o login via Facebook, que permite que clientes participem de promoções específicas.
-      <p><span class="summary"><code><a href="#Formulário de Cadastro" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
+      <p><span class="summary"><code><a href="#formulário-de-cadastro" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
       <!-- // -->
 
-      <h4 id="Formulário de Cadastro">Formulário de Cadastro</h4>
+      <h4 id="formulário-de-Cadastro">Formulário de Cadastro</h4>
       <pre>
 <span><</span>form action="{{ login_url }}" method="post"<span>></span>
   <span><</span>input id="new_client_terms" name="new_client[terms]" type="hidden" value="on"<span>></span>
@@ -726,7 +726,7 @@ Elo
       </pre>
       <p>Quando existir algum erro no formulário de cadastro &raquo;</p>
       <!-- // -->
-      <h4 id="Formulário de Login">Formulário de Login</h4>
+      <h4 id="formulário-de-Login">Formulário de Login</h4>
       <pre>
 <span><</span>form action="{{ login_url }}" method="post"<span>></span>
   <span><</span>input type="hidden" name="_method" value="put"<span>></span>
@@ -743,7 +743,7 @@ Elo
       </pre>
       <p>Quando existir algum erro no formulário de login &raquo;</p>
       <!-- // -->
-      <h4 id="Formulário de Recuperar Senha">Formulário de Recuperar Senha</h4>
+      <h4 id="formulário-de-Recuperar Senha">Formulário de Recuperar Senha</h4>
       <pre>
 <span><</span>form action="{{recover_password_url}}" method="post""<span>></span>
   <span><</span>input type="text" name="email" <span>></span>
@@ -759,7 +759,7 @@ Elo
       <p>Mensagem de sucesso e de erro para o form de recuperar senha.</p>
       <!-- // -->
 
-      <h3 id="Search.liquid">Search.liquid</h3>
+      <h3 id="search.liquid">Search.liquid</h3>
       <p> Página que exibe o resultado de uma busca, este resultado é uma lista de produtos que fazem match com o termo buscado pelo cliente atráves da URL /busca?q=termo. </p>
       <p>Os resultados da busca ficam armezanados na variável {{ products }}.</p>
       <pre>
@@ -793,11 +793,11 @@ Elo
       <p>Se não exister resultados na busca usar {{ flash.search.error }}.</p>
       <p>Para mostrar o termo da busca  {{ params.q | strip_html }}</p>
 
-      <h3 id="Page.liquid">Page.liquid</h3>
+      <h3 id="page.liquid">Page.liquid</h3>
       <p> A Vnda possui um pequeno CMS que pode ser utilizado para customizar certas páginas sem a necessidade de conhecimentos avançados de programação. É neste template que essas páginas são exibidas. </p>
       <!-- // -->
 
-      <h2 id="Tags personalizadas da Vnda">Tags personalizadas da Vnda</h2>
+      <h2 id="tags-personalizadas-da-vnda">Tags personalizadas da Vnda</h2>
       <p> A plataforma atende com um conjunto de tags responsável por tornar a aplicação dinâmica.</p>
       <!-- // -->
       <h3 id="orders">{% orders %}</h3>
@@ -877,7 +877,17 @@ OU
       </pre>
       <p>
         Listar produtos<br />
-        * loop para exibir os produto.
+        * loop para exibir os produto<br>
+        * aceita o paramentro "limit".
+      </p>
+      <p>
+        Ainda que não seja informado os parametros "limit" e "per_page" será exibidos um limite máximo por página de 25 produtos.
+      </p>
+      <p>
+        Caso o parametro "limit" seja informado, os parâmetros "page" e "per_page" serão desconsiderados.
+      </p>
+      <p>
+        A váriavel {{ params.page }} vem dos parâmetros da url ..produtos?page=2
       </p>
       <div></div><br>
       <pre>
@@ -902,10 +912,15 @@ OU
 {% products tag:tag.name sort:params.ordem %}
  se o nome do field for “ordem”
       </pre>
-      <p>Ordenar produtos<br />
-        * por padrão, os produtos são ordenados por importância, que pode ser modificada dentro do admin da loja.<br />
-        * para usar outra ordenação, basta incluir o parãmetro sort na tag que lista os produtos.<br />
-        * or produtos podem ser ordenados por “price”, “price,desc”, “newest”, “newest,desc”<br />
+      <p>Ordenar produtos<br /><p>
+        <p>
+        Por padrão, os produtos são ordenados de forma que os atualizados mais recentemente sejam exibidos primeiro. Caso o parâmetro "tag" esteja presente, os produtos serão ordenados pela importância dentro de cada tag.<br />
+        </p>
+        <p>
+          Para usar outra ordenação, basta incluir o parãmetro sort na tag que lista os produtos.<br />
+        </p>
+        <p>
+          Produtos podem ser ordenados por “price”, “price,desc”, “newest”, “newest,desc”<br />
         (newest é baseado na data de cadastro do produto), “name”, “name,desc”.</p>
         <div></div><br>
         <!-- // -->
@@ -1105,10 +1120,10 @@ OU
       <p>Armazendo conteúdo com a tag {% contentfor %}<br />
       *Salvar e exibir conteúdo em outros locais do template .liquid</p>
 
-      <h2 id="Recursos">Recursos</h3>
+      <h2 id="recursos">Recursos</h3>
       <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
 
-      <h3 id="Formulários WebForms">Formulários WebForms</h3>
+      <h3 id="formulários-webforms">Formulários WebForms</h3>
       <pre>
 <span><</span>form action="/webform" method="post"<span>></span>
 <span><</span>input type="hidden" name="key" value="nome-da-loja-nome-do-form"<span>></span>
@@ -1118,7 +1133,7 @@ OU
       <p>* Os forms de contato devem usar a action /webform<br />
       * Deve ser feito o cadastro do form no admin para pegar a key </p>
 
-      <h3 id="Descrição do produto com múltiplas seções">Descrição do produto com múltiplas seções</h3>
+      <h3 id="descrição-do-produto-com-múltiplas-seções">Descrição do produto com múltiplas seções</h3>
       <pre>
 {% if product.description %}
   {% assign descParts = product.description | split:"linhadecorte" %}
@@ -1137,7 +1152,7 @@ OU
       </pre>
       <p>Para determinar o o local onde a descrição será dividida, deve-se colocar o texto “linhadecorte” na descrição do produto</p>
 
-      <h3 id="Wishlist(lista de desejos)">Wishlist(lista de desejos)</h3>
+      <h3 id="wishlist(lista-de-desejos)">Wishlist(lista de desejos)</h3>
       <pre>
 <span><</span>form action="{{ wishlist_url }}" method="POST"<span>></span>
   <span><</span>input type="hidden" name="_method" value="DELETE"/<span>></span>
@@ -1188,7 +1203,7 @@ $.post(
       </pre>
       <p>* Adicionar via JS</p>
 
-      <h3 id="Notificações de e-mails">Notificações de e-mails</h3>
+      <h3 id="notificações-de-e-mails">Notificações de e-mails</h3>
       <p>A plataforma possui integração com <a href="https://madmimi.com/" target="_blank">Madmimi</a>, ferramenta que gerencia as campanhas de e-mails dos nossos clientes.</p>
       <p>Atualmente disponibilizamos as seguintes notificações: </p>
       <pre>
@@ -1228,15 +1243,15 @@ exemplo-senha-cliente
       </pre>
       <p>Os campos que podem ser enviados nos emails de noviticação &raquo;</p>
 
-      <h3 id="DNS">DNS</h3>
+      <h3 id="dns">DNS</h3>
       <p>- Criar uma entrada (ou alterar uma já existente) do tipo A,
        apontando para o IP 174.129.25.170.</p>
       <p>- Criar uma entrada www (ou alterar uma já existente) do tipo CNAME, apontando para o domínio vnda.com.br.</p>
 
-      <h2 id="Dicas Setup/Admin">Dicas Setup/Admin</h2>
+      <h2 id="dicas-setup/admin">Dicas Setup/Admin</h2>
       <p>Seção de dicas para integrar tanto no setup da loja ou para o admin.</p>
 
-      <h3 id="Verificar usuário logado">Verificar usuário logado</h3>
+      <h3 id="verificar-usuário-logado">Verificar usuário logado</h3>
       <pre>
   {% if logged_in %}
     <span><<span>a href="{{ account_url }}" title="minha conta">minha conta<span><<span>/a<span>><span>
@@ -1248,19 +1263,19 @@ exemplo-senha-cliente
       <p>Após um usuário enviar seus dados de login e o mesmo ser validado pela api, a váriavel "logged_in" retorna valor verdadeiro.</p>
       <p>Ao adicionar uma verificação no .liquid é possível redirecionar e/ou deslogar.</p>
 
-      <h3 id="Exibir imagens estáticas">Exibir imagens estáticas</h3>
+      <h3 id="exibir-imagens-estáticas">Exibir imagens estáticas</h3>
       <p>* devem estar no diretório /public/images</p>
       <pre>
   {{ “nome_do_arquivo.ext” | image_tag: “Texto alternativo” }}
   <span><</span>img src="{{ “nome_do_arquivo.ext” | image_url }}" alt=“Texto alternativo”/<span>></span>
       </pre>
-      <h3 id="Como listar produtos em promoção">Como listar produtos em promoção</h3>
+      <h3 id="como-listar-produtos-em-promoção">Como listar produtos em promoção</h3>
       <p>aguardando atualização...<br><br><br><br><br></p>
 
-      <h3 id="Como relacionar produtos">Como relacionar produtos</h3>
+      <h3 id="como-relacionar-produtos">Como relacionar produtos</h3>
       <p>aguardando atualização...<br><br><br><br><br></p>
 
-      <h3 id="Incluir busca swiftype">Incluir busca swiftype</h3>
+      <h3 id="incluir-busca-swiftype">Incluir busca swiftype</h3>
       <pre>
 // mudanças no .liquid
 1) {{ meta_tags }} no layout, dentro do head
@@ -1321,7 +1336,7 @@ exemplo-senha-cliente
       <p>
         5 - As informações que precisam ser colocadas no admin
       </p>
-      <h3 id="Atributos(montar o sku)">Atributos(montar o sku)</h3>
+      <h3 id="atributos(montar-o-sku)">Atributos(montar o sku)</h3>
 
       <p>
         Partindo da premissa em que os atributos de um produtos são Cor(atributo_1) e Tamanho(atributo_2) respectivamente,
