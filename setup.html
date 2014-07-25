@@ -119,7 +119,7 @@
 
       <h3 id="product.liquid">Product.liquid</h3>
       <p>Template para exibição do produto, suas imagens, produtos relacionados. Aqui também fica o formulário que permite adicionar o item ao carrinho, neste formulário o cliente pode selecionar qual atributo do produto (cor, tamanho, etc) ele realmente quer.</p>
-      <p>Para exibir o nome, preço, remarcações, disponibilidade,  utilize  tags dentro do loop <a href="#products" class="laranja">{% product %}</a></p>
+      <p>Para exibir o nome, preço, remarcações, disponibilidade, parcelas  utilize  tags dentro do loop <a href="#products" class="laranja">{% product %}</a></p>
       <!-- // -->
 
       <h4 id="enviar-produto-ao-carrinho(modelo-antigo)">Enviar produto ao carrinho(modelo antigo)</h4>
@@ -857,8 +857,13 @@ Elo
      {{product.price | money_format}}
      // preço com desconto
      {{ product | apply_discount | money_format }}
+     // parcelas
+     (ou em até {{ product.installments.size }}x de: {{  product | apply_discount | installments: product.installments.size | money_format }})
     {% else %}
+      // preço
       preço: {{ product.price | money_format }}
+      // parcelas
+      (ou em até {{ product.installments.size }}x de: {{ product.price | installments: product.installments.size | money_format }})
     {% endif %}
   {% else %}
    Produto Esgotado
