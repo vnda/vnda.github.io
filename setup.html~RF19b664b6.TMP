@@ -445,7 +445,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
       <div></div><br />
       <!-- // -->
 
-      <h4 id="pessoa-física">Pessoa Física</h4>
+      <h5 id="pessoa-física">Pessoa Física</h5>
       <p>O cadastro de pessoa fisica, exige os seguinte campos:</p>
       <p>Antes de confirir a tabela abaixo, é importante para seu conhecimento compreender que os campos <i class="laranja">zip</i> e <i class="laranja">state</i> são sempre extraídos do CEP que foi informado pelo cliente e não podem ser alterado sem que o CEP seja informado novamente e o frete seja recalculado.</p>
       <table>
@@ -513,7 +513,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
      <p style="text-align:right">tabela 1.1</p>
      <!-- // -->
 
-      <h4 id="pessoa-júridica">Pessoa Júridica</h4>
+      <h5 id="pessoa-júridica">Pessoa Júridica</h5>
       <p>O cadastro de pessoa júridica necessita dos seguintes campos:</p>
 
       <p>Esse cadastro ainda pode ter os mesmos campos opcionais que o cadastro de pessoa fisica tem, além de seguir a mesma regra para os campos <i>city</i> e <i>state</i>.</p>
@@ -568,11 +568,6 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
         </tr>
       </table>
        <p style="text-align:right">tabela 1.2</p>
-       <!-- // -->
-
-       <h4 id="dados-para-cobranca">Dados para cobrança/entrega</h4>
-
-       <p>Dados para cobrança</p>
        <table>
           <thead>
           <tr>
@@ -588,56 +583,19 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
             <td>billing_address[last_name] </td>
             <td>{{ billing_address.last_name }}</td>
           </tr>
-          <tr>
-            <td colspan="2">...</td>
-          </tr>
         </table>
-        <p>Dados para entrega</p>
-       <table>
-          <thead>
-          <tr>
-            <td style="width:160px;">Atributo "name"</td>
-            <td>Atributo "value"</td>
-          </tr>
-          </thead>
-          <tr>
-            <td>shipping_address[first_name] </td>
-            <td>{{ shipping_address.first_name }}</td>
-          </tr>
-          <tr>
-            <td>shipping_address[last_name] </td>
-            <td>{{ shipping_address.last_name }}</td>
-          </tr>
-          <tr>
-            <td colspan="2">...</td>
-          </tr>
-        </table>
-        <p>Dados para Entrega e Pagamentos são os mesmo?</p>
-       <table>
-          <thead>
-          <tr>
-            <td style="width:160px;">Atributo "name"</td>
-            <td>Atributo "value"</td>
-          </tr>
-          </thead>
-          <tr>
-            <td>first_name</td>
-            <td>{{ shipping_address.first_name }}</td>
-          </tr>
-          <tr>
-            <td>last_name</td>
-            <td>{{ shipping_address.last_name }}</td>
-          </tr>
-          <tr>
-            <td colspan="2">...</td>
-          </tr>
-        </table>
-        <p style="text-align:right">tabela 1.3</p>
-        <p>
-          *Sempre que forem enviados os campos input com atributos "name" igual a tabela 1.1 ou 1.2 e o "value" ex: {{ shipping_address.first_name }} automaticamente o sistema
-           usará os mesmos dados de entrega para cobrança.
-        </p>
-
+      <p>
+        Dados de cobrança usar no atributo name e value "billing_address"
+        billing_address[first_name]  value="{{ billing_address.first_name }}<br>
+        billing_address[last_name] value="{{ billing_address.last_name }}<br>
+        ...
+       </p>
+       <p>
+        Dados para entrega usar no atributo value "shipping_address"
+        *usar atributo "name" conforme descrito as tabelas 1.1 e 1.2
+        value="{{ shipping_address.first_name }}<br>
+        value="{{ shipping_address.last_name }}
+       </p>
 <pre style="background-color:transparent !important">
 
 
