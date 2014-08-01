@@ -1336,7 +1336,23 @@ exemplo-senha-cliente
 "linkdoboleto"
       </pre>
       <p>Os campos que podem ser enviados nos emails de noviticação &raquo;</p>
+      <!-- // -->
 
+      <h3 id="etiqueta-de-promocao">Etiqueta da Promoção</h3>
+      <pre>
+* deve estar dentro de um loop {% products %}
+{% if product.discount_id > 0 %}
+    {% get promotion from '/discount' [name: product.discount_id] %}
+    {% if promotion %}
+    <span><</span>img src="{{ promotion.seal_url }}" />
+    {% endif %}
+{% endif %}
+      </pre>
+      <p>
+        Listar a etiqueta da promoção que foi cadastrada no admin.
+      </p>
+
+      <!-- // -->
       <h3 id="dns">DNS</h3>
       <p>- Criar uma entrada (ou alterar uma já existente) do tipo A,
        apontando para o IP 174.129.25.170.</p>
@@ -1371,7 +1387,13 @@ exemplo-senha-cliente
 
       <h3 id="validar-cpf">Biblioteca Jquery para validar cpf e cnpj</h3>
       <p><a href="https://gist.github.com/vagnerolliver/8e60807e5269162a58b7" target="_blank" class="laranja">Clique aqui</a> para ver os filtros disponíveis para usar no .liquid.</p>
+      <code>
 
+
+
+
+
+      </code>
       <h3 id="incluir-busca-swiftype">Incluir busca swiftype</h3>
       <pre>
 // mudanças no .liquid
