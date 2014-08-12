@@ -559,21 +559,22 @@ html, body {
 }
 .content table {
 	margin-bottom: 1em;
-	overflow: auto
-}
+	overflow: auto;
+ }
 .content table th, .content table td {
 	text-align: left;
 	vertical-align: top;
-	line-height: 1.6
-}
+	line-height: 1.6;
+ }
 .content table th {
 	padding: 5px 10px;
 	border-bottom: 1px solid #ccc;
 	vertical-align: bottom
 }
 .content table td {
-	padding: 10px
-}
+	padding: 10px;
+	position: relative;
+ }
 .content table tr:last-child {
 	border-bottom: 1px solid #ccc
 }
