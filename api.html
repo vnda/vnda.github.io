@@ -166,6 +166,11 @@
 <a class="line-num" href="#line-59">59</a>   -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
 <a class="line-num" href="#line-60">60</a>   'http://demo.vnda.com.br/api<span class="kd">/v2/products</span><span class="s1">/506</span>'
 
+<a class="line-num" href="#line-57">57</a> <span class="nx">curl -X <span class="s1">GET</span></span>
+<a class="line-num" href="#line-58">58</a>   <span class="nx">-H "Accept: application/json"</span>
+<a class="line-num" href="#line-59">59</a>   -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
+<a class="line-num" href="#line-60">60</a>   'http://demo.vnda.com.br/api<span class="kd">/v2/products/attributes</span><span class="s1">?name=Cor&tag=oculos</span>'
+
               </pre>
               <p>Para a listagem de produtos, são aceitos os parâmetros "limit", "page", "per_page", "tag", "parent_tag", "filter" e "sort". Podendo serem combinados.</p>
               <p>Caso o parametro "limit" seja informado, os parametros "page" e "per_page" serão desconsiderados.</p>
@@ -176,6 +181,7 @@
               <p>Por padrão, os produtos são ordenados de forma que os atualizados mais recentemente sejam exibidos primeiro. Caso o parâmetro "tag" esteja presente, os produtos serão ordenados pela importância dentro de cada tag.</p>
               <p>É possível reordenar os produtos por preco, informando "price" no parâmetro "sort". Também é possível usar o valor "newest" para ordenar pela data de cadastro. Para inverter qualquer destas ordenações, é possível usar "price,desc" ou "newest,desc".</p>
               <p>Para listar algum produto em expecífico, colocar o ID do produto na url. Neste caso, os demais parâmetros não se aplicam.</p>
+              <p>Quando se está criando um filtro, pode ser necessário listar todos os Tamanhos ou Cores disponíveis. Para essa finalidade, dispomos de uma lista de atributos, para a qual deve ser informado o parâmetro "name". Caso necessário, é possível listar os atributos somente dos produtos que tem determinada Tag, informando os parâmetros "tag" e "parent_tag". </p>
 
 
               <h2 id="Menus">Menus</h2>
