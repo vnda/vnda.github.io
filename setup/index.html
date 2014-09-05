@@ -3,13 +3,13 @@
   <head>
   <title>Setup | Guides Vnda</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <link rel="stylesheet" media="all" href="css/bootstrap.css" />
-  <link rel="stylesheet" media="all" href="css/screen.css" />
-  <link rel="stylesheet" type="text/css" href="css/component.css" />
+  <link rel="stylesheet" media="all" href="../css/bootstrap.css" />
+  <link rel="stylesheet" media="all" href="../css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="../css/component.css" />
   <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-  <script src="js/jquery-1.8.3.min.js"></script>
-  <script src="js/modernizr.custom.js"></script>
-  <script src="js/main.js"></script>
+  <script src="../js/jquery-1.8.3.min.js"></script>
+  <script src="../js/modernizr.custom.js"></script>
+  <script src="../js/main.js"></script>
    </head>
   <body>
   <div class="tocify-wrapper"><br>
@@ -18,9 +18,9 @@
       <span class="headings titulo"><a href="/">GUIDES VNDA</a></span>
       <section id="set-6">
         <div class="hi-icon-wrap hi-icon-effect-6 hi-icon-effect-6a">
-          <a href="index.html" class="hi-icon hi-icon-images um">Criação</a>
-          <a href="setup.html" class="hi-icon hi-icon-contract dois select">Setup</a>
-          <a href="api.html" class="hi-icon hi-icon-cog tres">Api</a>
+          <a href="/design" class="hi-icon hi-icon-images um">Criação</a>
+          <a href="/setup" class="hi-icon hi-icon-contract dois select">Setup</a>
+          <a href="/api" class="hi-icon hi-icon-cog tres">Api</a>
         </div>
        </section>
      </div>
@@ -193,7 +193,7 @@ $.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
       <p>
         **As configurações de atributo devem estar ativadas no admin.
       </p>
-      <p><img src="atributos.jpg"></p>
+      <p><img src="../atributos.jpg"></p>
       <pre>
 <span><</span>form action="{{ cart_item_url }}" method="post"<span>></span>
   <span><</span>input type="hidden" name="sku">
@@ -1649,8 +1649,8 @@ function onlyUnique(value, index, self) {
   <!-- <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script> -->
   <!-- End Google Tag Manager -->
 
-  <script src="js/jquery-ui-1.9.1.custom.min.js"></script>
-  <script src="js/jquery.tocify.js"></script>
+  <script src="../js/jquery-ui-1.9.1.custom.min.js"></script>
+  <script src="../js/jquery.tocify.js"></script>
 
   <script>
     $(function() {
