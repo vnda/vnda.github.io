@@ -3,13 +3,13 @@
   <head>
   <title>Setup | Guides Vnda</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <link rel="stylesheet" media="all" href="../css/bootstrap.css" />
-  <link rel="stylesheet" media="all" href="../css/screen.css" />
-  <link rel="stylesheet" type="text/css" href="../css/component.css" />
+  <link rel="stylesheet" media="all" href="css/bootstrap.css" />
+  <link rel="stylesheet" media="all" href="css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="css/component.css" />
   <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-  <script src="../js/jquery-1.8.3.min.js"></script>
-  <script src="../js/modernizr.custom.js"></script>
-  <script src="../js/main.js"></script>
+  <script src="js/jquery-1.8.3.min.js"></script>
+  <script src="js/modernizr.custom.js"></script>
+  <script src="js/main.js"></script>
    </head>
   <body>
   <div class="tocify-wrapper"><br>
@@ -193,7 +193,7 @@ $.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
       <p>
         **As configurações de atributo devem estar ativadas no admin.
       </p>
-      <p><img src="../atributos.jpg"></p>
+      <p><img src="atributos.jpg"></p>
       <pre>
 <span><</span>form action="{{ cart_item_url }}" method="post"<span>></span>
   <span><</span>input type="hidden" name="sku">
@@ -717,6 +717,23 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
       </tr>
       </table>
 
+      <h6 id="Listar as parcelas">Listar as parcelas</h6>
+      <pre>
+{% installments %}
+  <span><</span>input type="radio" name="installments" value="{{ installment.number }}" />
+  {{ installment.number }}x de
+  {{ installment.price | money_format }}
+  {% if installment.interest %}
+    juros {{ installment.interest_rate }} a.m. ({{ installment.total | money_format}})
+  {% else %}
+    sem juros
+  {% endif %}
+{% endinstallments %}
+      </pre>
+
+      <p>Para listar as parcelas utilize a variável "installments".</p>
+      <p>*Dentro do loop "installments" verificar se há juros.</p>
+
       <h4 id="dados-para-teste">Dados para teste</h4>
       <pre>
 Visa
@@ -776,22 +793,22 @@ Elo
       </pre>
       <!-- // -->
 
-    <h5 id="boleto">Boleto</h5>
-    <pre>
-    payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> para compras com no boleto.
+      <h5 id="boleto">Boleto</h5>
+      <pre>
+payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> para compras com no boleto.
 
       </pre>
       <p>O pagamento do boleto necessita apenas o campo:</p>
     <!-- // -->
 
-    <h3 id="finished.liquid">Finished.liquid</h3>
-    <p> 4ª e última etapa do processo de compra. Aqui são exibidas as informações do pedido, como o número e/ou o link para impressão do boleto, junto com a mensagem de conclusão da compra. </p>
+      <h3 id="finished.liquid">Finished.liquid</h3>
+      <p> 4ª e última etapa do processo de compra. Aqui são exibidas as informações do pedido, como o número e/ou o link para impressão do boleto, junto com a mensagem de conclusão da compra. </p>
     <!-- // -->
 
-    <h3 id="account.liquid">Account.liquid</h3>
-    <p>Template usado para exibir os dados da conta do cliente, os pedidos efetuados, assim como a situação deles. Nesta página o cliente também pode alterar os dados pessoais, como nome, e-mail e senha. </p>
-    <p>Os dados do pedido ficam armezados na variável {{ order }}<br><span class="summary"><code><a href="#orders" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
-    <pre>
+      <h3 id="account.liquid">Account.liquid</h3>
+      <p>Template usado para exibir os dados da conta do cliente, os pedidos efetuados, assim como a situação deles. Nesta página o cliente também pode alterar os dados pessoais, como nome, e-mail e senha. </p>
+      <p>Os dados do pedido ficam armezados na variável {{ order }}<br><span class="summary"><code><a href="#orders" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
+      <pre>
 <span><</span>form action="{{ account_url }}" method="post"<span>></span>
    <span><</span>input type="text" name="email" value="{{ client.email }}"<span>></span>
   <span><</span>input type="text" name="password" <span>></span>
@@ -1064,6 +1081,7 @@ OU
         * loop para exibir os itens de um menu </p>
       <p>Listar sub menus<br />
         * menu com submenus (html opcional)</p>
+      <p><b>A quantidade de submenus é ilimitada.</b></p>
      <pre>
 {% menus position:"nome_da_posicao_do_menu_no_admin" %}
   {% if forloop.first %}<span><</span>ul<span>></span>{% endif %}
@@ -1383,12 +1401,35 @@ exemplo-senha-cliente
       <p>Após um usuário enviar seus dados de login e o mesmo ser validado pela api, a váriavel "logged_in" retorna valor verdadeiro.</p>
       <p>Ao adicionar uma verificação no .liquid é possível redirecionar e/ou deslogar.</p>
 
-      <h3 id="exibir-imagens-estáticas">Exibir imagens estáticas</h3>
+      <h3 id="exibir-images-estáticas">Exibir imagens estáticas</h3>
       <p>* devem estar no diretório /public/images</p>
       <pre>
   {{ “nome_do_arquivo.ext” | image_tag: “Texto alternativo” }}
   <span><</span>img src="{{ “nome_do_arquivo.ext” | image_url }}" alt=“Texto alternativo”/<span>></span>
       </pre>
+
+      <h3 id="incluir-css-js">Incluindo css e js pelo .liquid</h3>
+      <pre>
+// para o css
+{{ "style.css" | stylesheet_tag }}
+
+// para js
+{{ "function.js" | javascript_tag }}
+      </pre>
+      <p>Para incluir os arquivos .css e  .js informe as váriaveis "stylesheet_tag" e "javascript_tag" que foram configuradas para acessar
+      os diretórios "/stylesheets" e "/javascripts". <b>Salve os arquivos nestes locais.</b></p>
+
+<h3 id="incluir-módulos">Incluindo os módulos</h3>
+      <pre>
+{% include = "nome_do_arquivo" %}
+
+// No diretório raiz o nome do arquivo fica
+
+_nome_do_arquivo.liquid
+      </pre>
+      <p>Para reutilizar as parte de códigos que se repetem ao longo do desenvolvimento da loja, utilize a função "{% include %}"<b>Salve os arquivos nestes locais.</b></p>
+
+
       <h3 id="como-listar-produtos-em-promoção">Como listar produtos em promoção</h3>
       <p>aguardando atualização...<br><br><br><br><br></p>
 
@@ -1649,8 +1690,8 @@ function onlyUnique(value, index, self) {
   <!-- <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script> -->
   <!-- End Google Tag Manager -->
 
-  <script src="../js/jquery-ui-1.9.1.custom.min.js"></script>
-  <script src="../js/jquery.tocify.js"></script>
+  <script src="js/jquery-ui-1.9.1.custom.min.js"></script>
+  <script src="js/jquery.tocify.js"></script>
 
   <script>
     $(function() {
