@@ -818,6 +818,24 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
       </pre>
       <p>Para alterar  os dados pessoais crie um form com o action {{ account_url }} e envie os dados nome, email, senha.</p>
 
+      <h4 id="formulário-de-atualizar Senha">Formulário para Atualizar Senha</h4>
+      <pre>
+<span><</span>form action="{{ account_url }}" method="post""<span>></span>
+  <span><</span>input type="text" name="{{ client.email }}" <span>></span>
+  <span><</span>input type="text" name="password" <span>></span>
+  <span><</span>input type="text" name="password_confirmation" <span>></span>
+  <span><</span>input type="submit" value="Atualizar Senha"<span>></span>
+<span><</span>/form<span>></span>
+      </pre>
+      <p>O formulário para atualizar a senha a senha deve usar action {{account_url}}</p>
+      <div></div><br>
+      <pre>
+{% if flash.client.error %}
+      </pre>
+
+      <p>Mensagem de sucesso e de erro para o form de recuperar senha.</p>
+      <!-- // -->
+
       <h3 id="login.liquid">Login.liquid</h3>
       <p> Template usado tanto para novos cadastros quanto para logins de clientes já cadastrados. Desta página parte também o login via Facebook, que permite que clientes participem de promoções específicas.
       <p><span class="summary"><code><a href="#formulário-de-cadastro" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
@@ -860,23 +878,35 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
       <p>Quando existir algum erro no formulário de login &raquo;</p>
       <!-- // -->
       <h4 id="formulário-de-Recuperar Senha">Formulário de Recuperar Senha</h4>
+
       <pre>
 <span><</span>form action="{{recover_password_url}}" method="post""<span>></span>
   <span><</span>input type="text" name="email" <span>></span>
   <span><</span>input type="submit" value="RECUPERAR SENHA"<span>></span>
 <span><</span>/form<span>></span>
       </pre>
+
       <p>O formulário de recuperar a senha deve usar action {{recover_password_url}}</p>
       <p>O usuário vai receber um email com a nova senha</p>
+
       <pre>
 {{ flash.recover_password.ok }}
 {{ flash.recover_password.error }}
       </pre>
-      <p>Mensagem de sucesso e de erro para o form de recuperar senha.</p>
-      <!-- // -->
 
+      <p>Mensagem de sucesso e de erro para o form de recuperar senha.</p>
+
+      <!-- // -->
       <h3 id="search.liquid">Search.liquid</h3>
+      <pre>
+<span><</span>form action="{{ search_url }}" method="post""<span>></span>
+  <span><</span>input type="search" name="q" <span>></span>
+  <span><</span>input type="submit" value="Atualizar Senha"<span>></span>
+<span><</span>/form<span>></span>
+      </pre>
       <p> Página que exibe o resultado de uma busca, este resultado é uma lista de produtos que fazem match com o termo buscado pelo cliente atráves da URL /busca?q=termo. </p>
+      <div></div><br>
+
       <p>Os resultados da busca ficam armezanados na variável {{ products }}.</p>
       <pre>
 {% for product in products %}
@@ -1687,7 +1717,7 @@ function onlyUnique(value, index, self) {
     </div>
   </div>
   <!-- Google Tag Manager -->
-  <!-- <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script> -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script>
   <!-- End Google Tag Manager -->
 
   <script src="../js/jquery-ui-1.9.1.custom.min.js"></script>
