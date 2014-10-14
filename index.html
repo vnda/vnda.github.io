@@ -441,7 +441,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
   ...
 <span><</span>/form<span>></span>
       </pre>
-      <p>O formulário deve ser enviado para a URL definida na variável {{ shipping_address_url }}.</p></p>
+      <p>O formulário deve ser enviado para a URL definida na variável {{ shipping_address_url }}, caso envie dados separados para cobrança utilize a váriavel {{ addresses_url }}, mais detalhes <a href="//index.html#dados-para-cobranca" title="Dados para cobrança"class="laranja">clique aqui</a></p></p>
       <div></div><br />
       <!-- // -->
 
@@ -580,8 +580,9 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
 
        <h4 id="dados-para-cobranca">Dados para cobrança/entrega</h4>
 
-       <p>Quando houver um formulário de dados para <b>cobrança</b> e outro para <b>entrega</b>, respectivamente serão diferenciados
+       <p>Formulários com dados diferentes para <b>cobrança</b> e <b>entrega</b>, respectivamente serão diferenciados
        pelas variáveis "billing_address" ou "shipping_address".</p>
+       <p><b>Atenção:</b> neste caso o action do formulário da página de endereço deve muda para "/enderecos" = {{ addresses_url }} </p>
        <p>Dados para Cobrança</p>
        <table>
           <thead>
@@ -1413,7 +1414,7 @@ exemplo-senha-cliente
       <!-- // -->
       <h3 id="dns">DNS</h3>
       <p>- Criar uma entrada (ou alterar uma já existente) do tipo A,
-       apontando para o IP 174.129.25.170.</p>
+       apontando para o IP 54.232.217.234.</p>
       <p>- Criar uma entrada www (ou alterar uma já existente) do tipo CNAME, apontando para o domínio vnda.com.br.</p>
 
       <h2 id="dicas-setup/admin">Dicas Setup/Admin</h2>
