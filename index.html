@@ -32,8 +32,482 @@
       <h2 id="entendendo-o-.liquid">Entendendo o .liquid</h2>
       <p>Liquid é a linguagem de programação responsável por implementar os templates desenvolvidos e utilizados pela Vnda.</p>
 
-      <h3 id="liquid-para-designers">Liquid para Designers(filtros)</h3>
-      <p><a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers#standard-filters" target="_blank" class="laranja">Clique aqui</a> para ver os filtros disponíveis para usar no .liquid.</p>
+      <h3 id="filtros">Filtros</h3>
+      <p>filtros para alterar a saída de uma váriavel:</p>
+      <pre>
+reformat a date (syntax reference)
+      </pre>
+      <p>date</p>
+      <div></div><br>
+
+      <pre>
+capitalize words in the input sentence
+      </pre>
+      <p>capitalize</p>
+      <div></div><br>
+
+      <pre>capitalize words in the input sentence</pre>
+      <p>capitalize</p>
+
+      <div></div><br>
+<!--  capitalize - capitalize words in the input sentence
+ -->
+      <pre>
+convert an input string to lowercase
+      </pre>
+      <p>downcase</p>
+      <div></div><br>
+
+      <pre>
+convert an input string to uppercase
+      </pre>
+      <p>
+      upcase
+      </p>
+      <div></div><br>
+
+      <pre>
+get the first element of the passed in array
+      </pre>
+      <p>
+      first
+      </p>
+      <div></div><br>
+
+      <pre>
+get the last element of the passed in array
+      </pre>
+      <p>
+      last
+      </p>
+      <div></div><br>
+
+      <pre>
+join elements of the array with certain character between them
+      </pre>
+      <p>
+      join
+      </p>
+      <div></div><br>
+
+      <pre>
+sort elements of the array
+      </pre>
+      <p>
+      sort
+      </p>
+      <div></div><br>
+
+      <pre>
+map/collect an array on a given property
+      </pre>
+      <p>
+      map
+      </p>
+      <div></div><br>
+
+      <pre>
+return the size of an array or string
+      </pre>
+      <p>
+      size
+      </p>
+      <div></div><br>
+
+      <pre>
+escape a string
+      </pre>
+      <p>
+      escape
+      </p>
+      <div></div><br>
+
+      <pre>
+returns an escaped version of html without affecting existing escaped entities
+      </pre>
+      <p>
+      escape_once
+      </p>
+      <div></div><br>
+
+      <pre>
+strip html from string
+      </pre>
+      <p>
+      strip_html
+      </p>
+      <div></div><br>
+
+      <pre>
+strip all newlines (\n) from string
+      </pre>
+      <p>
+      strip_newlines
+      </p>
+      <div></div><br>
+
+      <pre>
+replace each newline (\n) with html break
+      </pre>
+      <p>
+      newline_to_br
+      </p>
+      <div></div><br>
+
+      <pre>
+replace each occurrence e.g. {{ 'foofoo' | replace:'foo','bar' }} #=> 'barbar'
+      </pre>
+      <p>
+      replace
+      </p>
+      <div></div><br>
+
+      <pre>
+replace the first occurrence e.g. {{ 'barbar' | replace_first:'bar','foo' }} #=> 'foobar'
+      </pre>
+      <p>
+      replace_first
+      </p>
+      <div></div><br>
+
+      <pre>
+remove each occurrence e.g. {{ 'foobarfoobar' | remove:'foo' }} #=> 'barbar'
+      </pre>
+      <p>
+      remove
+      </p>
+      <div></div><br>
+
+      <pre>
+remove the first occurrence e.g. {{ 'barbar' | remove_first:'bar' }} #=> 'bar'
+      </pre>
+      <p>
+      remove_first
+      </p>
+      <div></div><br>
+
+      <pre>
+truncate a string down to x characters. It also accepts a second parameter that will append to the string e.g. {{ 'foobarfoobar' | truncate: 5, '.' }} #=> 'foob.'
+      </pre>
+      <p>
+      truncate
+      </p>
+      <div></div><br>
+
+      <pre>
+truncate a string down to x words
+      </pre>
+      <p>
+      truncatewords
+      </p>
+      <div></div><br>
+
+      <pre>
+prepend a string e.g. {{ 'bar' | prepend:'foo' }} #=> 'foobar'
+      </pre>
+      <p>
+      prepend
+      </p>
+      <div></div><br>
+
+      <pre>
+append a string e.g. {{ 'foo' | append:'bar' }} #=> 'foobar'
+      </pre>
+      <p>
+      append
+      </p>
+      <div></div><br>
+
+      <pre>
+slice a string. Takes an offset and length, e.g. {{ "hello" | slice: -3, 3 }} #=> llo
+      </pre>
+      <p>
+      slice
+      </p>
+      <div></div><br>
+
+      <pre>
+subtraction e.g. {{ 4 | minus:2 }} #=> 2
+      </pre>
+      <p>
+      minus
+      </p>
+      <div></div><br>
+
+      <pre>
+addition e.g. {{ '1' | plus:'1' }} #=> '11', {{ 1 | plus:1 }} #=> 2
+      </pre>
+      <p>
+      plus
+      </p>
+      <div></div><br>
+
+      <pre>
+multiplication e.g {{ 5 | times:4 }} #=> 20
+      </pre>
+      <p>
+      times
+      </p>
+      <div></div><br>
+
+      <pre>
+division e.g. {{ 10 | divided_by:2 }} #=> 5
+      </pre>
+      <p>
+      divided_by
+      </p>
+      <div></div><br>
+
+      <pre>
+split a string on a matching pattern e.g. {{ "a~b" | split:"~" }} #=> ['a','b']
+      </pre>
+      <p>
+      split
+      </p>
+      <div></div><br>
+
+
+      <pre>
+remainder, e.g. {{ 3 | modulo:2 }} #=> 1
+      </pre>
+      <p>
+      modulo
+      </p>
+      <div></div><br>
+
+
+      <h3 id="Tags_nativas">Tags Nativas</h3>
+      <p>
+        Tags are used for the logic in your template. New tags are very easy to code, so I hope to get many contributions to the standard tag library after releasing this code.
+        Here is a list of currently supported tags:</p>
+      </p>
+
+      <pre>
+// Assigns some value to a variable
+
+You can store data in your own variables, to be used in output or other tags as desired. The simplest way to create a variable is with the assign tag, which has a pretty straightforward syntax:
+
+{% assign name = 'freestyle' %}
+
+{% for t in collections.tags %}{% if t == name %}
+  <p>Freestyle!</p>
+{% endif %}{% endfor %}
+
+Another way of doing this would be to assign true / false values to the variable:
+
+{% assign freestyle = false %}
+
+{% for t in collections.tags %}{% if t == 'freestyle' %}
+  {% assign freestyle = true %}
+{% endif %}{% endfor %}
+
+{% if freestyle %}
+  <span><</span>p>Freestyle!<span><</span>/p>
+{% endif %}
+      </pre>
+      <p>
+      assign
+      </p>
+      <div></div><br>
+
+      <pre>
+// Block tag that captures text into a variable
+
+If you want to combine a number of strings into a single string and save it to a variable, you can do that with the capture tag. This tag is a block which "captures" whatever is rendered inside it, then assigns the captured value to the given variable instead of rendering it to the screen.
+
+{% capture attribute_name %}{{ item.title | handleize }}-{{ i }}-color{% endcapture %}
+
+<span><</span>label for="{{ attribute_name }}">Color:<span><</span>/label>
+<span><</span>select name="attributes[{{ attribute_name }}]" id="{{ attribute_name }}">
+  <span><</span>option value="red">Red<span><</span>/option>
+  <span><</span>option value="green">Green<span><</span>/option>
+  <span><</span>option value="blue">Blue<span><</span>/option>
+<span><</span>/select>
+      </pre>
+      <p>
+      capture
+      </p>
+      <div></div><br>
+
+      <pre>
+// Block tag, its the standard case...when block
+
+{% case condition %}
+{% when 1 %}
+hit 1
+{% when 2 or 3 %}
+hit 2 or 3
+{% else %}
+... else ...
+{% endcase %}
+
+{% case template %}
+
+{% when 'label' %}
+     // {{ label.title }}
+{% when 'product' %}
+     // {{ product.vendor | link_to_vendor }} / {{ product.title }}
+{% else %}
+     // {{page_title}}
+{% endcase %}
+      </pre>
+      <p>
+      case
+      </p>
+      <div></div><br>
+
+      <pre>
+Block tag, comments out the text in the block
+
+We made 1 million dollars {% comment %} in losses {% endcomment %} this year
+      </pre>
+      <p>
+      comment
+      </p>
+      <div></div><br>
+
+      <pre>
+// Cycle is usually used within a loop to alternate between values, like colors or DOM classes.
+
+{% cycle 'one', 'two', 'three' %}
+{% cycle 'one', 'two', 'three' %}
+{% cycle 'one', 'two', 'three' %}
+{% cycle 'one', 'two', 'three' %}
+
+resultado
+one
+two
+three
+one
+      </pre>
+      <p>
+      cycle
+      </p>
+      <div></div><br>
+
+      <pre>
+// Liquid allows for loops over collections:
+
+{% for item in array %}
+  {{ item }}
+{% endfor %}
+
+// When iterating a hash, item[0] contains the key, and item[1] contains the value:
+
+{% for item in hash %}
+  {{ item[0] }}: {{ item[1] }}
+{% endfor %}
+
+// During every for loop, the following helper variables are available for extra styling needs:
+
+forloop.length      # => length of the entire for loop
+forloop.index       # => index of the current iteration
+forloop.index0      # => index of the current iteration (zero based)
+forloop.rindex      # => how many items are still left?
+forloop.rindex0     # => how many items are still left? (zero based)
+forloop.first       # => is this the first iteration?
+forloop.last        # => is this the last iteration?
+
+There are several attributes you can use to influence which items you receive in your loop
+
+limit:int lets you restrict how many items you get. offset:int lets you start the collection with the nth item.
+
+# array = [1,2,3,4,5,6]
+{% for item in array limit:2 offset:2 %}
+  {{ item }}
+{% endfor %}
+# results in 3,4
+
+Reversing the loop
+{% for item in collection reversed %} {{item}} {% endfor %}
+
+Instead of looping over an existing collection, you can define a range of numbers to loop through. The range can be defined by both literal and variable numbers:
+
+# if item.quantity is 4...
+{% for i in (1..item.quantity) %}
+  {{ i }}
+{% endfor %}
+# results in 1,2,3,4
+      </pre>
+      <p>
+      for
+      </p>
+      <div></div><br>
+
+      <pre>
+// Standard if/else block
+
+{% if user %}
+  Hello {{ user.name }}
+{% endif %}
+# Same as above
+{% if user != null %}
+  Hello {{ user.name }}
+{% endif %}
+{% if user.name == 'tobi' %}
+  Hello tobi
+{% elsif user.name == 'bob' %}
+  Hello bob
+{% endif %}
+{% if user.name == 'tobi' or user.name == 'bob' %}
+  Hello tobi or bob
+{% endif %}
+{% if user.name == 'bob' and user.age > 45 %}
+  Hello old bob
+{% endif %}
+{% if user.name != 'tobi' %}
+  Hello non-tobi
+{% endif %}
+# Same as above
+{% unless user.name == 'tobi' %}
+  Hello non-tobi
+{% endunless %}
+# Check for the size of an array
+{% if user.payments == empty %}
+   you never paid !
+{% endif %}
+
+{% if user.payments.size > 0  %}
+   you paid !
+{% endif %}
+{% if user.age > 18 %}
+   Login here
+{% else %}
+   Sorry, you are too young
+{% endif %}
+# array = 1,2,3
+{% if array contains 2 %}
+   array includes 2
+{% endif %}
+# string = 'hello world'
+{% if string contains 'hello' %}
+   string includes 'hello'
+{% endif %}<br>
+      </pre>
+      <p>
+      if
+      </p>
+      <div></div><br>
+
+      <pre>
+      Includes another template; useful for partials
+      </pre>
+      <p>
+      include
+      </p>
+      <div></div><br>
+
+      <div></div><br>
+
+      <pre>
+Mirror of if statement
+      </pre>
+      <p>
+      unless
+      </p>
+      <div></div><br>
+
+      <h3 id="tipos-de-marcacao">Tipos de Marcação</h3>
       <pre>
 {% assign order = "false" %}
 {% orders client_id:client.id %}
@@ -51,6 +525,7 @@
  <span><</span>/tr<span>></span>
 {% endif %}
       </pre>
+
       <p><strong>Existem dois tipos de marcação no líquido:</strong></p>
       <p><i>Tags de Lógica:</i> são declarações condicionais. Eles são a afirmação de que diz o código e o que fazer.</p>
       <p><i>Tags de saída:</i> são as etiquetas de saída exibir o líquido encontrado entre ele.
