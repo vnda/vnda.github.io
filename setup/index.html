@@ -1935,19 +1935,15 @@ _nome_do_arquivo.liquid
       </pre>
       <p>Para reutilizar as parte de códigos que se repetem ao longo do desenvolvimento da loja, utilize a função "{% include %}"<b>Salve os arquivos nestes locais.</b></p>
 
-
-      <h3 id="como-listar-produtos-em-promoção">Como listar produtos em promoção</h3>
-      <p>aguardando atualização...<br><br><br><br><br></p>
-
       <h3 id="como-relacionar-produtos">Como relacionar produtos</h3>
       <pre>
 {% assign product_id = product.id %}
 {% tags product_id:product.id type:"relacionado" limit:1 %}
-    {% products tag:tag.name %}
-        {% unless product_id == product.id %}
-            {{product}}
-        {% endunless %}
-    {% endproducts %}
+  {% products tag:tag.name %}
+    {% unless product_id == product.id %}
+      {{product}}
+    {% endunless %}
+  {% endproducts %}
 {% endtags %}
       </pre>
       <p>
