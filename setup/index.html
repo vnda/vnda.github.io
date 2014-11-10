@@ -525,6 +525,7 @@ Mirror of if statement
  <span><</span>/tr<span>></span>
 {% endif %}
       </pre>
+
       <p><strong>Existem dois tipos de marcação no líquido:</strong></p>
       <p><i>Tags de Lógica:</i> são declarações condicionais. Eles são a afirmação de que diz o código e o que fazer.</p>
       <p><i>Tags de saída:</i> são as etiquetas de saída exibir o líquido encontrado entre ele.
@@ -1056,7 +1057,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
 
        <p>Formulários com dados diferentes para <b>cobrança</b> e <b>entrega</b>, respectivamente serão diferenciados
        pelas variáveis "billing_address" ou "shipping_address".</p>
-       <p><b>Atenção:</b> neste caso o action do formulário da página de endereço deve mudar para "/enderecos" = {{ addresses_url }}</p>
+       <p><b>Atenção:</b> neste caso o action do formulário da página de endereço deve mudar para "/enderecos" = {{ addresses_url }} </p>
        <p>Dados para Cobrança</p>
        <table>
           <thead>
@@ -1784,7 +1785,7 @@ OU
 <span><</span>form action="{{ wishlist_url }}" method="POST"<span>></span>
   <span><</span>input type="hidden" name="_method" value="DELETE"/<span>></span>
   <span><</span>input type="hidden" name="client_id" value="{{client.id}}"/<span>></span>
-  <span><</span>input type="hidden" name="variant_id" value="{{wish.variant_id}}"/<span>></span>
+  <span><</span>input type="hidden" name="product_id" value="{{wish.product_id}}"/<span>></span>
   <span><</span>button type="submit"<span>></span>Remover<span><</span>/button<span>></span>
 <span><</span>/form<span>></span>
       </pre>
@@ -1802,7 +1803,7 @@ OU
     <p>* Mostrar lista do cliente</p>
     <div></div><br>
     <pre>
-{% wishlist client_id:client.id variant_id:2 %}
+{% wishlist client_id:client.id product_id:2 %}
     {{wish}}
 {% endwishlist %}}
       </pre>
@@ -1812,7 +1813,7 @@ OU
       <pre>
 <span><</span>form action="{{ wishlist_url }}" method="POST"<span>></span>
   <span><</span>input type="text" name="client_id" value="{{client.id}}"/<span>></span>
-  <span><</span>input type="text" name="variant_id"/<span>></span>
+  <span><</span>input type="text" name="product_id"/<span>></span>
   <span><</span>button type="submit" value="Enviar"<span>></span>Enviar<span><</span>/button<span>></span>
 <span><</span>/form<span>></span>
       </pre>
@@ -1821,7 +1822,7 @@ OU
       <pre>
 $.post(
   "/lista_de_desejos",
-  { client_id: "15", variant_id: "4" },
+  { client_id: "15", product_id: "4" },
   function( data ) {
     console.log("success");;
   },
@@ -1939,16 +1940,40 @@ _nome_do_arquivo.liquid
       <p>aguardando atualização...<br><br><br><br><br></p>
 
       <h3 id="como-relacionar-produtos">Como relacionar produtos</h3>
-      <p>aguardando atualização...<br><br><br><br><br></p>
+      <pre>
+{% assign product_id = product.id %}
+{% tags product_id:product.id type:"relacionado" limit:1 %}
+    {% products tag:tag.name %}
+        {% unless product_id == product.id %}
+            {{product}}
+        {% endunless %}
+    {% endproducts %}
+{% endtags %}
+      </pre>
+      <p>
+        É necessário criar uma tag e colocar um tipo para ela (pois vamos buscar a tag por tipo na sequencia. no exemplo usamos o tipo "relacionado")
+        Então usamos o código abaixo na tela de produtos. Ele percorre as tags do produto em busca de uma que tenha o tipo "relacionado". Caso encontre, serão listados os produtos que também tem essa tag, ou seja, que estão relacionados entre si.
+      </p>
+
+      <h3 id="avise-me-quando-chegar">Avise-me quando chegar</h3>
+      <pre>
+<span><</span>form action="/webform" method="post">
+  <span><</span>p>Produto Indisponível<span><</span>/p>
+  <span><</span>strong>Avise-me quando chegar<span><</span>/strong>
+  <span><</span>input type="hidden" name="key" value="nome-da-loja-avise-me-quando-chegar">
+  <span><</span>input type="hidden" name="product_name" value="{{ product.name }}">
+  <span><</span>input type="hidden" name="product_price" value="{{ product.price | money_format }}">
+  <span><</span>input type="text" name="client_email" placeholder="Digite o seu e-mail" required>
+  <span><</span>input type="submit" value=" ">
+<span><</span>/form>
+      </pre>
+      <p>
+        Criar um formulário pelo admin e colocar a KEY no form abaixo
+      </p>
 
       <h3 id="validar-cpf">Biblioteca Jquery para validar cpf e cnpj</h3>
       <p><a href="https://gist.github.com/vagnerolliver/8e60807e5269162a58b7" target="_blank" class="laranja">Clique aqui</a> para ver os filtros disponíveis para usar no .liquid.</p>
       <code>
-
-
-
-
-
       </code>
       <h3 id="incluir-busca-swiftype">Incluir busca swiftype</h3>
       <pre>
@@ -2191,6 +2216,7 @@ function onlyUnique(value, index, self) {
 
     </div>
   </div>
+
   <!-- Google Tag Manager -->
   <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script>
   <!-- End Google Tag Manager -->
