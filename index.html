@@ -2207,6 +2207,19 @@ function onlyUnique(value, index, self) {
       </pre>
       <p>Etapa 2 - Nessa etapa estão as funções:</p>
 
+      <h3 id="tag-store">Tag store (configurações admin)</h3>
+      <p>
+        A tag { store } retorna um array com todas as propriedades do admin na seção "admin/store/edit".
+      </p>
+      <p>
+        Umas das vantagens do uso dessa tag é deixar no site a logo e endereços gerenciavéis pelo cliente.
+      </p>
+      <p>
+        Constantemente  um novo recurso é adicionado ao admin
+        gerando um novo atributo para a tag "store", caso necessite lista a tag { store } e veja você mesmo os atributos suportados na plataforma.
+      </p>
+      <p>Caso necessite listar no site os dados de endereço de forma dinâmica, basta
+      atribuir a tag {{ store.street_name }}..{{ store.street_number }}..{{ store.neighborhood }}. </p>
      </div><!-- content -->
     <div class="dark-box">
 
