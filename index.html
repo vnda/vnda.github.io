@@ -34,38 +34,38 @@
 
       <h3 id="filtros">Filtros</h3>
       <p>filtros para alterar a saída de uma váriavel:</p>
-      <pre>
-reformat a date (syntax reference)
-      </pre>
-      <p>date</p>
-      <div></div><br>
 
       <pre>
-capitalize words in the input sentence
-      </pre>
-      <p>capitalize</p>
-      <div></div><br>
-
-      <pre>capitalize words in the input sentence</pre>
-      <p>capitalize</p>
-
-      <div></div><br>
-<!--  capitalize - capitalize words in the input sentence
- -->
-      <pre>
-convert an input string to lowercase
-      </pre>
-      <p>downcase</p>
-      <div></div><br>
-
-      <pre>
-convert an input string to uppercase
+subtraction e.g. {{ 4 | minus:2 }} #=> 2
       </pre>
       <p>
-      upcase
+      minus
       </p>
       <div></div><br>
 
+      <pre>
+addition e.g. {{ '1' | plus:'1' }} #=> '11', {{ 1 | plus:1 }} #=> 2
+      </pre>
+      <p>
+      plus
+      </p>
+      <div></div><br>
+
+      <pre>
+multiplication e.g {{ 5 | times:4 }} #=> 20
+      </pre>
+      <p>
+      times
+      </p>
+      <div></div><br>
+
+      <pre>
+division e.g. {{ 10 | divided_by:2 }} #=> 5
+      </pre>
+      <p>
+      divided_by
+      </p>
+      <div></div><br>
       <pre>
 get the first element of the passed in array
       </pre>
@@ -219,46 +219,6 @@ append a string e.g. {{ 'foo' | append:'bar' }} #=> 'foobar'
       <div></div><br>
 
       <pre>
-slice a string. Takes an offset and length, e.g. {{ "hello" | slice: -3, 3 }} #=> llo
-      </pre>
-      <p>
-      slice
-      </p>
-      <div></div><br>
-
-      <pre>
-subtraction e.g. {{ 4 | minus:2 }} #=> 2
-      </pre>
-      <p>
-      minus
-      </p>
-      <div></div><br>
-
-      <pre>
-addition e.g. {{ '1' | plus:'1' }} #=> '11', {{ 1 | plus:1 }} #=> 2
-      </pre>
-      <p>
-      plus
-      </p>
-      <div></div><br>
-
-      <pre>
-multiplication e.g {{ 5 | times:4 }} #=> 20
-      </pre>
-      <p>
-      times
-      </p>
-      <div></div><br>
-
-      <pre>
-division e.g. {{ 10 | divided_by:2 }} #=> 5
-      </pre>
-      <p>
-      divided_by
-      </p>
-      <div></div><br>
-
-      <pre>
 split a string on a matching pattern e.g. {{ "a~b" | split:"~" }} #=> ['a','b']
       </pre>
       <p>
@@ -269,12 +229,47 @@ split a string on a matching pattern e.g. {{ "a~b" | split:"~" }} #=> ['a','b']
 
       <pre>
 remainder, e.g. {{ 3 | modulo:2 }} #=> 1
+
       </pre>
       <p>
       modulo
       </p>
+
+      <pre>
+reformat a date (syntax reference)
+      </pre>
+      <p>date</p>
       <div></div><br>
 
+
+      <pre>capitalize words in the input sentence</pre>
+      <p>capitalize</p>
+
+      <div></div><br>
+<!--  capitalize - capitalize words in the input sentence
+ -->
+      <pre>
+convert an input string to lowercase
+      </pre>
+      <p>downcase</p>
+      <div></div><br>
+
+      <pre>
+convert an input string to uppercase
+      </pre>
+      <p>
+      upcase
+      </p>
+      <div></div><br>
+
+
+      <pre>
+slice a string. Takes an offset and length, e.g. {{ "hello" | slice: -3, 3 }} #=> llo
+      </pre>
+      <p>
+      slice
+      </p>
+      <div></div><br>
 
       <h3 id="Tags_nativas">Tags Nativas</h3>
       <p>
