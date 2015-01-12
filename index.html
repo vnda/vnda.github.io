@@ -263,14 +263,6 @@ convert an input string to uppercase
       <div></div><br>
 
 
-      <pre>
-slice a string. Takes an offset and length, e.g. {{ "hello" | slice: -3, 3 }} #=> llo
-      </pre>
-      <p>
-      slice
-      </p>
-      <div></div><br>
-
       <h3 id="Tags_nativas">Tags Nativas</h3>
       <p>
         Tags are used for the logic in your template. New tags are very easy to code, so I hope to get many contributions to the standard tag library after releasing this code.
@@ -845,6 +837,8 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
       {{ shipping_method.name }}
       {{ shipping_method.price | money_format }}
       {{ shipping_method.description }}
+      <a href="#tag-do-valor-que-falta-para-frete-grátis" class="gray">//valor que falta para o frete grátis</a>
+      {{  shipping_method.value_needed_to_discount }}
     {% endshippingmethods %}
 {% endif %}
   <span><</span>form>
@@ -1575,7 +1569,10 @@ OU
       <h3 id="menus">{% menus %}</h3>
       <pre>
 {% menus position:"nome_da_posicao_do_menu_no_admin" %}
-  {{ menu.url }} {{ menu.title }}
+  {{ menu.url }}
+  {{ menu.title }}
+  {{ menu.subtitle }}
+  {{ menu.items_count  }} // quantidade de sub-menus
 {% endmenus %}
       </pre>
       <p>Listar menus<br>
@@ -1626,7 +1623,7 @@ OU
 {% endimages %}
       </pre>
       <p>Listar imagens do produto<br />
-          * deve estar dentro de um loop {% products %}</p>
+        * deve estar dentro de um loop {% products %}</p>
 
       <h3 id="shippingmethods">{% shippingmethods %}</h3>
       <pre>
@@ -1639,6 +1636,8 @@ OU
   <span><</span>input type="radio" name="type" value="{{ shipping_method.value }}" <span>></span>
     {{ shipping_method.name }} {{ shipping_method.price | money_format }} {{ shipping_method.description }}
    <span><</span>/label<span>></span>
+  <a href="#tag-do-valor-que-falta-para-frete-grátis" class="gray">//valor que falta para o frete grátis</a>
+  {{  shipping_method.value_needed_to_discount }}
  {% if forloop.last %}
   <span><</span>/fieldset<span>></span>
  {% endif %}
@@ -1890,18 +1889,61 @@ exemplo-senha-cliente
       <h2 id="dicas-setup/admin">Dicas Setup/Admin</h2>
       <p>Seção de dicas para integrar tanto no setup da loja ou para o admin.</p>
 
-      <h3 id="verificar-usuário-logado">Verificar usuário logado</h3>
+      <!-- // -->
+      <h3 id="avise-me-quando-chegar">Avise-me quando chegar</h3>
       <pre>
-  {% if logged_in %}
-    <span><<span>a href="{{ account_url }}" title="minha conta">minha conta<span><<span>/a<span>><span>
-    <span><<span>a href="{{ logout_url }}" title="sair">sair<span><<span>/a<span>><span>
-  {% else %}
-    <span><<span>a href="{{ login_url }}" title="">minha conta<span><<span>/a<span>><span>
-  {% endif %}
+<span><</span>form action="/webform" method="post">
+  <span><</span>p>Produto Indisponível<span><</span>/p>
+  <span><</span>strong>Avise-me quando chegar<span><</span>/strong>
+  <span><</span>input type="hidden" name="key" value="nome-da-loja-avise-me-quando-chegar">
+  <span><</span>input type="hidden" name="product_name" value="{{ product.name }}">
+  <span><</span>input type="hidden" name="product_price" value="{{ product.price | money_format }}">
+  <span><</span>input type="text" name="client_email" placeholder="Digite o seu e-mail" required>
+  <span><</span>input type="submit" value=" ">
+<span><</span>/form>
       </pre>
-      <p>Após um usuário enviar seus dados de login e o mesmo ser validado pela api, a váriavel "logged_in" retorna valor verdadeiro.</p>
-      <p>Ao adicionar uma verificação no .liquid é possível redirecionar e/ou deslogar.</p>
+      <p>
+        Criar um formulário pelo admin e colocar a KEY no form abaixo
+      </p>
 
+      <h3 id="validar-cpf">Biblioteca Jquery para validar cpf e cnpj</h3>
+      <p><a href="https://gist.github.com/vagnerolliver/8e60807e5269162a58b7" target="_blank" class="laranja">Clique aqui</a> para ver os filtros disponíveis para usar no .liquid.</p>
+
+      <!-- // -->
+      <h3 id="listar-percentual-desconto-no-produto-em-promoção">Listar Percentual de Desconto no produto em promoção</h3> <!-- // -->
+      <pre>
+//variável que armazena o preço original
+{% assign valor_produto = product.price %}
+
+//variável que armazena o preço c/ desconto
+{% assign valor_com_desconto = product | apply_discount %}
+
+//variável que armazena o percentual de desconto
+{% assign desconto =  valor_produto | minus:valor_com_desconto | times:100 | divided_by:valor_produto | remove: '.0' %}
+
+// lista o percentual de desconto
+{{ desconto }}
+      </pre>
+      <p>Para listar o % (percentual) de desconto de um produto em promoção é necessário é criar variáveis e auxiliar na criação dos filtros das operações.</p>
+
+      <!-- // -->
+      <h3 id="como-relacionar-produtos">Como relacionar produtos</h3>
+      <pre>
+{% assign product_id = product.id %}
+{% tags product_id:product.id type:"relacionado" limit:1 %}
+  {% products tag:tag.name %}
+    {% unless product_id == product.id %}
+      {{product}}
+    {% endunless %}
+  {% endproducts %}
+{% endtags %}
+      </pre>
+      <p>
+        É necessário criar uma tag e colocar um tipo para ela (pois vamos buscar a tag por tipo na sequencia. no exemplo usamos o tipo "relacionado")
+        Então usamos o código abaixo na tela de produtos. Ele percorre as tags do produto em busca de uma que tenha o tipo "relacionado". Caso encontre, serão listados os produtos que também tem essa tag, ou seja, que estão relacionados entre si.
+      </p>
+
+      <!-- // -->
       <h3 id="exibir-images-estáticas">Exibir imagens estáticas</h3>
       <p>* devem estar no diretório /public/images</p>
       <pre>
@@ -1930,42 +1972,6 @@ _nome_do_arquivo.liquid
       </pre>
       <p>Para reutilizar as parte de códigos que se repetem ao longo do desenvolvimento da loja, utilize a função "{% include %}"<b>Salve os arquivos nestes locais.</b></p>
 
-      <h3 id="como-relacionar-produtos">Como relacionar produtos</h3>
-      <pre>
-{% assign product_id = product.id %}
-{% tags product_id:product.id type:"relacionado" limit:1 %}
-  {% products tag:tag.name %}
-    {% unless product_id == product.id %}
-      {{product}}
-    {% endunless %}
-  {% endproducts %}
-{% endtags %}
-      </pre>
-      <p>
-        É necessário criar uma tag e colocar um tipo para ela (pois vamos buscar a tag por tipo na sequencia. no exemplo usamos o tipo "relacionado")
-        Então usamos o código abaixo na tela de produtos. Ele percorre as tags do produto em busca de uma que tenha o tipo "relacionado". Caso encontre, serão listados os produtos que também tem essa tag, ou seja, que estão relacionados entre si.
-      </p>
-
-      <h3 id="avise-me-quando-chegar">Avise-me quando chegar</h3>
-      <pre>
-<span><</span>form action="/webform" method="post">
-  <span><</span>p>Produto Indisponível<span><</span>/p>
-  <span><</span>strong>Avise-me quando chegar<span><</span>/strong>
-  <span><</span>input type="hidden" name="key" value="nome-da-loja-avise-me-quando-chegar">
-  <span><</span>input type="hidden" name="product_name" value="{{ product.name }}">
-  <span><</span>input type="hidden" name="product_price" value="{{ product.price | money_format }}">
-  <span><</span>input type="text" name="client_email" placeholder="Digite o seu e-mail" required>
-  <span><</span>input type="submit" value=" ">
-<span><</span>/form>
-      </pre>
-      <p>
-        Criar um formulário pelo admin e colocar a KEY no form abaixo
-      </p>
-
-      <h3 id="validar-cpf">Biblioteca Jquery para validar cpf e cnpj</h3>
-      <p><a href="https://gist.github.com/vagnerolliver/8e60807e5269162a58b7" target="_blank" class="laranja">Clique aqui</a> para ver os filtros disponíveis para usar no .liquid.</p>
-      <code>
-      </code>
       <h3 id="incluir-busca-swiftype">Incluir busca swiftype</h3>
       <pre>
 // mudanças no .liquid
@@ -2027,7 +2033,37 @@ _nome_do_arquivo.liquid
       <p>
         5 - As informações que precisam ser colocadas no admin
       </p>
-       <h3 id="Tag-store-(configurações-admin)">Tag store (configurações admin)</h3>
+
+
+       <!-- // -->
+      <h3 id="tag-do-valor-que-falta-para-frete-grátis">Tag do Valor que falta para o Frete Grátis</h3>
+      <pre>
+{% shippingmethods %}
+ ...
+{{ shipping_method.value_needed_to_discount }}
+...
+{% endshippingmethods %}
+     </pre>
+      <p>
+        É possível listar o valor que ainda falta pra ter desconto no frete
+        associado a um tipo de entrega(dentro do loop <a href="#shippingmethods" class="laranja">{% shippingmethods %}</a>), pois o desconto é relativo ao método em questão.
+      </p>
+
+      <!-- // -->
+      <h3 id="verificar-usuário-logado">Verificar usuário logado</h3>
+      <pre>
+  {% if logged_in %}
+    <span><<span>a href="{{ account_url }}" title="minha conta">minha conta<span><<span>/a<span>><span>
+    <span><<span>a href="{{ logout_url }}" title="sair">sair<span><<span>/a<span>><span>
+  {% else %}
+    <span><<span>a href="{{ login_url }}" title="">minha conta<span><<span>/a<span>><span>
+  {% endif %}
+      </pre>
+      <p>Após um usuário enviar seus dados de login e o mesmo ser validado pela api, a váriavel "logged_in" retorna valor verdadeiro.</p>
+      <p>Ao adicionar uma verificação no .liquid é possível redirecionar e/ou deslogar.</p>
+
+      <!-- // -->
+      <h3 id="Tag-store-(configurações-admin)">Tag store (configurações admin)</h3>
       <pre>
 // atribuindo endereço de forma dinâmica
 {{ store.street_name }}..{{ store.street_number }}..
