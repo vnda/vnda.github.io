@@ -278,16 +278,18 @@
                 <h3 id="validar-html-5">Validar HTML 5</h3>
                 <p>Validador Online   <a href="http://validator.w3.org/" class="default" target="_blank">http://validator.w3.org/</a></p>
 
-                <h3 id="ItemScope">ItemScope</h3>
-                  <pre>
-<span><</span>div itemscope itemtype="http://schema.org/Organization"<span>></span>
-  <span><</span>a itemprop="url" href="{{ home_url }}">{{store.name}}<span><</span>/a<span>></span>
-  <span><</span>img itemprop="logo" src="{{store.logo_url}}"/<span>></span>
-<span><</span>/div<span>></span>
-                  </pre>
-                <p> * o logo do site não pode ser em background <br />
-                  * o código abaixo deve ser incluído, estando visível ou não
-                </p>
+                <h3 id="Structured-Data">Structured Data</h3>
+<pre>
+   <span><</span>head itemscope="" itemtype="http://schema.org/Organization">
+
+    <span><</span>meta itemprop="name" content="Loja">
+    <span><</span>meta itemprop="email" content="email">
+    <span><</span>meta itemprop="telephone" content="99 9999-9999">
+    <span><</span>link itemprop="url" href="loja.com.br">
+    <span><</span>link itemprop="logo" href="logo.png">
+
+</pre>
+<p>Aplicar schema Organization na tag head </p>
 
      </div><!-- content -->
     <div class="dark-box">
