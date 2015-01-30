@@ -2034,6 +2034,29 @@ _nome_do_arquivo.liquid
         5 - As informações que precisam ser colocadas no admin
       </p>
 
+   <!-- // -->
+      <h3 id="metricas-google-analytics">Métricas Google Analytics</h3>
+      <h4 id="mensuracao-de-banners">Mensuração de banners</h4>
+      <pre>
+{% banners position: "capa-grande" %}
+<span><</span>li>
+<span><</span>a class="link-img" href="{{ banner.url }}">
+<span><</span>img src="{{ banner.file_url }}" alt="{{ banner.title }}" data-banner-title="{{ banner.title }}" data-content-type="banner" data-banner-position="capa-grande">
+<span><</span>/a>
+<span><</span>div class="info">
+<span><</span>h3>{{ banner.subtitle }}<span><</span>/h3>
+{{ banner.description }}
+<span><</span>/div>
+<span><</span>/li>
+{% endbanners %}
+      </pre>
+      <p>É possível mensurar os cliques dos banners no Google Anatylics através do .liquid informando os atributos
+        data-banner-title, data-content-type e data-banner-position dentro do loop {% banners %}.
+      </p>
+      <p>Os atributos data-banner-title e data-content-type deve ser os mesmo
+        cadastrados no admin nos campos Title e Position;
+       </p>
+
 
        <!-- // -->
       <h3 id="tag-do-valor-que-falta-para-frete-grátis">Tag do Valor que falta para o Frete Grátis</h3>
