@@ -1959,7 +1959,8 @@ exemplo-senha-cliente
 // para js
 {{ "function.js" | javascript_tag }}
       </pre>
-      <p>Para chamar os arquivos css e js salvos nas pastas "/stylesheets" e "/javascripts/" use os filtros "stylesheet_tag" e "javascript_tag".</p>
+      <p>Para incluir os arquivos .css e  .js informe as váriaveis "stylesheet_tag" e "javascript_tag" que foram configuradas para acessar
+      os diretórios "/stylesheets" e "/javascripts". <b>Salve os arquivos nestes locais.</b></p>
 
 <h3 id="incluir-módulos">Incluindo os módulos</h3>
       <pre>
@@ -1969,7 +1970,7 @@ exemplo-senha-cliente
 
 _nome_do_arquivo.liquid
       </pre>
-      <p>Para reutilizar as parte de códigos que se repetem ao longo do desenvolvimento da loja, utilize a função "{% include %}"</p>
+      <p>Para reutilizar as parte de códigos que se repetem ao longo do desenvolvimento da loja, utilize a função "{% include %}"<b>Salve os arquivos nestes locais.</b></p>
 
       <h3 id="incluir-busca-swiftype">Incluir busca swiftype</h3>
       <pre>
@@ -2035,6 +2036,7 @@ _nome_do_arquivo.liquid
 
       <!-- // -->
       <h3 id="metricas-google-analytics">Métricas Google Analytics</h3>
+      <pre>teste</pre>
       <h4 id="mensuracao-de-banners">Mensuração de banners</h4>
       <pre>
 {% banners position: "capa-grande" %}
@@ -2055,35 +2057,6 @@ _nome_do_arquivo.liquid
       <p>Os atributos data-banner-title e data-content-type deve ser os mesmo
         cadastrados no admin nos campos Title e Position;
        </p>
-       <!-- // -->
-      <h3 id="resumo-do-pedido">Resumo do Pedido</h3>
-      <p>Segue um modelo de resumo do carrinho.</p>
-      <pre>
-<span><</span>table class="table">
-    <span><</span>tbody>
-        <span><</span>tr>
-            <span><</span>td>Subtotal</td>
-            <span><</span>td>{{ cart.subtotal | money_format }}</td>
-        <span><</span>/tr>
-        {% if cart.shipping_price > 0 %}
-        <span><</span>tr>
-          <span><</span>td>Frete</td>
-          <span><</span>td>{{ cart.shipping_price | money_format }}</td>
-        <span><</span>/tr>
-        {%  endif %}
-        {% if cart.discount_price > 0 %}
-        <span><</span>tr>
-          <span><</span>td>Desconto</td>
-          <span><</span>td>{{ cart.discount_price | money_format }}</td>
-        <span><</span>/tr>
-        {% endif %}
-        <span><</span>tr>
-            <span><</span>td>Total de pedidos</td>
-            <span><</span>td>{{ cart.total | money_format }}</td>
-         <span><</span>/tr>
-    <span><</span>/tbody>
-<span><</span>/table>
-      </pre>
 
       <!-- // -->
       <h3 id="outras-tags-do-liquid">Outras tags do .liquid</h3>
