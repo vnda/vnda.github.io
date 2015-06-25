@@ -583,151 +583,148 @@ Mirror of if statement
       <p>Template para exibição do produto, suas imagens, produtos relacionados. Aqui também fica o formulário que permite adicionar o item ao carrinho, neste formulário o cliente pode selecionar qual atributo do produto (cor, tamanho, etc) ele realmente quer.</p>
       <p>Para exibir o nome, preço, remarcações, disponibilidade, parcelas  utilize  tags dentro do loop <a href="#products" class="laranja">{% product %}</a></p>
       <!-- // -->
-
-      <h4 id="enviar-produto-ao-carrinho(modelo-antigo)">Enviar produto ao carrinho(modelo antigo)</h4>
-      <p>
-        Para adicionar itens ao carrinho, você precisa fazer um POST para a URL definida na variável {{ cart_url }}, passando dois campos:<p>
-
-      <p>* product_id: ID do produto selecionado pelo usuário<br />
-         * quantity: Quantidade de itens que o usuário deseja comprar</p>
-       <p class="clear">Os campos product_id e quantity são obrigatório, mesmo que o produto tenha apenas uma variante.
-        Caso sua loja não permita que o usuário compre mais de um item, você deve informar este campo com o valor 1.
-        </p>
-      <pre>
-// deprecate, atributos modelo antigo
-<span><</span>form action="{{ cart_url }}" method="POST"<span>></span>
-  <span><</span>input type="hidden" name="product_id" value="{{ product.id }}"/<span>></span>
-  <span><</span>input type="number" name="quantity" min="1"/<span>></span>
-  <span><</span>input type="submit" value="Adicionar"/<span>></span>
-<span><</span>/form<span>></span>
-    </pre>
-    <p> Isso pode ser feito utilizando um formulário &raquo;</p>
-    <div></div><br>
-      <pre>
-// deprecate, atributos modelo antigo
-<span><</span>form action="{{ cart_url }}" method="POST"<span>></span>
-  <span><</span>input type="hidden" name="product_id" value="{{ product.id }}"/<span>></span>
-  <span><</span>input type="number" name="quantity" min="1"/<span>></span>
-  <span><</span>select name="attributes[tamanho]"<span>></span>
-    <span><</span>option value="P"<span>></span>P<span><</span>/option<span>></span>
-    <span><</span>option value="M"<span>></span>M<span><</span>/option<span>></span>
-    <span><</span>option value="G"<span>></span>G<span><</span>/option<span>></span>
-  <span><</span>/select<span>></span>
-  <span><</span>input type="submit" value="Adicionar"/<span>></span>
-<span><</span>/form<span>></span>
-    </pre>
-    <p>Em caso de o produto ter variantes &raquo; </p>
-    <div></div><br>
-      <pre>
-// deprecate, atributos com modelo antigo
-$.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
-  alert("Item adicionado com sucesso");
-});
-      </pre>
-      <p>OU via AJAX &raquo;</p>
-      <div></div><br>
-      <p>
-        Caso o produto possua variantes, você deve enviá-las junto com os parâmetros obrigatórios, da seguinte forma:
-      </p>
-      <p>
-        * attributes[cor]: Valor do atributo cor da variante<br />
-        * attributes[tamanho]: Valor do atributo tamanho da variante<br />
-       </p>
-       <p>E assim para cada atributo configurado no admin.</p>
-      <pre>
-// deprecate, atributos com modelo antigo
-<span><</span>form action="{{ cart_url }}" method="POST">
-…
-<span><</span>textarea name="extras[Observação]"><span><</span>/textarea<span>></span>
-<span><</span>input type="file" name="extras[Imagem]"/<span>></span>
-<span><</span>input type="submit" value="Adicionar"/<span>></span>
-<span><</span>/form<span>></span>
-      </pre>
-       <p>
-          Além disso, você pode adicionar informações extras a cada item do carrinho.
-          Essas informações podem ser, por exemplo,
-          uma observação do cliente ou ainda uma imagem para ser impressa no produto.
-          Para enviar essas informações, basta criar os campos a seguinte forma &raquo;
-      </p>
-      <!-- // -->
-
-      <h4 id="enviar-produto-ao-carrinho(modelo-novo)">Enviar produto ao carrinho(modelo novo)</h4>
+      <h4 id="enviar-produto-ao-carrinho">Enviar produto ao carrinho</h4>
       <p>
         **As configurações de atributo devem estar ativadas no admin.
       </p>
       <p><img src="atributos.jpg"></p>
+      <p>***quando o atributo nao é marcado como "opcional de compra" nao é obrigatório montar o sku apartir do valor contido neste atributo.</p>
       <pre>
 <span><</span>form action="{{ cart_item_url }}" method="post"<span>></span>
   <span><</span>input type="hidden" name="sku">
   <span><</span>input type="number" name="quantity" value="1">
 <span><</span>/form>
       </pre>
-      <p>Form com action {{ cart_item_url }} e os campos sku e quantidade obrigatórios.</p>
+      <p>Enviar um <b>formulário com action {{ cart_item_url }}</b> e os campos sku e quantidade obrigatórios.</p>
       <div></div><br>
-      <p>Para acessar os atributos é preciso usar a tag  {% variants %}.</p>
+      <p>Para acessar os atributos é preciso usar a tag  <b>{% variants %}</b> ou carregá-los via <b>javascript</b> injetando os elementos de seleção no html, para isto basta iniciar um variável no seu arquivo.js como por ex:<br> variant = vnda.variants.all().</p> 
+      <p>** Importante ter noções de programação orientada a objetos<br>
+        
+        <a href="#produto-com-2-atributos" class="laranja">Exemplo de uso para um produto com 2 atributos</a>
+        
+      </p>
       <pre>
+// No .liquid       
 {% variants product_id:product.id %}
 {{variant.properties["property1"]["value"]}}
 {{variant.properties["property2"]["value"]}}
 {% endvariants %}
+
+// Arquivo .js
+$(function(){
+  // variável que recebe os objetos com as informaçoes de cada variante
+  variants = vnda.variants.all()
+})
       </pre>
       <!-- // -->
+      <!-- <h5 id="montar-enviar-o-sku">Montar/Enviar o Sku</h5>   -->
 
-     <h4 id="mensagem-de-erro">Mensagem de Erro</h4>
+       <h5 id="listar-variantes-de-um-atributo">Listar variantes de um atributo</h5>
+      <pre>
+// Variantes do produtos
+camiseta tamanho M #000
+camiseta tamanho M #fff
+camiseta tamanho M #333
+camiseta tamanho G #000
+camiseta tamanho G #333
+
+// Quais as variantes com tamanho M?
+$(function(){
+  variants = vnda.variants.all()   
+  var array = vnda.variants.find({Tamanho: "M" })
+  // variável array recebe o objeto json com todas as informações 
+  // de variante com tamanho M
+  // apartir desses dados é possível montar o html 
+  // com todas as cores desse atributo
+})
+
+      </pre>
+      <p>Para exibir as variantes que pertencem ao um mesmo atributo usamos o javascript.</p>
+      <p>**só para os casos de produtos com mais de 1 atributo</p>
+      
+      <h5 id="como-montar-montar-o-sku">Como montar o sku?</h5>
+      <p>
+         Como já dito antes, para que um item seja adicionado ao carrinho é preciso enviar um campo com o valor do sku da variante(há casos que é preciso montar um sku) e enviar para o url "/carrinho/adicionar-carrinho".  
+      </p>
+
+      <pre>
+$(function(){
+  // filtro que retorna variantes com o rgb #000      
+  vnda.variants.find({Cor: "#000" })
+})
+      </pre>
+       
+      <div></div><br>
+
+      <p>Para montar e/ou enviar o sku para /carrinho/adicionar vai depender da quantidade de atributos do produto ou escopo do projeto, sendo viável carregar via js ou tag por .liquid.</p>
+
+      <p><b>LISTANDO O SKU</b></p>
+      <p>** Para produtos com 1 variante</p>
+      <pre>
+
+{% variants product_id:product.id %}
+  {{ variant.sku }}
+{% endvariants %}
+
+ou
+
+$(function(){
+  // variável que recebe os objetos com as informaçoes de cada variante
+  var variants = vnda.variants.all()
+  // acessando a propriedade sku do objeto
+  variants.sku
+})
+      </pre>
+      <p>
+       Método mais simples, é recomendável usar a tag {{ variant.sku }} do .liquid no loop <a class="laranja" href="#variants">{% variants %}</a>.
+      </p>
+      <div></div><br>
+      <p>**Para produtos com mais de uma variante</p>
+      <p>
+        Podemos dividir em 2 casos: os <b>produtos com 1 ou 2 atributos.</b>
+      </p>
+      <pre>
+// montar o sku com 1 atributos
+variantes do produto:
+camiseta tamanho M
+camiseta tamanho G
+camiseta tamanho GG
+
+Qual o sku da variante com tamanho G?
+ 
+$(function(){
+  variants = vnda.variants.all()   
+  // lista o valor de sku para a variante com o tamanho G
+  vnda.variants.find({Tamanho: "G"})[0].sku
+})
+
+// montar o sku com 2 atributos
+camiseta tamanho M  #000
+camiseta tamanho M  #fff
+camiseta tamanho M  #333 
+
+Qual o sku da variante com tamanho M  e cor #000 ?
+
+$(function(){
+  variants = vnda.variants.all()   
+  // lista o valor de sku para a variante com o tamanho G
+  vnda.variants.find({Tamanho: "G", Cor:"#000" })[0].sku
+})
+      </pre>
+
+ 
+      <div></div><br>
+ 
+      <!-- // -->
+
+      <h4 id="mensagem-de-erro">Mensagem de Erro</h4>
       <pre>
 {% if flash.cart.error  %}{{ flash.cart.error }}{% endif %}
       </pre>
       <p>
         Quando existir algum erro no formulário de compra »
       </p>
-      <!-- // -->
-
-      <h4 id="como-listar-o-sku">Como listar o sku?</h4>
-      <p>
-          Para que um item seja adicionado ao carrinho é preciso montar o sku e é através de uma "chave" que é possível
-          identificar qual a variante será enviada para a página de carrinho.<br>
-      </p>
-      <p>Para montar um sku existe 3 formas e isso vai depender de quantos atributos e variantes forão cadastradas no produto.</p>
-      <p><strong>Com apenas uma variante</strong></p>
-      <pre>
-{% variants product_id:product.id %}
-{{ variant.sku  }}
-{% endvariants %}
-      </pre>
-      <p>
-       Caso exista apenas uma variante cadastrada para um produtos basta buscar {{ variant.sku }} e informar no campo do formulário
-      </p>
-      <div></div><br>
-      <p><strong>Com mais de uma variante</strong></p>
-      <p>
-        Neste caso podem existir duas situações: produto com 1 atributos ou com 2 atributos.
-      </p>
-      <pre>
-// montar o sku
-vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
-      </pre>
-      <p>
-      Se existir 2 atributos você deve buscar o valor de cada atributo via javascript.
-      </p>
-      <div></div><br>
-      <pre>
-vnda.variants.all()
-      </pre>
-      <p>Antes de começar faça um teste, abra a página de produto e no console execute a seguinte linha de comando:<br>
-      </p>
-      <div></div><br>
-      <p>Ao executar esse comando é retornado um array de objetos com todas as informações de cada variante do produto.</p>
-      <pre>
-vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
-      </pre>
-     <p>Ainda no console você pode montar um sku, basta combinar os valores de atributos da variante.</p>
-     <div></div><br>
-     <p>Ao executar esse comando é <strong>gerado uma chave</strong>, e será essa chave que deve ser enviada para o campo sku do formulário.</p>
-     <p>
-        Dica: para enviar o sku faça um função no evento submit do formulário.<br>
-        Veja <a href="#Atributos(montar o sku)" class="laranja">aqui</a> um exemplo pronto que pode servir como base para criar suas próprias funções.
-      </p>
-      <!-- // -->
+      <!-- // -->      
 
       <h4 id="listar-imagens-do-produto">Listar imagens do produto</h4>
       <pre>
@@ -1525,7 +1522,7 @@ OU
       <pre>
 {% products tag:tag.name sort:”price” %}
 * da mesma forma que os filtros, a opção de ordenação do usuário pode ser enviada por um form e colocada na tag de produtos.
-{% products tag:tag.name sort:params.ordem %}
+{% products tag:tag.name sort:params.order %}
  se o nome do field for “ordem”
       </pre>
       <p>Ordenar produtos<br /><p>
@@ -1593,7 +1590,26 @@ OU
   {% if forloop.last %}<span><</span>/ul<span>></span>{% endif %}
 {% endmenus %}
       </pre>
+      <div> </div><br>
       <!-- // -->
+<pre> 
+// Exemplo de menu com 1 filho(subcategoria)
+ {% menus position:"nome-da-posicao", children_depth:"1" %}
+    {{ menu.title }}
+    {{ menu.url }}
+    ....
+    {% for menu in menu.children %}
+      {{ menu.title }}
+      {{ menu.url }}
+      ...
+    {% endof %}
+
+ {% endmenus%}
+</pre>
+<p>Já esta disponível uma nova versão de filtro de tag {% menus %}
+que consome menos requisições para nossa api de menus.</p>
+<p>Na chamada da tag foi adicionado o parâmentro "children_depth", nele é preciso informar a quantidade de filhos desse menu.</p>
+<p>Agora usamos a tag {% for %} para percorrer as subcategorias do menu pai com auxílio de um váriavel local.</p>
 
       <h3 id="page">{% page %}</h3>
       <pre>{% page id:'bloco' %}</pre>
@@ -2194,7 +2210,7 @@ _nome_do_arquivo.liquid
       <p> </p><br>
       <p> </p><br>
       <p> </p><br>
-      <h3 id="atributos(montar-o-sku)">Atributos(montar o sku)</h3>
+      <h3 id="produto-com-2-atributos">Produtos c/ 2 Atributos - via js</h3>
 
       <p>
         Partindo da premissa em que os atributos de um produtos são Cor(atributo_1) e Tamanho(atributo_2) respectivamente,

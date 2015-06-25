@@ -562,6 +562,7 @@ html, body {
 }
 .content h3,
 .content h4,
+.content h5,
 .content h6 {
 	font-size: 12px;
 	margin-top: 2.5em;
