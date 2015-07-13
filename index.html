@@ -597,14 +597,14 @@ Mirror of if statement
       </pre>
       <p>Enviar um <b>formulário com action {{ cart_item_url }}</b> e os campos sku e quantidade obrigatórios.</p>
       <div></div><br>
-      <p>Para acessar os atributos é preciso usar a tag  <b>{% variants %}</b> ou carregá-los via <b>javascript</b> injetando os elementos de seleção no html, para isto basta iniciar um variável no seu arquivo.js como por ex:<br> variant = vnda.variants.all().</p> 
+      <p>Para acessar os atributos é preciso usar a tag  <b>{% variants %}</b> ou carregá-los via <b>javascript</b> injetando os elementos de seleção no html, para isto basta iniciar um variável no seu arquivo.js como por ex:<br> variant = vnda.variants.all().</p>
       <p>** Importante ter noções de programação orientada a objetos<br>
-        
+
         <a href="#produto-com-2-atributos" class="laranja">Exemplo de uso para um produto com 2 atributos</a>
-        
+
       </p>
       <pre>
-// No .liquid       
+// No .liquid
 {% variants product_id:product.id %}
 {{variant.properties["property1"]["value"]}}
 {{variant.properties["property2"]["value"]}}
@@ -630,30 +630,30 @@ camiseta tamanho G #333
 
 // Quais as variantes com tamanho M?
 $(function(){
-  variants = vnda.variants.all()   
+  variants = vnda.variants.all()
   var array = vnda.variants.find({Tamanho: "M" })
-  // variável array recebe o objeto json com todas as informações 
+  // variável array recebe o objeto json com todas as informações
   // de variante com tamanho M
-  // apartir desses dados é possível montar o html 
+  // apartir desses dados é possível montar o html
   // com todas as cores desse atributo
 })
 
       </pre>
       <p>Para exibir as variantes que pertencem ao um mesmo atributo usamos o javascript.</p>
       <p>**só para os casos de produtos com mais de 1 atributo</p>
-      
+
       <h5 id="como-montar-montar-o-sku">Como montar o sku?</h5>
       <p>
-         Como já dito antes, para que um item seja adicionado ao carrinho é preciso enviar um campo com o valor do sku da variante(há casos que é preciso montar um sku) e enviar para o url "/carrinho/adicionar-carrinho".  
+         Como já dito antes, para que um item seja adicionado ao carrinho é preciso enviar um campo com o valor do sku da variante(há casos que é preciso montar um sku) e enviar para o url "/carrinho/adicionar-carrinho".
       </p>
 
       <pre>
 $(function(){
-  // filtro que retorna variantes com o rgb #000      
+  // filtro que retorna variantes com o rgb #000
   vnda.variants.find({Cor: "#000" })
 })
       </pre>
-       
+
       <div></div><br>
 
       <p>Para montar e/ou enviar o sku para /carrinho/adicionar vai depender da quantidade de atributos do produto ou escopo do projeto, sendo viável carregar via js ou tag por .liquid.</p>
@@ -691,9 +691,9 @@ camiseta tamanho G
 camiseta tamanho GG
 
 Qual o sku da variante com tamanho G?
- 
+
 $(function(){
-  variants = vnda.variants.all()   
+  variants = vnda.variants.all()
   // lista o valor de sku para a variante com o tamanho G
   vnda.variants.find({Tamanho: "G"})[0].sku
 })
@@ -701,20 +701,20 @@ $(function(){
 // montar o sku com 2 atributos
 camiseta tamanho M  #000
 camiseta tamanho M  #fff
-camiseta tamanho M  #333 
+camiseta tamanho M  #333
 
 Qual o sku da variante com tamanho M  e cor #000 ?
 
 $(function(){
-  variants = vnda.variants.all()   
+  variants = vnda.variants.all()
   // lista o valor de sku para a variante com o tamanho G
   vnda.variants.find({Tamanho: "G", Cor:"#000" })[0].sku
 })
       </pre>
 
- 
+
       <div></div><br>
- 
+
       <!-- // -->
 
       <h4 id="mensagem-de-erro">Mensagem de Erro</h4>
@@ -724,7 +724,7 @@ $(function(){
       <p>
         Quando existir algum erro no formulário de compra »
       </p>
-      <!-- // -->      
+      <!-- // -->
 
       <h4 id="listar-imagens-do-produto">Listar imagens do produto</h4>
       <pre>
@@ -1592,7 +1592,7 @@ OU
       </pre>
       <div> </div><br>
       <!-- // -->
-<pre> 
+<pre>
 // Exemplo de menu com 1 filho(subcategoria)
  {% menus position:"nome-da-posicao", children_depth:"1" %}
     {{ menu.title }}
@@ -2055,10 +2055,10 @@ _nome_do_arquivo.liquid
       </p>
       <div></div><br />
       <pre>
-<a href="http://www.vnda.com.br/img/print-1.png" target="_blank">print 1</a>
-<a href="http://www.vnda.com.br/img/print-2.png" target="_blank">print 2</a>
-<a href="http://www.vnda.com.br/img/print-3.png" target="_blank">print 3</a>
-<a href="http://www.vnda.com.br/img/print-4.png" target="_blank">print 4</a>
+<a href="http://www.vnda.com.br/images/print-1.png" target="_blank">print 1</a>
+<a href="http://www.vnda.com.br/images/print-2.png" target="_blank">print 2</a>
+<a href="http://www.vnda.com.br/images/print-3.png" target="_blank">print 3</a>
+<a href="http://www.vnda.com.br/images/print-4.png" target="_blank">print 4</a>
       </pre>
        <p>
         2 - Criar engine de busca<br>
@@ -2066,22 +2066,22 @@ _nome_do_arquivo.liquid
       <div></div><br>
 
       <pre>
-<a href="http://www.vnda.com.br/img/print-5.png" target="_blank">print 5</a>
+<a href="http://www.vnda.com.br/images/print-5.png" target="_blank">print 5</a>
       </pre>
       <p>
         3- Nessa etapa, ele vai buscar o conteúdo em todo o site<br>
       </p>
       <div></div><br>
       <pre>
-<a href="http://www.vnda.com.br/img/print-6.png" target="_blank">print 6</a>
-<a href="http://www.vnda.com.br/img/print-7.png" target="_blank">print 7</a>
+<a href="http://www.vnda.com.br/images/print-6.png" target="_blank">print 6</a>
+<a href="http://www.vnda.com.br/images/print-7.png" target="_blank">print 7</a>
       </pre>
       <p>
         4 - Depois que já tiverem sido encontradas todas as páginas, colocar o filtro<br>
       </p>
       <div></div><br>
       <pre>
-<a href="http://www.vnda.com.br/img/print-8.png" target="_blank">print 8</a>
+<a href="http://www.vnda.com.br/images/print-8.png" target="_blank">print 8</a>
       </pre>
       <p>
         5 - As informações que precisam ser colocadas no admin
