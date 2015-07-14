@@ -1980,6 +1980,15 @@ exemplo-senha-cliente
       <p>Para listar o % (percentual) de desconto de um produto em promoção é necessário é criar variáveis e auxiliar na criação dos filtros das operações.</p>
 
       <!-- // -->
+      <h3 id="como-listar-parcelas">Como Listar Parcelas</h3>
+      <p>Para listar parcelas, podemos usar um dos seguintes exemplos de código:</p>
+      <pre>
+{{ product | apply_discount | installment_number }}x de {{  product | apply_discount | installments | money_format }}
+
+{% assign preco =  product | apply_discount %}
+{{ preco | installment_number }}x de {{ preco | money_format }}
+      <pre>
+      <!-- // -->
       <h3 id="como-relacionar-produtos">Como relacionar produtos</h3>
       <pre>
 {% assign product_id = product.id %}
@@ -2217,7 +2226,7 @@ _nome_do_arquivo.liquid
           e que ao abrir a página de produtos é listado apenas as cores e ao selecionar uma cor é listados as combinações de tamanho compátiveis com este atributo.
         </p>
         <p>Para isso criaremos um arquivo _variants.liquid com as seguintes manipulações de dados:
-          <a href="https://github.com/georgeduartevnda/variants/blob/master/_variants_example.liquid" target="_blank">_variants_example.liquid</a>
+          <a href="https://github.com/georgeduartevnda/variants/blob/master/_variants_example.liquid" class="laranja" target="_blank">_variants_example.liquid</a>
         </p>
       <p> </p><br>
       <p> </p><br>
