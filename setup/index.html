@@ -27,7 +27,7 @@
     <div id="headings" class="tocify">
     </div>
   </div>
-  
+
   <div class="page-wrapper">
     <div class="content">
       <h2 id="entendendo-o-.liquid">Entendendo o .liquid</h2>
@@ -525,15 +525,14 @@ Mirror of if statement
       <p>Os templates ficam na raiz da pasta compartilhada no Dropbox onde todos os arquivo são salvos na extensão .liquid</p>
       <p>Dentro da raiz ficam os diretórios "images" "stylesheets" "javascript" e "page"</p>
       <p>Dentro do diretórios page/ é gerado os arquivos de extensão .html das página que são criados no admin.</p>
+      <p>O conteúdo do LAYOUT.LIQUID estará presente em todos os templates abaixo. Por este motivo, é o local indicado para colocar o cabeçalho e rodapé da loja. Todos os templates abaixo serão incluídos dentro deste layout, usando na variável {{ yield }}.</p>
       <p>Segue abaixo os templates disponíveis na plataforma:</p>
       <!-- // -->
 
-      <h3 id="layout.liquid">Layout.liquid</h3>
-      <p>Neste template ficam devem ficar o html do topo e do rodapé e a tag<br> <strong>{{ yield }}</strong> responsável por incluir o conteúdo dos demais template.</p>
-      <!-- // -->
 
       <h3 id="home.liquid">Home.liquid</h3>
-      <p>Página inicial da loja, aqui podem ser exibidos produtos em destaque, banners, menus e qualquer outra informação que for necessária para atrair o cliente a navegar no resto do site.</p>
+      <p>Este é o template corresponde a página inicial da loja. Aqui podem ser exibidos produtos, banners, menus e qualquer informação que atraia o cliente a navegar no resto do site. -- A variável {{ tag }} conterá a tag de nome "capa", quando esta estiver cadastrada no Painel Administrativo.</p>
+
       <!-- // -->
 
       <h3 id="tag.liquid">Tag.liquid</h3>
@@ -598,14 +597,14 @@ Mirror of if statement
       </pre>
       <p>Enviar um <b>formulário com action {{ cart_item_url }}</b> e os campos sku e quantidade obrigatórios.</p>
       <div></div><br>
-      <p>Para acessar os atributos é preciso usar a tag  <b>{% variants %}</b> ou carregá-los via <b>javascript</b> injetando os elementos de seleção no html, para isto basta iniciar um variável no seu arquivo.js como por ex:<br> variant = vnda.variants.all().</p> 
+      <p>Para acessar os atributos é preciso usar a tag  <b>{% variants %}</b> ou carregá-los via <b>javascript</b> injetando os elementos de seleção no html, para isto basta iniciar um variável no seu arquivo.js como por ex:<br> variant = vnda.variants.all().</p>
       <p>** Importante ter noções de programação orientada a objetos<br>
-        
+
         <a href="#produto-com-2-atributos" class="laranja">Exemplo de uso para um produto com 2 atributos</a>
-        
+
       </p>
       <pre>
-// No .liquid       
+// No .liquid
 {% variants product_id:product.id %}
 {{variant.properties["property1"]["value"]}}
 {{variant.properties["property2"]["value"]}}
@@ -631,30 +630,30 @@ camiseta tamanho G #333
 
 // Quais as variantes com tamanho M?
 $(function(){
-  variants = vnda.variants.all()   
+  variants = vnda.variants.all()
   var array = vnda.variants.find({Tamanho: "M" })
-  // variável array recebe o objeto json com todas as informações 
+  // variável array recebe o objeto json com todas as informações
   // de variante com tamanho M
-  // apartir desses dados é possível montar o html 
+  // apartir desses dados é possível montar o html
   // com todas as cores desse atributo
 })
 
       </pre>
       <p>Para exibir as variantes que pertencem ao um mesmo atributo usamos o javascript.</p>
       <p>**só para os casos de produtos com mais de 1 atributo</p>
-      
+
       <h5 id="como-montar-montar-o-sku">Como montar o sku?</h5>
       <p>
-         Como já dito antes, para que um item seja adicionado ao carrinho é preciso enviar um campo com o valor do sku da variante(há casos que é preciso montar um sku) e enviar para o url "/carrinho/adicionar-carrinho".  
+         Como já dito antes, para que um item seja adicionado ao carrinho é preciso enviar um campo com o valor do sku da variante(há casos que é preciso montar um sku) e enviar para o url "/carrinho/adicionar-carrinho".
       </p>
 
       <pre>
 $(function(){
-  // filtro que retorna variantes com o rgb #000      
+  // filtro que retorna variantes com o rgb #000
   vnda.variants.find({Cor: "#000" })
 })
       </pre>
-       
+
       <div></div><br>
 
       <p>Para montar e/ou enviar o sku para /carrinho/adicionar vai depender da quantidade de atributos do produto ou escopo do projeto, sendo viável carregar via js ou tag por .liquid.</p>
@@ -692,9 +691,9 @@ camiseta tamanho G
 camiseta tamanho GG
 
 Qual o sku da variante com tamanho G?
- 
+
 $(function(){
-  variants = vnda.variants.all()   
+  variants = vnda.variants.all()
   // lista o valor de sku para a variante com o tamanho G
   vnda.variants.find({Tamanho: "G"})[0].sku
 })
@@ -702,20 +701,20 @@ $(function(){
 // montar o sku com 2 atributos
 camiseta tamanho M  #000
 camiseta tamanho M  #fff
-camiseta tamanho M  #333 
+camiseta tamanho M  #333
 
 Qual o sku da variante com tamanho M  e cor #000 ?
 
 $(function(){
-  variants = vnda.variants.all()   
+  variants = vnda.variants.all()
   // lista o valor de sku para a variante com o tamanho G
   vnda.variants.find({Tamanho: "G", Cor:"#000" })[0].sku
 })
       </pre>
 
- 
+
       <div></div><br>
- 
+
       <!-- // -->
 
       <h4 id="mensagem-de-erro">Mensagem de Erro</h4>
@@ -725,7 +724,7 @@ $(function(){
       <p>
         Quando existir algum erro no formulário de compra »
       </p>
-      <!-- // -->      
+      <!-- // -->
 
       <h4 id="listar-imagens-do-produto">Listar imagens do produto</h4>
       <pre>
@@ -1265,7 +1264,7 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
     <!-- // -->
 
       <h3 id="finished.liquid">Finished.liquid</h3>
-      <p> 4ª e última etapa do processo de compra. Aqui são exibidas as informações do pedido, como o número e/ou o link para impressão do boleto, junto com a mensagem de conclusão da compra. </p>
+      <p>Esta é a última etapa do processo de compra. Aqui são exibidas as informações do pedido, como o número e/ou o link para impressão do boleto, junto com a mensagem de conclusão da compra. Para exibir as informaóes do pedido, podemos usar estas duas variáveis: {{ client }} | {{ order } </p>
     <!-- // -->
 
       <h3 id="account.liquid">Account.liquid</h3>
@@ -1367,10 +1366,10 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
   <span><</span>input type="submit" value="Atualizar Senha"<span>></span>
 <span><</span>/form<span>></span>
       </pre>
-      <p> Página que exibe o resultado de uma busca, este resultado é uma lista de produtos que fazem match com o termo buscado pelo cliente atráves da URL /busca?q=termo. </p>
+      <p> Template para a exibição dos resultados de uma busca. Para fazer uma busca, use um formulário apontando para /busca via método GET ou acesse diretamente a URL /busca?q=termo. Não use POST.</p>
       <div></div><br>
 
-      <p>Os resultados da busca ficam armezanados na variável {{ products }}.</p>
+      <p>A lista de produtos que casam com o termo buscado estará na variável {{ products }}.</p>
       <pre>
 {% for product in products %}
   {{ product.image_url | resize: '234x' }}
@@ -1403,7 +1402,7 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
       <p>Para mostrar o termo da busca  {{ params.q | strip_html }}</p>
 
       <h3 id="page.liquid">Page.liquid</h3>
-      <p> A Vnda possui um pequeno CMS que pode ser utilizado para customizar certas páginas sem a necessidade de conhecimentos avançados de programação. É neste template que essas páginas são exibidas. </p>
+      <p>Vnda permite que sejam criadas e alteradas páginas pelo Painel Administrativo. Isso é feito pelo próprio gestor da loja pois dispensa conhecimentos de programação. Neste template serão exibidas as páginas, de acordo com a URL digitada. </p>
       <!-- // -->
 
       <h2 id="tags-personalizadas-da-vnda">Tags personalizadas da Vnda</h2>
@@ -1593,7 +1592,7 @@ OU
       </pre>
       <div> </div><br>
       <!-- // -->
-<pre> 
+<pre>
 // Exemplo de menu com 1 filho(subcategoria)
  {% menus position:"nome-da-posicao", children_depth:"1" %}
     {{ menu.title }}
@@ -1982,6 +1981,15 @@ exemplo-senha-cliente
       <p>Para listar o % (percentual) de desconto de um produto em promoção é necessário é criar variáveis e auxiliar na criação dos filtros das operações.</p>
 
       <!-- // -->
+      <h3 id="como-listar-parcelas">Como Listar Parcelas</h3>
+      <p>Para listar parcelas, podemos usar um dos seguintes exemplos de código:</p>
+      <pre>
+{{ product | apply_discount | installment_number }}x de {{  product | apply_discount | installments | money_format }}
+
+{% assign preco =  product | apply_discount %}
+{{ preco | installment_number }}x de {{ preco | money_format }}
+      </pre>
+      <!-- // -->
       <h3 id="como-relacionar-produtos">Como relacionar produtos</h3>
       <pre>
 {% assign product_id = product.id %}
@@ -2056,10 +2064,10 @@ _nome_do_arquivo.liquid
       </p>
       <div></div><br />
       <pre>
-<a href="http://www.vnda.com.br/img/print-1.png" target="_blank">print 1</a>
-<a href="http://www.vnda.com.br/img/print-2.png" target="_blank">print 2</a>
-<a href="http://www.vnda.com.br/img/print-3.png" target="_blank">print 3</a>
-<a href="http://www.vnda.com.br/img/print-4.png" target="_blank">print 4</a>
+<a href="http://www.vnda.com.br/images/print-1.png" target="_blank">print 1</a>
+<a href="http://www.vnda.com.br/images/print-2.png" target="_blank">print 2</a>
+<a href="http://www.vnda.com.br/images/print-3.png" target="_blank">print 3</a>
+<a href="http://www.vnda.com.br/images/print-4.png" target="_blank">print 4</a>
       </pre>
        <p>
         2 - Criar engine de busca<br>
@@ -2067,22 +2075,22 @@ _nome_do_arquivo.liquid
       <div></div><br>
 
       <pre>
-<a href="http://www.vnda.com.br/img/print-5.png" target="_blank">print 5</a>
+<a href="http://www.vnda.com.br/images/print-5.png" target="_blank">print 5</a>
       </pre>
       <p>
         3- Nessa etapa, ele vai buscar o conteúdo em todo o site<br>
       </p>
       <div></div><br>
       <pre>
-<a href="http://www.vnda.com.br/img/print-6.png" target="_blank">print 6</a>
-<a href="http://www.vnda.com.br/img/print-7.png" target="_blank">print 7</a>
+<a href="http://www.vnda.com.br/images/print-6.png" target="_blank">print 6</a>
+<a href="http://www.vnda.com.br/images/print-7.png" target="_blank">print 7</a>
       </pre>
       <p>
         4 - Depois que já tiverem sido encontradas todas as páginas, colocar o filtro<br>
       </p>
       <div></div><br>
       <pre>
-<a href="http://www.vnda.com.br/img/print-8.png" target="_blank">print 8</a>
+<a href="http://www.vnda.com.br/images/print-8.png" target="_blank">print 8</a>
       </pre>
       <p>
         5 - As informações que precisam ser colocadas no admin
@@ -2197,16 +2205,49 @@ _nome_do_arquivo.liquid
       <!-- / / -->
       <h3 id="template-do-zendesk">Personalizando o Template Zendesk</h3>
         <p>Faça o login em https://cadenceatendimento.zendesk.com ou https://cadenceatendimento.zendesk.com/agent</p>
-        <p>Com seu usuário logado acesse o <a href="http://www.vnda.com.br/img/painel-de-personalizacao.png" class="laranja" target="_blank">painel de personalização <img src="http://www.vnda.com.br/img/painel-de-personalizacao.png"></a></p>
-        <p>Clique [mudar tema ] e selecione o template <a href="http://www.vnda.com.br/img/mudar-tema.png" class="laranja" target="_blank">Temas personalizados<img src="http://www.vnda.com.br/img/mudar-tema.png"></a><a href="http://www.vnda.com.br/img/mudar-tema.png" class="laranja" target="_blank"><img src="http://www.vnda.com.br/img/tema-personalizado.png"></a></p>
-        <p>Utilize o editor de código do zendesk para atualizar as páginas, css e javascript do tema<a href="http://www.vnda.com.br/img/editor-zendesk.png" class="laranja" target="_blank"><img src="http://www.vnda.com.br/img/editor-zendesk.png"></a></p>
+        <p>Com seu usuário logado acesse o <a href="http://www.vnda.com.br/images/painel-de-personalizacao.png" class="laranja" target="_blank">painel de personalização <img src="http://www.vnda.com.br/images/painel-de-personalizacao.png"></a></p>
+        <p>Clique [mudar tema ] e selecione o template <a href="http://www.vnda.com.br/images/mudar-tema.png" class="laranja" target="_blank">Temas personalizados<img src="http://www.vnda.com.br/images/mudar-tema.png"></a><a href="http://www.vnda.com.br/images/mudar-tema.png" class="laranja" target="_blank"><img src="http://www.vnda.com.br/images/tema-personalizado.png"></a></p>
+        <p>Utilize o editor de código do zendesk para atualizar as páginas, css e javascript do tema<a href="http://www.vnda.com.br/img/editor-zendesk.png" class="laranja" target="_blank"><img src="http://www.vnda.com.br/images/editor-zendesk.png"></a></p>
         <p>Abra os links abaixo, copie os código e atualize-os arquivos usando o editor.</p>
         <p><a href="https://gist.github.com/vagnerolliver/5afc8e857e68e806deef" class="laranja" target="_blank">Template da página inicial - ver código</a></p>
         <p><a href="https://gist.github.com/vagnerolliver/a6bd419e0539ab15fa92" class="laranja" target="_blank">Template da página categoria - ver código</a></p>
         <p><a href="https://gist.github.com/vagnerolliver/7d82996f6c0423285c39" class="laranja" target="_blank">Template da página produto - ver código</a></p>
         <p><a href="https://gist.github.com/vagnerolliver/b669860c5954f54265d5" class="laranja" target="_blank">CSS do Template Zendesk - ver código</a></p>
         <p><a href="https://gist.github.com/vagnerolliver/0d6939482c66d4d62d67" class="laranja" target="_blank">JS do Template Zendesk - ver código</a></p>
-        <p>Selecione o template ou arquivo a ser atualizado <a href="http://www.vnda.com.br/img/editar-tema-pagina-inicial.png" target="_blank"><img src="http://www.vnda.com.br/img/editar-tema-pagina-inicial.png"></a></p>
+        <p>Selecione o template ou arquivo a ser atualizado <a href="http://www.vnda.com.br/images/editar-tema-pagina-inicial.png" target="_blank"><img src="http://www.vnda.com.br/images/editar-tema-pagina-inicial.png"></a></p>
+
+        <p> </p><br>
+        <p> </p><br>
+
+        <h3 id="novocarrinho">Novo Carrinho/ Novo Checout</h3>
+        <p>A partir da implantação do novo carrinho e do novo checkout, não são mais necessárias as edição dos arquivos cart.liquid e checkout.liqud.</p>
+        <p>Toda a customização deve ser realizada em um arquivo chamado <strong>custom.css</strong>. Nele, basta sobrescrever os estilos padrões do carrinho e checkout pelas cores padrões do layout da loja.</p>
+        <p>Exemplo de custom.css: <a href="https://github.com/georgeduartevnda/custom.css/blob/master/custom.css" target="_blank" class="laranja">custom.css</a> </p>
+        <p> </p><br>
+        <p> </p><br>
+        <p> </p><br>
+        <p> </p><br>
+        <h3 id="produto-com-2-atributos-liquid">Produtos c/ 2 Atributos - via Liquid</h3>
+
+        <p>
+          Partindo da premissa em que os atributos de um produtos são Cor(atributo_1) e Tamanho(atributo_2) respectivamente,
+          e que ao abrir a página de produtos é listado apenas as cores e ao selecionar uma cor é listados as combinações de tamanho compátiveis com este atributo.
+        </p>
+        <p>Para isso criaremos um arquivo _variants.liquid com as seguintes manipulações de dados:
+          <a href="https://github.com/georgeduartevnda/variants/blob/master/_variants_example.liquid" class="laranja" target="_blank">_variants_example.liquid</a>
+        </p>
+
+        <p> </p><br>
+        <p> </p><br>
+        <h3 id="produto-com-2-atributos-liquid">Produtos c/ 2 Atributos - via Liquid</h3>
+
+        <p>
+          Partindo da premissa em que os atributos de um produtos são Cor(atributo_1) e Tamanho(atributo_2) respectivamente,
+          e que ao abrir a página de produtos é listado apenas as cores e ao selecionar uma cor é listados as combinações de tamanho compátiveis com este atributo.
+        </p>
+        <p>Para isso criaremos um arquivo _variants.liquid com as seguintes manipulações de dados:
+          <a href="https://github.com/georgeduartevnda/variants/blob/master/_variants_example.liquid" class="laranja" target="_blank">_variants_example.liquid</a>
+        </p>
       <p> </p><br>
       <p> </p><br>
       <p> </p><br>
