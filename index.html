@@ -2218,16 +2218,16 @@ _nome_do_arquivo.liquid
           Partindo da premissa em que os atributos de um produtos são Cor(atributo_1) e Tamanho(atributo_2) respectivamente,
           e que ao abrir a página de produtos é listado apenas as cores e ao selecionar uma cor é listados as combinações de tamanho compátiveis com este atributo.
         </p>
-        <p>Para isso criaremos um arquivo _variants.liquid com a seguintes manipulações de dados:</p>
+        <p>Para isso criaremos um arquivo _variants.liquid com as seguintes manipulações de dados:</p>
       <pre>
 {% variants product_id:product.id %}
   {% if variant.properties.property1.value.size < 1 and variant.properties.property2.value.size < 1 %}
-    {% comment %} Para produtos sem variante {% endcomment%}
+    {% comment %} Para produtos sem variantes {% endcomment%}
     <input type="hidden" id="sku" name="sku" value="{{ variant.sku }}" />
   {% elsif variant.properties.property1.value.size >= 1 and variant.properties.property2.value.size < 1 %}
   {% comment %} Para produtos com apenas o primeiro variante {% endcomment%}
     {% if forloop.first %}
-      <hr><span>{{ variant.properties.property1.name }}</span>
+      <span>{{ variant.properties.property1.name }}</span>
       <div id="{{ variant.properties.property1.name }}">
     {% endif %}
     <label {% if variant.available_quantity < 3 %}data-toggle="tooltip" data-placement="top" title="Existem apenas mais {{ variant.available_quantity }} em estoque!" {% endif %} {% if variant.properties.property1.value contains  "#" %}style="background-color:{{ variant.properties.property1.value }}"{% endif %}>
@@ -2239,7 +2239,7 @@ _nome_do_arquivo.liquid
   {% elsif variant.properties.property1.value.size < 1 and variant.properties.property2.value.size >= 1 %}
   {% comment %} Para produtos com apenas o segundo variante {% endcomment%}
     {% if forloop.first %}
-      <hr><span>{{ variant.properties.property2.name }}</span>
+      <span>{{ variant.properties.property2.name }}</span>
       <div id="{{ variant.properties.property2.name }}">
     {% endif %}
     <label {% if variant.available_quantity < 3 %}data-toggle="tooltip" data-placement="top" title="Existem apenas mais {{ variant.available_quantity }} em estoque!" {% endif %} {% if variant.properties.property1.value contains  "#" %}style="background-color:{{ variant.properties.property1.value }}"{% endif %}>
@@ -2251,7 +2251,7 @@ _nome_do_arquivo.liquid
   {% elsif variant.properties.property1.value.size >= 1 and variant.properties.property2.value.size >= 1  %}
   {% comment %} Para produtos com o primeiro e o segundo variante {% endcomment%}
     {% if forloop.first %}
-      <hr><span>{{ variant.properties.property1.name }}</span>
+      <span>{{ variant.properties.property1.name }}</span>
     {% endif %}
     {% comment %} Captura variaçções atribuidas ao produto {% endcomment %}
     {% capture first_attribute %}{{ first_attribute }}#{{ variant.sku }}/{{ variant.properties.property1.value }}|{% endcapture %}
@@ -2273,7 +2273,7 @@ _nome_do_arquivo.liquid
         {% endunless %}
       {% endfor %}
       </div>
-      <hr><span>{{ variant.properties.property2.name }}</span>
+      <span>{{ variant.properties.property2.name }}</span>
       <div id="{{ variant.properties.property2.name }}">
         {{ second_attribute }}
       </div>
