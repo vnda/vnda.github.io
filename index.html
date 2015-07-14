@@ -524,12 +524,10 @@ Mirror of if statement
       <p>Os templates ficam na raiz da pasta compartilhada no Dropbox onde todos os arquivo são salvos na extensão .liquid</p>
       <p>Dentro da raiz ficam os diretórios "images" "stylesheets" "javascript" e "page"</p>
       <p>Dentro do diretórios page/ é gerado os arquivos de extensão .html das página que são criados no admin.</p>
+      <p>No arquivo <strong>Layout.liquid</strong> ficam as tags responsáveis por montar a estrutura html to template. Nele fazemos partir da inclusão dos arquivos do topo, rodapé e da tag <strong>{{ yield }}</strong>, responsável por incluir o conteúdo das demais páginas do template.</p>
       <p>Segue abaixo os templates disponíveis na plataforma:</p>
       <!-- // -->
 
-      <h3 id="layout.liquid">Layout.liquid</h3>
-      <p>Neste template ficam devem ficar o html do topo e do rodapé e a tag<br> <strong>{{ yield }}</strong> responsável por incluir o conteúdo dos demais template.</p>
-      <!-- // -->
 
       <h3 id="home.liquid">Home.liquid</h3>
       <p>Este é o template corresponde a página inicial da loja. Aqui podem ser exibidos produtos, banners, menus e qualquer informação que atraia o cliente a navegar no resto do site. -- A variável {{ tag }} conterá a tag de nome "capa", quando esta estiver cadastrada no Painel Administrativo.</p>
