@@ -2218,88 +2218,9 @@ _nome_do_arquivo.liquid
           Partindo da premissa em que os atributos de um produtos são Cor(atributo_1) e Tamanho(atributo_2) respectivamente,
           e que ao abrir a página de produtos é listado apenas as cores e ao selecionar uma cor é listados as combinações de tamanho compátiveis com este atributo.
         </p>
-        <p>Para isso criaremos um arquivo _variants.liquid com as seguintes manipulações de dados:</p>
-      <pre>
-{% variants product_id:product.id %}
-  {% if variant.properties.property1.value.size < 1 and variant.properties.property2.value.size < 1 %}
-    {% comment %} Para produtos sem variantes {% endcomment%}
-    <input type="hidden" id="sku" name="sku" value="{{ variant.sku }}" />
-  {% elsif variant.properties.property1.value.size >= 1 and variant.properties.property2.value.size < 1 %}
-  {% comment %} Para produtos com apenas o primeiro variante {% endcomment%}
-    {% if forloop.first %}
-      <span>{{ variant.properties.property1.name }}</span>
-      <div id="{{ variant.properties.property1.name }}">
-    {% endif %}
-    <label {% if variant.available_quantity < 3 %}data-toggle="tooltip" data-placement="top" title="Existem apenas mais {{ variant.available_quantity }} em estoque!" {% endif %} {% if variant.properties.property1.value contains  "#" %}style="background-color:{{ variant.properties.property1.value }}"{% endif %}>
-      <input type="radio" name="sku" {% if forloop.first %}checked="checked"{% endif %} value="{{ variant.sku }}"/>{{ variant.properties.property1.value }}
-    </label>
-    {% if forloop.last %}
-      </div>
-    {% endif%}
-  {% elsif variant.properties.property1.value.size < 1 and variant.properties.property2.value.size >= 1 %}
-  {% comment %} Para produtos com apenas o segundo variante {% endcomment%}
-    {% if forloop.first %}
-      <span>{{ variant.properties.property2.name }}</span>
-      <div id="{{ variant.properties.property2.name }}">
-    {% endif %}
-    <label {% if variant.available_quantity < 3 %}data-toggle="tooltip" data-placement="top" title="Existem apenas mais {{ variant.available_quantity }} em estoque!" {% endif %} {% if variant.properties.property1.value contains  "#" %}style="background-color:{{ variant.properties.property1.value }}"{% endif %}>
-      <input type="radio" name="sku" {% if forloop.first %}checked="checked"{% endif %} value="{{ variant.sku }}"/>{{ variant.properties.property2.value }}
-    </label>
-    {% if forloop.last %}
-      </div>
-    {% endif%}
-  {% elsif variant.properties.property1.value.size >= 1 and variant.properties.property2.value.size >= 1  %}
-  {% comment %} Para produtos com o primeiro e o segundo variante {% endcomment%}
-    {% if forloop.first %}
-      <span>{{ variant.properties.property1.name }}</span>
-    {% endif %}
-    {% comment %} Captura variaçções atribuidas ao produto {% endcomment %}
-    {% capture first_attribute %}{{ first_attribute }}#{{ variant.sku }}/{{ variant.properties.property1.value }}|{% endcapture %}
-    {% capture second_attribute %}{{ second_attribute }}<label class="second_attribute second_attribute {{ variant.properties.property1.value | split: '#' }}" {% if variant.available_quantity < 3 %}  data-toggle="tooltip" data-placement="top" title="Existem apenas mais {{ variant.available_quantity }} em estoque!" {% endif %} style="display: none;"  class="second_attribute"><input type="radio" name="sku" value="{{ variant.sku }}" required="required" {% if forloop.first %}checked="checked"{% endif %}>{{ variant.properties.property2.value }}</label>{% endcapture %}
-    {% comment %} No último giro do for da variante, ele monta o box de variáveis, usando o [data-first-attribute] como referencia para exifir as variações da segunda variação {% endcomment%}
-    {% if forloop.last %}
-      <div id="{{ variant.properties.property1.name }}">
-      {% assign split_attribute = first_attribute | split: '|' %}
-      {% comment %} Percorre itens da primeira variante, para remover itens repetidos {% endcomment %}
-      {% for item in split_attribute %}
-        {% assign test_unique = item | split: '/' | last %}
-        {% comment %} Retira variações repetidas {% endcomment %}
-        {% unless list_itens contains test_unique %}
-        <label for="first-variant{{ forloop.index }}" data-first-attribute="{{ test_unique | split: '#' }}" class="first_attribute {{ forloop.index }}" {% if test_unique contains  "#" %}style="background-color:{{ test_unique }}"{% endif %}>
-          <input id="first-variant{{ forloop.index }}" type="radio" name="first-variant" {% if forloop.first %}checked="checked"{% endif %} value="{{ test_unique | split: '#' }}" />{{ test_unique }}
-        </label>
-        {% comment %} Aqui capturamos as variações já listadas, para poder removar caso ela se repita {% endcomment %}
-        {% capture list_itens %}{{ list_itens }}{{ test_unique }}{% endcapture %}
-        {% endunless %}
-      {% endfor %}
-      </div>
-      <span>{{ variant.properties.property2.name }}</span>
-      <div id="{{ variant.properties.property2.name }}">
-        {{ second_attribute }}
-      </div>
-    {% endif %}
-  {% else %}
-    <!-- Caso ocorra alguma exceção, visualize aqui -->
-  {% endif %}
-{% endvariants %}
-<script type="text/javascript">
-  var user_cat = $("input[name='first-variant']:checked").val();
-  $('.'+user_cat).show();
-  $('.first_attribute').click(function() {
-    $(".second_attribute").hide();
-    $('.'+$(this).attr("data-first-attribute")).show();
-  });
-  // Seletor de variantes
-  $('input[type="radio"]').change(function() {
-    var tmp=$(this).attr('name');
-    $('input[name="'+tmp+'"]').parent("label").removeClass("checked");
-    $(this).parent("label").toggleClass("checked", this.selected);
-  });
-  $('input[type="checkbox"]').change(function() {
-    $(this).parent("label").toggleClass("checked", this.selected);
-  });
-</script>
-      </pre>
+        <p>Para isso criaremos um arquivo _variants.liquid com as seguintes manipulações de dados:
+          <a href="https://github.com/georgeduartevnda/variants/blob/master/_variants_example.liquid" target="_blank">_variants_example.liquid</a>
+        </p>
       <p> </p><br>
       <p> </p><br>
       <p> </p><br>
