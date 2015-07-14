@@ -2227,7 +2227,7 @@ _nome_do_arquivo.liquid
   {% elsif variant.properties.property1.value.size >= 1 and variant.properties.property2.value.size < 1 %}
   {% comment %} Para produtos com apenas o primeiro variante {% endcomment%}
     {% if forloop.first %}
-      <hr><h5>{{ variant.properties.property1.name }}</h5>
+      <hr><span>{{ variant.properties.property1.name }}</span>
       <div id="{{ variant.properties.property1.name }}">
     {% endif %}
     <label {% if variant.available_quantity < 3 %}data-toggle="tooltip" data-placement="top" title="Existem apenas mais {{ variant.available_quantity }} em estoque!" {% endif %} {% if variant.properties.property1.value contains  "#" %}style="background-color:{{ variant.properties.property1.value }}"{% endif %}>
@@ -2239,7 +2239,7 @@ _nome_do_arquivo.liquid
   {% elsif variant.properties.property1.value.size < 1 and variant.properties.property2.value.size >= 1 %}
   {% comment %} Para produtos com apenas o segundo variante {% endcomment%}
     {% if forloop.first %}
-      <hr><h5>{{ variant.properties.property2.name }}</h5>
+      <hr><span>{{ variant.properties.property2.name }}</span>
       <div id="{{ variant.properties.property2.name }}">
     {% endif %}
     <label {% if variant.available_quantity < 3 %}data-toggle="tooltip" data-placement="top" title="Existem apenas mais {{ variant.available_quantity }} em estoque!" {% endif %} {% if variant.properties.property1.value contains  "#" %}style="background-color:{{ variant.properties.property1.value }}"{% endif %}>
@@ -2251,7 +2251,7 @@ _nome_do_arquivo.liquid
   {% elsif variant.properties.property1.value.size >= 1 and variant.properties.property2.value.size >= 1  %}
   {% comment %} Para produtos com o primeiro e o segundo variante {% endcomment%}
     {% if forloop.first %}
-      <hr><h5>{{ variant.properties.property1.name }}</h5>
+      <hr><span>{{ variant.properties.property1.name }}</span>
     {% endif %}
     {% comment %} Captura variaçções atribuidas ao produto {% endcomment %}
     {% capture first_attribute %}{{ first_attribute }}#{{ variant.sku }}/{{ variant.properties.property1.value }}|{% endcapture %}
@@ -2273,7 +2273,7 @@ _nome_do_arquivo.liquid
         {% endunless %}
       {% endfor %}
       </div>
-      <hr><h5>{{ variant.properties.property2.name }}</h5>
+      <hr><span>{{ variant.properties.property2.name }}</span>
       <div id="{{ variant.properties.property2.name }}">
         {{ second_attribute }}
       </div>
