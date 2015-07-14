@@ -1987,7 +1987,7 @@ exemplo-senha-cliente
 
 {% assign preco =  product | apply_discount %}
 {{ preco | installment_number }}x de {{ preco | money_format }}
-      <pre>
+      </pre>
       <!-- // -->
       <h3 id="como-relacionar-produtos">Como relacionar produtos</h3>
       <pre>
@@ -2217,6 +2217,25 @@ _nome_do_arquivo.liquid
 
         <p> </p><br>
         <p> </p><br>
+
+        <h3 id="novocarrinho">Novo Carrinho/ Novo Checout</h3>
+        <p>A partir da implantação do novo carrinho e do novo checkout, não são mais necessárias as edição dos arquivos cart.liquid e checkout.liqud.</p>
+        <p>Toda a customização deve ser realizada em um arquivo chamado <strong>custom.css</strong>. Nele, basta sobrescrever os estilos padrões do carrinho e checkout pelas cores padrões do layout da loja.</p>
+        <p>Exemplo de custom.css: <a href="https://github.com/georgeduartevnda/custom.css/blob/master/custom.css" target="_blank" class="laranja">custom.css</a> </p>
+        <p> </p><br>
+        <p> </p><br>
+        <p> </p><br>
+        <p> </p><br>
+        <h3 id="produto-com-2-atributos-liquid">Produtos c/ 2 Atributos - via Liquid</h3>
+
+        <p>
+          Partindo da premissa em que os atributos de um produtos são Cor(atributo_1) e Tamanho(atributo_2) respectivamente,
+          e que ao abrir a página de produtos é listado apenas as cores e ao selecionar uma cor é listados as combinações de tamanho compátiveis com este atributo.
+        </p>
+        <p>Para isso criaremos um arquivo _variants.liquid com as seguintes manipulações de dados:
+          <a href="https://github.com/georgeduartevnda/variants/blob/master/_variants_example.liquid" class="laranja" target="_blank">_variants_example.liquid</a>
+        </p>
+
         <p> </p><br>
         <p> </p><br>
         <h3 id="produto-com-2-atributos-liquid">Produtos c/ 2 Atributos - via Liquid</h3>
