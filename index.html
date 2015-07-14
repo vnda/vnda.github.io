@@ -1366,10 +1366,10 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
   <span><</span>input type="submit" value="Atualizar Senha"<span>></span>
 <span><</span>/form<span>></span>
       </pre>
-      <p> Página que exibe o resultado de uma busca, este resultado é uma lista de produtos que fazem match com o termo buscado pelo cliente atráves da URL /busca?q=termo. </p>
+      <p> Template para a exibição dos resultados de uma busca. Para fazer uma busca, use um formulário apontando para /busca via método GET ou acesse diretamente a URL /busca?q=termo. Não use POST.</p>
       <div></div><br>
 
-      <p>Os resultados da busca ficam armezanados na variável {{ products }}.</p>
+      <p>A lista de produtos que casam com o termo buscado estará na variável {{ products }}.</p>
       <pre>
 {% for product in products %}
   {{ product.image_url | resize: '234x' }}
