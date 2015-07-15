@@ -644,7 +644,7 @@ $(function(){
 
       <h5 id="como-montar-montar-o-sku">Como montar o sku?</h5>
       <p>
-         Como já dito antes, para que um item seja adicionado ao carrinho é preciso enviar um campo com o valor do sku da variante(há casos que é preciso montar um sku) e enviar para o url "/carrinho/adicionar-carrinho".
+         Como já dito antes, para que um item seja adicionado ao carrinho é preciso enviar um campo com o valor do sku da variante(há casos que é preciso montar um sku) e enviar para o url "/carrinho/adicionar".
       </p>
 
       <pre>
@@ -1300,10 +1300,10 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
 
       <h3 id="login.liquid">Login.liquid</h3>
       <p> Template usado tanto para novos cadastros quanto para logins de clientes já cadastrados. Desta página parte também o login via Facebook, que permite que clientes participem de promoções específicas.
-      <p><span class="summary"><code><a href="#formulário-de-cadastro" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
+      <p><span class="summary"><code><a href="#formulario-de-cadastro" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
       <!-- // -->
 
-      <h4 id="formulário-de-Cadastro">Formulário de Cadastro</h4>
+      <h4 id="formulario-de-cadastro">Formulário de Cadastro</h4>
       <pre>
 <span><</span>form action="{{ login_url }}" method="post"<span>></span>
   <span><</span>input id="new_client_terms" name="new_client[terms]" type="hidden" value="on"<span>></span>
@@ -1326,8 +1326,8 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
       <pre>
 <span><</span>form action="{{ login_url }}" method="post"<span>></span>
   <span><</span>input type="hidden" name="_method" value="put"<span>></span>
+  <span><</span>input type="text" name="email"<span>></span>
   <span><</span>input type="text" name="password" <span>></span>
-  <span><</span>input type="text" name="password_confirmation" <span>></span>
  <span><</span>/form<span>></span>
       </pre>
       <p>O form de login deve usar a action {{ login_url }}</p>
