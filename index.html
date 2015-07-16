@@ -2018,20 +2018,21 @@ exemplo-senha-cliente
       </p>
 
       <h3 id="filtro-de-marcas">Filtro de Marcas</h3>
-      <pre>
-        {% brand_filter tag_id:tag.name %}
-        {% if brand.selected %}
-        <span><<span>a href="{{ brand.url }}"<span>></span>
-        <span><<span>input type="checkbox" checked onclick="window.location.href='{{ brand.url }}'"<span>></span>
-        {{ brand.title }}
-        <span><<span>/a<span>></span>
-        {% else %}
-        <span><<span>a href="{{ brand.url }}"<span>></span>
-        <span><</span>input type="checkbox" onclick="window.location.href='{{ brand.url }}'"<span>></span>{{ brand.title }}
-        <span><<span>/a<span>></span>
-        {% endif %}
-        {% endbrand_filter %}
-      </pre>
+<pre>
+{% brand_filter tag_id:tag.name %}
+{% if brand.selected %}
+<span><<span>a href="{{ brand.url }}"<span>></span>
+<span><<span>input type="checkbox" checked onclick="window.location.href='{{ brand.url }}'"<span>></span>
+{{ brand.title }}
+<span><<span>/a<span>></span>
+{% else %}
+<span><<span>a href="{{ brand.url }}"<span>></span>
+<span><</span>input type="checkbox" onclick="window.location.href='{{ brand.url }}'"<span>></span>
+{{ brand.title }}
+<span><<span>/a<span>></span>
+{% endif %}
+{% endbrand_filter %}
+</pre>
       <p>Para fazer um filtro de marcas, use o seguinte código exemplo:</p>
       <p>
         É necessário criar uma tag e colocar um tipo para ela (pois vamos buscar a tag por tipo na sequencia. no exemplo usamos o tipo "relacionado")
