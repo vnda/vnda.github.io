@@ -2032,8 +2032,12 @@ exemplo-senha-cliente
 <span><<span>/a<span>></span>
 {% endif %}
 {% endbrand_filter %}
+
 </pre>
-      <p>Para fazer um filtro de marcas, use o seguinte código exemplo:</p>
+      <p>Para fazer um filtro de marcas, é preciso passar o parâmetro <strong> filter:brand:params.marca <strong> na chamada do loop de produtos.
+      <p>Para gerar o filtro de produtos, veja o código de exemplo:</p>
+      <br />
+      <br />
       <p>
         É necessário criar uma tag e colocar um tipo para ela (pois vamos buscar a tag por tipo na sequencia. no exemplo usamos o tipo "relacionado")
         Então usamos o código abaixo na tela de produtos. Ele percorre as tags do produto em busca de uma que tenha o tipo "relacionado". Caso encontre, serão listados os produtos que também tem essa tag, ou seja, que estão relacionados entre si.
