@@ -2021,11 +2021,13 @@ exemplo-senha-cliente
       <pre>
         {% brand_filter tag_id:tag.name %}
         {% if brand.selected %}
-        <span><<span>input type="checkbox" checked onclick="window.location.href='{{ brand.url }}'"<span>></span>{{ brand.title }}
+        <span><<span>a href="{{ brand.url }}"<span>></span>
+        <span><<span>input type="checkbox" checked onclick="window.location.href='{{ brand.url }}'"<span>></span>
+        {{ brand.title }}
+        <span><<span>/a<span>></span>
         {% else %}
         <span><<span>a href="{{ brand.url }}"<span>></span>
-        <span><</span>input type="checkbox" onclick="window.location.href='{{ brand.url }}'"<span>></span>
-        {{ brand.title }}
+        <span><</span>input type="checkbox" onclick="window.location.href='{{ brand.url }}'"<span>></span>{{ brand.title }}
         <span><<span>/a<span>></span>
         {% endif %}
         {% endbrand_filter %}
