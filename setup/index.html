@@ -2018,6 +2018,28 @@ exemplo-senha-cliente
         Então usamos o código abaixo na tela de produtos. Ele percorre as tags do produto em busca de uma que tenha o tipo "relacionado". Caso encontre, serão listados os produtos que também tem essa tag, ou seja, que estão relacionados entre si.
       </p>
 
+      <h3 id="filtro-de-marcas">Filtro de Marcas</h3>
+<pre>
+{% brand_filter tag_id:tag.name %}
+{% if brand.selected %}
+<span><<span>a href="{{ brand.url }}"<span>></span>
+<span><<span>input type="checkbox" checked onclick="window.location.href='{{ brand.url }}'"<span>></span>
+{{ brand.title }}
+<span><<span>/a<span>></span>
+{% else %}
+<span><<span>a href="{{ brand.url }}"<span>></span>
+<span><</span>input type="checkbox" onclick="window.location.href='{{ brand.url }}'"<span>></span>
+{{ brand.title }}
+<span><<span>/a<span>></span>
+{% endif %}
+{% endbrand_filter %}
+
+</pre>
+      <p>Para fazer um filtro de marcas, é preciso passar o parâmetro <strong> filter:brand:params.marca </strong> na chamada do loop de produtos.
+      <p>Para gerar o filtro de produtos, veja o código de exemplo:</p>
+      <br />
+      <br />
+
       <!-- // -->
       <h3 id="exibir-images-estáticas">Exibir imagens estáticas</h3>
       <p>* devem estar no diretório /public/images</p>
