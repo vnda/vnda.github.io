@@ -547,8 +547,8 @@ Mirror of if statement
         {{ tag.image_url }}
         {{ tag.products_count }}
       </pre>
+      <p></p>
       <p>Dentro do template tag.liquid é possível exibir informações da tag em questão, que foram cadastradas no admin usando as seguintes variáveis:</p>
-
       <p>
         Nesse template é muito comun usar banners de posição de tag.<br>
         basta criar uma variável com o nome da tag e chamar esta posição de banner.<br>
@@ -556,7 +556,7 @@ Mirror of if statement
       <pre>
       {% assign banner_tag_name = "categoria-" | append: tag.name %}
       {% banners position:banner_tag_name %}
-        ....
+      ....
       {% endbanners %}
       </pre>
       <h4 id="listar-produtos">Listar produtos</h4>
@@ -749,8 +749,7 @@ $(function(){
 {% endimages %}
     </pre>
     <p>Para exibir todas imagens cadastradas de um produto deve-se utilizar o tag {% imagens %}. Se prefirir listar apenas as imagens de uma variante x, utilize o parâmetro "sku"
-    {% images sku:sku %}.
-    </p>
+    {% images sku:sku %} <a href="#trocar-imagem-principal-por-variante-selecionada" title="Trocar imagem principal por variante selecionado" class="laranja">mais detalhes aqui</a>.</p>
     <h4 id="produtos-também-vistos">Produtos Também Vistos</h4>
     <pre>
 {% also_viewed id:product.id key:session_id %}
@@ -1312,10 +1311,10 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
 
       <h3 id="login.liquid">Login.liquid</h3>
       <p> Template usado tanto para novos cadastros quanto para logins de clientes já cadastrados. Desta página parte também o login via Facebook, que permite que clientes participem de promoções específicas.
-      <p><span class="summary"><code><a href="#formulario-de-cadastro" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
+      <p><span class="summary"><code><a href="#formulário-de-cadastro" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
       <!-- // -->
 
-      <h4 id="formulario-de-cadastro">Formulário de Cadastro</h4>
+      <h4 id="formulário-de-Cadastro">Formulário de Cadastro</h4>
       <pre>
 <span><</span>form action="{{ login_url }}" method="post"<span>></span>
   <span><</span>input id="new_client_terms" name="new_client[terms]" type="hidden" value="on"<span>></span>
@@ -1338,8 +1337,8 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
       <pre>
 <span><</span>form action="{{ login_url }}" method="post"<span>></span>
   <span><</span>input type="hidden" name="_method" value="put"<span>></span>
-  <span><</span>input type="text" name="email"<span>></span>
   <span><</span>input type="text" name="password" <span>></span>
+  <span><</span>input type="text" name="password_confirmation" <span>></span>
  <span><</span>/form<span>></span>
       </pre>
       <p>O form de login deve usar a action {{ login_url }}</p>
@@ -1478,12 +1477,12 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
      // preço com desconto
      {{ product | apply_discount | money_format }}
      // parcelas
-     (ou em até {{ product.installments.size }}x de: {{  product | apply_discount | installments: product.installments.size | money_format }})
+     (ou em até {{ product | apply_discount | installment_number }}x de: {{  product | apply_discount | installment_number | money_format }})
     {% else %}
       // preço
       preço: {{ product.price | money_format }}
       // parcelas
-      (ou em até {{ product.installments.size }}x de: {{ product.price | installments: product.installments.size | money_format }})
+      (ou em até {{ product.price | installment_number }}x de: {{ product.price | installment_number | money_format }})
     {% endif %}
   {% else %}
    Produto Esgotado
@@ -1775,13 +1774,14 @@ que consome menos requisições para nossa api de menus.</p>
 
       <h3 id="formulários-webforms">Formulários WebForms</h3>
       <pre>
-<span><</span>form action="/webform" method="post"<span>></span>
-<span><</span>input type="hidden" name="key" value="nome-da-loja-nome-do-form"<span>></span>
-<span><</span>input type="submit"<span>></span>
+<span><</span>form action="/webform" method="post"<span> onsubmit="document.getElementsByName('reply_to')[0].value = document.getElementsByName('email')[0].value"></span>
+    <span><</span>input type="hidden" name="key" value="nome-da-loja-nome-do-form"<span>></span>
+    <span><</span>iinput type="hidden" name="reply_to" id="reply_to" value="">
+    <span><</span>input type="hidden" name="email" value=""<span>></span>
+    <span><</span>input type="submit"<span>></span>
 <span><</span>/form<span>></span>
       </pre>
-      <p>* Os forms de contato devem usar a action /webform<br />
-      * Deve ser feito o cadastro do form no admin para pegar a key </p>
+      <p>* Os forms de contato devem usar a action /webform<br />* Deve ser feito o cadastro do form no admin para pegar a key<br />* Deve ser inserido o campo name "reply_to" e neste no evento submit do form deve ser informado o mesmo valor do campo email.</p>
 
       <h3 id="descrição-do-produto-com-múltiplas-seções">Descrição do produto com múltiplas seções</h3>
       <pre>
@@ -1996,10 +1996,19 @@ exemplo-senha-cliente
       <h3 id="como-listar-parcelas">Como Listar Parcelas</h3>
       <p>Para listar parcelas, podemos usar um dos seguintes exemplos de código:</p>
       <pre>
+// produto com desconto     
 {{ product | apply_discount | installment_number }}x de {{  product | apply_discount | installments | money_format }}
-
+ou
 {% assign preco =  product | apply_discount %}
 {{ preco | installment_number }}x de {{ preco | money_format }}
+
+// produto sem desconto     
+{{ product.price | installment_number }}x de {{  product.price | installments | money_format }}
+ou
+{% assign preco =  product.price %}
+{{ preco | installment_number }}x de {{ preco | money_format }}
+
+
       </pre>
       <!-- // -->
       <h3 id="como-relacionar-produtos">Como relacionar produtos</h3>
@@ -2131,6 +2140,72 @@ _nome_do_arquivo.liquid
       </p>
 
       <!-- // -->
+      <h3 id="como-incluir-favicon">Como incluir Favicon?</h3>
+      <pre>
+Chamando um favicon salvo na raiz da pasta "/public"
+{{ "favicon.ico" | favicon_tag }}
+// Retorno
+<span><</span>link href="nomedaloja/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
+
+
+Chamando um favicon salvo na raiz da pasta "/public/images"
+// Retorno
+{{ "images/favicon.ico" | favicon_tag }}
+<span><</span>link href="nomedaloja/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
+      </pre>
+      <p>1. Para incluir uma favicon por uma tag de .liquid, é preciso informar o filtro "favicon_tag" {{ "favicon.ico" | <b>favicon_tag</b> }}.</p>
+      <p></p><br />
+      <p>2. Para incluir direto por html, informe o caminho relativo da pasta que esta salvo o favicon.ico.</p>
+      <p>2.1 Caminho relativo da pasta "/public"<br />
+      <span><</span>link href="/favicon" rel="shortcut icon" /></p>
+      <p>2.2 Caminho relativo na raiz da pasta "/images"<br />
+      <span><</span>link href="/images/favicon.ico" rel="shortcut icon" />      
+      </p>
+
+
+      <h3 id="mapeamento-da-tag-params">Mapeamento da tag params</h3>  
+      <pre>
+<span><</span>pre>{{ params }}<</span>/pre>
+
+// Retorno:
+
+// na página da busca
+http://www.bodystore.com.br/corpo?page=3
+ <span><</span>pre>{"q"=>"produto x"}<span><</span>/pre>
+
+// na página da produto
+par url http://www.loja.com.br/produto/produto-191
+<span><</span>pre>{"slug"=>"produto", "id"=>"191"}<span><</span>/pre>
+
+// na página da tag
+par url http://www.loja.com.br/masculino/bermudas
+<span><</span>pre>{"parent"=>"masculino", "tag"=>"bermudas"}<span><</span>/pre>
+
+// na  páginação
+par url http://www.loja.com.br/masculino/bermudas
+<span><</span>pre>{"page"=>"3", "parent"=>"doces", "tag"=>"bolos"}<span><</span>/pre>
+      </pre>
+      <p>É possível fazer o mapeamento dos parâmetros de cada template pela tag {{ params }}.</p>
+      <p>Para cada template é feito um mapeamento da url de acordo com o parâmetro disponível.</p>
+      <p>Veja um caso de uso para chamar uma posição de menu ou para tag "masculino" ou "feminino" <a href="#exibir-menu-para-tag" class="laranja">mais detalhes aqui.</a></p>
+
+      <!-- // -->
+      <h3 id="exibir-menu-para-tag">Como exibir o menu para uma determinda tag</h3>
+      <pre>
+para url http://www.loja.com.br/masculino/luvas -->      
+{% if tag.name == "masculino" or params.parent == "masculino" %}   
+//carrega uma posição de menu %
+  {% menus position:"masculino" %}
+  ... 
+  {% endmenus %}
+{% endif %}  
+
+<a href="#mapeamento-da-tag-params">entenda a tag {{ params }}</a>   
+      </pre>
+      <p>Para chamar um menu em uma determinada categoria na página de tag será necessário veficar o nome da tag, entretanto, se necessário incluir o menu em todas categorias filhas use params.parent </p> 
+      <p>Note que no ex ao lado que é nessário chamar a posição de menu masculino em 2 cenários, um para quando a tag for masculino ou para quando a tag for "luvas". Leve em consideração que "luvas" é filha de "masculino".</p>
+
+      <!-- // -->
       <h3 id="metricas-google-analytics">Métricas Google Analytics</h3>
       <h4 id="mensuracao-de-banners">Mensuração de banners</h4>
       <pre>
@@ -2181,8 +2256,8 @@ _nome_do_arquivo.liquid
     <span><</span>/tbody>
 <span><</span>/table>
       </pre>
-
       <!-- // -->
+
       <h3 id="outras-tags-do-liquid">Outras tags do .liquid</h3>
       <p>Outras tags que pode ser chamados no .liquid</p>
       <pre>
@@ -2223,7 +2298,7 @@ _nome_do_arquivo.liquid
       <pre>
 // atribuindo endereço de forma dinâmica
 {{ store.street_name }}..{{ store.street_number }}..
-{{ store.neighborhood }}. </p>
+{{ store.neighborhood }}.  
       </pre>
       <p>
         A tag { store } retorna um array com todas as propriedades da seção "admin/store/edit".
@@ -2236,6 +2311,34 @@ _nome_do_arquivo.liquid
         gerando um novo atributo para a tag "store", caso necessite chame a tag { store } em qualquer parte do arquivo .liquid e veja você mesmo os atributos suportados por esta.
       </p>
 
+       <!-- // -->
+      <h3 id="trocar-imagem-principal-por-variante-selecionada">Trocar imagem principal por variante selecionada</h3>
+
+      <pre>
+ passando o parâmetro "sku" na chamada da tag {% images %}
+// execute loop de 'variants' antes de 'images'
+{% variants product_id:product.id %}
+
+// passe o parametro sku
+{% images sku:variant.sku %}
+
+// passe um data-sku para saber de qual variante pertence essa imagem
+<span><</span>img src="{{ image.url }}" data-sku="{{ variant.sku }}">
+
+{% endimages %}
+{% endvariants %}
+
+Para trocar a imagem principal façar uma função javascript que compare valor do input selecionado com o data-sku da imagem:
+
+O valor do input das variantes sempre deve ser o sku.    
+      </pre>
+      <p>Configurar produto no admin "admin > products > midias > images": ao clicar nas fotos do produto ficará disponível no modal com as variantes que podem ser selecionadas <a href="http://www.vnda.com.br/images/guides/screenshot-modal-midia.png"><img src="http://www.vnda.com.br/images/guides/screenshot-modal-midia.png"></a></p>
+
+       <!-- // -->
+      <h3 id="dicas-loop">Dicas loop</h3>
+      <p>A linguagem aceita a tag {% break %} para sair de algum loop de {% tags .. {% products {% for  etc ...</p>
+      <p>Se precisar pular para o próximo laço de um loop use a tag {% continue %}.</p>
+ 
       <!-- / / -->
       <h3 id="template-do-zendesk">Personalizando o Template Zendesk</h3>
         <p>Faça o login em https://cadenceatendimento.zendesk.com ou https://cadenceatendimento.zendesk.com/agent</p>
@@ -2253,13 +2356,16 @@ _nome_do_arquivo.liquid
         <p> </p><br>
         <p> </p><br>
 
-        <h3 id="novocarrinho">Novo Carrinho/ Novo Checout</h3>
+        <h3 id="novocarrinho">Novo Carrinho/ Novo Checkout</h3>
         <p>A partir da implantação do novo carrinho e do novo checkout, não são mais necessárias as edição dos arquivos cart.liquid e checkout.liqud.</p>
         <p>Toda a customização deve ser realizada em um arquivo chamado <strong>custom.css</strong>. Nele, basta sobrescrever os estilos padrões do carrinho e checkout pelas cores padrões do layout da loja.</p>
         <p>Exemplo de custom.css: <a href="https://github.com/georgeduartevnda/custom.css/blob/master/custom.css" target="_blank" class="laranja">custom.css</a> </p>
         <p> </p><br>
         <p> </p><br>
+        <p> </p><br>
+        <p> </p><br>
         <h3 id="produto-com-2-atributos-liquid">Produtos c/ 2 Atributos - via Liquid</h3>
+
         <p>
           Partindo da premissa em que os atributos de um produtos são Cor(atributo_1) e Tamanho(atributo_2) respectivamente,
           e que ao abrir a página de produtos é listado apenas as cores e ao selecionar uma cor é listados as combinações de tamanho compátiveis com este atributo.
@@ -2268,8 +2374,9 @@ _nome_do_arquivo.liquid
           <a href="https://github.com/georgeduartevnda/variants/blob/master/_variants_example.liquid" class="laranja" target="_blank">_variants_example.liquid</a>
         </p>
 
-      <p> </p><br>
-      <p> </p><br>
+        <p> </p><br>
+        <p> </p><br>
+
       <h3 id="produto-com-2-atributos">Produtos c/ 2 Atributos - via js</h3>
 
       <p>
