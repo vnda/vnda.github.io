@@ -2364,6 +2364,37 @@ O valor do input das variantes sempre deve ser o sku.
         <p> </p><br>
         <p> </p><br>
         <p> </p><br>
+
+
+        <h3 id="pedido-finalizado">Pedido Finalizado por Boleto Moip e Cobre Grátis</h3>
+        <h4>Moip</h4>  
+        <pre>
+<span><</span>a target="_blank" href="#" id="print-button" style="display:none">IMPRIMIR<span><</span>/a>
+
+<span><</span>script type="text/javascript">
+  $(function(){
+    $("#moip-script").on("success", function() {
+       // função para retirar algum efeito de loader da página
+    });
+  });
+<span><</span>/script>          
+        </pre>
+        <p>A integração com o moip faz o mapeamento na página de pedido concluído para exibir e inserir o link do botao de imprimir. A validação do link é feita através da tag html <span><</span>a> de  atributo id definido como "print-button". Este processo pode levar alguns segundos por isso
+        usamos um loader e um script padrão que será executado sempre que uma requisão for conclúida.</p>
+ 
+        <h4>Cobre Grátis</h4>  
+        <p>Para o Cobre Grátis o link é carregado no .liquid pela tag {{ order.slip_url }}</p>
+
+        <p></p><br> 
+        <pre>
+ {% if store.settings.slip_gateway == 'cobre_gratis' %}
+ {% else %}
+   // moip
+ {% endif %}
+        </pre>
+        <p>obs: validar no front qual a integração que a loja usa.</p>
+        <p>Exemplo de página de pedido finalizado <a href="https://github.com/vagnerolliver/Pedido-Finalizado" class="laranja" target="_blank">aqui</a></p> 
+
         <h3 id="produto-com-2-atributos-liquid">Produtos c/ 2 Atributos - via Liquid</h3>
 
         <p>
@@ -2556,7 +2587,7 @@ function onlyUnique(value, index, self) {
 
     </div>
   </div>
-
+  
   <!-- Google Tag Manager -->
   <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script>
   <!-- End Google Tag Manager -->
