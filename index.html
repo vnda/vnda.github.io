@@ -1783,8 +1783,11 @@ que consome menos requisições para nossa api de menus.</p>
       <p><strong>Criando um formúlário de newsletter</strong></p>
       <p>
         * Cadastrar o formulário no admin para gerar a key <br />
+        * Incluir dentro da tag form o campo hidden name="key" com o valor da key do formulário.<br>
         * Os forms de contato devem usar a action /webform <br />
-        * Deve ser inserido o campo name "reply_to" e neste no evento submit do form deve ser informado o mesmo valor do campo email.
+        * Para habilitar a resposta para email enviado, insira no html o campo input hidden com name "reply_to",
+        use um recurso javascript para preencher este campo com o mesmo dados do campo email.
+
       </p>
 
       <h3 id="descrição-do-produto-com-múltiplas-seções">Descrição do produto com múltiplas seções</h3>
