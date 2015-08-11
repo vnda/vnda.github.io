@@ -6,6 +6,7 @@
     <link rel="stylesheet" media="all" href="css/bootstrap.css" />
     <link rel="stylesheet" media="all" href="css/screen.css" />
     <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <link rel="stylesheet" type="text/css" href="css/featherlights.css" />
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
     <script src="js/jquery-1.8.3.min.js"></script>
     <script src="js/modernizr.custom.js"></script>
@@ -1780,15 +1781,15 @@ que consome menos requisições para nossa api de menus.</p>
     <span><</span>input type="submit"<span>></span>
 <span><</span>/form<span>></span>
       </pre>
-      <p><strong>Criando um formúlário de newsletter</strong></p>
-      <p>
-        * Cadastrar o formulário no admin para gerar a key <br />
-        * Incluir dentro da tag form o campo hidden name="key" com o valor da key do formulário.<br>
-        * Os forms de contato devem usar a action /webform <br />
-        * Para habilitar a resposta para email enviado, insira no html o campo input hidden com name "reply_to",
-        use um recurso javascript para preencher este campo com o mesmo dados do campo email.
-
-      </p>
+      <p><strong>Configuração admin:</strong></p>
+      <p>- Criando um novo form no admin: <a class="laranja" href="/img/novo-form.png" data-featherlight="image">confira aqui</a></p>
+      <p>- Informando o  email de destino e assunto: <a class="laranja" href="/img/edicao-do-form.png" data-featherlight="image">confira aqui</a></p>
+      <p>- Ao salvar será gerado um chave: <a class="laranja" href="/img/edicao-do-form-concluido.png" data-featherlight="image">confira aqui</a></p>
+      <p><strong>Configuração .liquid:</strong></p>  
+      <p>- Form action= "/webform" </p>
+      <p>- Incluir o campo hidden com name="key" e com o valor da key do form da configuração anterior.</p>
+      <p>Incluir o campo hidden com name="reply_to", este campo deve pegar o valor do campo email antes do evento submit do formulário. Use um evento jquery onsubmit para pegar o valor do email antes do submit ou apenas informe o evento onsubmit direto na tag form
+      como o exemplo ao lado</p>
 
       <h3 id="descrição-do-produto-com-múltiplas-seções">Descrição do produto com múltiplas seções</h3>
       <pre>
@@ -2601,6 +2602,8 @@ function onlyUnique(value, index, self) {
 
   <script src="js/jquery-ui-1.9.1.custom.min.js"></script>
   <script src="js/jquery.tocify.js"></script>
+  <script src="js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+
 
   <script>
     $(function() {
