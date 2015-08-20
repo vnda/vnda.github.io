@@ -1235,7 +1235,7 @@ OU
         Para usar os filtros em um mesmo arquivo e diferenciar o template em que estão sendo usados, use a seguinte sintaxe para identificar o template {{ template }}.<br>
         Para ocultar os filtros, caso não queira usar em páginas que possuam pouco resultado e dos quais não seja interessante filtrar, verifique a quantidade de produtos resultante da busca ou da tag, com a seguinte sintaxe: Tag: {{ tag.products_count }} Busca: {{ products.size }}.<br>
       </p>
-      <h4 id="filtro-preco">Filtro de Preço</h4>
+      <h4 id="filtro-preco"> - Filtro de Preço</h4>
       <pre>
         {
           "min"=>99.0,
@@ -1243,7 +1243,7 @@ OU
         }
       </pre>
       <p>O filtro de preço retorna apenas o menor e o maior valor e podem ser usados para criar um slice de preço, para filtrar produtos entre a faixa de preço desejado.</p>
-      <h4 id="filtro-tag">Filtro de Tags</h4>
+      <h4 id="filtro-tag"> - Filtro de Tags</h4>
       <pre>
         {
           "name"  =>"marca",
@@ -1258,7 +1258,7 @@ OU
         }
       </pre>
       <p>O filtro de tags oferece o seguinte retorno:</p>
-      <h4 id="filtro-proprety">Filtro de Atributos</h4>
+      <h4 id="filtro-proprety"> - Filtro de Atributos</h4>
       <pre>
         {
           "name"  =>"Tamanho",
@@ -1272,7 +1272,7 @@ OU
         }
       </pre>
       <p>O filtro de atributos oferece o seguinte retorno:</p>
-      <h4 id="filtro-nas-tags">Filtro nas tags</h4>
+      <h4 id="filtro-nas-tags"> - Filtro nas tags</h4>
       <pre>
         {% aggregations tag:tag.name parent_tag:parent_tag.name %}
           {{ price }}
@@ -1281,10 +1281,9 @@ OU
         {% endaggregations %}
       </pre>
       <p>
-        <strong>Filtros na tag:</strong><br>
         Para exibis filtros em uma tag, usamos a seguinte sintaxe:
       </p>
-      <h4 id="filtro-na-busca">Filtro na busca</h4>
+      <h4 id="filtro-na-busca"> - Filtro na busca</h4>
       <pre>
         {% aggregations q:params.q %}
           {{ price }}
@@ -1293,11 +1292,10 @@ OU
         {% endaggregations %}
       </pre>
       <p>
-        <strong>Filtros na busca:</strong><br >
         Para exibis filtros na busca, usamos a seguinte sintaxe:
       </p>
 
-      <h4 id="fintros-especificos">Filtros Específicos</h4>
+      <h4 id="fintros-especificos"> - Filtros Específicos</h4>
       <pre>
         {% aggregations tag:tag.name parent_tag:parent_tag.name only_typed_tags:"marca" %}
           {{ typed_tags }}
@@ -1316,12 +1314,12 @@ OU
         {% endaggregations %}
       </pre>
       <p>Podemos usar também filtros específicos, conforme o exemplo:</p>
-      <h4 id="fintros-unitarios">Filtros Unitários</h4>
+      <h4 id="fintros-unitarios"> - Filtros Unitários</h4>
       <pre>
         {% aggregations tag:tag.name parent_tag:parent_tag.name single_option_typed_tags:"marca" %}
           {{ typed_tags }}
         {% endaggregations %}
-
+        
         {% aggregations q:params.q single_option_typed_tags:"marca" %}
           {{ typed_tags }}
         {% endaggregations %}
