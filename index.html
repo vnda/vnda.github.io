@@ -1772,138 +1772,138 @@ que consome menos requisições para nossa api de menus.</p>
 
 
 
-      <h3 id="aggregations">{% aggregations %}</h3>
-      <pre>
-        {% aggregations tag:tag.name parent_tag:parent_tag.name %}
-        {% endaggregations %}
-      </pre>
-      <p>
-        Filtros podem ser usados tanto no template de busca, quanto no de tag, com uma pequena diferença na sintaxe.<br>
-        Para usar os filtros em um mesmo arquivo e diferenciar o template em que estão sendo usados, use a seguinte sintaxe para identificar o template {{ template }}.<br>
-        Para ocultar os filtros, caso não queira usar em páginas que possuam pouco resultado e dos quais não seja interessante filtrar, verifique a quantidade de produtos resultante da busca ou da tag, com a seguinte sintaxe: Tag: {{ tag.products_count }} Busca: {{ products.size }}.<br>
-      </p>
-      <h4 id="filtro-preco"> - Filtro de Preço</h4>
-      <pre>
-        {
-          "min"=>99.0,
-          "max"=>999.0
-        }
-      </pre>
-      <p>O filtro de preço retorna apenas o menor e o maior valor e podem ser usados para criar um slice de preço, para filtrar produtos entre a faixa de preço desejado.</p>
-      <h4 id="filtro-tag"> - Filtro de Tags</h4>
-      <pre>
-        {
-          "name"  =>"marca",
-          "count" =>30,
-          "values"=>[{
-            "name"      =>"mosaico",
-            "title"     =>"Mosaico",
-            "count"     =>10,
-            "selected"  =>false,
-            "url"       =>"/feminino?typedtags__marca=mosaico"
-          }]
-        }
-      </pre>
-      <p>O filtro de tags oferece o seguinte retorno:</p>
-      <h4 id="filtro-proprety"> - Filtro de Atributos</h4>
-      <pre>
-        {
-          "name"  =>"Tamanho",
-          "count" =>59,
-          "values"=>[{
-             "name"     =>"G",
-             "count"    =>19,
-             "selected" =>false,
-             "url"      =>"/feminino?property__Tamanho=G"
-          }]
-        }
-      </pre>
-      <p>O filtro de atributos oferece o seguinte retorno:</p>
-      <h4 id="filtro-nas-tags"> - Filtro nas tags</h4>
-      <pre>
-        {% aggregations tag:tag.name parent_tag:parent_tag.name %}
-          {{ price }}
-          {{ properties }}
-          {{ typed_tags }}
-        {% endaggregations %}
-      </pre>
-      <p>
-        Para exibis filtros em uma tag, usamos a seguinte sintaxe:
-      </p>
-      <h4 id="filtro-na-busca"> - Filtro na busca</h4>
-      <pre>
-        {% aggregations q:params.q %}
-          {{ price }}
-          {{ properties }}
-          {{ typed_tags }}
-        {% endaggregations %}
-      </pre>
-      <p>
-        Para exibis filtros na busca, usamos a seguinte sintaxe:
-      </p>
+<h3 id="aggregations">{% aggregations %}</h3>
+<pre>
+{% aggregations tag:tag.name parent_tag:parent_tag.name %}
+{% endaggregations %}
+</pre>
+<p>
+Filtros podem ser usados tanto no template de busca, quanto no de tag, com uma pequena diferença na sintaxe.<br>
+Para usar os filtros em um mesmo arquivo e diferenciar o template em que estão sendo usados, use a seguinte sintaxe para identificar o template {{ template }}.<br>
+Para ocultar os filtros, caso não queira usar em páginas que possuam pouco resultado e dos quais não seja interessante filtrar, verifique a quantidade de produtos resultante da busca ou da tag, com a seguinte sintaxe: Tag: {{ tag.products_count }} Busca: {{ products.size }}.<br>
+</p>
+<h4 id="filtro-preco"> - Filtro de Preço</h4>
+<pre>
+{
+  "min"=>99.0,
+  "max"=>999.0
+}
+</pre>
+<p>O filtro de preço retorna apenas o menor e o maior valor e podem ser usados para criar um slice de preço, para filtrar produtos entre a faixa de preço desejado.</p>
+<h4 id="filtro-tag"> - Filtro de Tags</h4>
+<pre>
+{
+  "name"  =>"marca",
+  "count" =>30,
+  "values"=>[{
+    "name"      =>"mosaico",
+    "title"     =>"Mosaico",
+    "count"     =>10,
+    "selected"  =>false,
+    "url"       =>"/feminino?typedtags__marca=mosaico"
+  }]
+}
+</pre>
+<p>O filtro de tags oferece o seguinte retorno:</p>
+<h4 id="filtro-proprety"> - Filtro de Atributos</h4>
+<pre>
+{
+  "name"  =>"Tamanho",
+  "count" =>59,
+  "values"=>[{
+     "name"     =>"G",
+     "count"    =>19,
+     "selected" =>false,
+     "url"      =>"/feminino?property__Tamanho=G"
+  }]
+}
+</pre>
+<p>O filtro de atributos oferece o seguinte retorno:</p>
+<h4 id="filtro-nas-tags"> - Filtro nas tags</h4>
+<pre>
+{% aggregations tag:tag.name parent_tag:parent_tag.name %}
+  {{ price }}
+  {{ properties }}
+  {{ typed_tags }}
+{% endaggregations %}
+</pre>
+<p>
+Para exibis filtros em uma tag, usamos a seguinte sintaxe:
+</p>
+<h4 id="filtro-na-busca"> - Filtro na busca</h4>
+<pre>
+{% aggregations q:params.q %}
+  {{ price }}
+  {{ properties }}
+  {{ typed_tags }}
+{% endaggregations %}
+</pre>
+<p>
+Para exibis filtros na busca, usamos a seguinte sintaxe:
+</p>
 
-      <h4 id="fintros-especificos"> - Filtros Específicos</h4>
-      <pre>
-        {% aggregations tag:tag.name parent_tag:parent_tag.name only_typed_tags:"marca" %}
-          {{ typed_tags }}
-        {% endaggregations %}
+<h4 id="fintros-especificos"> - Filtros Específicos</h4>
+<pre>
+{% aggregations tag:tag.name parent_tag:parent_tag.name only_typed_tags:"marca" %}
+  {{ typed_tags }}
+{% endaggregations %}
 
-        {% aggregations q:params.q only_typed_tags:"marca" %}
-          {{ typed_tags }}
-        {% endaggregations %}
+{% aggregations q:params.q only_typed_tags:"marca" %}
+  {{ typed_tags }}
+{% endaggregations %}
 
-        {% aggregations tag:tag.name parent_tag:parent_tag.name only_properties:"Tamanho" %}
-          {{ properties }}
-        {% endaggregations %}
+{% aggregations tag:tag.name parent_tag:parent_tag.name only_properties:"Tamanho" %}
+  {{ properties }}
+{% endaggregations %}
 
-        {% aggregations q:params.q only_properties:"Tamanho" %}
-          {{ properties }}
-        {% endaggregations %}
-      </pre>
-      <p>Podemos usar também filtros específicos, conforme o exemplo:</p>
-      <h4 id="fintros-unitarios"> - Filtros Unitários</h4>
-      <pre>
-        {% aggregations tag:tag.name parent_tag:parent_tag.name single_option_typed_tags:"marca" %}
-          {{ typed_tags }}
-        {% endaggregations %}
+{% aggregations q:params.q only_properties:"Tamanho" %}
+  {{ properties }}
+{% endaggregations %}
+</pre>
+<p>Podemos usar também filtros específicos, conforme o exemplo:</p>
+<h4 id="fintros-unitarios"> - Filtros Unitários</h4>
+<pre>
+{% aggregations tag:tag.name parent_tag:parent_tag.name single_option_typed_tags:"marca" %}
+  {{ typed_tags }}
+{% endaggregations %}
 
-        {% aggregations q:params.q single_option_typed_tags:"marca" %}
-          {{ typed_tags }}
-        {% endaggregations %}
+{% aggregations q:params.q single_option_typed_tags:"marca" %}
+  {{ typed_tags }}
+{% endaggregations %}
 
-        {% aggregations tag:tag.name parent_tag:parent_tag.name single_option_properties:"Tamanho" %}
-          {{ typed_tags }}
-        {% endaggregations %}
+{% aggregations tag:tag.name parent_tag:parent_tag.name single_option_properties:"Tamanho" %}
+  {{ typed_tags }}
+{% endaggregations %}
 
-        {% aggregations q:params.q single_option_properties:"Tamanho" %}
-          {{ typed_tags }}
-        {% endaggregations %}
-      </pre>
+{% aggregations q:params.q single_option_properties:"Tamanho" %}
+  {{ typed_tags }}
+{% endaggregations %}
+</pre>
 
-      <p>Por padrão, todos os filtros permitem múltiplas seleções, mas casos eja necessário, podemos fazer com que ele permita que apenas um item seja selecionado por vez.</p>
+<p>Por padrão, todos os filtros permitem múltiplas seleções, mas casos eja necessário, podemos fazer com que ele permita que apenas um item seja selecionado por vez.</p>
 
-      <h3 id="search_options">{% search_options %}</h3>
-      <pre>
-        {% search_options %}
-          {{ search_option.label }}
-        {% endsearch_options %}
-        -------------------------
-        {
-          "name"=>"small_price",
-          "label"=>"Menor Preço",
-          "active"=>false,
-          "url"=>"/mobilidade-acessibilidade?order=price"
-        }
-        -------------------------
-        {% products tag:tag.name parent_tag:parent_tag.name page:params.page sort:params.order   %}
-          {% include "_commons/list_products" %}
-        {% endproducts %}
-      </pre>
-      <p>
-        Para obter um filtro de ordenação de produtos dentro de tags, usamos a seguinte sintaxe:<br>
-        OBS: O parâmetro de ordenamento deve ser passado para a tag, [ sort:params.order ] para que a ordem seja aplicada. <br>
-        Os parâmetros de ordenamento não se aplicam a busca, que mostra os produtos em ordem de relevância em relação ao que foi pesquisado.
-      </p>
+<h3 id="search_options">{% search_options %}</h3>
+<pre>
+{% search_options %}
+{{ search_option.label }}
+{% endsearch_options %}
+-------------------------
+{
+"name"=>"small_price",
+"label"=>"Menor Preço",
+"active"=>false,
+"url"=>"/mobilidade-acessibilidade?order=price"
+}
+-------------------------
+{% products tag:tag.name parent_tag:parent_tag.name page:params.page sort:params.order   %}
+{% include "_commons/list_products" %}
+{% endproducts %}
+</pre>
+<p>
+Para obter um filtro de ordenação de produtos dentro de tags, usamos a seguinte sintaxe:<br>
+OBS: O parâmetro de ordenamento deve ser passado para a tag, [ sort:params.order ] para que a ordem seja aplicada. <br>
+Os parâmetros de ordenamento não se aplicam a busca, que mostra os produtos em ordem de relevância em relação ao que foi pesquisado.
+</p>
 
       <h2 id="recursos">Recursos</h3>
       <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
