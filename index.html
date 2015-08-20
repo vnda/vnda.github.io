@@ -1895,13 +1895,13 @@ que consome menos requisições para nossa api de menus.</p>
           "url"=>"/mobilidade-acessibilidade?order=price"
         }
         -------------------------
-        {% products tag:tag.name parent_tag:parent_tag.name page:params.page sort:params.order per_page:20  %}
+        {% products tag:tag.name parent_tag:parent_tag.name page:params.page sort:params.order   %}
           {% include "_commons/list_products" %}
         {% endproducts %}
       </pre>
       <p>
         Para obter um filtro de ordenação de produtos dentro de tags, usamos a seguinte sintaxe:<br>
-        OBS: O parâmetro de ordenamento deve ser passado para a tag, para que a ordem seja aplicada. <br>
+        OBS: O parâmetro de ordenamento deve ser passado para a tag, [ sort:params.order ] para que a ordem seja aplicada. <br>
         Os parâmetros de ordenamento não se aplicam a busca, que mostra os produtos em ordem de relevância em relação ao que foi pesquisado.
       </p>
 

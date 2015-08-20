@@ -1879,7 +1879,30 @@ que consome menos requisições para nossa api de menus.</p>
 
       <p>Por padrão, todos os filtros permitem múltiplas seleções, mas casos eja necessário, podemos fazer com que ele permita que apenas um item seja selecionado por vez.</p>
 
+      <h3 id="montar-carrinho-na-url">{% search_options %}</h3>
+      <pre>
+        {% search_options %}
+          {{ search_option.label }}
+        {% endsearch_options %}
+        -------------------------
+        {
+          "name"=>"small_price",
+          "label"=>"Menor Preço",
+          "active"=>false,
+          "url"=>"/mobilidade-acessibilidade?order=price"
+        }
+        -------------------------
+        {% products tag:tag.name parent_tag:parent_tag.name page:params.page sort:params.order   %}
+          {% include "_commons/list_products" %}
+        {% endproducts %}
+      </pre>
+      <p>
+        Para obter um filtro de ordenação de produtos dentro de tags, usamos a seguinte sintaxe:<br>
+        OBS: O parâmetro de ordenamento deve ser passado para a tag, [ sort:params.order ] para que a ordem seja aplicada. <br>
+        Os parâmetros de ordenamento não se aplicam a busca, que mostra os produtos em ordem de relevância em relação ao que foi pesquisado.
+      </p>
 
+      
       <h2 id="recursos">Recursos</h3>
       <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
 
