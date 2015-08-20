@@ -1763,11 +1763,122 @@ que consome menos requisições para nossa api de menus.</p>
 {% contentfor exemplo %}
   ... conteúdo armazenado na varianvel "exemplo"
 {% endcontentfor %}
-  
+
 {{ exemplo }} // exibindo contéudo
       </pre>
       <p>Armazendo conteúdo com a tag {% contentfor %}<br />
       *Salvar e exibir conteúdo em outros locais do template .liquid</p>
+
+      <h3 id="aggregations">{% aggregations %}</h3>
+      <pre>
+        {% aggregations tag:tag.name parent_tag:parent_tag.name %}
+        {% endaggregations %}
+      </pre>
+      <p>
+        Filtros podem ser usados tanto no template de busca, quanto no de tag, com uma pequena diferença na sintaxe.<br>
+        Para usar os filtros em um mesmo arquivo e diferenciar o template em que estão sendo usados, use a seguinte sintaxe para identificar o template {{ template }}.<br>
+        Para ocultar os filtros, caso não queira usar em páginas que possuam pouco resultado e dos quais não seja interessante filtrar, verifique a quantidade de produtos resultante da busca ou da tag, com a seguinte sintaxe: Tag: {{ tag.products_count }} Busca: {{ products.size }}.<br>
+      </p>
+      <h4 id="filtro-preco"> - Filtro de Preço</h4>
+      <pre>
+        {
+          "min"=>99.0,
+          "max"=>999.0
+        }
+      </pre>
+      <p>O filtro de preço retorna apenas o menor e o maior valor e podem ser usados para criar um slice de preço, para filtrar produtos entre a faixa de preço desejado.</p>
+      <h4 id="filtro-tag"> - Filtro de Tags</h4>
+      <pre>
+        {
+          "name"  =>"marca",
+          "count" =>30,
+          "values"=>[{
+            "name"      =>"mosaico",
+            "title"     =>"Mosaico",
+            "count"     =>10,
+            "selected"  =>false,
+            "url"       =>"/feminino?typedtags__marca=mosaico"
+          }]
+        }
+      </pre>
+      <p>O filtro de tags oferece o seguinte retorno:</p>
+      <h4 id="filtro-proprety"> - Filtro de Atributos</h4>
+      <pre>
+        {
+          "name"  =>"Tamanho",
+          "count" =>59,
+          "values"=>[{
+             "name"     =>"G",
+             "count"    =>19,
+             "selected" =>false,
+             "url"      =>"/feminino?property__Tamanho=G"
+          }]
+        }
+      </pre>
+      <p>O filtro de atributos oferece o seguinte retorno:</p>
+      <h4 id="filtro-nas-tags"> - Filtro nas tags</h4>
+      <pre>
+        {% aggregations tag:tag.name parent_tag:parent_tag.name %}
+          {{ price }}
+          {{ properties }}
+          {{ typed_tags }}
+        {% endaggregations %}
+      </pre>
+      <p>
+        Para exibis filtros em uma tag, usamos a seguinte sintaxe:
+      </p>
+      <h4 id="filtro-na-busca"> - Filtro na busca</h4>
+      <pre>
+        {% aggregations q:params.q %}
+          {{ price }}
+          {{ properties }}
+          {{ typed_tags }}
+        {% endaggregations %}
+      </pre>
+      <p>
+        Para exibis filtros na busca, usamos a seguinte sintaxe:
+      </p>
+
+      <h4 id="fintros-especificos"> - Filtros Específicos</h4>
+      <pre>
+        {% aggregations tag:tag.name parent_tag:parent_tag.name only_typed_tags:"marca" %}
+          {{ typed_tags }}
+        {% endaggregations %}
+
+        {% aggregations q:params.q only_typed_tags:"marca" %}
+          {{ typed_tags }}
+        {% endaggregations %}
+
+        {% aggregations tag:tag.name parent_tag:parent_tag.name only_properties:"Tamanho" %}
+          {{ properties }}
+        {% endaggregations %}
+
+        {% aggregations q:params.q only_properties:"Tamanho" %}
+          {{ properties }}
+        {% endaggregations %}
+      </pre>
+      <p>Podemos usar também filtros específicos, conforme o exemplo:</p>
+      <h4 id="fintros-unitarios"> - Filtros Unitários</h4>
+      <pre>
+        {% aggregations tag:tag.name parent_tag:parent_tag.name single_option_typed_tags:"marca" %}
+          {{ typed_tags }}
+        {% endaggregations %}
+
+        {% aggregations q:params.q single_option_typed_tags:"marca" %}
+          {{ typed_tags }}
+        {% endaggregations %}
+
+        {% aggregations tag:tag.name parent_tag:parent_tag.name single_option_properties:"Tamanho" %}
+          {{ typed_tags }}
+        {% endaggregations %}
+
+        {% aggregations q:params.q single_option_properties:"Tamanho" %}
+          {{ typed_tags }}
+        {% endaggregations %}
+      </pre>
+
+      <p>Por padrão, todos os filtros permitem múltiplas seleções, mas casos eja necessário, podemos fazer com que ele permita que apenas um item seja selecionado por vez.</p>
+
 
       <h2 id="recursos">Recursos</h3>
       <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
@@ -1775,11 +1886,11 @@ que consome menos requisições para nossa api de menus.</p>
       <h3 id="montar-carrinho-na-url">Montando um carrinho pela url</h3>
       <pre>
 // adicionando 2 itens na loja demo
-// sku 1007-1 e 1009-4 
-// a quantidade do item 1007-1 = 10  
-// a quantidade do item 11009-4 = 5  
+// sku 1007-1 e 1009-4
+// a quantidade do item 1007-1 = 10
+// a quantidade do item 11009-4 = 5
 // desconto de 50% no subtotal do pedido
-// código do cupom de desconto "DESCONTO50" 
+// código do cupom de desconto "DESCONTO50"
 
 <a href="https://demo.vnda.com.br/carrinho?itens=1007-1:10,1009-4:5&cupom=DESCONTO50" target="_blank">https://demo.vnda.com.br/carrinho?itens=1007-1:10,1009-4:5&cupom=DESCONTO50</a>
       </pre>
@@ -1840,7 +1951,7 @@ que consome menos requisições para nossa api de menus.</p>
       <p>- Criando um novo form no admin: <a class="laranja" href="/img/novo-form.png" data-featherlight="image">confira aqui</a></p>
       <p>- Informando o  email de destino e assunto: <a class="laranja" href="/img/edicao-do-form.png" data-featherlight="image">confira aqui</a></p>
       <p>- Ao salvar será gerado um chave: <a class="laranja" href="/img/edicao-form-concluido.png" data-featherlight="image">confira aqui</a></p>
-      <p><strong>Configuração .liquid:</strong></p>  
+      <p><strong>Configuração .liquid:</strong></p>
       <p>- Form action= "/webform" </p>
       <p>- Incluir o campo hidden com name="key" e com o valor da key do form da configuração anterior.</p>
       <p>Incluir o campo hidden com name="reply_to", este campo deve pegar o valor do campo email antes do evento submit do formulário. Use um evento jquery onsubmit para pegar o valor do email antes do submit ou apenas informe o evento onsubmit direto na tag form
@@ -1888,7 +1999,7 @@ exemplo-senha-cliente
       <!-- // -->
 
       <h3 id="percentual-desconto-boleto">Percentual de desconto no Boleto</h3>
-      <pre> 
+      <pre>
 // Preço total do carrinho R$ 100,00
 
 {{ cart.total_for_slip | money_format }}
@@ -1896,7 +2007,7 @@ Retorno "R$ 70,00"
 
 {{ store.settings.slip_discount }}
 Retorno "30"
-      </pre>      
+      </pre>
       <p>Em configurações da loja, no item Boleto, informe o % de desconto que o pagamento por boleto terá.<a class="laranja" href="/img/percentual-desconto.png" data-featherlight="image">confira aqui</a></p>
       <p>A tag {{ cart.total_for_slip }} exibe o total do carrinho com o desconto aplicado.</p>
       <p>É possível pegar o % de desconto na store pelo settings da loja com {{ store.settings.slip_discount }}.</p>
@@ -1951,7 +2062,7 @@ $.post(
 )
       </pre>
       <p>* Adicionar via JS</p>
-      <!-- -->      
+      <!-- -->
 
       <h2 id="dicas-setup/admin">Dicas Setup/Admin</h2>
       <p>Seção de dicas para integrar tanto no setup da loja ou para o admin.</p>
@@ -2035,13 +2146,13 @@ $.post(
       <h3 id="como-listar-parcelas">Como Listar Parcelas</h3>
       <p>Para listar parcelas, podemos usar um dos seguintes exemplos de código:</p>
       <pre>
-// produto com desconto     
+// produto com desconto
 {{ product | apply_discount | installment_number }}x de {{  product | apply_discount | installments | money_format }}
 ou
 {% assign preco =  product | apply_discount %}
 {{ preco | installment_number }}x de {{ preco | money_format }}
 
-// produto sem desconto     
+// produto sem desconto
 {{ product.price | installment_number }}x de {{  product.price | installments | money_format }}
 ou
 {% assign preco =  product.price %}
@@ -2198,11 +2309,11 @@ Chamando um favicon salvo na raiz da pasta "/public/images"
       <p>2.1 Caminho relativo da pasta "/public"<br />
       <span><</span>link href="/favicon" rel="shortcut icon" /></p>
       <p>2.2 Caminho relativo na raiz da pasta "/images"<br />
-      <span><</span>link href="/images/favicon.ico" rel="shortcut icon" />      
+      <span><</span>link href="/images/favicon.ico" rel="shortcut icon" />
       </p>
 
 
-      <h3 id="mapeamento-da-tag-params">Mapeamento da tag params</h3>  
+      <h3 id="mapeamento-da-tag-params">Mapeamento da tag params</h3>
       <pre>
 <span><</span>pre>{{ params }}<</span>/pre>
 
@@ -2231,17 +2342,17 @@ par url http://www.loja.com.br/masculino/bermudas
       <!-- // -->
       <h3 id="exibir-menu-para-tag">Como exibir o menu para uma determinda tag</h3>
       <pre>
-para url http://www.loja.com.br/masculino/luvas -->      
-{% if tag.name == "masculino" or params.parent == "masculino" %}   
+para url http://www.loja.com.br/masculino/luvas -->
+{% if tag.name == "masculino" or params.parent == "masculino" %}
 //carrega uma posição de menu %
   {% menus position:"masculino" %}
-  ... 
+  ...
   {% endmenus %}
-{% endif %}  
+{% endif %}
 
-<a href="#mapeamento-da-tag-params">entenda a tag {{ params }}</a>   
+<a href="#mapeamento-da-tag-params">entenda a tag {{ params }}</a>
       </pre>
-      <p>Para chamar um menu em uma determinada categoria na página de tag será necessário veficar o nome da tag, entretanto, se necessário incluir o menu em todas categorias filhas use params.parent </p> 
+      <p>Para chamar um menu em uma determinada categoria na página de tag será necessário veficar o nome da tag, entretanto, se necessário incluir o menu em todas categorias filhas use params.parent </p>
       <p>Note que no ex ao lado que é nessário chamar a posição de menu masculino em 2 cenários, um para quando a tag for masculino ou para quando a tag for "luvas". Leve em consideração que "luvas" é filha de "masculino".</p>
 
       <!-- // -->
@@ -2337,7 +2448,7 @@ para url http://www.loja.com.br/masculino/luvas -->
       <pre>
 // atribuindo endereço de forma dinâmica
 {{ store.street_name }}..{{ store.street_number }}..
-{{ store.neighborhood }}.  
+{{ store.neighborhood }}.
       </pre>
       <p>
         A tag { store } retorna um array com todas as propriedades da seção "admin/store/edit".
@@ -2369,7 +2480,7 @@ para url http://www.loja.com.br/masculino/luvas -->
 
 Para trocar a imagem principal façar uma função javascript que compare valor do input selecionado com o data-sku da imagem:
 
-O valor do input das variantes sempre deve ser o sku.    
+O valor do input das variantes sempre deve ser o sku.
       </pre>
       <p>Configurar produto no admin "admin > products > midias > images": ao clicar nas fotos do produto ficará disponível no modal com as variantes que podem ser selecionadas <a href="http://www.vnda.com.br/images/guides/screenshot-modal-midia.png"><img src="http://www.vnda.com.br/images/guides/screenshot-modal-midia.png"></a></p>
 
@@ -2377,7 +2488,7 @@ O valor do input das variantes sempre deve ser o sku.
       <h3 id="dicas-loop">Dicas loop</h3>
       <p>A linguagem aceita a tag {% break %} para sair de algum  laço de loop de {% tags %} .. {% products %} {% for %}  etc ...</p>
       <p>Se precisar pular para o próximo laço de um loop use a tag {% continue %}.</p>
- 
+
       <!-- / / -->
       <h3 id="template-do-zendesk">Personalizando o Template Zendesk</h3>
         <p>Faça o login em https://cadenceatendimento.zendesk.com ou https://cadenceatendimento.zendesk.com/agent</p>
@@ -2406,7 +2517,7 @@ O valor do input das variantes sempre deve ser o sku.
 
 
         <h3 id="pedido-finalizado">Pedido Finalizado por Boleto Moip e Cobre Grátis</h3>
-        <h4>Moip</h4>  
+        <h4>Moip</h4>
         <pre>
 <span><</span>a target="_blank" href="#" id="print-button" style="display:none">IMPRIMIR<span><</span>/a>
 
@@ -2416,15 +2527,15 @@ O valor do input das variantes sempre deve ser o sku.
        // função para retirar algum efeito de loader da página
     });
   });
-<span><</span>/script>          
+<span><</span>/script>
         </pre>
         <p>A integração com o moip faz o mapeamento na página de pedido concluído para exibir e inserir o link do botao de imprimir. A validação do link é feita através da tag html <span><</span>a> de  atributo id definido como "print-button". Este processo pode levar alguns segundos por isso
         usamos um loader e um script padrão que será executado sempre que uma requisão for conclúida.</p>
- 
-        <h4>Cobre Grátis</h4>  
+
+        <h4>Cobre Grátis</h4>
         <p>Para o Cobre Grátis o link é carregado no .liquid pela tag {{ order.slip_url }}</p>
 
-        <p></p><br> 
+        <p></p><br>
         <pre>
  {% if store.settings.slip_gateway == 'cobre_gratis' %}
  {% else %}
@@ -2432,7 +2543,7 @@ O valor do input das variantes sempre deve ser o sku.
  {% endif %}
         </pre>
         <p>obs: validar no front qual a integração que a loja usa.</p>
-        <p>Exemplo de página de pedido finalizado <a href="https://github.com/vagnerolliver/Pedido-Finalizado" class="laranja" target="_blank">aqui</a></p> 
+        <p>Exemplo de página de pedido finalizado <a href="https://github.com/vagnerolliver/Pedido-Finalizado" class="laranja" target="_blank">aqui</a></p>
 
         <h3 id="produto-com-2-atributos-liquid">Produtos c/ 2 Atributos - via Liquid</h3>
 
@@ -2626,7 +2737,7 @@ function onlyUnique(value, index, self) {
 
     </div>
   </div>
-  
+
   <!-- Google Tag Manager -->
   <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script>
   <!-- End Google Tag Manager -->
@@ -2634,7 +2745,7 @@ function onlyUnique(value, index, self) {
   <script src="../js/jquery-ui-1.9.1.custom.min.js"></script>
   <script src="../js/jquery.tocify.js"></script>
   <script src="..js/featherlight.js" type="text/javascript" charset="utf-8"></script>
- 
+
 
   <script>
     $(function() {
