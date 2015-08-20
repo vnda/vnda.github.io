@@ -1227,11 +1227,8 @@ OU
 
       <h3 id="aggregations">{% aggregations %}</h3>
       <pre>
-        {% contentfor exemplo %}
-          ... conteúdo armazenado na varianvel "exemplo"
-        {% endcontentfor %}
-
-        {{ exemplo }} // exibindo contéudo
+        {% aggregations tag:tag.name parent_tag:parent_tag.name %}
+        {% endaggregations %}
       </pre>
       <p>
         Filtros podem ser usados tanto no template de busca, quanto no de tag, com uma pequena diferença na sintaxe.<br>
