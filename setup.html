@@ -1225,6 +1225,128 @@ OU
       <p>Armazendo conteúdo com a tag {% contentfor %}<br />
       *Salvar e exibir conteúdo em outros locais do template .liquid</p>
 
+      <h3 id="contentfor">{% aggregations %}</h3>
+      <pre>
+        {% contentfor exemplo %}
+          ... conteúdo armazenado na varianvel "exemplo"
+        {% endcontentfor %}
+
+        {{ exemplo }} // exibindo contéudo
+      </pre>
+      <p>
+        Filtros podem ser usados tanto no template de busca, quanto no de tag, com uma pequena diferença na sintaxe.<br>
+        Para usar os filtros em um mesmo arquivo e diferenciar o template em que estão sendo usados, use a seguinte sintaxe para identificar o template {{ template }}.<br>
+        Para ocultar os filtros, caso não queira usar em páginas que possuam pouco resultado e dos quais não seja interessante filtrar, verifique a quantidade de produtos resultante da busca ou da tag, com a seguinte sintaxe: Tag: {{ tag.products_count }} Busca: {{ products.size }}.<br>
+      </p>
+
+      <pre>
+        {
+          "min"=>99.0,
+          "max"=>999.0
+        }
+      </pre>
+      <p>O filtro de preço retorna apenas o menor e o maior valor e podem ser usados para criar um slice de preço, para filtrar produtos entre a faixa de preço desejado.</p>
+
+      <pre>
+        {
+          "name"  =>"marca",
+          "count" =>30,
+          "values"=>[{
+            "name"      =>"mosaico",
+            "title"     =>"Mosaico",
+            "count"     =>10,
+            "selected"  =>false,
+            "url"       =>"/feminino?typedtags__marca=mosaico"
+          }]
+        }
+      </pre>
+
+      <p>O filtro de tags oferece o seguinte retorno:</p>
+
+      <pre>
+        {
+          "name"  =>"Tamanho",
+          "count" =>59,
+          "values"=>[{
+             "name"     =>"G",
+             "count"    =>19,
+             "selected" =>false,
+             "url"      =>"/feminino?property__Tamanho=G"
+          }]
+        }
+      </pre>
+
+      <p>O filtro de atributos oferece o seguinte retorno:</p>
+
+      <pre>
+        {% aggregations tag:tag.name parent_tag:parent_tag.name %}
+          {{ price }}
+          {{ properties }}
+          {{ typed_tags }}
+        {% endaggregations %}
+      </pre>
+
+      <p>
+        <strong>Filtros na tag:</strong><br>
+        Para exibis filtros em uma tag, usamos a seguinte sintaxe:
+      </p>
+
+
+      <pre>
+        {% aggregations q:params.q %}
+          {{ price }}
+          {{ properties }}
+          {{ typed_tags }}
+        {% endaggregations %}
+      </pre>
+      <p>
+        <strong>Filtros na busca:</strong><br >
+        Para exibis filtros na busca, usamos a seguinte sintaxe:
+      </p>
+
+
+      <pre>
+        {% aggregations tag:tag.name parent_tag:parent_tag.name only_typed_tags:"marca" %}
+          {{ typed_tags }}
+        {% endaggregations %}
+
+        {% aggregations q:params.q only_typed_tags:"marca" %}
+          {{ typed_tags }}
+        {% endaggregations %}
+
+        {% aggregations tag:tag.name parent_tag:parent_tag.name only_properties:"Tamanho" %}
+          {{ properties }}
+        {% endaggregations %}
+
+        {% aggregations q:params.q only_properties:"Tamanho" %}
+          {{ properties }}
+        {% endaggregations %}
+      </pre>
+
+      <p>Podemos usar também filtros específicos, conforme o exemplo:</p>
+
+      <pre>
+        {% aggregations tag:tag.name parent_tag:parent_tag.name single_option_typed_tags:"marca" %}
+          {{ typed_tags }}
+        {% endaggregations %}
+
+        {% aggregations q:params.q single_option_typed_tags:"marca" %}
+          {{ typed_tags }}
+        {% endaggregations %}
+
+        {% aggregations tag:tag.name parent_tag:parent_tag.name single_option_properties:"Tamanho" %}
+          {{ typed_tags }}
+        {% endaggregations %}
+
+        {% aggregations q:params.q single_option_properties:"Tamanho" %}
+          {{ typed_tags }}
+        {% endaggregations %}
+      </pre>
+
+      <p>Por padrão, todos os filtros permitem múltiplas seleções, mas casos eja necessário, podemos fazer com que ele permita que apenas um item seja selecionado por vez.</p>
+
+
+
       <h2 id="recursos">Recursos</h3>
       <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
 
