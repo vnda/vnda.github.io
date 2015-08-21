@@ -568,27 +568,47 @@ Mirror of if statement
       <p>Listagem de produtos com a tag <a href="#products" class="laranja">{% products %}</a><br/><br/><br/><br/></p>
       <!-- // -->
 
-      <h4 id="criar-páginação">Criar páginação</h4>
+      <h4 id="paginacao">Configurando a páginação</h4>
       <pre>
-{% if pagination.total_pages > 1 %}
-<span><</span>nav class="pagination"<span>></span>
-  <span><</span>span class="pagination"<span>></span>
-      Página {{ pagination.current_page }} de {{ pagination.total_pages }}
-      {% if pagination.prev_page %}
-          <span><</span>a href="{{ pagination.prev_url }}" class="previous"<span>></span>←<span><</span>/a<span>></span>
+{% products tag:tag.name page:params.page per_page:25 %}
+  // executa no primeiro loop    
+  {% if forloop.first %}
+    <span><<span>ul class="products"><span>
+  {% endif %}
+    // include com o arquivo com a listagem de produtos
+    {% include "list_product" %}
+  // executa no último loop 
+  {% if forloop.last %} 
+    <span><</span>/ul>
+    {% contentfor paginacao %} 
+      // armazena o conteúdo de "<span><</span>nav>" para dentro variável <strong>paginacao</strong>
+      {% if pagination.total_pages > 1 %}
+      <span><</span>nav class="pagination"<span>></span>
+        <span><</span>span class="pagination"<span>></span>
+            Página {{ pagination.current_page }} de {{ pagination.total_pages }}
+            {% if pagination.prev_page %}
+                <span><</span>a href="{{ pagination.prev_url }}" class="previous"<span>></span>←<span><</span>/a<span>></span>
+            {% endif %}
+            {% for page in pagination.pages %}
+              <span><</span>li class="{% if current_url == page.url %} active {% endif %}"><span><</span>a href="{{ page.url }}">{{ page.number }} {% if current_url == page.url %}{% endif %}</a></li>
+            {% endfor %}
+            {% if pagination.next_page %}
+                <span><</span>a href="{{ pagination.next_url }}" class="next"<span>></span>→<span><</span>/a<span>></span>
+            {% endif %}
+        <span><</span>/span<span>></span>
+      <span><</span>/nav<span>></span>
       {% endif %}
-      {% if pagination.next_page %}
-          <span><</span>a href="{{ pagination.next_url }}" class="next"<span>></span>→<span><</span>/a<span>></span>
-      {% endif %}
-  <span><</span>/span<span>></span>
-<span><</span>/nav<span>></span>
-{% endif %}
-      </pre>
-      <p>O código da páginação deve ficar dentro do loop {% products %}</p>
-      <!-- // -->
+    {% endcontentfor %}
+  {% endif %}
+{% endproducts %}
 
-      <h4 id="filtros">Filtros</h4>
-      <p>aguardando atualização...<br/><br/><br/><br/></p>
+// exibe o conteúdo da variável <strong>paginacao</strong>s
+<span><</span>div>{{ paginacao }}<span><</span>/div>
+      </pre>
+      <p>O código da paginação deve ser executado pelo menos 1 vez dentro do loop de % products, o mesmo que é usado para carregar uma listagem de produtos.<br>ex: {% products %} {% if forloop.last %} // código {% endif %}{% endproducts %}</p>
+      <p>Use o {% if forloop.first %} ou {% if forloop.last %} incluir o script de paginação.</p>
+      <p>**importante: use o {% contentfor %} para armazenar o bloco da páginação e chamar em outra parte do código:</p>
+      <p>**a páginação funcionára só para páginas de tag.</p>
       <!-- // -->
 
       <h3 id="product.liquid">Product.liquid</h3>
@@ -1758,19 +1778,59 @@ que consome menos requisições para nossa api de menus.</p>
       * Meta tags e opengraph devem ser dinâmicas <br />
       * Usar {% opengraphfor %} para aplicar Meta Title e Description nas páginas internas da loja.</p>
 
-      <h3 id="contentfor">{% contentfor %}</h3>
-      <pre>
-{% contentfor exemplo %}
-  ... conteúdo armazenado na varianvel "exemplo"
+<h3 id="contentfor">{% contentfor %}</h3>
+<pre>
+// armazendo o conteúdo em lista_produto
+{% contentfor lista_produto %} 
+  <span><</span>div> Item 1 <span><</span>/div>
+{% endcontentfor %}
+{% contentfor lista_produto %} 
+  <span><</span>div> Item 2 <span><</span>/div>
+{% endcontentfor %}
+{% contentfor lista_produto %} 
+  <span><</span>div> Item 3 <span><</span>/div>
+{% endcontentfor %}
+ 
+{{  lista_produto }}
+
+retorno:
+Item 1
+Item 2
+Item 3
+
+// removendo o conteúdo em lista_produto
+{% assign lista_produto = "" %}
+
+// armazendo o conteúdo em lista_produto
+{% contentfor lista_produto %} 
+  <span><</span>div> Item 5 <span><</span>/div>
 {% endcontentfor %}
 
-{{ exemplo }} // exibindo contéudo
-      </pre>
-      <p>Armazendo conteúdo com a tag {% contentfor %}<br />
-      *Salvar e exibir conteúdo em outros locais do template .liquid</p>
+{% contentfor lista_produto %} 
+  <span><</span>div> Item 6 <span><</span>/div>
+{% endcontentfor %}
+ 
+{{  lista_produto }}
 
+retorno:
+Item 5
+Item 6
 
+{% assign lista_produto = "pense nele como uma váriavel" %}
+{% contentfor lista_produto %} 
+  <span><</span>div> Item 10 <span><</span>/div>
+{% endcontentfor %}
 
+{{  lista_produto }}
+
+retorno:
+pense nele como uma váriavel
+Item 6
+ 
+</pre>
+<p>O {% contentfor nome_da_variavel %} é usado para adicionar conteúdo dentro da variável  "nome_da_variavel" sem remover o conteúdo atual, contrário da tag {% capture %} que remove o conteúdo anterior.
+
+<!-- // -->
 
 <h3 id="aggregations">{% aggregations %}</h3>
 <pre>
@@ -2487,6 +2547,7 @@ para url http://www.loja.com.br/masculino/luvas -->
       </p>
 
        <!-- // -->
+
       <h3 id="trocar-imagem-principal-por-variante-selecionada">Trocar imagem principal por variante selecionada</h3>
 
       <pre>
