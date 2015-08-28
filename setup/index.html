@@ -568,27 +568,47 @@ Mirror of if statement
       <p>Listagem de produtos com a tag <a href="#products" class="laranja">{% products %}</a><br/><br/><br/><br/></p>
       <!-- // -->
 
-      <h4 id="criar-páginação">Criar páginação</h4>
+      <h4 id="paginacao">Configurando a páginação</h4>
       <pre>
-{% if pagination.total_pages > 1 %}
-<span><</span>nav class="pagination"<span>></span>
-  <span><</span>span class="pagination"<span>></span>
-      Página {{ pagination.current_page }} de {{ pagination.total_pages }}
-      {% if pagination.prev_page %}
-          <span><</span>a href="{{ pagination.prev_url }}" class="previous"<span>></span>←<span><</span>/a<span>></span>
+{% products tag:tag.name page:params.page per_page:25 %}
+  // executa no primeiro loop    
+  {% if forloop.first %}
+    <span><<span>ul class="products"><span>
+  {% endif %}
+    // include com o arquivo com a listagem de produtos
+    {% include "list_product" %}
+  // executa no último loop 
+  {% if forloop.last %} 
+    <span><</span>/ul>
+    {% contentfor paginacao %} 
+      // armazena o conteúdo de "<span><</span>nav>" para dentro variável <strong>paginacao</strong>
+      {% if pagination.total_pages > 1 %}
+      <span><</span>nav class="pagination"<span>></span>
+        <span><</span>span class="pagination"<span>></span>
+            Página {{ pagination.current_page }} de {{ pagination.total_pages }}
+            {% if pagination.prev_page %}
+                <span><</span>a href="{{ pagination.prev_url }}" class="previous"<span>></span>←<span><</span>/a<span>></span>
+            {% endif %}
+            {% for page in pagination.pages %}
+              <span><</span>li class="{% if current_url == page.url %} active {% endif %}"><span><</span>a href="{{ page.url }}">{{ page.number }} {% if current_url == page.url %}{% endif %}</a></li>
+            {% endfor %}
+            {% if pagination.next_page %}
+                <span><</span>a href="{{ pagination.next_url }}" class="next"<span>></span>→<span><</span>/a<span>></span>
+            {% endif %}
+        <span><</span>/span<span>></span>
+      <span><</span>/nav<span>></span>
       {% endif %}
-      {% if pagination.next_page %}
-          <span><</span>a href="{{ pagination.next_url }}" class="next"<span>></span>→<span><</span>/a<span>></span>
-      {% endif %}
-  <span><</span>/span<span>></span>
-<span><</span>/nav<span>></span>
-{% endif %}
-      </pre>
-      <p>O código da páginação deve ficar dentro do loop {% products %}</p>
-      <!-- // -->
+    {% endcontentfor %} 
+  {% endif %}
+{% endproducts %}
 
-      <h4 id="filtros">Filtros</h4>
-      <p>aguardando atualização...<br/><br/><br/><br/></p>
+// exibe o conteúdo da variável <strong>paginacao</strong>s
+<span><</span>div>{{ paginacao }}<span><</span>/div>
+      </pre>
+      <p>O código da paginação deve ser executado pelo menos 1 vez dentro do loop de % products, o mesmo que é usado para carregar uma listagem de produtos.<br>ex: {% products %} {% if forloop.last %} // código {% endif %}{% endproducts %}</p>
+      <p>Use o {% if forloop.first %} ou {% if forloop.last %} incluir o script de paginação.</p>
+      <p>**importante: use o {% contentfor %} para armazenar o bloco da páginação e chamar em outra parte do código:</p>
+      <p>**a páginação funcionára só para páginas de tag.</p>
       <!-- // -->
 
       <h3 id="product.liquid">Product.liquid</h3>
@@ -790,7 +810,7 @@ $(function(){
       <h4 id="remover-item-do-carrinho">Remover item do carrinho</h4>
       <pre>
 <span><</span>form action="{{ cart_url }}" method="post"<span>></span>
-  <span><</span>input type="hidden" name="_method" value="patch" /<span>></span>
+  <span><</span>input type="hidden" name="_method" value="Delete" /<span>></span>
   <span><</span>input type="hidden" name="item_id" value="999" /<span>></span>
   <span><</span>input type="submit" value="Excluir"/<span>></span>
 <span><</span>/form<span>></span>
@@ -1758,16 +1778,59 @@ que consome menos requisições para nossa api de menus.</p>
       * Meta tags e opengraph devem ser dinâmicas <br />
       * Usar {% opengraphfor %} para aplicar Meta Title e Description nas páginas internas da loja.</p>
 
-      <h3 id="contentfor">{% contentfor %}</h3>
-      <pre>
-{% contentfor exemplo %}
-  ... conteúdo armazenado na varianvel "exemplo"
+<h3 id="contentfor">{% contentfor %}</h3>
+<pre>
+// armazendo o conteúdo em lista_produto
+{% contentfor lista_produto %} 
+  <span><</span>div> Item 1 <span><</span>/div>
+{% endcontentfor %}
+{% contentfor lista_produto %} 
+  <span><</span>div> Item 2 <span><</span>/div>
+{% endcontentfor %}
+{% contentfor lista_produto %} 
+  <span><</span>div> Item 3 <span><</span>/div>
+{% endcontentfor %}
+ 
+{{  lista_produto }}
+
+retorno:
+Item 1
+Item 2
+Item 3
+
+// removendo o conteúdo em lista_produto
+{% assign lista_produto = "" %}
+
+// armazendo o conteúdo em lista_produto
+{% contentfor lista_produto %} 
+  <span><</span>div> Item 5 <span><</span>/div>
 {% endcontentfor %}
 
-{{ exemplo }} // exibindo contéudo
-      </pre>
-      <p>Armazendo conteúdo com a tag {% contentfor %}<br />
-      *Salvar e exibir conteúdo em outros locais do template .liquid</p>
+{% contentfor lista_produto %} 
+  <span><</span>div> Item 6 <span><</span>/div>
+{% endcontentfor %}
+ 
+{{  lista_produto }}
+
+retorno:
+Item 5
+Item 6
+
+{% assign lista_produto = "pense nele como uma váriavel" %}
+{% contentfor lista_produto %} 
+  <span><</span>div> Item 10 <span><</span>/div>
+{% endcontentfor %}
+
+{{  lista_produto }}
+
+retorno:
+pense nele como uma váriavel
+Item 6
+ 
+</pre>
+<p>O {% contentfor nome_da_variavel %} é usado para adicionar conteúdo dentro da variável  "nome_da_variavel" sem remover o conteúdo atual, contrário da tag {% capture %} que remove o conteúdo anterior.
+
+<!-- // -->
 
 <h3 id="aggregations">{% aggregations %}</h3>
 <pre>
@@ -1882,18 +1945,18 @@ Para exibis filtros na busca, usamos a seguinte sintaxe:
 <h3 id="search_options">{% search_options %}</h3>
 <pre>
 {% search_options %}
-  {{ search_option.label }}
+{{ search_option.label }}
 {% endsearch_options %}
 -------------------------
 {
-  "name"=>"small_price",
-  "label"=>"Menor Preço",
-  "active"=>false,
-  "url"=>"/mobilidade-acessibilidade?order=price"
+"name"=>"small_price",
+"label"=>"Menor Preço",
+"active"=>false,
+"url"=>"/mobilidade-acessibilidade?order=price"
 }
 -------------------------
 {% products tag:tag.name parent_tag:parent_tag.name page:params.page sort:params.order   %}
-  {% include "_commons/list_products" %}
+{% include "_commons/list_products" %}
 {% endproducts %}
 </pre>
 <p>
@@ -1902,43 +1965,84 @@ OBS: O parâmetro de ordenamento deve ser passado para a tag, [ sort:params.orde
 Os parâmetros de ordenamento não se aplicam a busca, que mostra os produtos em ordem de relevância em relação ao que foi pesquisado.
 </p>
 
-
       <h2 id="recursos">Recursos</h3>
       <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
 
-      <h3 id="montar-carrinho-na-url">Montando um carrinho pela url</h3>
-      <pre>
-// adicionando 2 itens na loja demo
-// sku 1007-1 e 1009-4
-// a quantidade do item 1007-1 = 10
-// a quantidade do item 11009-4 = 5
-// desconto de 50% no subtotal do pedido
-// código do cupom de desconto "DESCONTO50"
+<h3 id="adicionar-produto-ajax-por-$post">Adicionar Produto Ajax com $.post()</h3>
+<pre>
+$.post( "/carrinho/adicionar",{ sku:'1004-4',quantity:'1' }, function( data ) {
+  console.log(data)
+},"json"
+</pre>
+<p>Para adicionar um produto no carrinho via ajax é necessário enviar para a url "/adicionar/carrinho" e os campos sku e quantidade.</p>
+<p>Com jquery, recomendamos que use o $.post() para enviar os dados para url acima que nosso server esta configurado para retornar um objeto com os item(s) adicionado(s) no formato json como resposta, assim se torna fácil manipular o objeto com jquery.</p>
 
-<a href="https://demo.vnda.com.br/carrinho?itens=1007-1:10,1009-4:5&cupom=DESCONTO50" target="_blank">https://demo.vnda.com.br/carrinho?itens=1007-1:10,1009-4:5&cupom=DESCONTO50</a>
-      </pre>
-      <p>Quando um carrinho ainda não tiver nenhum dado de cliente ou para ser feito na mão, é possível incluir na URL os parâmetros "sku","quantidade" e opicional "cupom".</p>
-      <p>Basicamente, deve entrar no final da URL SKU:QNT+SKU:QNT...</p>
-      <p>Esse link leva direto para o carrinho montado e pode ter algum CUPOM ASSOCIADO</p>
-      <p>Url /carrinho?itens=SKU:quantidade,SKU:quantidade&cupom=CUPOM</p>
-      <h3 id="descrição-do-produto-com-múltiplas-seções">Descrição do produto com múltiplas seções</h3>
-      <pre>
-{% if product.description %}
-  {% assign descParts = product.description | split:"linhadecorte" %}
-  {% for desc in descParts %}
-    {% if forloop.index == 1 %}{% assign desc1 = desc %}{% endif %}
-    {% if forloop.index == 2 %}{% assign desc2 = desc %}{% endif %}
-    {% if forloop.index == 3 %}{% assign desc3 = desc %}{% endif %}
-  {% endfor %}
-{% endif %}
-...
-{{ desc1 }}
-...
-{{ desc2 }}
-...
-{{ desc3 }}
-      </pre>
-      <p>Para determinar o o local onde a descrição será dividida, deve-se colocar o texto “linhadecorte” na descrição do produto</p>
+<h4 id="">Adicionado o(s) item(s) do carrinho no html (VIA JS)</h4>
+
+<p>** incluir biblioteca jquery.js<br>** ter noções básicas de objetos<br></p>
+
+<pre>
+$.post( "/carrinho/adicionar",{ sku:'1004-4',quantity:'1' }, function( data ) {
+  console.log(data)
+},"json")
+
+Resposta: [objeto json]
+Object {id: 29, subtotal: 80, total: 80, shipping_method: null, shipping_price: 0…} 
+</pre>
+
+<p>
+Sempre for feito um $.post() para url "adicionar/carrinho" com os dados do sku e quantidade do produto, 
+a resposta do server esta configurado para retornar um objeto com os item(s) adicionado(s) no formato json.
+<br><br>
+**os dados desse objeto json são os mesmo encontrados no loop de {% cartitemns %}.
+</p>
+
+<div><br></div>
+
+<pre>
+$.post( "/carrinho/adicionar",{ sku:'1004-4',quantity:'1' }, function( data ) {
+ $( cart.items ).each(function(index, item){
+  console.log( item )
+ });
+},"json")
+
+Object {id: 78, quantity: 1, price: 80, subtotal: 80, total: 80…}
+Object {id: 79, quantity: 1, price: 80, subtotal: 80, total: 80…}
+...  
+</pre>
+<p>Você pode percorrer os indíces desse objeto usando each do jquery:  </p>
+
+<div><br></div>
+
+<pre>
+function montaCarrinho( item ) {
+ // deixe uma li de marcação no html
+ // variavel cart_preview clona a li de marcação que será alimentada com o conteúdo do item  
+ var cart_preview = $( "ul.cart-items li" ).clone();
+ // coloca para dentro da lista
+ cart_preview.appendTo( "ul.cart-items" );
+ // pesquisa dentro da li pela tag image e inclui o atributo src
+ cart_preview.find( "img" ).attr("src",item.image_url)
+ // pesquisa dentro da li  pela classe .name e inclui o nome
+ cart_preview.find( ".name" ).text(item.product_name)
+ // pesquisa dentro da li pela classe .price e inclui o preço
+ cart_preview.find( ".price" ).html(item.price );
+ .....
+}
+
+$.post( "/carrinho/adicionar",{ sku:'1004-4',quantity:'1' }, function( data ) {
+ $( cart.items ).each(function(index, item){
+  // vai montando o html com o(s) item(s)
+  montaCarrinho(item)
+ });
+},"json")  
+</pre>
+
+<p>
+Existem várias formas de montar o dropdown e aba de carrinho via javascript, 
+o exemplo ao lado temos função que serve de modelo para carregar o html com uma lista de items a cada interação do for de items.
+</p>
+<p><a href="https://github.com/vagnerolliver/Adicionar-Produto-com--post----Aba-Dropdown-Carrinho/blob/master/script.js" class="laranja" target="_blank">publicado no github</a></p>
 
       <h3 id="dns">DNS</h3>
       <p>- Criar uma entrada (ou alterar uma já existente) do tipo A,
@@ -1979,6 +2083,42 @@ Os parâmetros de ordenamento não se aplicam a busca, que mostra os produtos em
       <p>- Incluir o campo hidden com name="key" e com o valor da key do form da configuração anterior.</p>
       <p>Incluir o campo hidden com name="reply_to", este campo deve pegar o valor do campo email antes do evento submit do formulário. Use um evento jquery onsubmit para pegar o valor do email antes do submit ou apenas informe o evento onsubmit direto na tag form
       como o exemplo ao lado</p>
+
+
+<h3 id="montar-carrinho-na-url">Montando um carrinho pela url</h3>
+<pre>
+// adicionando 2 itens na loja demo
+// sku 1007-1 e 1009-4
+// a quantidade do item 1007-1 = 10
+// a quantidade do item 11009-4 = 5
+// desconto de 50% no subtotal do pedido
+// código do cupom de desconto "DESCONTO50"
+
+<a href="https://demo.vnda.com.br/carrinho?itens=1007-1:10,1009-4:5&cupom=DESCONTO50" target="_blank">https://demo.vnda.com.br/carrinho?itens=1007-1:10,1009-4:5&cupom=DESCONTO50</a>
+</pre>
+<p>Quando um carrinho ainda não tiver nenhum dado de cliente ou para ser feito na mão, é possível incluir na URL os parâmetros "sku","quantidade" e opicional "cupom".</p>
+<p>Basicamente, deve entrar no final da URL SKU:QNT+SKU:QNT...</p>
+<p>Esse link leva direto para o carrinho montado e pode ter algum CUPOM ASSOCIADO</p>
+<p>Url /carrinho?itens=SKU:quantidade,SKU:quantidade&cupom=CUPOM</p>
+<h3 id="descrição-do-produto-com-múltiplas-seções">Descrição do produto com múltiplas seções</h3>
+<pre>
+{% if product.description %}
+  {% assign descParts = product.description | split:"linhadecorte" %}
+  {% for desc in descParts %}
+    {% if forloop.index == 1 %}{% assign desc1 = desc %}{% endif %}
+    {% if forloop.index == 2 %}{% assign desc2 = desc %}{% endif %}
+    {% if forloop.index == 3 %}{% assign desc3 = desc %}{% endif %}
+  {% endfor %}
+{% endif %}
+...
+{{ desc1 }}
+...
+{{ desc2 }}
+...
+{{ desc3 }}
+</pre>
+<p>Para determinar o o local onde a descrição será dividida, deve-se colocar o texto “linhadecorte” na descrição do produto</p>
+
 
       <h3 id="notificações-de-e-mails">Notificações de e-mails</h3>
       <p>A plataforma possui integração com <a href="https://madmimi.com/" target="_blank">Madmimi</a>, ferramenta que gerencia as campanhas de e-mails dos nossos clientes.</p>
@@ -2485,6 +2625,7 @@ para url http://www.loja.com.br/masculino/luvas -->
       </p>
 
        <!-- // -->
+
       <h3 id="trocar-imagem-principal-por-variante-selecionada">Trocar imagem principal por variante selecionada</h3>
 
       <pre>
