@@ -1965,8 +1965,39 @@ OBS: O parâmetro de ordenamento deve ser passado para a tag, [ sort:params.orde
 Os parâmetros de ordenamento não se aplicam a busca, que mostra os produtos em ordem de relevância em relação ao que foi pesquisado.
 </p>
 
-      <h2 id="recursos">Recursos</h3>
-      <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
+<h2 id="recursos">Recursos</h3>
+<p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
+
+<h3 id="avaliacao-de-produto">Avaliação de Produto</h3>
+<p>Com pontuação registradas de 1 a 5, é possível enviar um formulário por método post os campos "rating"(pontuação) e "product_id"(id do produto) para url "/avaliacao".</p>
+<div><br></div>
+<pre>
+// Situação atual
+// média atual = 4
+// votos = 6 
+
+// dados coletado na avaliação com pontuação 5  
+$.ajax({
+  url: "/avaliacao",
+  type: "POST",
+  data: {rate: 5, product_id: id },
+  success: function(response) {
+    console.log("Média "+response.rating)
+    console.log("Votos " +response.votes)
+  }
+});
+
+Reposta:
+"Média 4.2"
+"Votos 7"
+</pre>
+<p>Com jquery, recomendamos que use o $.ajax() para enviar os dados para url acima que o server esta configurado para retornar um objeto json com a média da pontuação atual e a quantidade total de votos.</p>
+<p>Existem vários plugins js pronto com  as aplicações de estrelinhas, <a class="laranja" href="http://speckyboy.com/2010/04/21/15-javascript-and-plugins-and-tutorials-for-adding-ratings/" target="_blank">dica</a>,<a class="laranja" href="https://www.google.com.br/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=bootstrap%20rating%20stars" target="_blank">com boostrap</a>.</p>
+<p><a href="https://github.com/vagnerolliver/Avaliacao-do-Produto" class="laranja" target="_blank"></a>Exemplo  usado na cadence.</p>
+<p>Os dados da pontuação também podem ser gerenciados via admin na edição do produto.</p>
+<p><img src="http://www.vnda.com.br/images/produto-reviews.png" data-featherlight="image"> </p>
+<p>Para zerar a pontuação do produto é necessário acessar a página de edição do produto no admin e selecionar a opção limpar</p>
+<!-- // -->
 
 <h3 id="adicionar-produto-ajax-por-$post">Adicionar Produto Ajax com $.post()</h3>
 <pre>
@@ -1975,7 +2006,7 @@ $.post( "/carrinho/adicionar",{ sku:'1004-4',quantity:'1' }, function( data ) {
 },"json"
 </pre>
 <p>Para adicionar um produto no carrinho via ajax é necessário enviar para a url "/adicionar/carrinho" e os campos sku e quantidade.</p>
-<p>Com jquery, recomendamos que use o $.post() para enviar os dados para url acima que nosso server esta configurado para retornar um objeto com os item(s) adicionado(s) no formato json como resposta, assim se torna fácil manipular o objeto com jquery.</p>
+<p>Com jquery, recomendamos que use o $.post() para enviar os dados para url acima que o server esta configurado para retornar um objeto com os item(s) adicionado(s) no formato json como resposta, assim se torna fácil manipular o objeto com jquery.</p>
 
 <h4 id="">Adicionado o(s) item(s) do carrinho no html (VIA JS)</h4>
 
