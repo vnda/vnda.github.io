@@ -28,7 +28,7 @@
     <div id="headings" class="tocify">
     </div>
   </div>
-    <div class="page-wrapper">
+  <div class="page-wrapper">
     <div class="content">
       <h2 id="entendendo-o-.liquid">Entendendo o .liquid</h2>
       <p>Liquid é a linguagem de programação responsável por implementar os templates desenvolvidos e utilizados pela Vnda.</p>
@@ -2071,7 +2071,6 @@ Retorno:
 "Média 4.2"
 "Votos 7"
 </pre>
-
 <p>Com jquery, recomendamos que use o $.ajax() para enviar os dados para url acima que o server esta configurado para retornar um objeto json com a média da pontuação e a quantidade total de votos.</p>
 <p>Existem vários plugins js pronto com  as aplicações de estrelinhas, <a class="laranja" href="http://speckyboy.com/2010/04/21/15-javascript-and-plugins-and-tutorials-for-adding-ratings/" target="_blank">dica</a>,<a class="laranja" href="https://www.google.com.br/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=bootstrap%20rating%20stars" target="_blank">com boostrap</a>.</p>
 <p><a href="https://github.com/vagnerolliver/Avaliacao-do-Produto" class="laranja" target="_blank"></a>Exemplo  usado na cadence.</p>
@@ -2102,46 +2101,47 @@ Retorno:
 
 <!-- // -->
 
-      <h3 id="dns">DNS</h3>
-      <p>- Criar uma entrada (ou alterar uma já existente) do tipo A,
-       apontando para o IP 54.232.217.234.</p>
-      <p>- Criar uma entrada www (ou alterar uma já existente) do tipo CNAME, apontando para o domínio vnda.com.br.</p>
+<h3 id="dns">DNS</h3>
+<p>- Criar uma entrada (ou alterar uma já existente) do tipo A,
+ apontando para o IP 54.232.217.234.</p>
+<p>- Criar uma entrada www (ou alterar uma já existente) do tipo CNAME, apontando para o domínio vnda.com.br.</p>
 
-      <h3 id="etiqueta-de-promocao">Etiqueta da Promoção</h3>
-      <pre>
+<h3 id="etiqueta-de-promocao">Etiqueta da Promoção</h3>
+<pre>
 * deve estar dentro de um loop {% products %}
 {% if product.discount_id > 0 %}
-    {% get promotion from '/discount' [name: product.discount_id] %}
-    {% if promotion %}
-    <span><</span>img src="{{ promotion.seal_url }}" />
-    {% endif %}
+{% get promotion from '/discount' [name: product.discount_id] %}
+{% if promotion %}
+<span><</span>img src="{{ promotion.seal_url }}" />
 {% endif %}
-      </pre>
-      <p>
-        Listar a etiqueta da promoção que foi cadastrada no admin.
-      </p>
+{% endif %}
+</pre>
+<p>
+  Listar a etiqueta da promoção que foi cadastrada no admin.
+</p>
 
-      <!-- // -->
+<!-- // -->
 
-      <h3 id="formulários-webforms">Formulários WebForms</h3>
-      <pre>
+<h3 id="formulários-webforms">Formulários WebForms</h3>
+<pre>
 <span><</span>form action="/webform" method="post"<span> onsubmit="document.getElementsByName('reply_to')[0].value = document.getElementsByName('email')[0].value"></span>
-    <span><</span>input type="hidden" name="key" value="nome-da-loja-nome-do-form"<span>></span>
-    <span><</span>iinput type="hidden" name="reply_to" id="reply_to" value="">
-    <span><</span>input type="hidden" name="email" value=""<span>></span>
-    <span><</span>input type="submit"<span>></span>
+<span><</span>input type="hidden" name="key" value="nome-da-loja-nome-do-form"<span>></span>
+<span><</span>iinput type="hidden" name="reply_to" id="reply_to" value="">
+<span><</span>input type="hidden" name="email" value=""<span>></span>
+<span><</span>input type="submit"<span>></span>
 <span><</span>/form<span>></span>
-      </pre>
-      <p><strong>Configuração admin:</strong></p>
-      <p>- Criando um novo form no admin: <a class="laranja" href="/img/novo-form.png" data-featherlight="image">confira aqui</a></p>
-      <p>- Informando o  email de destino e assunto: <a class="laranja" href="/img/edicao-do-form.png" data-featherlight="image">confira aqui</a></p>
-      <p>- Ao salvar será gerado um chave: <a class="laranja" href="/img/edicao-form-concluido.png" data-featherlight="image">confira aqui</a></p>
-      <p><strong>Configuração .liquid:</strong></p>
-      <p>- Form action= "/webform" </p>
-      <p>- Incluir o campo hidden com name="key" e com o valor da key do form da configuração anterior.</p>
-      <p>Incluir o campo hidden com name="reply_to", este campo deve pegar o valor do campo email antes do evento submit do formulário. Use um evento jquery onsubmit para pegar o valor do email antes do submit ou apenas informe o evento onsubmit direto na tag form
-      como o exemplo ao lado</p>
+</pre>
+<p><strong>Configuração admin:</strong></p>
+<p>- Criando um novo form no admin: <a class="laranja" href="/img/novo-form.png" data-featherlight="image">confira aqui</a></p>
+<p>- Informando o  email de destino e assunto: <a class="laranja" href="/img/edicao-do-form.png" data-featherlight="image">confira aqui</a></p>
+<p>- Ao salvar será gerado um chave: <a class="laranja" href="/img/edicao-form-concluido.png" data-featherlight="image">confira aqui</a></p>
+<p><strong>Configuração .liquid:</strong></p>
+<p>- Form action= "/webform" </p>
+<p>- Incluir o campo hidden com name="key" e com o valor da key do form da configuração anterior.</p>
+<p>Incluir o campo hidden com name="reply_to", este campo deve pegar o valor do campo email antes do evento submit do formulário. Use um evento jquery onsubmit para pegar o valor do email antes do submit ou apenas informe o evento onsubmit direto na tag form
+como o exemplo ao lado</p>
 
+<!-- // -->
 
 <h3 id="montar-carrinho-na-url">Montando um carrinho pela url</h3>
 <pre>
@@ -2232,6 +2232,31 @@ Retorno "30"
       <p>Em configurações da loja, no item Boleto, informe o % de desconto que o pagamento por boleto terá.<a class="laranja" href="/img/percentual-desconto.png" data-featherlight="image">confira aqui</a></p>
       <p>A tag {{ cart.total_for_slip }} exibe o total do carrinho com o desconto aplicado.</p>
       <p>É possível pegar o % de desconto na store pelo settings da loja com {{ store.settings.slip_discount }}.</p>
+
+<!-- // -->
+
+<h3 id="urls-destino-apos-login">Url's Destino após Login</h3>
+<pre>
+Os valores aceitos são:
+
+=> Index
+<</span>input type="hidden" name="redirect_to" value="home" />
+
+=> /conta
+<</span>input type="hidden" name="redirect_to" value="account" />   
+
+=> /produto/slug-id
+<</span>input type="hidden" name="redirect_to" value="product:{{ product.id }}" />  
+
+=> /nomedatag
+<</span>input type="hidden" name="redirect_to" value="tag:{{ tag.name }}" />
+
+=> //p/keydapages
+<</span>input type="hidden" name="redirect_to" value="page:{{ page.id }}" />
+</pre>
+<p>Por default a plataforma redireciona formulários de login ou cadastro para Home da loja. Visando melhorar a usabilidade é possível configurar para qual url você deseja redirecionar seu cliente, basta incluir um campo hidden com name "rediret_to" em ambos formulários e passar um dos valores suportados. Esse tipo de ação é mais recorrente nos formulários dentro de modals, visto que pode ser acessados em qualquer página, por exemplo na página de detalhe do produto.</p>
+ 
+<!-- // -->
 
       <h3 id="wishlist(lista-de-desejos)">Wishlist(lista de desejos)</h3>
       <pre>
