@@ -1968,36 +1968,6 @@ Os parâmetros de ordenamento não se aplicam a busca, que mostra os produtos em
 <h2 id="recursos">Recursos</h3>
 <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
 
-<h3 id="avaliacao-de-produto">Avaliação de Produto</h3>
-<p>Com votações que podem ser de 1 a 5 pontos é possível enviar um formulário por método post os campos "rating"(pontuação) e "product_id"(id do produto) para url "/avaliacao".</p>
-<div><br></div>
-<pre>
-// Situação atual
-// média atual = 4
-// votos = 6 
-
-// dados coletado na avaliação com pontuação 5  
-$.ajax({
-  url: "/avaliacao",
-  type: "POST",
-  data: {rate: 5, product_id: id },
-  success: function(response) {
-    console.log("Média "+response.rating)
-    console.log("Votos " +response.votes)
-  }
-});
-
-Retorno:
-"Média 4.2"
-"Votos 7"
-</pre>
-
-<p>Com jquery, recomendamos que use o $.ajax() para enviar os dados para url acima que o server esta configurado para retornar um objeto json com a média da pontuação e a quantidade total de votos.</p>
-<p>Existem vários plugins js pronto com  as aplicações de estrelinhas, <a class="laranja" href="http://speckyboy.com/2010/04/21/15-javascript-and-plugins-and-tutorials-for-adding-ratings/" target="_blank">dica</a>,<a class="laranja" href="https://www.google.com.br/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=bootstrap%20rating%20stars" target="_blank">com boostrap</a>.</p>
-<p><a href="https://github.com/vagnerolliver/Avaliacao-do-Produto" class="laranja" target="_blank"></a>Exemplo  usado na cadence.</p>
-<p>Os dados da pontuação também podem ser gerenciados via admin na edição do produto.</p>
-<p><img src="/img/produto-reviews.png" data-featherlight="image"> </p>
-<p>Para zerar a pontuação do produto é necessário acessar a página de edição do produto no admin e selecionar a opção limpar</p>
 <!-- // -->
 
 <h3 id="adicionar-produto-ajax-por-$post">Adicionar Produto Ajax com $.post()</h3>
@@ -2075,6 +2045,62 @@ Existem várias formas de montar o dropdown e aba de carrinho via javascript,
 o exemplo ao lado temos função que serve de modelo para carregar o html com uma lista de items a cada interação do for de items.
 </p>
 <p><a href="https://github.com/vagnerolliver/Adicionar-Produto-com--post----Aba-Dropdown-Carrinho/blob/master/script.js" class="laranja" target="_blank">publicado no github</a></p>
+
+<!-- // -->
+
+<h3 id="avaliacao-de-produto">Avaliação de Produto</h3>
+<p>Com votações que podem ser de 1 a 5 pontos é possível enviar um formulário por método post os campos "rating"(pontuação) e "product_id"(id do produto) para url "/avaliacao".</p>
+<div><br></div>
+<pre>
+// Situação atual
+// média atual = 4
+// votos = 6 
+
+// dados coletado na avaliação com pontuação 5  
+$.ajax({
+  url: "/avaliacao",
+  type: "POST",
+  data: {rate: 5, product_id: id },
+  success: function(response) {
+    console.log("Média "+response.rating)
+    console.log("Votos " +response.votes)
+  }
+});
+
+Retorno:
+"Média 4.2"
+"Votos 7"
+</pre>
+
+<p>Com jquery, recomendamos que use o $.ajax() para enviar os dados para url acima que o server esta configurado para retornar um objeto json com a média da pontuação e a quantidade total de votos.</p>
+<p>Existem vários plugins js pronto com  as aplicações de estrelinhas, <a class="laranja" href="http://speckyboy.com/2010/04/21/15-javascript-and-plugins-and-tutorials-for-adding-ratings/" target="_blank">dica</a>,<a class="laranja" href="https://www.google.com.br/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=bootstrap%20rating%20stars" target="_blank">com boostrap</a>.</p>
+<p><a href="https://github.com/vagnerolliver/Avaliacao-do-Produto" class="laranja" target="_blank"></a>Exemplo  usado na cadence.</p>
+<p>Os dados da pontuação também podem ser gerenciados via admin na edição do produto.</p>
+<p><a href="/img/produto-reviews.png" data-featherlight="image"></a><img src="/img/produto-reviews.png"> </p>
+<p>Para zerar a pontuação do produto é necessário acessar a página de edição do produto no admin e selecionar a opção limpar</p>
+
+<!-- // -->
+ 
+<h3 id="avise-me-quando-chegar">API lista de Espera(Avise-me quando chegar)</h3>
+<pre>
+<span><</span>form action="/lista_de_espera" method="post">
+<span><</span>p>Produto Indisponível<span><</span>/p>
+<span><</span>strong>Avise-me quando chegar<span><</span>/strong>
+<span><</span>input type="hidden" name="sku" value="{{ variant.sku }}">
+<span><</span>input type="hidden" name="nomeproduto" value="{{ product.name }}">
+<span><</span>input type="hidden" name="imagemvariante" value="{{ product.image_url }}">
+<span><</span>input type="hidden" name="referencia" value="{{ product.referente }}">
+<span><</span>input type="hidden" name="preco" value="{{ variant.price | money_format }}">
+<span><</span>input type="email" name="email" value='usuario@email.com.br'>
+<span><</span>input type="submit" value="Enviar">
+<span><</span>/form>
+</pre>
+<p>Api de lista de espera é um recurso da plataforma que notificará o cliente sempre que um produto esgotado voltar ao estoque. O cadastro é feito através do formulário por método post para url "/lista_de_espera" com os campos obrigatórios: "email" e "sku"(da variante).</p>
+<p>Campos opcionais: "referencia"(referencia do produto), preço, imagemvariante, nomeproduto.</p>
+<p>Email do avise-me:</p>
+<p><a href="/img/lista-de-espera.png" data-featherlight="image"><img src="/img/lista-de-espera.png"></a></p>
+
+<!-- // -->
 
       <h3 id="dns">DNS</h3>
       <p>- Criar uma entrada (ou alterar uma já existente) do tipo A,
@@ -2261,23 +2287,6 @@ $.post(
 
       <h2 id="dicas-setup/admin">Dicas Setup/Admin</h2>
       <p>Seção de dicas para integrar tanto no setup da loja ou para o admin.</p>
-
-      <!-- // -->
-      <h3 id="avise-me-quando-chegar">Avise-me quando chegar</h3>
-      <pre>
-<span><</span>form action="/webform" method="post">
-  <span><</span>p>Produto Indisponível<span><</span>/p>
-  <span><</span>strong>Avise-me quando chegar<span><</span>/strong>
-  <span><</span>input type="hidden" name="key" value="nome-da-loja-avise-me-quando-chegar">
-  <span><</span>input type="hidden" name="product_name" value="{{ product.name }}">
-  <span><</span>input type="hidden" name="product_price" value="{{ product.price | money_format }}">
-  <span><</span>input type="text" name="client_email" placeholder="Digite o seu e-mail" required>
-  <span><</span>input type="submit" value=" ">
-<span><</span>/form>
-      </pre>
-      <p>
-        Criar um formulário pelo admin e colocar a KEY no form abaixo
-      </p>
 
       <h3 id="validar-cpf">Biblioteca Jquery para validar cpf e cnpj</h3>
       <p><a href="https://gist.github.com/vagnerolliver/8e60807e5269162a58b7" target="_blank" class="laranja">Clique aqui</a> para ver os filtros disponíveis para usar no .liquid.</p>
@@ -2485,6 +2494,7 @@ _nome_do_arquivo.liquid
       </p>
 
       <!-- // -->
+
       <h3 id="como-incluir-favicon">Como incluir Favicon?</h3>
       <pre>
 Chamando um favicon salvo na raiz da pasta "/public"
