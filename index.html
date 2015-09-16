@@ -68,7 +68,7 @@ divisão {{ 10 | divided_by:2 }} #=> 5
       </p>
       <div></div><br>
       <pre>
-retorna o primeiro elemento do array 
+retorna o primeiro elemento do array
       </pre>
       <p>
       first
@@ -518,7 +518,7 @@ Instead of looping over an existing collection, you can define a range of number
       <p><i>Tags de saída:</i> são as etiquetas de saída exibir o líquido encontrado entre ele.
         Você também pode usar <b>filtros para alterar a saída retornado.</b></p>
       <p>Para usar o líquido, você vai precisar de recorrer a uma combinação de lógica e de saída de etiquetas usando operadores líquidos. Acções com liquidez muitos dos mesmos operadores como outras linguagens de programação:</p> -->
-      
+
       <!-- // -->
 
       <h2 id="templates">Templates</h2>
@@ -570,17 +570,17 @@ Instead of looping over an existing collection, you can define a range of number
 
       <h4 id="paginacao">Configurando a páginação</h4>
       <pre>
-{% products tag:tag.name page:params.page per_page:25 %}
-  // executa no primeiro loop    
+{% products tag:tag.name page:params.page per_page:20 %}
+  // executa no primeiro loop
   {% if forloop.first %}
     <span><<span>ul class="products"><span>
   {% endif %}
     // include com o arquivo com a listagem de produtos
     {% include "list_product" %}
-  // executa no último loop 
-  {% if forloop.last %} 
+  // executa no último loop
+  {% if forloop.last %}
     <span><</span>/ul>
-    {% contentfor paginacao %} 
+    {% contentfor paginacao %}
       // armazena o conteúdo de "<span><</span>nav>" para dentro variável <strong>paginacao</strong>
       {% if pagination.total_pages > 1 %}
       <span><</span>nav class="pagination"<span>></span>
@@ -598,7 +598,7 @@ Instead of looping over an existing collection, you can define a range of number
         <span><</span>/span<span>></span>
       <span><</span>/nav<span>></span>
       {% endif %}
-    {% endcontentfor %} 
+    {% endcontentfor %}
   {% endif %}
 {% endproducts %}
 
@@ -609,6 +609,7 @@ Instead of looping over an existing collection, you can define a range of number
       <p>Use o {% if forloop.first %} ou {% if forloop.last %} incluir o script de paginação.</p>
       <p>**importante: use o {% contentfor %} para armazenar o bloco da páginação e chamar em outra parte do código:</p>
       <p>**a páginação funcionára só para páginas de tag.</p>
+      <p>**Por padrão, a tag é páginada em 25 itens. Para alterar, basta inserir um valor diferente para o parâmentro [ per_page: ] conforme mostrado no exemplo.</p>
       <!-- // -->
 
       <h3 id="product.liquid">Product.liquid</h3>
@@ -1781,16 +1782,16 @@ que consome menos requisições para nossa api de menus.</p>
 <h3 id="contentfor">{% contentfor %}</h3>
 <pre>
 // armazendo o conteúdo em lista_produto
-{% contentfor lista_produto %} 
+{% contentfor lista_produto %}
   <span><</span>div> Item 1 <span><</span>/div>
 {% endcontentfor %}
-{% contentfor lista_produto %} 
+{% contentfor lista_produto %}
   <span><</span>div> Item 2 <span><</span>/div>
 {% endcontentfor %}
-{% contentfor lista_produto %} 
+{% contentfor lista_produto %}
   <span><</span>div> Item 3 <span><</span>/div>
 {% endcontentfor %}
- 
+
 {{  lista_produto }}
 
 retorno:
@@ -1802,14 +1803,14 @@ Item 3
 {% assign lista_produto = "" %}
 
 // armazendo o conteúdo em lista_produto
-{% contentfor lista_produto %} 
+{% contentfor lista_produto %}
   <span><</span>div> Item 5 <span><</span>/div>
 {% endcontentfor %}
 
-{% contentfor lista_produto %} 
+{% contentfor lista_produto %}
   <span><</span>div> Item 6 <span><</span>/div>
 {% endcontentfor %}
- 
+
 {{  lista_produto }}
 
 retorno:
@@ -1817,7 +1818,7 @@ Item 5
 Item 6
 
 {% assign lista_produto = "pense nele como uma váriavel" %}
-{% contentfor lista_produto %} 
+{% contentfor lista_produto %}
   <span><</span>div> Item 10 <span><</span>/div>
 {% endcontentfor %}
 
@@ -1826,7 +1827,7 @@ Item 6
 retorno:
 pense nele como uma váriavel
 Item 6
- 
+
 </pre>
 <p>O {% contentfor nome_da_variavel %} é usado para adicionar conteúdo dentro da variável  "nome_da_variavel" sem remover o conteúdo atual, contrário da tag {% capture %} que remove o conteúdo anterior.
 
@@ -1967,7 +1968,7 @@ Os parâmetros de ordenamento não se aplicam a busca, que mostra os produtos em
 <!-- // -->
 
 <h3 id="include">{% include %}</h3>
-<pre> 
+<pre>
 // vnda_stg_demo/template/_header.liquid
 // vnda_stg_demo/template/_footer.liquid
 // vnda_stg_demo/layout.liquid
@@ -2006,11 +2007,11 @@ $.post( "/carrinho/adicionar",{ sku:'1004-4',quantity:'1' }, function( data ) {
 },"json")
 
 Resposta: [objeto json]
-Object {id: 29, subtotal: 80, total: 80, shipping_method: null, shipping_price: 0…} 
+Object {id: 29, subtotal: 80, total: 80, shipping_method: null, shipping_price: 0…}
 </pre>
 
 <p>
-Sempre for feito um $.post() para url "adicionar/carrinho" com os dados do sku e quantidade do produto, 
+Sempre for feito um $.post() para url "adicionar/carrinho" com os dados do sku e quantidade do produto,
 a resposta do server esta configurado para retornar um objeto com os item(s) adicionado(s) no formato json.
 <br><br>
 **os dados desse objeto json são os mesmo encontrados no loop de {% cartitemns %}.
@@ -2027,7 +2028,7 @@ $.post( "/carrinho/adicionar",{ sku:'1004-4',quantity:'1' }, function( data ) {
 
 Object {id: 78, quantity: 1, price: 80, subtotal: 80, total: 80…}
 Object {id: 79, quantity: 1, price: 80, subtotal: 80, total: 80…}
-...  
+...
 </pre>
 <p>Você pode percorrer os indíces desse objeto usando each do jquery:  </p>
 
@@ -2036,7 +2037,7 @@ Object {id: 79, quantity: 1, price: 80, subtotal: 80, total: 80…}
 <pre>
 function montaCarrinho( item ) {
  // deixe uma li de marcação no html
- // variavel cart_preview clona a li de marcação que será alimentada com o conteúdo do item  
+ // variavel cart_preview clona a li de marcação que será alimentada com o conteúdo do item
  var cart_preview = $( "ul.cart-items li" ).clone();
  // coloca para dentro da lista
  cart_preview.appendTo( "ul.cart-items" );
@@ -2054,11 +2055,11 @@ $.post( "/carrinho/adicionar",{ sku:'1004-4',quantity:'1' }, function( data ) {
   // vai montando o html com o(s) item(s)
   montaCarrinho(item)
  });
-},"json")  
+},"json")
 </pre>
 
 <p>
-Existem várias formas de montar o dropdown e aba de carrinho via javascript, 
+Existem várias formas de montar o dropdown e aba de carrinho via javascript,
 o exemplo ao lado temos função que serve de modelo para carregar o html com uma lista de items a cada interação do for de items.
 </p>
 <p><a href="https://github.com/vagnerolliver/Adicionar-Produto-com--post----Aba-Dropdown-Carrinho/blob/master/script.js" class="laranja" target="_blank">publicado no github</a></p>
@@ -2071,9 +2072,9 @@ o exemplo ao lado temos função que serve de modelo para carregar o html com um
 <pre>
 // Situação atual
 // média atual = 4
-// votos = 6 
+// votos = 6
 
-// dados coletado na avaliação com pontuação 5  
+// dados coletado na avaliação com pontuação 5
 $.ajax({
   url: "/avaliacao",
   type: "POST",
@@ -2096,7 +2097,7 @@ Retorno:
 <p>Para zerar a pontuação do produto é necessário acessar a página de edição do produto no admin e selecionar a opção limpar</p>
 
 <!-- // -->
- 
+
 <h3 id="avise-me-quando-chegar">API lista de Espera(Avise-me quando chegar)</h3>
 <pre>
 <span><</span>form action="/lista_de_espera" method="post">
@@ -2260,10 +2261,10 @@ Os valores aceitos são:
 <</span>input type="hidden" name="redirect_to" value="home" />
 
 => /conta
-<</span>input type="hidden" name="redirect_to" value="account" />   
+<</span>input type="hidden" name="redirect_to" value="account" />
 
 => /produto/slug-id
-<</span>input type="hidden" name="redirect_to" value="product:{{ product.id }}" />  
+<</span>input type="hidden" name="redirect_to" value="product:{{ product.id }}" />
 
 => /nomedatag
 <</span>input type="hidden" name="redirect_to" value="tag:{{ tag.name }}" />
@@ -2271,9 +2272,9 @@ Os valores aceitos são:
 => //p/keydapages
 <</span>input type="hidden" name="redirect_to" value="page:{{ page.id }}" />
 </pre>
-<p>Por default a plataforma redireciona formulários de login ou cadastro para Home da loja. Visando melhorar a usabilidade é possível configurar para qual url você deseja redirecionar seu cliente, basta incluir um campo hidden com name "rediret_to" em ambos formulários e passar um dos valores suportados.</p> 
+<p>Por default a plataforma redireciona formulários de login ou cadastro para Home da loja. Visando melhorar a usabilidade é possível configurar para qual url você deseja redirecionar seu cliente, basta incluir um campo hidden com name "rediret_to" em ambos formulários e passar um dos valores suportados.</p>
 <p>Esse tipo de ação é mais recorrente nos formulários dentro de modals, visto que pode ser acessados em qualquer página, por exemplo na página de detalhe do produto.</p>
- 
+
 <!-- // -->
 
       <h3 id="wishlist(lista-de-desejos)">Wishlist(lista de desejos)</h3>
@@ -2417,7 +2418,7 @@ Retorno:
 </pre>
 <p>Para calcular o frente de um produto envie um formulário de dados via ajax passando os parâmetros product_id(id do produto ) e zip(cep) para url "/frete_produto". Api de frete esta configurada para retornar um objeto no formato json com as informações do local do cep digitado e dados de entrega: nome do método(sedex,pac etc..), prazo e preço.</p>
 <p>Rode o código do preview ao lado no console do navegador e em umas das página da sua loja, altere apenas o campo product_id com uma valor válido.</p>
- 
+
 <p>Código publicado no <a href="https://github.com/vagnerolliver/calculando-frete-do-produto" class="laranja" target="_blank">github</a>, o mesmo usado no lojadamoto.com.br </p>
 
 <!-- -->
@@ -2456,7 +2457,7 @@ ou
         Então usamos o código abaixo na tela de produtos. Ele percorre as tags do produto em busca de uma que tenha o tipo "relacionado". Caso encontre, serão listados os produtos que também tem essa tag, ou seja, que estão relacionados entre si.
       </p>
 
-<!-- 
+<!--
 <h3 id="filtro-de-marcas">Filtro de Marcas</h3>
 <pre>
 {% brand_filter tag_id:tag.name %}
@@ -2497,7 +2498,7 @@ ou
       </pre>
       <p>Para chamar os arquivos css e js salvos nas pastas "/stylesheets" e "/javascripts/" use os filtros "stylesheet_tag" e "javascript_tag".</p>
 <!-- // -->
- 
+
       <h3 id="incluir-busca-swiftype">Incluir busca swiftype</h3>
       <pre>
 // mudanças no .liquid
