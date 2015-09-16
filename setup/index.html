@@ -610,7 +610,7 @@ Mirror of if statement
       <p>**importante: use o {% contentfor %} para armazenar o bloco da páginação e chamar em outra parte do código:</p>
       <p>**a páginação funcionára só para páginas de tag.</p>
       <p>**Por padrão, a tag é páginada em 25 itens. Para alterar, basta inserir um valor diferente para o parâmentro [ per_page: ] conforme mostrado no exemplo.</p>
-  
+      <p>** É possível limitar a quantidade de itens de uma tag, usando o parâmetro [ limit:Valor_desejado]. Este limite desativa a paginação. É útil na página de busca, caso alguma busca possa retornar muitos resultados, para evitar perda de perorma</p>
       <!-- // -->
 
       <h3 id="product.liquid">Product.liquid</h3>
@@ -1581,6 +1581,7 @@ OU
       <p>Listar tags<br />
         * aceita o parâmetro "limit, type, product_id.
       </p>
+
       <!-- // -->
       <h3 id="tag">{% tag %}</h3>
       <pre>
@@ -1603,13 +1604,16 @@ OU
   {{ menu.title }}
   {{ menu.subtitle }}
   {{ menu.items_count  }} // quantidade de sub-menus
+  {{ menu.image_url }} // Tags com imagem
 {% endmenus %}
       </pre>
       <p>Listar menus<br>
         * loop para exibir os itens de um menu </p>
       <p>Listar sub menus<br />
         * menu com submenus (html opcional)</p>
-      <p><b>A quantidade de submenus é ilimitada.</b></p>
+        <p>A quantidade de submenus é ilimitada.</p>
+        <p>Dica: ara fazer um menu de marcas com logos, basca cadastrar um menu para esta finalidade, cadastrar o logo das marcas em suas respectivas tags e chamar no menu a variável: [ {{ menu.image_url }} ]  </p>
+
      <pre>
 {% menus position:"nome_da_posicao_do_menu_no_admin" %}
   {% if forloop.first %}<span><</span>ul<span>></span>{% endif %}
