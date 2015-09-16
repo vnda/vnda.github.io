@@ -2349,28 +2349,28 @@ $.post(
 
       <h3 id="breadcrumbs">Breadcrumbs</h3>
       <p>Veja exemplos de como fazer o breadcrumb na tag e na página de produto.</p>
-<pre>
-
-<span><</span>a href="{{ home_url }}"<span>></span>Home<span><</span>/a<span>></span>
-{% if params.parent %}
-  {% if parent_tag.title != "" %}
-  <span><</span>a href="{{ home_url }}{{ params.parent }}"<span>></span>{{ parent_tag.title }}<span><</span>/a<span>></span>
+  <pre>
+  {% comment %} Exemplo Tag {% endcomment %}
+  <span><</span>a href="{{ home_url }}"<span>></span>Home<span><</span>/a<span>></span>
+  {% if params.parent %}
+    {% if parent_tag.title != "" %}
+    <span><</span>a href="{{ home_url }}{{ params.parent }}"<span>></span>{{ parent_tag.title }}<span><</span>/a<span>></span>
+    {% endif %}
   {% endif %}
-{% endif %}
-<span><</span>a href="{{ tag.image_url }}"<span>></span>{{ tag.title}}<span><</span>/a<span>></span>
+  <span><</span>a href="{{ tag.image_url }}"<span>></span>{{ tag.title}}<span><</span>/a<span>></span>
 
------------------------------------------
+  -----------------------------------------
+  {% comment %} Exemplo Produto {% endcomment %}
+  <span><</span>a href="{{ home_url }}"<span>></span>Home<span><</span>/a<span>></span>
+  {% tags product_id:product.id %}
+    {% if tag.type != "capa"%}
+      <span><</span>a href="{{ home_url }}{{ tag.name }}"<span>></span>{{ tag.title }}<span><</span>/a<span>></span>
+    {% break %}
+    {% endif%}
+  {% endtags %}
+  <span><</span>a href="{{ product.url }}" title="{{ product.name }}"<span>></span>{{ product.name }}<span><</span>/a<span>></span>
 
-<span><</span>a href="{{ home_url }}"<span>></span>Home<span><</span>/a<span>></span>
-{% tags product_id:product.id %}
-  {% if tag.type != "capa"%}
-    <span><</span>a href="{{ home_url }}{{ tag.name }}"<span>></span>{{ tag.title }}<span><</span>/a<span>></span>
-  {% break %}
-  {% endif%}
-{% endtags %}
-<span><</span>a href="{{ product.url }}" title="{{ product.name }}"<span>></span>{{ product.name }}<span><</span>/a<span>></span>
-
-</pre>
+  </pre>
       <!--
       <h3 id="contentful">Contentful</h3>
       <p>Função que retorna as entries(Entradas que representam o conteúdo textual. Dados de uma entrada que adere a um certo tipo de conteúdo no contentful)</p>

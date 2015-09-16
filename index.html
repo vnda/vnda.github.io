@@ -2350,7 +2350,7 @@ $.post(
       <h3 id="breadcrumbs">Breadcrumbs</h3>
       <p>Veja exemplos de como fazer o breadcrumb na tag e na página de produto.</p>
 <pre>
-
+{% comment %} Exemplo Tag {% endcomment %}
 <span><</span>a href="{{ home_url }}"<span>></span>Home<span><</span>/a<span>></span>
 {% if params.parent %}
   {% if parent_tag.title != "" %}
@@ -2360,7 +2360,7 @@ $.post(
 <span><</span>a href="{{ tag.image_url }}"<span>></span>{{ tag.title}}<span><</span>/a<span>></span>
 
 -----------------------------------------
-
+{% comment %} Exemplo Produto {% endcomment %}
 <span><</span>a href="{{ home_url }}"<span>></span>Home<span><</span>/a<span>></span>
 {% tags product_id:product.id %}
   {% if tag.type != "capa"%}
