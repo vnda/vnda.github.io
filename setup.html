@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <title>Setup | Guides  - - Vnda</title>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <link rel="stylesheet" media="all" href="css/bootstrap.css" />
-  <link rel="stylesheet" media="all" href="css/screen.css" />
-  <link rel="stylesheet" type="text/css" href="css/component.css" />
-  <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-  <script src="js/jquery-1.8.3.min.js"></script>
-  <script src="js/modernizr.custom.js"></script>
-  <script src="js/main.js"></script>
-   </head>
+    <head>
+    <title>Setup | Guides Vnda</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" media="all" href="css/bootstrap.css" />
+    <link rel="stylesheet" media="all" href="css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <link rel="stylesheet" type="text/css" href="css/featherlights.css" />
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+    <script src="js/main.js"></script>
+  </head>
   <body>
   <div class="tocify-wrapper"><br>
     <img class="logo" src="https://avatars2.githubusercontent.com/u/810902?s=200">
@@ -18,9 +19,9 @@
       <span class="headings titulo"><a href="/">GUIDES VNDA</a></span>
       <section id="set-6">
         <div class="hi-icon-wrap hi-icon-effect-6 hi-icon-effect-6a">
-          <a href="index.html" class="hi-icon hi-icon-images um">Criação</a>
-          <a href="setup.html" class="hi-icon hi-icon-contract dois select">Setup</a>
-          <a href="api.html" class="hi-icon hi-icon-cog tres">Api</a>
+          <a href="/design" class="hi-icon hi-icon-images um">Criação</a>
+          <a href="/setup" class="hi-icon hi-icon-contract dois select">Setup</a>
+          <a href="/api" class="hi-icon hi-icon-cog tres">Api</a>
         </div>
        </section>
      </div>
@@ -32,59 +33,532 @@
       <h2 id="entendendo-o-.liquid">Entendendo o .liquid</h2>
       <p>Liquid é a linguagem de programação responsável por implementar os templates desenvolvidos e utilizados pela Vnda.</p>
 
-      <h3 id="liquid-para-designers">Liquid para Designers(filtros)</h3>
-      <p><a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers#standard-filters" target="_blank" class="laranja">Clique aqui</a> para ver os filtros disponíveis para usar no .liquid.</p>
+      <h3 id="filtros">Filtros</h3>
+      <p>filtros para alterar a saída de uma váriavel:</p>
+
       <pre>
-{% assign order = "false" %}
-{% orders client_id:client.id %}
- {% assign order = "true" %}
- <span><</span>tr>
-  <span><</span>td<span>></span>{{ order.code }}<span><</span>/td<span>></span>
-  <span><</span>td<span>></span>{{ order.received_at }}<span><</span>/td<span>></span>
-  <span><</span>td<span>></span>{{ order | order_status }}<span><</span>/td<span>></span>
-  <span><</span>td<span>></span>{{ order.total | money_format }}<span><</span>/td<span>></span>
- <span><</span>/tr<span>></span>
-{% endorders %}
-{% if order == "false" %}
- <span><</span>tr<span>></span>
-  <span><</span>td colspan="3"<span>></span>Você ainda não tem pedidos<span><</span>/td<span>></span>
- <span><</span>/tr<span>></span>
+subtração  {{ 4 | minus:2 }} #=> 2
+      </pre>
+      <p>
+      minus
+      </p>
+      <div></div><br>
+
+      <pre>
+adição {{ '1' | plus:'1' }} #=> '11', {{ 1 | plus:1 }} #=> 2
+      </pre>
+      <p>
+      plus
+      </p>
+      <div></div><br>
+
+      <pre>
+multiplicação {{ 5 | times:4 }} #=> 20
+      </pre>
+      <p>
+      times
+      </p>
+      <div></div><br>
+
+      <pre>
+divisão {{ 10 | divided_by:2 }} #=> 5
+      </pre>
+      <p>
+      divided_by
+      </p>
+      <div></div><br>
+      <pre>
+retorna o primeiro elemento do array
+      </pre>
+      <p>
+      first
+      </p>
+      <div></div><br>
+
+      <pre>
+get the last element of the passed in array
+      </pre>
+      <p>
+      last
+      </p>
+      <div></div><br>
+
+      <pre>
+join elements of the array with certain character between them
+      </pre>
+      <p>
+      join
+      </p>
+      <div></div><br>
+
+      <pre>
+sort elements of the array
+      </pre>
+      <p>
+      sort
+      </p>
+      <div></div><br>
+
+      <pre>
+map/collect an array on a given property
+      </pre>
+      <p>
+      map
+      </p>
+      <div></div><br>
+
+      <pre>
+return the size of an array or string
+      </pre>
+      <p>
+      size
+      </p>
+      <div></div><br>
+
+      <pre>
+escape a string
+      </pre>
+      <p>
+      escape
+      </p>
+      <div></div><br>
+
+      <pre>
+returns an escaped version of html without affecting existing escaped entities
+      </pre>
+      <p>
+      escape_once
+      </p>
+      <div></div><br>
+
+      <pre>
+strip html from string
+      </pre>
+      <p>
+      strip_html
+      </p>
+      <div></div><br>
+
+      <pre>
+strip all newlines (\n) from string
+      </pre>
+      <p>
+      strip_newlines
+      </p>
+      <div></div><br>
+
+      <pre>
+replace each newline (\n) with html break
+      </pre>
+      <p>
+      newline_to_br
+      </p>
+      <div></div><br>
+
+      <pre>
+replace each occurrence e.g. {{ 'foofoo' | replace:'foo','bar' }} #=> 'barbar'
+      </pre>
+      <p>
+      replace
+      </p>
+      <div></div><br>
+
+      <pre>
+replace the first occurrence e.g. {{ 'barbar' | replace_first:'bar','foo' }} #=> 'foobar'
+      </pre>
+      <p>
+      replace_first
+      </p>
+      <div></div><br>
+
+      <pre>
+remove each occurrence e.g. {{ 'foobarfoobar' | remove:'foo' }} #=> 'barbar'
+      </pre>
+      <p>
+      remove
+      </p>
+      <div></div><br>
+
+      <pre>
+remove the first occurrence e.g. {{ 'barbar' | remove_first:'bar' }} #=> 'bar'
+      </pre>
+      <p>
+      remove_first
+      </p>
+      <div></div><br>
+
+      <pre>
+truncate a string down to x characters. It also accepts a second parameter that will append to the string e.g. {{ 'foobarfoobar' | truncate: 5, '.' }} #=> 'foob.'
+      </pre>
+      <p>
+      truncate
+      </p>
+      <div></div><br>
+
+      <pre>
+truncate a string down to x words
+      </pre>
+      <p>
+      truncatewords
+      </p>
+      <div></div><br>
+
+      <pre>
+prepend a string e.g. {{ 'bar' | prepend:'foo' }} #=> 'foobar'
+      </pre>
+      <p>
+      prepend
+      </p>
+      <div></div><br>
+
+      <pre>
+append a string e.g. {{ 'foo' | append:'bar' }} #=> 'foobar'
+      </pre>
+      <p>
+      append
+      </p>
+      <div></div><br>
+
+      <pre>
+split a string on a matching pattern e.g. {{ "a~b" | split:"~" }} #=> ['a','b']
+      </pre>
+      <p>
+      split
+      </p>
+      <div></div><br>
+
+
+      <pre>
+remainder, e.g. {{ 3 | modulo:2 }} #=> 1
+
+      </pre>
+      <p>
+      modulo
+      </p>
+
+      <pre>
+reformat a date (syntax reference)
+      </pre>
+      <p>date</p>
+      <div></div><br>
+
+
+      <pre>capitalize words in the input sentence</pre>
+      <p>capitalize</p>
+
+      <div></div><br>
+<!--  capitalize - capitalize words in the input sentence
+ -->
+      <pre>
+convert an input string to lowercase
+      </pre>
+      <p>downcase</p>
+      <div></div><br>
+
+      <pre>
+convert an input string to uppercase
+      </pre>
+      <p>
+      upcase
+      </p>
+      <div></div><br>
+
+
+      <h3 id="Tags_nativas">Tags Nativas do .liquid</h3>
+      <p>Tags são usadas para a lógica, criar variáveis, includes dentre outras técnicas e recurso nativos da linguagem para auxiliar a implementação do seu template. Abaixo está uma lista de tag atualmente suportadas.</p>
+
+      <pre>
+// Assigns some value to a variable
+
+Y
+ou can store data in your own variables, to be used in output or other tags as desired. The simplest way to create a variable is with the assign tag, which has a pretty straightforward syntax:
+
+{% assign name = 'freestyle' %}
+
+{% for t in collections.tags %}{% if t == name %}
+  <p>Freestyle!</p>
+{% endif %}{% endfor %}
+
+Another way of doing this would be to assign true / false values to the variable:
+
+{% assign freestyle = false %}
+
+{% for t in collections.tags %}{% if t == 'freestyle' %}
+  {% assign freestyle = true %}
+{% endif %}{% endfor %}
+
+{% if freestyle %}
+  <span><</span>p>Freestyle!<span><</span>/p>
 {% endif %}
       </pre>
+      <p>
+      assign
+      </p>
+      <div></div><br>
+
+      <pre>
+// Block tag that captures text into a variable
+
+If you want to combine a number of strings into a single string and save it to a variable, you can do that with the capture tag. This tag is a block which "captures" whatever is rendered inside it, then assigns the captured value to the given variable instead of rendering it to the screen.
+
+{% capture attribute_name %}{{ item.title | handleize }}-{{ i }}-color{% endcapture %}
+
+<span><</span>label for="{{ attribute_name }}">Color:<span><</span>/label>
+<span><</span>select name="attributes[{{ attribute_name }}]" id="{{ attribute_name }}">
+  <span><</span>option value="red">Red<span><</span>/option>
+  <span><</span>option value="green">Green<span><</span>/option>
+  <span><</span>option value="blue">Blue<span><</span>/option>
+<span><</span>/select>
+      </pre>
+      <p>
+      capture
+      </p>
+      <div></div><br>
+
+      <pre>
+// Block tag, its the standard case...when block
+
+{% case condition %}
+{% when 1 %}
+hit 1
+{% when 2 or 3 %}
+hit 2 or 3
+{% else %}
+... else ...
+{% endcase %}
+
+{% case template %}
+
+{% when 'label' %}
+     // {{ label.title }}
+{% when 'product' %}
+     // {{ product.vendor | link_to_vendor }} / {{ product.title }}
+{% else %}
+     // {{page_title}}
+{% endcase %}
+      </pre>
+      <p>
+      case
+      </p>
+      <div></div><br>
+
+      <pre>
+Block tag, comments out the text in the block
+
+We made 1 million dollars {% comment %} in losses {% endcomment %} this year
+      </pre>
+      <p>
+      comment
+      </p>
+      <div></div><br>
+
+      <pre>
+// Cycle is usually used within a loop to alternate between values, like colors or DOM classes.
+
+{% cycle 'one', 'two', 'three' %}
+{% cycle 'one', 'two', 'three' %}
+{% cycle 'one', 'two', 'three' %}
+{% cycle 'one', 'two', 'three' %}
+
+resultado
+one
+two
+three
+one
+      </pre>
+      <p>
+      cycle
+      </p>
+      <div></div><br>
+
+      <pre>
+// Liquid allows for loops over collections:
+
+{% for item in array %}
+  {{ item }}
+{% endfor %}
+
+// When iterating a hash, item[0] contains the key, and item[1] contains the value:
+
+{% for item in hash %}
+  {{ item[0] }}: {{ item[1] }}
+{% endfor %}
+
+// During every for loop, the following helper variables are available for extra styling needs:
+
+forloop.length      # => length of the entire for loop
+forloop.index       # => index of the current iteration
+forloop.index0      # => index of the current iteration (zero based)
+forloop.rindex      # => how many items are still left?
+forloop.rindex0     # => how many items are still left? (zero based)
+forloop.first       # => is this the first iteration?
+forloop.last        # => is this the last iteration?
+
+There are several attributes you can use to influence which items you receive in your loop
+
+limit:int lets you restrict how many items you get. offset:int lets you start the collection with the nth item.
+
+# array = [1,2,3,4,5,6]
+{% for item in array limit:2 offset:2 %}
+  {{ item }}
+{% endfor %}
+# results in 3,4
+
+Reversing the loop
+{% for item in collection reversed %} {{item}} {% endfor %}
+
+Instead of looping over an existing collection, you can define a range of numbers to loop through. The range can be defined by both literal and variable numbers:
+
+# if item.quantity is 4...
+{% for i in (1..item.quantity) %}
+  {{ i }}
+{% endfor %}
+# results in 1,2,3,4
+      </pre>
+      <p>
+      for
+      </p>
+      <div></div><br>
+
+      <pre>
+// Standard if/else block
+
+{% if user %}
+  Hello {{ user.name }}
+{% endif %}
+# Same as above
+{% if user != null %}
+  Hello {{ user.name }}
+{% endif %}
+{% if user.name == 'tobi' %}
+  Hello tobi
+{% elsif user.name == 'bob' %}
+  Hello bob
+{% endif %}
+{% if user.name == 'tobi' or user.name == 'bob' %}
+  Hello tobi or bob
+{% endif %}
+{% if user.name == 'bob' and user.age > 45 %}
+  Hello old bob
+{% endif %}
+{% if user.name != 'tobi' %}
+  Hello non-tobi
+{% endif %}
+# Same as above
+{% unless user.name == 'tobi' %}
+  Hello non-tobi
+{% endunless %}
+# Check for the size of an array
+{% if user.payments == empty %}
+   you never paid !
+{% endif %}
+
+{% if user.payments.size > 0  %}
+   you paid !
+{% endif %}
+{% if user.age > 18 %}
+   Login here
+{% else %}
+   Sorry, you are too young
+{% endif %}
+# array = 1,2,3
+{% if array contains 2 %}
+   array includes 2
+{% endif %}
+# string = 'hello world'
+{% if string contains 'hello' %}
+   string includes 'hello'
+{% endif %}<br>
+      </pre>
+      <p>
+      if
+      </p>
+      <div></div><br>
+
+      <pre>
+       Includes another template; useful for partials
+      </pre>
+      <p>
+      include
+      </p>
+      <div></div><br>
+
+      <div></div><br>
+
+      <pre>
+        Mirror of if statement
+      </pre>
+      <p>
+      unless
+      </p>
+      <div></div><br>
+
+      <!--
+      <h3 id="tipos-de-marcacao">Tipos de Marcação</h3>
+      <pre>
+        {% assign order = "false" %}
+        {% orders client_id:client.id %}
+         {% assign order = "true" %}
+         <span><</span>tr>
+          <span><</span>td<span>></span>{{ order.code }}<span><</span>/td<span>></span>
+          <span><</span>td<span>></span>{{ order.received_at }}<span><</span>/td<span>></span>
+          <span><</span>td<span>></span>{{ order | order_status }}<span><</span>/td<span>></span>
+          <span><</span>td<span>></span>{{ order.total | money_format }}<span><</span>/td<span>></span>
+         <span><</span>/tr<span>></span>
+        {% endorders %}
+        {% if order == "false" %}
+         <span><</span>tr<span>></span>
+          <span><</span>td colspan="3"<span>></span>Você ainda não tem pedidos<span><</span>/td<span>></span>
+         <span><</span>/tr<span>></span>
+        {% endif %}
+      </pre>
+
       <p><strong>Existem dois tipos de marcação no líquido:</strong></p>
       <p><i>Tags de Lógica:</i> são declarações condicionais. Eles são a afirmação de que diz o código e o que fazer.</p>
       <p><i>Tags de saída:</i> são as etiquetas de saída exibir o líquido encontrado entre ele.
         Você também pode usar <b>filtros para alterar a saída retornado.</b></p>
-      <p>Para usar o líquido, você vai precisar de recorrer a uma combinação de lógica e de saída de etiquetas usando operadores líquidos. Acções com liquidez muitos dos mesmos operadores como outras linguagens de programação:</p>
+      <p>Para usar o líquido, você vai precisar de recorrer a uma combinação de lógica e de saída de etiquetas usando operadores líquidos. Acções com liquidez muitos dos mesmos operadores como outras linguagens de programação:</p> -->
+
       <!-- // -->
 
       <h2 id="templates">Templates</h2>
       <p>Os templates ficam na raiz da pasta compartilhada no Dropbox onde todos os arquivo são salvos na extensão .liquid</p>
       <p>Dentro da raiz ficam os diretórios "images" "stylesheets" "javascript" e "page"</p>
       <p>Dentro do diretórios page/ é gerado os arquivos de extensão .html das página que são criados no admin.</p>
+      <p>O conteúdo do LAYOUT.LIQUID estará presente em todos os templates abaixo. Por este motivo, é o local indicado para colocar o cabeçalho e rodapé da loja. Todos os templates abaixo serão incluídos dentro deste layout, usando na variável {{ yield }}.</p>
       <p>Segue abaixo os templates disponíveis na plataforma:</p>
       <!-- // -->
 
-      <h3 id="layout.liquid">Layout.liquid</h3>
-      <p>Neste template ficam devem ficar o html do topo e do rodapé e a tag<br> <strong>{{ yield }}</strong> responsável por incluir o conteúdo dos demais template.</p>
-      <!-- // -->
 
       <h3 id="home.liquid">Home.liquid</h3>
-      <p>Página inicial da loja, aqui podem ser exibidos produtos em destaque, banners, menus e qualquer outra informação que for necessária para atrair o cliente a navegar no resto do site.</p>
+      <p>Este é o template corresponde a página inicial da loja. Aqui podem ser exibidos produtos, banners, menus e qualquer informação que atraia o cliente a navegar no resto do site. -- A variável {{ tag }} conterá a tag de nome "capa", quando esta estiver cadastrada no Painel Administrativo.</p>
+
       <!-- // -->
 
       <h3 id="tag.liquid">Tag.liquid</h3>
       <p>Página que exibe produtos relacionados a uma tag. Tag é a forma de categorização utilizada pela Vnda para organizar os produtos. </p>
       <pre>
-{% assign banner_tag_name = "categoria-" | append: tag.name %}
-{% banners position:banner_tag_name %}
-  ....
-{% endbanners %}
+        {{ tag.id }}
+        {{ tag.name }}
+        {{ tag.title }}
+        {{ tag.subtitle }}
+        {{ tag.description }}
+        {{ tag.type }}
+        {{ tag.image_url }}
+        {{ tag.products_count }}
       </pre>
+      <p></p>
+      <p>Dentro do template tag.liquid é possível exibir informações da tag em questão, que foram cadastradas no admin usando as seguintes variáveis:</p>
       <p>
         Nesse template é muito comun usar banners de posição de tag.<br>
         basta criar uma variável com o nome da tag e chamar esta posição de banner.<br>
       </p>
+      <pre>
+      {% assign banner_tag_name = "categoria-" | append: tag.name %}
+      {% banners position:banner_tag_name %}
+      ....
+      {% endbanners %}
+      </pre>
       <h4 id="listar-produtos">Listar produtos</h4>
       <pre>
 {% products tag:tag.name parent_tag:parent_tag.name page:params.page %}
@@ -94,176 +568,196 @@
       <p>Listagem de produtos com a tag <a href="#products" class="laranja">{% products %}</a><br/><br/><br/><br/></p>
       <!-- // -->
 
-      <h4 id="criar-páginação">Criar páginação</h4>
+      <h4 id="paginacao">Configurando a páginação</h4>
       <pre>
-{% if pagination.total_pages > 1 %}
-<span><</span>nav class="pagination"<span>></span>
-  <span><</span>span class="pagination"<span>></span>
-      Página {{ pagination.current_page }} de {{ pagination.total_pages }}
-      {% if pagination.prev_page %}
-          <span><</span>a href="{{ pagination.prev_url }}" class="previous"<span>></span>←<span><</span>/a<span>></span>
+{% products tag:tag.name page:params.page per_page:20 %}
+  // executa no primeiro loop
+  {% if forloop.first %}
+    <span><<span>ul class="products"><span>
+  {% endif %}
+    // include com o arquivo com a listagem de produtos
+    {% include "list_product" %}
+  // executa no último loop
+  {% if forloop.last %}
+    <span><</span>/ul>
+    {% contentfor paginacao %}
+      // armazena o conteúdo de "<span><</span>nav>" para dentro variável <strong>paginacao</strong>
+      {% if pagination.total_pages > 1 %}
+      <span><</span>nav class="pagination"<span>></span>
+        <span><</span>span class="pagination"<span>></span>
+            Página {{ pagination.current_page }} de {{ pagination.total_pages }}
+            {% if pagination.prev_page %}
+                <span><</span>a href="{{ pagination.prev_url }}" class="previous"<span>></span>←<span><</span>/a<span>></span>
+            {% endif %}
+            {% for page in pagination.pages %}
+              <span><</span>li class="{% if current_url == page.url %} active {% endif %}"><span><</span>a href="{{ page.url }}">{{ page.number }} {% if current_url == page.url %}{% endif %}</a></li>
+            {% endfor %}
+            {% if pagination.next_page %}
+                <span><</span>a href="{{ pagination.next_url }}" class="next"<span>></span>→<span><</span>/a<span>></span>
+            {% endif %}
+        <span><</span>/span<span>></span>
+      <span><</span>/nav<span>></span>
       {% endif %}
-      {% if pagination.next_page %}
-          <span><</span>a href="{{ pagination.next_url }}" class="next"<span>></span>→<span><</span>/a<span>></span>
-      {% endif %}
-  <span><</span>/span<span>></span>
-<span><</span>/nav<span>></span>
-{% endif %}
-      </pre>
-      <p>O código da páginação deve ficar dentro do loop {% products %}</p>
-      <!-- // -->
+    {% endcontentfor %}
+  {% endif %}
+{% endproducts %}
 
-      <h4 id="filtros">Filtros</h4>
-      <p>aguardando atualização...<br/><br/><br/><br/></p>
+// exibe o conteúdo da variável <strong>paginacao</strong>s
+<span><</span>div>{{ paginacao }}<span><</span>/div>
+      </pre>
+      <p>O código da paginação deve ser executado pelo menos 1 vez dentro do loop de % products, o mesmo que é usado para carregar uma listagem de produtos.<br>ex: {% products %} {% if forloop.last %} // código {% endif %}{% endproducts %}</p>
+      <p>Use o {% if forloop.first %} ou {% if forloop.last %} incluir o script de paginação.</p>
+      <p>**importante: use o {% contentfor %} para armazenar o bloco da páginação e chamar em outra parte do código:</p>
+      <p>**a páginação funcionára só para páginas de tag.</p>
+      <p>**Por padrão, a tag é páginada em 25 itens. Para alterar, basta inserir um valor diferente para o parâmentro [ per_page: ] conforme mostrado no exemplo.</p>
+      <p>** É possível limitar a quantidade de itens de uma tag, usando o parâmetro [ limit:Valor_desejado]. Este limite desativa a paginação. É útil na página de busca, caso alguma busca possa retornar muitos resultados, para evitar perda de perorma</p>
+
       <!-- // -->
 
       <h3 id="product.liquid">Product.liquid</h3>
       <p>Template para exibição do produto, suas imagens, produtos relacionados. Aqui também fica o formulário que permite adicionar o item ao carrinho, neste formulário o cliente pode selecionar qual atributo do produto (cor, tamanho, etc) ele realmente quer.</p>
       <p>Para exibir o nome, preço, remarcações, disponibilidade, parcelas  utilize  tags dentro do loop <a href="#products" class="laranja">{% product %}</a></p>
       <!-- // -->
-
-      <h4 id="enviar-produto-ao-carrinho(modelo-antigo)">Enviar produto ao carrinho(modelo antigo)</h4>
-      <p>
-        Para adicionar itens ao carrinho, você precisa fazer um POST para a URL definida na variável {{ cart_url }}, passando dois campos:<p>
-
-      <p>* product_id: ID do produto selecionado pelo usuário<br />
-         * quantity: Quantidade de itens que o usuário deseja comprar</p>
-       <p class="clear">Os campos product_id e quantity são obrigatório, mesmo que o produto tenha apenas uma variante.
-        Caso sua loja não permita que o usuário compre mais de um item, você deve informar este campo com o valor 1.
-        </p>
-      <pre>
-// deprecate, atributos modelo antigo
-<span><</span>form action="{{ cart_url }}" method="POST"<span>></span>
-  <span><</span>input type="hidden" name="product_id" value="{{ product.id }}"/<span>></span>
-  <span><</span>input type="number" name="quantity" min="1"/<span>></span>
-  <span><</span>input type="submit" value="Adicionar"/<span>></span>
-<span><</span>/form<span>></span>
-    </pre>
-    <p> Isso pode ser feito utilizando um formulário &raquo;</p>
-    <div></div><br>
-      <pre>
-// deprecate, atributos modelo antigo
-<span><</span>form action="{{ cart_url }}" method="POST"<span>></span>
-  <span><</span>input type="hidden" name="product_id" value="{{ product.id }}"/<span>></span>
-  <span><</span>input type="number" name="quantity" min="1"/<span>></span>
-  <span><</span>select name="attributes[tamanho]"<span>></span>
-    <span><</span>option value="P"<span>></span>P<span><</span>/option<span>></span>
-    <span><</span>option value="M"<span>></span>M<span><</span>/option<span>></span>
-    <span><</span>option value="G"<span>></span>G<span><</span>/option<span>></span>
-  <span><</span>/select<span>></span>
-  <span><</span>input type="submit" value="Adicionar"/<span>></span>
-<span><</span>/form<span>></span>
-    </pre>
-    <p>Em caso de o produto ter variantes &raquo; </p>
-    <div></div><br>
-      <pre>
-// deprecate, atributos com modelo antigo
-$.post("{{ cart_url }}", { variant_id: 999, quantity: 1 }, function() {
-  alert("Item adicionado com sucesso");
-});
-      </pre>
-      <p>OU via AJAX &raquo;</p>
-      <div></div><br>
-      <p>
-        Caso o produto possua variantes, você deve enviá-las junto com os parâmetros obrigatórios, da seguinte forma:
-      </p>
-      <p>
-        * attributes[cor]: Valor do atributo cor da variante<br />
-        * attributes[tamanho]: Valor do atributo tamanho da variante<br />
-       </p>
-       <p>E assim para cada atributo configurado no admin.</p>
-      <pre>
-// deprecate, atributos com modelo antigo
-<span><</span>form action="{{ cart_url }}" method="POST">
-…
-<span><</span>textarea name="extras[Observação]"><span><</span>/textarea<span>></span>
-<span><</span>input type="file" name="extras[Imagem]"/<span>></span>
-<span><</span>input type="submit" value="Adicionar"/<span>></span>
-<span><</span>/form<span>></span>
-      </pre>
-       <p>
-          Além disso, você pode adicionar informações extras a cada item do carrinho.
-          Essas informações podem ser, por exemplo,
-          uma observação do cliente ou ainda uma imagem para ser impressa no produto.
-          Para enviar essas informações, basta criar os campos a seguinte forma &raquo;
-      </p>
-      <!-- // -->
-
-      <h4 id="enviar-produto-ao-carrinho(modelo-novo)">Enviar produto ao carrinho(modelo novo)</h4>
+      <h4 id="enviar-produto-ao-carrinho">Enviar produto ao carrinho</h4>
       <p>
         **As configurações de atributo devem estar ativadas no admin.
       </p>
       <p><img src="atributos.jpg"></p>
+      <p>***quando o atributo nao é marcado como "opcional de compra" nao é obrigatório montar o sku apartir do valor contido neste atributo.</p>
       <pre>
 <span><</span>form action="{{ cart_item_url }}" method="post"<span>></span>
   <span><</span>input type="hidden" name="sku">
   <span><</span>input type="number" name="quantity" value="1">
 <span><</span>/form>
       </pre>
-      <p>Form com action {{ cart_item_url }} e os campos sku e quantidade obrigatórios.</p>
+      <p>Enviar um <b>formulário com action {{ cart_item_url }}</b> e os campos sku e quantidade obrigatórios.</p>
       <div></div><br>
-      <p>Para acessar os atributos é preciso usar a tag  {% variants %}.</p>
+      <p>Para acessar os atributos é preciso usar a tag  <b>{% variants %}</b> ou carregá-los via <b>javascript</b> injetando os elementos de seleção no html, para isto basta iniciar um variável no seu arquivo.js como por ex:<br> variant = vnda.variants.all().</p>
+      <p>** Importante ter noções de programação orientada a objetos<br>
+
+        <a href="#produto-com-2-atributos" class="laranja">Exemplo de uso para um produto com 2 atributos</a>
+
+      </p>
       <pre>
+// No .liquid
 {% variants product_id:product.id %}
 {{variant.properties["property1"]["value"]}}
 {{variant.properties["property2"]["value"]}}
 {% endvariants %}
+
+// Arquivo .js
+$(function(){
+  // variável que recebe os objetos com as informaçoes de cada variante
+  variants = vnda.variants.all()
+})
       </pre>
       <!-- // -->
+      <!-- <h5 id="montar-enviar-o-sku">Montar/Enviar o Sku</h5>   -->
 
-     <h4 id="mensagem-de-erro">Mensagem de Erro</h4>
+       <h5 id="listar-variantes-de-um-atributo">Listar variantes de um atributo</h5>
+      <pre>
+// Variantes do produtos
+camiseta tamanho M #000
+camiseta tamanho M #fff
+camiseta tamanho M #333
+camiseta tamanho G #000
+camiseta tamanho G #333
+
+// Quais as variantes com tamanho M?
+$(function(){
+  variants = vnda.variants.all()
+  var array = vnda.variants.find({Tamanho: "M" })
+  // variável array recebe o objeto json com todas as informações
+  // de variante com tamanho M
+  // apartir desses dados é possível montar o html
+  // com todas as cores desse atributo
+})
+
+      </pre>
+      <p>Para exibir as variantes que pertencem ao um mesmo atributo usamos o javascript.</p>
+      <p>**só para os casos de produtos com mais de 1 atributo</p>
+
+      <h5 id="como-montar-montar-o-sku">Como montar o sku?</h5>
+      <p>
+         Como já dito antes, para que um item seja adicionado ao carrinho é preciso enviar um campo com o valor do sku da variante(há casos que é preciso montar um sku) e enviar para o url "/carrinho/adicionar".
+      </p>
+
+      <pre>
+$(function(){
+  // filtro que retorna variantes com o rgb #000
+  vnda.variants.find({Cor: "#000" })
+})
+      </pre>
+
+      <div></div><br>
+
+      <p>Para montar e/ou enviar o sku para /carrinho/adicionar vai depender da quantidade de atributos do produto ou escopo do projeto, sendo viável carregar via js ou tag por .liquid.</p>
+
+      <p><b>LISTANDO O SKU</b></p>
+      <p>** Para produtos com 1 variante</p>
+      <pre>
+
+{% variants product_id:product.id %}
+  {{ variant.sku }}
+{% endvariants %}
+
+ou
+
+$(function(){
+  // variável que recebe os objetos com as informaçoes de cada variante
+  var variants = vnda.variants.all()
+  // acessando a propriedade sku do objeto
+  variants.sku
+})
+      </pre>
+      <p>
+       Método mais simples, é recomendável usar a tag {{ variant.sku }} do .liquid no loop <a class="laranja" href="#variants">{% variants %}</a>.
+      </p>
+      <div></div><br>
+      <p>**Para produtos com mais de uma variante</p>
+      <p>
+        Podemos dividir em 2 casos: os <b>produtos com 1 ou 2 atributos.</b>
+      </p>
+      <pre>
+// montar o sku com 1 atributos
+variantes do produto:
+camiseta tamanho M
+camiseta tamanho G
+camiseta tamanho GG
+
+Qual o sku da variante com tamanho G?
+
+$(function(){
+  variants = vnda.variants.all()
+  // lista o valor de sku para a variante com o tamanho G
+  vnda.variants.find({Tamanho: "G"})[0].sku
+})
+
+// montar o sku com 2 atributos
+camiseta tamanho M  #000
+camiseta tamanho M  #fff
+camiseta tamanho M  #333
+
+Qual o sku da variante com tamanho M  e cor #000 ?
+
+$(function(){
+  variants = vnda.variants.all()
+  // lista o valor de sku para a variante com o tamanho G
+  vnda.variants.find({Tamanho: "G", Cor:"#000" })[0].sku
+})
+      </pre>
+
+
+      <div></div><br>
+
+      <!-- // -->
+
+      <h4 id="mensagem-de-erro">Mensagem de Erro</h4>
       <pre>
 {% if flash.cart.error  %}{{ flash.cart.error }}{% endif %}
       </pre>
       <p>
         Quando existir algum erro no formulário de compra »
-      </p>
-      <!-- // -->
-
-      <h4 id="como-listar-o-sku">Como listar o sku?</h4>
-      <p>
-          Para que um item seja adicionado ao carrinho é preciso montar o sku e é através de uma "chave" que é possível
-          identificar qual a variante será enviada para a página de carrinho.<br>
-      </p>
-      <p>Para montar um sku existe 3 formas e isso vai depender de quantos atributos e variantes forão cadastradas no produto.</p>
-      <p><strong>Com apenas uma variante</strong></p>
-      <pre>
-{% variants product_id:product.id %}
-{{ variant.sku  }}
-{% endvariants %}
-      </pre>
-      <p>
-       Caso exista apenas uma variante cadastrada para um produtos basta buscar {{ variant.sku }} e informar no campo do formulário
-      </p>
-      <div></div><br>
-      <p><strong>Com mais de uma variante</strong></p>
-      <p>
-        Neste caso podem existir duas situações: produto com 1 atributos ou com 2 atributos.
-      </p>
-      <pre>
-// montar o sku
-vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
-      </pre>
-      <p>
-      Se existir 2 atributos você deve buscar o valor de cada atributo via javascript.
-      </p>
-      <div></div><br>
-      <pre>
-vnda.variants.all()
-      </pre>
-      <p>Antes de começar faça um teste, abra a página de produto e no console execute a seguinte linha de comando:<br>
-      </p>
-      <div></div><br>
-      <p>Ao executar esse comando é retornado um array de objetos com todas as informações de cada variante do produto.</p>
-      <pre>
-vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
-      </pre>
-     <p>Ainda no console você pode montar um sku, basta combinar os valores de atributos da variante.</p>
-     <div></div><br>
-     <p>Ao executar esse comando é <strong>gerado uma chave</strong>, e será essa chave que deve ser enviada para o campo sku do formulário.</p>
-     <p>
-        Dica: para enviar o sku faça um função no evento submit do formulário.<br>
-        Veja <a href="#Atributos(montar o sku)" class="laranja">aqui</a> um exemplo pronto que pode servir como base para criar suas próprias funções.
       </p>
       <!-- // -->
 
@@ -278,8 +772,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
 {% endimages %}
     </pre>
     <p>Para exibir todas imagens cadastradas de um produto deve-se utilizar o tag {% imagens %}. Se prefirir listar apenas as imagens de uma variante x, utilize o parâmetro "sku"
-    {% images sku:sku %}.
-    </p>
+    {% images sku:sku %} <a href="#trocar-imagem-principal-por-variante-selecionada" title="Trocar imagem principal por variante selecionado" class="laranja">mais detalhes aqui</a>.</p>
     <h4 id="produtos-também-vistos">Produtos Também Vistos</h4>
     <pre>
 {% also_viewed id:product.id key:session_id %}
@@ -320,7 +813,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
       <h4 id="remover-item-do-carrinho">Remover item do carrinho</h4>
       <pre>
 <span><</span>form action="{{ cart_url }}" method="post"<span>></span>
-  <span><</span>input type="hidden" name="_method" value="patch" /<span>></span>
+  <span><</span>input type="hidden" name="_method" value="Delete" /<span>></span>
   <span><</span>input type="hidden" name="item_id" value="999" /<span>></span>
   <span><</span>input type="submit" value="Excluir"/<span>></span>
 <span><</span>/form<span>></span>
@@ -375,6 +868,8 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
       {{ shipping_method.name }}
       {{ shipping_method.price | money_format }}
       {{ shipping_method.description }}
+      <a href="#tag-do-valor-que-falta-para-frete-grátis" class="gray">//valor que falta para o frete grátis</a>
+      {{  shipping_method.value_needed_to_discount }}
     {% endshippingmethods %}
 {% endif %}
   <span><</span>form>
@@ -441,7 +936,7 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
   ...
 <span><</span>/form<span>></span>
       </pre>
-      <p>O formulário deve ser enviado para a URL definida na variável {{ shipping_address_url }}.</p></p>
+      <p>O formulário deve ser enviado para a URL definida na variável {{ shipping_address_url }}. Ao enviar dados para entrega e cobrança utilize a váriavel {{ addresses_url }} <a href="#dados-para-cobranca" title="Dados para cobrança"class="laranja">mais detalhes aqui</a></p></p>
       <div></div><br />
       <!-- // -->
 
@@ -580,9 +1075,9 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
 
        <h4 id="dados-para-cobranca">Dados para cobrança/entrega</h4>
 
-       <p>Quando houver campos do formulário para <b>cobrança</b> e outro para <b>entrega</b>, respectivamente serão diferenciados
+       <p>Formulários com dados diferentes para <b>cobrança</b> e <b>entrega</b>, respectivamente serão diferenciados
        pelas variáveis "billing_address" ou "shipping_address".</p>
-       <p><b>Atenção:</b> neste caso o action do formulário da página de endereço deve muda para "/enderecos"</p>
+       <p><b>Atenção:</b> neste caso o action do formulário da página de endereço deve mudar para "/enderecos" = {{ addresses_url }} </p>
        <p>Dados para Cobrança</p>
        <table>
           <thead>
@@ -718,6 +1213,23 @@ vnda.variants.find({Cor: atributo_1, Tamanho: atributo_2})[0]
       </tr>
       </table>
 
+      <h6 id="Listar as parcelas">Listar as parcelas</h6>
+      <pre>
+{% installments %}
+  <span><</span>input type="radio" name="installments" value="{{ installment.number }}" />
+  {{ installment.number }}x de
+  {{ installment.price | money_format }}
+  {% if installment.interest %}
+    juros {{ installment.interest_rate }} a.m. ({{ installment.total | money_format}})
+  {% else %}
+    sem juros
+  {% endif %}
+{% endinstallments %}
+      </pre>
+
+      <p>Para listar as parcelas utilize a variável "installments".</p>
+      <p>*Dentro do loop "installments" verificar se há juros.</p>
+
       <h4 id="dados-para-teste">Dados para teste</h4>
       <pre>
 Visa
@@ -777,22 +1289,22 @@ Elo
       </pre>
       <!-- // -->
 
-    <h5 id="boleto">Boleto</h5>
-    <pre>
-    payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> para compras com no boleto.
+      <h5 id="boleto">Boleto</h5>
+      <pre>
+payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> para compras com no boleto.
 
       </pre>
       <p>O pagamento do boleto necessita apenas o campo:</p>
     <!-- // -->
 
-    <h3 id="finished.liquid">Finished.liquid</h3>
-    <p> 4ª e última etapa do processo de compra. Aqui são exibidas as informações do pedido, como o número e/ou o link para impressão do boleto, junto com a mensagem de conclusão da compra. </p>
+      <h3 id="finished.liquid">Finished.liquid</h3>
+      <p>Esta é a última etapa do processo de compra. Aqui são exibidas as informações do pedido, como o número e/ou o link para impressão do boleto, junto com a mensagem de conclusão da compra. Para exibir as informaóes do pedido, podemos usar estas duas variáveis: {{ client }} | {{ order } </p>
     <!-- // -->
 
-    <h3 id="account.liquid">Account.liquid</h3>
-    <p>Template usado para exibir os dados da conta do cliente, os pedidos efetuados, assim como a situação deles. Nesta página o cliente também pode alterar os dados pessoais, como nome, e-mail e senha. </p>
-    <p>Os dados do pedido ficam armezados na variável {{ order }}<br><span class="summary"><code><a href="#orders" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
-    <pre>
+      <h3 id="account.liquid">Account.liquid</h3>
+      <p>Template usado para exibir os dados da conta do cliente, os pedidos efetuados, assim como a situação deles. Nesta página o cliente também pode alterar os dados pessoais, como nome, e-mail e senha. </p>
+      <p>Os dados do pedido ficam armezados na variável {{ order }}<br><span class="summary"><code><a href="#orders" class="laranja">&raquo; ver implementação no .liquid</a></code></span></p>
+      <pre>
 <span><</span>form action="{{ account_url }}" method="post"<span>></span>
    <span><</span>input type="text" name="email" value="{{ client.email }}"<span>></span>
   <span><</span>input type="text" name="password" <span>></span>
@@ -801,6 +1313,24 @@ Elo
 <span><</span>/form<span>></span>
       </pre>
       <p>Para alterar  os dados pessoais crie um form com o action {{ account_url }} e envie os dados nome, email, senha.</p>
+
+      <h4 id="formulário-de-atualizar Senha">Formulário para Atualizar Senha</h4>
+      <pre>
+<span><</span>form action="{{ account_url }}" method="post""<span>></span>
+  <span><</span>input type="text" name="{{ client.email }}" <span>></span>
+  <span><</span>input type="text" name="password" <span>></span>
+  <span><</span>input type="text" name="password_confirmation" <span>></span>
+  <span><</span>input type="submit" value="Atualizar Senha"<span>></span>
+<span><</span>/form<span>></span>
+      </pre>
+      <p>O formulário para atualizar a senha a senha deve usar action {{account_url}}</p>
+      <div></div><br>
+      <pre>
+{% if flash.client.error %}
+      </pre>
+
+      <p>Mensagem de sucesso e de erro para o form de recuperar senha.</p>
+      <!-- // -->
 
       <h3 id="login.liquid">Login.liquid</h3>
       <p> Template usado tanto para novos cadastros quanto para logins de clientes já cadastrados. Desta página parte também o login via Facebook, que permite que clientes participem de promoções específicas.
@@ -844,24 +1374,36 @@ Elo
       <p>Quando existir algum erro no formulário de login &raquo;</p>
       <!-- // -->
       <h4 id="formulário-de-Recuperar Senha">Formulário de Recuperar Senha</h4>
+
       <pre>
 <span><</span>form action="{{recover_password_url}}" method="post""<span>></span>
   <span><</span>input type="text" name="email" <span>></span>
   <span><</span>input type="submit" value="RECUPERAR SENHA"<span>></span>
 <span><</span>/form<span>></span>
       </pre>
+
       <p>O formulário de recuperar a senha deve usar action {{recover_password_url}}</p>
       <p>O usuário vai receber um email com a nova senha</p>
+
       <pre>
 {{ flash.recover_password.ok }}
 {{ flash.recover_password.error }}
       </pre>
-      <p>Mensagem de sucesso e de erro para o form de recuperar senha.</p>
-      <!-- // -->
 
+      <p>Mensagem de sucesso e de erro para o form de recuperar senha.</p>
+
+      <!-- // -->
       <h3 id="search.liquid">Search.liquid</h3>
-      <p> Página que exibe o resultado de uma busca, este resultado é uma lista de produtos que fazem match com o termo buscado pelo cliente atráves da URL /busca?q=termo. </p>
-      <p>Os resultados da busca ficam armezanados na variável {{ products }}.</p>
+      <pre>
+<span><</span>form action="{{ search_url }}" method="post""<span>></span>
+  <span><</span>input type="search" name="q" <span>></span>
+  <span><</span>input type="submit" value="Atualizar Senha"<span>></span>
+<span><</span>/form<span>></span>
+      </pre>
+      <p> Template para a exibição dos resultados de uma busca. Para fazer uma busca, use um formulário apontando para /busca via método GET ou acesse diretamente a URL /busca?q=termo. Não use POST.</p>
+      <div></div><br>
+
+      <p>A lista de produtos que casam com o termo buscado estará na variável {{ products }}.</p>
       <pre>
 {% for product in products %}
   {{ product.image_url | resize: '234x' }}
@@ -894,7 +1436,7 @@ Elo
       <p>Para mostrar o termo da busca  {{ params.q | strip_html }}</p>
 
       <h3 id="page.liquid">Page.liquid</h3>
-      <p> A Vnda possui um pequeno CMS que pode ser utilizado para customizar certas páginas sem a necessidade de conhecimentos avançados de programação. É neste template que essas páginas são exibidas. </p>
+      <p>Vnda permite que sejam criadas e alteradas páginas pelo Painel Administrativo. Isso é feito pelo próprio gestor da loja pois dispensa conhecimentos de programação. Neste template serão exibidas as páginas, de acordo com a URL digitada. </p>
       <!-- // -->
 
       <h2 id="tags-personalizadas-da-vnda">Tags personalizadas da Vnda</h2>
@@ -958,12 +1500,12 @@ Elo
      // preço com desconto
      {{ product | apply_discount | money_format }}
      // parcelas
-     (ou em até {{ product.installments.size }}x de: {{  product | apply_discount | installments: product.installments.size | money_format }})
+     (ou em até {{ product | apply_discount | installment_number }}x de: {{  product | apply_discount | installment_number | money_format }})
     {% else %}
       // preço
       preço: {{ product.price | money_format }}
       // parcelas
-      (ou em até {{ product.installments.size }}x de: {{ product.price | installments: product.installments.size | money_format }})
+      (ou em até {{ product.price | installment_number }}x de: {{ product.price | installment_number | money_format }})
     {% endif %}
   {% else %}
    Produto Esgotado
@@ -1014,7 +1556,7 @@ OU
       <pre>
 {% products tag:tag.name sort:”price” %}
 * da mesma forma que os filtros, a opção de ordenação do usuário pode ser enviada por um form e colocada na tag de produtos.
-{% products tag:tag.name sort:params.ordem %}
+{% products tag:tag.name sort:params.order %}
  se o nome do field for “ordem”
       </pre>
       <p>Ordenar produtos<br /><p>
@@ -1058,13 +1600,19 @@ OU
       <h3 id="menus">{% menus %}</h3>
       <pre>
 {% menus position:"nome_da_posicao_do_menu_no_admin" %}
-  {{ menu.url }} {{ menu.title }}
+  {{ menu.url }}
+  {{ menu.title }}
+  {{ menu.subtitle }}
+  {{ menu.items_count  }} // quantidade de sub-menus
+  {{ menu.image_url }} // Tags com imagem
 {% endmenus %}
       </pre>
       <p>Listar menus<br>
         * loop para exibir os itens de um menu </p>
       <p>Listar sub menus<br />
         * menu com submenus (html opcional)</p>
+      <p>A quantidade de submenus é ilimitada.</p>
+      <p>Dica: ara fazer um menu de marcas com logos, basca cadastrar um menu para esta finalidade, cadastrar o logo das marcas em suas respectivas tags e chamar no menu a variável: [ {{ menu.image_url }} ]  </p>
      <pre>
 {% menus position:"nome_da_posicao_do_menu_no_admin" %}
   {% if forloop.first %}<span><</span>ul<span>></span>{% endif %}
@@ -1078,7 +1626,26 @@ OU
   {% if forloop.last %}<span><</span>/ul<span>></span>{% endif %}
 {% endmenus %}
       </pre>
+      <div> </div><br>
       <!-- // -->
+<pre>
+// Exemplo de menu com 1 filho(subcategoria)
+ {% menus position:"nome-da-posicao", children_depth:"1" %}
+    {{ menu.title }}
+    {{ menu.url }}
+    ....
+    {% for menu in menu.children %}
+      {{ menu.title }}
+      {{ menu.url }}
+      ...
+    {% endof %}
+
+ {% endmenus%}
+</pre>
+<p>Já esta disponível uma nova versão de filtro de tag {% menus %}
+que consome menos requisições para nossa api de menus.</p>
+<p>Na chamada da tag foi adicionado o parâmentro "children_depth", nele é preciso informar a quantidade de filhos desse menu.</p>
+<p>Agora usamos a tag {% for %} para percorrer as subcategorias do menu pai com auxílio de um váriavel local.</p>
 
       <h3 id="page">{% page %}</h3>
       <pre>{% page id:'bloco' %}</pre>
@@ -1108,7 +1675,7 @@ OU
 {% endimages %}
       </pre>
       <p>Listar imagens do produto<br />
-          * deve estar dentro de um loop {% products %}</p>
+        * deve estar dentro de um loop {% products %}</p>
 
       <h3 id="shippingmethods">{% shippingmethods %}</h3>
       <pre>
@@ -1121,6 +1688,8 @@ OU
   <span><</span>input type="radio" name="type" value="{{ shipping_method.value }}" <span>></span>
     {{ shipping_method.name }} {{ shipping_method.price | money_format }} {{ shipping_method.description }}
    <span><</span>/label<span>></span>
+  <a href="#tag-do-valor-que-falta-para-frete-grátis" class="gray">//valor que falta para o frete grátis</a>
+  {{  shipping_method.value_needed_to_discount }}
  {% if forloop.last %}
   <span><</span>/fieldset<span>></span>
  {% endif %}
@@ -1214,16 +1783,64 @@ OU
       * Meta tags e opengraph devem ser dinâmicas <br />
       * Usar {% opengraphfor %} para aplicar Meta Title e Description nas páginas internas da loja.</p>
 
-      <h3 id="contentfor">{% contentfor %}</h3>
-      <pre>
-{% contentfor exemplo %}
-  ... conteúdo armazenado na varianvel "exemplo"
+      <p>Aplicar no template [ tag.liquid ] [ {% opengraphfor tag %} ]</p>
+      <p>Aplicar no template [ procudc.liquid ] [ {% opengraphfor product %} ]</p>
+      <p>Para exibir título e descrição na home, usar a tag de "capa" para capturar de forma dinâmica title e description.</p>
+
+
+<h3 id="contentfor">{% contentfor %}</h3>
+<pre>
+// armazendo o conteúdo em lista_produto
+{% contentfor lista_produto %}
+  <span><</span>div> Item 1 <span><</span>/div>
+{% endcontentfor %}
+{% contentfor lista_produto %}
+  <span><</span>div> Item 2 <span><</span>/div>
+{% endcontentfor %}
+{% contentfor lista_produto %}
+  <span><</span>div> Item 3 <span><</span>/div>
 {% endcontentfor %}
 
-{{ exemplo }} // exibindo contéudo
+{{  lista_produto }}
+
+retorno:
+Item 1
+Item 2
+Item 3
+
+// removendo o conteúdo em lista_produto
+{% assign lista_produto = "" %}
+
+// armazendo o conteúdo em lista_produto
+{% contentfor lista_produto %}
+  <span><</span>div> Item 5 <span><</span>/div>
+{% endcontentfor %}
+
+{% contentfor lista_produto %}
+  <span><</span>div> Item 6 <span><</span>/div>
+{% endcontentfor %}
+
+{{  lista_produto }}
+
+retorno:
+Item 5
+Item 6
+
+{% assign lista_produto = "pense nele como uma váriavel" %}
+{% contentfor lista_produto %}
+  <span><</span>div> Item 10 <span><</span>/div>
+{% endcontentfor %}
+
+{{  lista_produto }}
+
+retorno:
+pense nele como uma váriavel
+Item 6
+
 </pre>
-<p>Armazendo conteúdo com a tag {% contentfor %}<br />
-*Salvar e exibir conteúdo em outros locais do template .liquid</p>
+<p>O {% contentfor nome_da_variavel %} é usado para adicionar conteúdo dentro da variável  "nome_da_variavel" sem remover o conteúdo atual, contrário da tag {% capture %} que remove o conteúdo anterior.
+
+<!-- // -->
 
 <h3 id="aggregations">{% aggregations %}</h3>
 <pre>
@@ -1338,18 +1955,18 @@ Para exibis filtros na busca, usamos a seguinte sintaxe:
 <h3 id="search_options">{% search_options %}</h3>
 <pre>
 {% search_options %}
-  {{ search_option.label }}
+{{ search_option.label }}
 {% endsearch_options %}
 -------------------------
 {
-  "name"=>"small_price",
-  "label"=>"Menor Preço",
-  "active"=>false,
-  "url"=>"/mobilidade-acessibilidade?order=price"
+"name"=>"small_price",
+"label"=>"Menor Preço",
+"active"=>false,
+"url"=>"/mobilidade-acessibilidade?order=price"
 }
 -------------------------
 {% products tag:tag.name parent_tag:parent_tag.name page:params.page sort:params.order   %}
-  {% include "_commons/list_products" %}
+{% include "_commons/list_products" %}
 {% endproducts %}
 </pre>
 <p>
@@ -1357,22 +1974,219 @@ Para obter um filtro de ordenação de produtos dentro de tags, usamos a seguint
 OBS: O parâmetro de ordenamento deve ser passado para a tag, [ sort:params.order ] para que a ordem seja aplicada. <br>
 Os parâmetros de ordenamento não se aplicam a busca, que mostra os produtos em ordem de relevância em relação ao que foi pesquisado.
 </p>
+<!-- // -->
 
-      <h2 id="recursos">Recursos</h3>
-      <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
+<h3 id="include">{% include %}</h3>
+<pre>
+// vnda_stg_demo/template/_header.liquid
+// vnda_stg_demo/template/_footer.liquid
+// vnda_stg_demo/layout.liquid
+// vnda_stg_demo/home.liquid
+.....
 
-      <h3 id="formulários-webforms">Formulários WebForms</h3>
-      <pre>
-<span><</span>form action="/webform" method="post"<span>></span>
+Incluindo topo e rodape no arquivo layout.liquid
+{% include "template/header" %}
+{% include "template/footer" %}
+</pre>
+<p>Para reutilizar as parte de códigos que se repetem ao longo do desenvolvimento da loja usaremos a tag "{% include %}".<p>
+<p>Obs: é obrigatório para qualquer arquivo que não seja de template, como por exemplo: home.liquid, tag.liquid, product.liquid etc.., usar o underscore antes do nome do arquivo: "_nomedoarquivo.liquid", caso contrário seu include não vai funcionar.</p>
+<p>Ao passar o caminho do arquivo na tag include não o use undescore antes do nome.</p>
+<p>A regra do undescore não se aplica a diretórios.</p>
+
+<h2 id="recursos">Recursos</h3>
+<p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
+<!-- // -->
+
+<h3 id="adicionar-produto-ajax-por-$post">Adicionar Produto Ajax com $.post()</h3>
+<pre>
+$.post( "/carrinho/adicionar",{ sku:'1004-4',quantity:'1' }, function( data ) {
+  console.log(data)
+},"json"
+</pre>
+<p>Para adicionar um produto no carrinho via ajax é necessário enviar para a url "/adicionar/carrinho" e os campos sku e quantidade.</p>
+<p>Com jquery, recomendamos que use o $.post() para enviar os dados para url acima que o server esta configurado para retornar um objeto com os item(s) adicionado(s) no formato json como resposta, assim se torna fácil manipular o objeto com jquery.</p>
+
+<h4 id="">Adicionado o(s) item(s) do carrinho no html (VIA JS)</h4>
+
+<p>** incluir biblioteca jquery.js<br>** ter noções básicas de objetos<br></p>
+
+<pre>
+$.post( "/carrinho/adicionar",{ sku:'1004-4',quantity:'1' }, function( data ) {
+  console.log(data)
+},"json")
+
+Resposta: [objeto json]
+Object {id: 29, subtotal: 80, total: 80, shipping_method: null, shipping_price: 0…}
+</pre>
+
+<p>
+Sempre for feito um $.post() para url "adicionar/carrinho" com os dados do sku e quantidade do produto,
+a resposta do server esta configurado para retornar um objeto com os item(s) adicionado(s) no formato json.
+<br><br>
+**os dados desse objeto json são os mesmo encontrados no loop de {% cartitemns %}.
+</p>
+
+<div><br></div>
+
+<pre>
+$.post( "/carrinho/adicionar",{ sku:'1004-4',quantity:'1' }, function( data ) {
+ $( cart.items ).each(function(index, item){
+  console.log( item )
+ });
+},"json")
+
+Object {id: 78, quantity: 1, price: 80, subtotal: 80, total: 80…}
+Object {id: 79, quantity: 1, price: 80, subtotal: 80, total: 80…}
+...
+</pre>
+<p>Você pode percorrer os indíces desse objeto usando each do jquery:  </p>
+
+<div><br></div>
+
+<pre>
+function montaCarrinho( item ) {
+ // deixe uma li de marcação no html
+ // variavel cart_preview clona a li de marcação que será alimentada com o conteúdo do item
+ var cart_preview = $( "ul.cart-items li" ).clone();
+ // coloca para dentro da lista
+ cart_preview.appendTo( "ul.cart-items" );
+ // pesquisa dentro da li pela tag image e inclui o atributo src
+ cart_preview.find( "img" ).attr("src",item.image_url)
+ // pesquisa dentro da li  pela classe .name e inclui o nome
+ cart_preview.find( ".name" ).text(item.product_name)
+ // pesquisa dentro da li pela classe .price e inclui o preço
+ cart_preview.find( ".price" ).html(item.price );
+ .....
+}
+
+$.post( "/carrinho/adicionar",{ sku:'1004-4',quantity:'1' }, function( data ) {
+ $( cart.items ).each(function(index, item){
+  // vai montando o html com o(s) item(s)
+  montaCarrinho(item)
+ });
+},"json")
+</pre>
+
+<p>
+Existem várias formas de montar o dropdown e aba de carrinho via javascript,
+o exemplo ao lado temos função que serve de modelo para carregar o html com uma lista de items a cada interação do for de items.
+</p>
+<p><a href="https://github.com/vagnerolliver/Adicionar-Produto-com--post----Aba-Dropdown-Carrinho/blob/master/script.js" class="laranja" target="_blank">publicado no github</a></p>
+
+<!-- // -->
+
+<h3 id="avaliacao-de-produto">Avaliação de Produto</h3>
+<p>Com votações que podem ser de 1 a 5 pontos é possível enviar um formulário por método post os campos "rating"(pontuação) e "product_id"(id do produto) para url "/avaliacao".</p>
+<div><br></div>
+<pre>
+// Situação atual
+// média atual = 4
+// votos = 6
+
+// dados coletado na avaliação com pontuação 5
+$.ajax({
+  url: "/avaliacao",
+  type: "POST",
+  data: {rate: 5, product_id: id },
+  success: function(response) {
+    console.log("Média "+response.rating)
+    console.log("Votos " +response.votes)
+  }
+});
+
+Retorno:
+"Média 4.2"
+"Votos 7"
+</pre>
+<p>Com jquery, recomendamos que use o $.ajax() para enviar os dados para url acima que o server esta configurado para retornar um objeto json com a média da pontuação e a quantidade total de votos.</p>
+<p>Existem vários plugins js pronto com  as aplicações de estrelinhas, <a class="laranja" href="http://speckyboy.com/2010/04/21/15-javascript-and-plugins-and-tutorials-for-adding-ratings/" target="_blank">dica</a>,<a class="laranja" href="https://www.google.com.br/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=bootstrap%20rating%20stars" target="_blank">com boostrap</a>.</p>
+<p><a href="https://github.com/vagnerolliver/Avaliacao-do-Produto" class="laranja" target="_blank">Ver exemplo</a> usado na http://www.cadence.com.br</p>
+<p>Os dados da pontuação também podem ser gerenciados via admin na edição do produto.</p>
+<p><a href="/img/produto-reviews.png" data-featherlight="image"><img src="/img/produto-reviews.png"></a></p>
+<p>Para zerar a pontuação do produto é necessário acessar a página de edição do produto no admin e selecionar a opção limpar</p>
+
+<!-- // -->
+
+<h3 id="avise-me-quando-chegar">API lista de Espera(Avise-me quando chegar)</h3>
+<pre>
+<span><</span>form action="/lista_de_espera" method="post">
+<span><</span>p>Produto Indisponível<span><</span>/p>
+<span><</span>strong>Avise-me quando chegar<span><</span>/strong>
+<span><</span>input type="hidden" name="sku" value="{{ variant.sku }}">
+<span><</span>input type="hidden" name="nomeproduto" value="{{ product.name }}">
+<span><</span>input type="hidden" name="imagemvariante" value="{{ product.image_url }}">
+<span><</span>input type="hidden" name="referencia" value="{{ product.referente }}">
+<span><</span>input type="hidden" name="preco" value="{{ variant.price | money_format }}">
+<span><</span>input type="email" name="email" value='usuario@email.com.br'>
+<span><</span>input type="submit" value="Enviar">
+<span><</span>/form>
+</pre>
+<p>Api de lista de espera é um recurso da plataforma que notificará o cliente sempre que um produto esgotado voltar ao estoque. O cadastro é feito através do formulário por método post para url "/lista_de_espera" com os campos obrigatórios: "email" e "sku"(da variante).</p>
+<p>Campos opcionais: "referencia"(referencia do produto), preço, imagemvariante, nomeproduto.</p>
+<p>Email do avise-me:</p>
+<p><a href="/img/lista-de-espera.png" data-featherlight="image"><img src="/img/lista-de-espera.png"></a></p>
+
+<!-- // -->
+
+<h3 id="dns">DNS</h3>
+<p>- Criar uma entrada (ou alterar uma já existente) do tipo A,
+ apontando para o IP 54.232.217.234.</p>
+<p>- Criar uma entrada www (ou alterar uma já existente) do tipo CNAME, apontando para o domínio vnda.com.br.</p>
+
+<h3 id="etiqueta-de-promocao">Etiqueta da Promoção</h3>
+<pre>
+* deve estar dentro de um loop {% products %}
+{% if product.discount_id > 0 %}
+{% get promotion from '/discount' [name: product.discount_id] %}
+{% if promotion %}
+<span><</span>img src="{{ promotion.seal_url }}" />
+{% endif %}
+{% endif %}
+</pre>
+<p>
+  Listar a etiqueta da promoção que foi cadastrada no admin.
+</p>
+
+<!-- // -->
+
+<h3 id="formulários-webforms">Formulários WebForms</h3>
+<pre>
+<span><</span>form action="/webform" method="post"<span> onsubmit="document.getElementsByName('reply_to')[0].value = document.getElementsByName('email')[0].value"></span>
 <span><</span>input type="hidden" name="key" value="nome-da-loja-nome-do-form"<span>></span>
+<span><</span>iinput type="hidden" name="reply_to" id="reply_to" value="">
+<span><</span>input type="hidden" name="email" value=""<span>></span>
 <span><</span>input type="submit"<span>></span>
 <span><</span>/form<span>></span>
-      </pre>
-      <p>* Os forms de contato devem usar a action /webform<br />
-      * Deve ser feito o cadastro do form no admin para pegar a key </p>
+</pre>
+<p><strong>Configuração admin:</strong></p>
+<p>- Criando um novo form no admin: <a class="laranja" href="/img/novo-form.png" data-featherlight="image">confira aqui</a></p>
+<p>- Informando o  email de destino e assunto: <a class="laranja" href="/img/edicao-do-form.png" data-featherlight="image">confira aqui</a></p>
+<p>- Ao salvar será gerado um chave: <a class="laranja" href="/img/edicao-form-concluido.png" data-featherlight="image">confira aqui</a></p>
+<p><strong>Configuração .liquid:</strong></p>
+<p>- Form action= "/webform" </p>
+<p>- Incluir o campo hidden com name="key" e com o valor da key do form da configuração anterior.</p>
+<p>Incluir o campo hidden com name="reply_to", este campo deve pegar o valor do campo email antes do evento submit do formulário. Use um evento jquery onsubmit para pegar o valor do email antes do submit ou apenas informe o evento onsubmit direto na tag form
+como o exemplo ao lado</p>
 
-      <h3 id="descrição-do-produto-com-múltiplas-seções">Descrição do produto com múltiplas seções</h3>
-      <pre>
+<!-- // -->
+
+<h3 id="montar-carrinho-na-url">Montando um carrinho pela url</h3>
+<pre>
+// adicionando 2 itens na loja demo
+// sku 1007-1 e 1009-4
+// a quantidade do item 1007-1 = 10
+// a quantidade do item 11009-4 = 5
+// desconto de 50% no subtotal do pedido
+// código do cupom de desconto "DESCONTO50"
+
+<a href="https://demo.vnda.com.br/carrinho?itens=1007-1:10,1009-4:5&cupom=DESCONTO50" target="_blank">https://demo.vnda.com.br/carrinho?itens=1007-1:10,1009-4:5&cupom=DESCONTO50</a>
+</pre>
+<p>Quando um carrinho ainda não tiver nenhum dado de cliente ou para ser feito na mão, é possível incluir na URL os parâmetros "sku","quantidade" e opicional "cupom".</p>
+<p>Basicamente, deve entrar no final da URL SKU:QNT+SKU:QNT...</p>
+<p>Esse link leva direto para o carrinho montado e pode ter algum CUPOM ASSOCIADO</p>
+<p>Url /carrinho?itens=SKU:quantidade,SKU:quantidade&cupom=CUPOM</p>
+<h3 id="descrição-do-produto-com-múltiplas-seções">Descrição do produto com múltiplas seções</h3>
+<pre>
 {% if product.description %}
   {% assign descParts = product.description | split:"linhadecorte" %}
   {% for desc in descParts %}
@@ -1387,59 +2201,9 @@ Os parâmetros de ordenamento não se aplicam a busca, que mostra os produtos em
 {{ desc2 }}
 ...
 {{ desc3 }}
-      </pre>
-      <p>Para determinar o o local onde a descrição será dividida, deve-se colocar o texto “linhadecorte” na descrição do produto</p>
+</pre>
+<p>Para determinar o o local onde a descrição será dividida, deve-se colocar o texto “linhadecorte” na descrição do produto</p>
 
-      <h3 id="wishlist(lista-de-desejos)">Wishlist(lista de desejos)</h3>
-      <pre>
-<span><</span>form action="{{ wishlist_url }}" method="POST"<span>></span>
-  <span><</span>input type="hidden" name="_method" value="DELETE"/<span>></span>
-  <span><</span>input type="hidden" name="client_id" value="{{client.id}}"/<span>></span>
-  <span><</span>input type="hidden" name="variant_id" value="{{wish.variant_id}}"/<span>></span>
-  <span><</span>button type="submit"<span>></span>Remover<span><</span>/button<span>></span>
-<span><</span>/form<span>></span>
-      </pre>
-      <p>* Deletar produto da lista (também pode ser por JS)</p>
-      <div></div><br>
-      <pre>
-{% wishlist client_id:client.id %}
-    {{wish}}
-{% else %}
-    nada
-{% endwishlist %}
-
-* para a listagem dos produtos utilize a tag {% products %} <a href="#products">&raquo; ver código</a>
-    </pre>
-    <p>* Mostrar lista do cliente</p>
-    <div></div><br>
-    <pre>
-{% wishlist client_id:client.id variant_id:2 %}
-    {{wish}}
-{% endwishlist %}}
-      </pre>
-      <p>* Consultar se produto está na lista</p>
-      <div></div><br>
-
-      <pre>
-<span><</span>form action="{{ wishlist_url }}" method="POST"<span>></span>
-  <span><</span>input type="text" name="client_id" value="{{client.id}}"/<span>></span>
-  <span><</span>input type="text" name="variant_id"/<span>></span>
-  <span><</span>button type="submit" value="Enviar"<span>></span>Enviar<span><</span>/button<span>></span>
-<span><</span>/form<span>></span>
-      </pre>
-      <p>* Adicionar na lista com html</p>
-      <div></div><br>
-      <pre>
-$.post(
-  "/lista_de_desejos",
-  { client_id: "15", variant_id: "4" },
-  function( data ) {
-    console.log("success");;
-  },
-  "json"
-)
-      </pre>
-      <p>* Adicionar via JS</p>
 
       <h3 id="notificações-de-e-mails">Notificações de e-mails</h3>
       <p>A plataforma possui integração com <a href="https://madmimi.com/" target="_blank">Madmimi</a>, ferramenta que gerencia as campanhas de e-mails dos nossos clientes.</p>
@@ -1482,69 +2246,278 @@ exemplo-senha-cliente
       <p>Os campos que podem ser enviados nos emails de noviticação &raquo;</p>
       <!-- // -->
 
-      <h3 id="etiqueta-de-promocao">Etiqueta da Promoção</h3>
+      <h3 id="percentual-desconto-boleto">Percentual de desconto no Boleto</h3>
       <pre>
-* deve estar dentro de um loop {% products %}
-{% if product.discount_id > 0 %}
-    {% get promotion from '/discount' [name: product.discount_id] %}
-    {% if promotion %}
-    <span><</span>img src="{{ promotion.seal_url }}" />
-    {% endif %}
-{% endif %}
-      </pre>
-      <p>
-        Listar a etiqueta da promoção que foi cadastrada no admin.
-      </p>
+// Preço total do carrinho R$ 100,00
 
-      <!-- // -->
-      <h3 id="dns">DNS</h3>
-      <p>- Criar uma entrada (ou alterar uma já existente) do tipo A,
-       apontando para o IP 54.232.217.234.</p>
-      <p>- Criar uma entrada www (ou alterar uma já existente) do tipo CNAME, apontando para o domínio vnda.com.br.</p>
+{{ cart.total_for_slip | money_format }}
+Retorno "R$ 70,00"
+
+{{ store.settings.slip_discount }}
+Retorno "30"
+      </pre>
+      <p>Em configurações da loja, no item Boleto, informe o % de desconto que o pagamento por boleto terá.<a class="laranja" href="/img/percentual-desconto.png" data-featherlight="image">confira aqui</a></p>
+      <p>A tag {{ cart.total_for_slip }} exibe o total do carrinho com o desconto aplicado.</p>
+      <p>É possível pegar o % de desconto na store pelo settings da loja com {{ store.settings.slip_discount }}.</p>
+
+<!-- // -->
+
+<h3 id="urls-destino-apos-login">Url's Destino após Login</h3>
+<pre>
+Os valores aceitos são:
+
+=> Index
+<</span>input type="hidden" name="redirect_to" value="home" />
+
+=> /conta
+<</span>input type="hidden" name="redirect_to" value="account" />
+
+=> /produto/slug-id
+<</span>input type="hidden" name="redirect_to" value="product:{{ product.id }}" />
+
+=> /nomedatag
+<</span>input type="hidden" name="redirect_to" value="tag:{{ tag.name }}" />
+
+=> //p/keydapages
+<</span>input type="hidden" name="redirect_to" value="page:{{ page.id }}" />
+</pre>
+<p>Por default a plataforma redireciona formulários de login ou cadastro para Home da loja. Visando melhorar a usabilidade é possível configurar para qual url você deseja redirecionar seu cliente, basta incluir um campo hidden com name "rediret_to" em ambos formulários e passar um dos valores suportados.</p>
+<p>Esse tipo de ação é mais recorrente nos formulários dentro de modals, visto que pode ser acessados em qualquer página, por exemplo na página de detalhe do produto.</p>
+
+<!-- // -->
+
+      <h3 id="wishlist(lista-de-desejos)">Wishlist(lista de desejos)</h3>
+      <pre>
+<span><</span>form action="{{ wishlist_url }}" method="POST"<span>></span>
+  <span><</span>input type="hidden" name="_method" value="DELETE"/<span>></span>
+  <span><</span>input type="hidden" name="client_id" value="{{client.id}}"/<span>></span>
+  <span><</span>input type="hidden" name="product_id" value="{{wish.product_id}}"/<span>></span>
+  <span><</span>button type="submit"<span>></span>Remover<span><</span>/button<span>></span>
+<span><</span>/form<span>></span>
+      </pre>
+      <p>* Deletar produto da lista (também pode ser por JS)</p>
+      <div></div><br>
+      <pre>
+{% wishlist client_id:client.id %}
+    {{wish}}
+{% else %}
+    nada
+{% endwishlist %}
+
+* para a listagem dos produtos utilize a tag {% products %} <a href="#products">&raquo; ver código</a>
+    </pre>
+    <p>* Mostrar lista do cliente</p>
+    <div></div><br>
+    <pre>
+{% wishlist client_id:client.id product_id:2 %}
+    {{wish}}
+{% endwishlist %}}
+      </pre>
+      <p>* Consultar se produto está na lista</p>
+      <div></div><br>
+
+      <pre>
+<span><</span>form action="{{ wishlist_url }}" method="POST"<span>></span>
+  <span><</span>input type="text" name="client_id" value="{{client.id}}"/<span>></span>
+  <span><</span>input type="text" name="product_id"/<span>></span>
+  <span><</span>button type="submit" value="Enviar"<span>></span>Enviar<span><</span>/button<span>></span>
+<span><</span>/form<span>></span>
+      </pre>
+      <p>* Adicionar na lista com html</p>
+      <div></div><br>
+      <pre>
+$.post(
+  "/lista_de_desejos",
+  { client_id: "15", product_id: "4" },
+  function( data ) {
+    console.log("success");;
+  },
+  "json"
+)
+      </pre>
+      <p>* Adicionar via JS</p>
+      <!-- -->
 
       <h2 id="dicas-setup/admin">Dicas Setup/Admin</h2>
       <p>Seção de dicas para integrar tanto no setup da loja ou para o admin.</p>
 
-      <h3 id="verificar-usuário-logado">Verificar usuário logado</h3>
-      <pre>
-  {% if logged_in %}
-    <span><<span>a href="{{ account_url }}" title="minha conta">minha conta<span><<span>/a<span>><span>
-    <span><<span>a href="{{ logout_url }}" title="sair">sair<span><<span>/a<span>><span>
-  {% else %}
-    <span><<span>a href="{{ login_url }}" title="">minha conta<span><<span>/a<span>><span>
-  {% endif %}
-      </pre>
-      <p>Após um usuário enviar seus dados de login e o mesmo ser validado pela api, a váriavel "logged_in" retorna valor verdadeiro.</p>
-      <p>Ao adicionar uma verificação no .liquid é possível redirecionar e/ou deslogar.</p>
+      <h3 id="validar-cpf">Biblioteca Jquery para validar cpf e cnpj</h3>
+      <p><a href="https://gist.github.com/vagnerolliver/8e60807e5269162a58b7" target="_blank" class="laranja">Clique aqui</a> para ver os filtros disponíveis para usar no .liquid.</p>
 
-      <h3 id="exibir-imagens-estáticas">Exibir imagens estáticas</h3>
+      <h3>Variável head</h3>
+      <p>Sempre adicionar a variável [ {{ head }} ] no head do html, pois é a partir dele que scripts como o do analytics e outros do gênero são carregados</p>
+
+      <!--
+      <h3 id="contentful">Contentful</h3>
+      <p>Função que retorna as entries(Entradas que representam o conteúdo textual. Dados de uma entrada que adere a um certo tipo de conteúdo no contentful)</p>
+      <pre>
+         function product_for_reference(reference, callback){
+            var client = contentful.createClient({
+              space: '{{ store.settings.contentful_space }}',
+              accessToken: '{{ store.settings.contentful_token }}',
+              secure: true,
+              host: 'cdn.contentful.com'
+            });
+
+            client.contentTypes({name: "Product"}, function(err, content_type) {
+              var product_id = content_type[0].sys.id;
+              client.entries({content_type: product_id, "fields.reference[match]": reference}, function(err, entries) {
+                console.log(entries);
+                if(typeof entries[0] === 'undefined'){
+                  callback(null);
+                } else {
+                  callback(entries[0].fields);
+                }
+              });
+            });
+          }
+      </pre><div></div><br />
+      <p>Função para inserir o dados de um entrie no html</p>
+      <pre>
+        function cadence_downloads(product){
+          // product.post é uma entrie cadastrada no admin do contentful
+          var post = product.post;
+
+          if(!jQuery.isEmptyObject(post)){
+            $('#post .titulo').attr('href', 'http:' + media[0].fields.file.title);
+            $('#post a').attr('href', 'http:' + media[0].fields.file.url);
+            $('#post .conteudo').attr('href', 'http:' + media[0].fields.file.content);
+          }
+        }
+      </pre>// -->
+      <!-- // -->
+      <h3 id="listar-percentual-desconto-no-produto-em-promoção">Listar Percentual de Desconto no produto em promoção</h3> <!-- // -->
+      <pre>
+//variável que armazena o preço original
+{% assign valor_produto = product.price %}
+
+//variável que armazena o preço c/ desconto
+{% assign valor_com_desconto = product | apply_discount %}
+
+//variável que armazena o percentual de desconto
+{% assign desconto =  valor_produto | minus:valor_com_desconto | times:100 | divided_by:valor_produto | remove: '.0' %}
+
+// lista o percentual de desconto
+{{ desconto }}
+      </pre>
+      <p>Para listar o % (percentual) de desconto de um produto em promoção é necessário é criar variáveis e auxiliar na criação dos filtros das operações.</p>s
+      <!-- // -->
+
+<h3 id="calcular-frete-no-detalhe-do-produto">Calcular frete no detalhe do produto</h3>
+<pre>
+$.ajax({
+  url: "/frete_produto",
+  cache: false,
+  type: "POST",
+  dataType: "json",
+  data: {
+    product_id:99999, // informe um id válido de produto
+    zip: "93265340"
+  },
+  success: function(json) {
+    //console.log(json.error);
+    if(json.error == "Invalid zip or product_id"){
+        alert("Cep nao cadastrado no correios")
+    } else {
+        var methods = $.parseJSON(json.methods);
+        console.log(methods)
+    }
+  }
+});
+
+Retorno:
+[Object, Object, Object]
+</pre>
+<p>Para calcular o frente de um produto envie um formulário de dados via ajax passando os parâmetros product_id(id do produto ) e zip(cep) para url "/frete_produto". Api de frete esta configurada para retornar um objeto no formato json com as informações do local do cep digitado e dados de entrega: nome do método(sedex,pac etc..), prazo e preço.</p>
+<p>Rode o código do preview ao lado no console do navegador e em umas das página da sua loja, altere apenas o campo product_id com uma valor válido.</p>
+
+<p>Código publicado no <a href="https://github.com/vagnerolliver/calculando-frete-do-produto" class="laranja" target="_blank">github</a>, o mesmo usado no lojadamoto.com.br </p>
+
+<!-- -->
+
+      <h3 id="como-listar-parcelas">Como Listar Parcelas</h3>
+      <p>Para listar parcelas, podemos usar um dos seguintes exemplos de código:</p>
+      <pre>
+// produto com desconto
+{{ product | apply_discount | installment_number }}x de {{  product | apply_discount | installments | money_format }}
+ou
+{% assign preco =  product | apply_discount %}
+{{ preco | installment_number }}x de {{ preco | money_format }}
+
+// produto sem desconto
+{{ product.price | installment_number }}x de {{  product.price | installments | money_format }}
+ou
+{% assign preco =  product.price %}
+{{ preco | installment_number }}x de {{ preco | money_format }}
+
+
+      </pre>
+      <!-- // -->
+      <h3 id="como-relacionar-produtos">Como relacionar produtos</h3>
+      <pre>
+{% assign product_id = product.id %}
+{% tags product_id:product.id type:"relacionado" limit:1 %}
+  {% products tag:tag.name %}
+    {% unless product_id == product.id %}
+      {{product}}
+    {% endunless %}
+  {% endproducts %}
+{% endtags %}
+      </pre>
+      <p>
+        É necessário criar uma tag e colocar um tipo para ela (pois vamos buscar a tag por tipo na sequencia. no exemplo usamos o tipo "relacionado")
+        Então usamos o código abaixo na tela de produtos. Ele percorre as tags do produto em busca de uma que tenha o tipo "relacionado". Caso encontre, serão listados os produtos que também tem essa tag, ou seja, que estão relacionados entre si.
+      </p>
+
+<!--
+<h3 id="filtro-de-marcas">Filtro de Marcas</h3>
+<pre>
+{% brand_filter tag_id:tag.name %}
+{% if brand.selected %}
+<span><<span>a href="{{ brand.url }}"<span>></span>
+<span><<span>input type="checkbox" checked onclick="window.location.href='{{ brand.url }}'"<span>></span>
+{{ brand.title }}
+<span><<span>/a<span>></span>
+{% else %}
+<span><<span>a href="{{ brand.url }}"<span>></span>
+<span><</span>input type="checkbox" onclick="window.location.href='{{ brand.url }}'"<span>></span>
+{{ brand.title }}
+<span><<span>/a<span>></span>
+{% endif %}
+{% endbrand_filter %}
+
+</pre>
+<p>Para fazer um filtro de marcas, é preciso passar o parâmetro <strong> filter:brand:params.marca </strong> na chamada do loop de produtos.
+<p>Para gerar o filtro de produtos, veja o código de exemplo:</p>
+<br />
+<br />-->
+
+      <!-- // -->
+      <h3 id="exibir-images-estáticas">Exibir imagens estáticas</h3>
       <p>* devem estar no diretório /public/images</p>
       <pre>
   {{ “nome_do_arquivo.ext” | image_tag: “Texto alternativo” }}
   <span><</span>img src="{{ “nome_do_arquivo.ext” | image_url }}" alt=“Texto alternativo”/<span>></span>
       </pre>
-      <h3 id="como-listar-produtos-em-promoção">Como listar produtos em promoção</h3>
-      <p>aguardando atualização...<br><br><br><br><br></p>
 
-      <h3 id="como-relacionar-produtos">Como relacionar produtos</h3>
-      <p>aguardando atualização...<br><br><br><br><br></p>
+      <h3 id="incluir-css-js">Incluindo css e js pelo .liquid</h3>
+      <pre>
+// para o css
+{{ "style.css" | stylesheet_tag }}
 
-      <h3 id="validar-cpf">Biblioteca Jquery para validar cpf e cnpj</h3>
-      <p><a href="https://gist.github.com/vagnerolliver/8e60807e5269162a58b7" target="_blank" class="laranja">Clique aqui</a> para ver os filtros disponíveis para usar no .liquid.</p>
-      <code>
+// para js
+{{ "function.js" | javascript_tag }}
+      </pre>
+      <p>Para chamar os arquivos css e js salvos nas pastas "/stylesheets" e "/javascripts/" use os filtros "stylesheet_tag" e "javascript_tag".</p>
+<!-- // -->
 
-
-
-
-
-      </code>
       <h3 id="incluir-busca-swiftype">Incluir busca swiftype</h3>
       <pre>
 // mudanças no .liquid
 1) {{ meta_tags }} no layout, dentro do head
 
 2) em product
-{% contentfor meta_tags %}
+{% contentfor meta_tags %}a
   <span><</span>meta property="st:image" content="{{ product.image_url | resize: '185x' }}">
   <span><</span>meta property='st:type' content='products' />
   <span><</span>meta class="swiftype" name="name" data-type="string" content="{{ product.name }}" />
@@ -1568,10 +2541,10 @@ exemplo-senha-cliente
       </p>
       <div></div><br />
       <pre>
-<a href="http://www.vnda.com.br/img/print-1.png" target="_blank">print 1</a>
-<a href="http://www.vnda.com.br/img/print-2.png" target="_blank">print 2</a>
-<a href="http://www.vnda.com.br/img/print-3.png" target="_blank">print 3</a>
-<a href="http://www.vnda.com.br/img/print-4.png" target="_blank">print 4</a>
+<a href="http://www.vnda.com.br/images/print-1.png" target="_blank">print 1</a>
+<a href="http://www.vnda.com.br/images/print-2.png" target="_blank">print 2</a>
+<a href="http://www.vnda.com.br/images/print-3.png" target="_blank">print 3</a>
+<a href="http://www.vnda.com.br/images/print-4.png" target="_blank">print 4</a>
       </pre>
        <p>
         2 - Criar engine de busca<br>
@@ -1579,27 +2552,299 @@ exemplo-senha-cliente
       <div></div><br>
 
       <pre>
-<a href="http://www.vnda.com.br/img/print-5.png" target="_blank">print 5</a>
+<a href="http://www.vnda.com.br/images/print-5.png" target="_blank">print 5</a>
       </pre>
       <p>
         3- Nessa etapa, ele vai buscar o conteúdo em todo o site<br>
       </p>
       <div></div><br>
       <pre>
-<a href="http://www.vnda.com.br/img/print-6.png" target="_blank">print 6</a>
-<a href="http://www.vnda.com.br/img/print-7.png" target="_blank">print 7</a>
+<a href="http://www.vnda.com.br/images/print-6.png" target="_blank">print 6</a>
+<a href="http://www.vnda.com.br/images/print-7.png" target="_blank">print 7</a>
       </pre>
       <p>
         4 - Depois que já tiverem sido encontradas todas as páginas, colocar o filtro<br>
       </p>
       <div></div><br>
       <pre>
-<a href="http://www.vnda.com.br/img/print-8.png" target="_blank">print 8</a>
+<a href="http://www.vnda.com.br/images/print-8.png" target="_blank">print 8</a>
       </pre>
       <p>
         5 - As informações que precisam ser colocadas no admin
       </p>
-      <h3 id="atributos(montar-o-sku)">Atributos(montar o sku)</h3>
+
+      <!-- // -->
+
+      <h3 id="como-incluir-favicon">Como incluir Favicon?</h3>
+      <pre>
+Chamando um favicon salvo na raiz da pasta "/public"
+{{ "favicon.ico" | favicon_tag }}
+// Retorno
+<span><</span>link href="nomedaloja/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
+
+
+Chamando um favicon salvo na raiz da pasta "/public/images"
+// Retorno
+{{ "images/favicon.ico" | favicon_tag }}
+<span><</span>link href="nomedaloja/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
+      </pre>
+      <p>1. Para incluir uma favicon por uma tag de .liquid, é preciso informar o filtro "favicon_tag" {{ "favicon.ico" | <b>favicon_tag</b> }}.</p>
+      <p></p><br />
+      <p>2. Para incluir direto por html, informe o caminho relativo da pasta que esta salvo o favicon.ico.</p>
+      <p>2.1 Caminho relativo da pasta "/public"<br />
+      <span><</span>link href="/favicon" rel="shortcut icon" /></p>
+      <p>2.2 Caminho relativo na raiz da pasta "/images"<br />
+      <span><</span>link href="/images/favicon.ico" rel="shortcut icon" />
+      </p>
+
+
+      <h3 id="mapeamento-da-tag-params">Mapeamento da tag params</h3>
+      <pre>
+<span><</span>pre>{{ params }}<</span>/pre>
+
+// Retorno:
+
+// na página da busca
+http://www.bodystore.com.br/corpo?page=3
+ <span><</span>pre>{"q"=>"produto x"}<span><</span>/pre>
+
+// na página da produto
+par url http://www.loja.com.br/produto/produto-191
+<span><</span>pre>{"slug"=>"produto", "id"=>"191"}<span><</span>/pre>
+
+// na página da tag
+par url http://www.loja.com.br/masculino/bermudas
+<span><</span>pre>{"parent"=>"masculino", "tag"=>"bermudas"}<span><</span>/pre>
+
+// na  páginação
+par url http://www.loja.com.br/masculino/bermudas
+<span><</span>pre>{"page"=>"3", "parent"=>"doces", "tag"=>"bolos"}<span><</span>/pre>
+      </pre>
+      <p>É possível fazer o mapeamento dos parâmetros de cada template pela tag {{ params }}.</p>
+      <p>Para cada template é feito um mapeamento da url de acordo com o parâmetro disponível.</p>
+      <p>Veja um caso de uso para chamar uma posição de menu ou para tag "masculino" ou "feminino" <a href="#exibir-menu-para-tag" class="laranja">mais detalhes aqui.</a></p>
+
+      <!-- // -->
+      <h3 id="exibir-menu-para-tag">Como exibir o menu para uma determinda tag</h3>
+      <pre>
+para url http://www.loja.com.br/masculino/luvas -->
+{% if tag.name == "masculino" or params.parent == "masculino" %}
+//carrega uma posição de menu %
+  {% menus position:"masculino" %}
+  ...
+  {% endmenus %}
+{% endif %}
+
+<a href="#mapeamento-da-tag-params">entenda a tag {{ params }}</a>
+      </pre>
+      <p>Para chamar um menu em uma determinada categoria na página de tag será necessário veficar o nome da tag, entretanto, se necessário incluir o menu em todas categorias filhas use params.parent </p>
+      <p>Note que no ex ao lado que é nessário chamar a posição de menu masculino em 2 cenários, um para quando a tag for masculino ou para quando a tag for "luvas". Leve em consideração que "luvas" é filha de "masculino".</p>
+
+      <!-- // -->
+      <h3 id="metricas-google-analytics">Métricas Google Analytics</h3>
+      <h4 id="mensuracao-de-banners">Mensuração de banners</h4>
+      <pre>
+{% banners position: "capa-grande" %}
+<span><</span>li>
+<span><</span>a class="link-img" href="{{ banner.url }}">
+<span><</span>img src="{{ banner.file_url }}" alt="{{ banner.title }}" data-banner-title="{{ banner.title }}" data-content-type="banner" data-banner-position="capa-grande">
+<span><</span>/a>
+<span><</span>div class="info">
+<span><</span>h3>{{ banner.subtitle }}<span><</span>/h3>
+{{ banner.description }}
+<span><</span>/div>
+<span><</span>/li>
+{% endbanners %}
+      </pre>
+      <p>É possível mensurar os cliques dos banners no Google Anatylics através do .liquid informando os atributos
+        data-banner-title, data-content-type e data-banner-position dentro do loop {% banners %}.
+      </p>
+      <p>Os atributos data-banner-title e data-content-type deve ser os mesmo
+        cadastrados no admin nos campos Title e Position;
+       </p>
+       <!-- // -->
+      <h3 id="resumo-do-pedido">Resumo do Pedido</h3>
+      <p>Segue um modelo de resumo do carrinho.</p>
+      <pre>
+<span><</span>table class="table">
+    <span><</span>tbody>
+        <span><</span>tr>
+            <span><</span>td>Subtotal</td>
+            <span><</span>td>{{ cart.subtotal | money_format }}</td>
+        <span><</span>/tr>
+        {% if cart.shipping_price > 0 %}
+        <span><</span>tr>
+          <span><</span>td>Frete</td>
+          <span><</span>td>{{ cart.shipping_price | money_format }}</td>
+        <span><</span>/tr>
+        {%  endif %}
+        {% if cart.discount_price > 0 %}
+        <span><</span>tr>
+          <span><</span>td>Desconto</td>
+          <span><</span>td>{{ cart.discount_price | money_format }}</td>
+        <span><</span>/tr>
+        {% endif %}
+        <span><</span>tr>
+            <span><</span>td>Total de pedidos</td>
+            <span><</span>td>{{ cart.total | money_format }}</td>
+         <span><</span>/tr>
+    <span><</span>/tbody>
+<span><</span>/table>
+      </pre>
+      <!-- // -->
+
+      <h3 id="outras-tags-do-liquid">Outras tags do .liquid</h3>
+      <p>Outras tags que pode ser chamados no .liquid</p>
+      <pre>
+{{ home_url }}     -  retorna a url da home
+{{ current_url  }} -  retorna a url atual
+{{ store_name }}   -  retorna o nome da loja/admin
+      </pre>
+      <!-- // -->
+      <h3 id="verificar-usuário-logado">Verificar usuário logado</h3>
+      <pre>
+  {% if logged_in %}
+    <span><<span>a href="{{ account_url }}" title="minha conta">minha conta<span><<span>/a<span>><span>
+    <span><<span>a href="{{ logout_url }}" title="sair">sair<span><<span>/a<span>><span>
+  {% else %}
+    <span><<span>a href="{{ login_url }}" title="">minha conta<span><<span>/a<span>><span>
+  {% endif %}
+      </pre>
+      <p>A váriavel "logged_in" retorna valor verdadeiro se o usuário estive logado.</p>
+      <p>Use a váriável "logout_url" para deslogar.</p>
+
+       <!-- // -->
+      <h3 id="tag-do-valor-que-falta-para-frete-grátis">Tag - Valor que falta para o Frete Grátis</h3>
+      <pre>
+{% shippingmethods %}
+ ...
+{{ shipping_method.value_needed_to_discount }}
+...
+{% endshippingmethods %}
+     </pre>
+      <p>
+        É possível listar o valor que ainda falta pra ter desconto no frete
+        associado a um tipo de entrega(dentro do loop <a href="#shippingmethods" class="laranja">{% shippingmethods %}</a>), pois o desconto é relativo ao método em questão.
+      </p>
+
+
+      <!-- // -->
+      <h3 id="Tag-store-(configurações-admin)">Tag store (configurações admin)</h3>
+      <pre>
+// atribuindo endereço de forma dinâmica
+{{ store.street_name }}..{{ store.street_number }}..
+{{ store.neighborhood }}.
+      </pre>
+      <p>
+        A tag { store } retorna um array com todas as propriedades da seção "admin/store/edit".
+      </p>
+      <p>
+        Umas das vantagens do uso dessa tag é deixar o site com a logo e endereços gerenciavéis pelo cliente.
+      </p>
+      <p>
+        Constantemente  um novo recurso é adicionado ao admin
+        gerando um novo atributo para a tag "store", caso necessite chame a tag { store } em qualquer parte do arquivo .liquid e veja você mesmo os atributos suportados por esta.
+      </p>
+
+       <!-- // -->
+
+      <h3 id="trocar-imagem-principal-por-variante-selecionada">Trocar imagem principal por variante selecionada</h3>
+
+      <pre>
+ passando o parâmetro "sku" na chamada da tag {% images %}
+// execute loop de 'variants' antes de 'images'
+{% variants product_id:product.id %}
+
+// passe o parametro sku
+{% images sku:variant.sku %}
+
+// passe um data-sku para saber de qual variante pertence essa imagem
+<span><</span>img src="{{ image.url }}" data-sku="{{ variant.sku }}">
+
+{% endimages %}
+{% endvariants %}
+
+Para trocar a imagem principal façar uma função javascript que compare valor do input selecionado com o data-sku da imagem:
+
+O valor do input das variantes sempre deve ser o sku.
+      </pre>
+      <p>Configurar produto no admin "admin > products > midias > images": ao clicar nas fotos do produto ficará disponível no modal com as variantes que podem ser selecionadas <a href="http://www.vnda.com.br/images/guides/screenshot-modal-midia.png"><img src="http://www.vnda.com.br/images/guides/screenshot-modal-midia.png"></a></p>
+
+       <!-- // -->
+      <h3 id="dicas-loop">Dicas loop</h3>
+      <p>A linguagem aceita a tag {% break %} para sair de algum  laço de loop de {% tags %} .. {% products %} {% for %}  etc ...</p>
+      <p>Se precisar pular para o próximo laço de um loop use a tag {% continue %}.</p>
+
+      <!-- / / -->
+      <h3 id="template-do-zendesk">Personalizando o Template Zendesk</h3>
+        <p>Faça o login em https://cadenceatendimento.zendesk.com ou https://cadenceatendimento.zendesk.com/agent</p>
+        <p>Com seu usuário logado acesse o <a href="http://www.vnda.com.br/images/painel-de-personalizacao.png" class="laranja" target="_blank">painel de personalização <img src="http://www.vnda.com.br/images/painel-de-personalizacao.png"></a></p>
+        <p>Clique [mudar tema ] e selecione o template <a href="http://www.vnda.com.br/images/mudar-tema.png" class="laranja" target="_blank">Temas personalizados<img src="http://www.vnda.com.br/images/mudar-tema.png"></a><a href="http://www.vnda.com.br/images/mudar-tema.png" class="laranja" target="_blank"><img src="http://www.vnda.com.br/images/tema-personalizado.png"></a></p>
+        <p>Utilize o editor de código do zendesk para atualizar as páginas, css e javascript do tema<a href="http://www.vnda.com.br/img/editor-zendesk.png" class="laranja" target="_blank"><img src="http://www.vnda.com.br/images/editor-zendesk.png"></a></p>
+        <p>Abra os links abaixo, copie os código e atualize-os arquivos usando o editor.</p>
+        <p><a href="https://gist.github.com/vagnerolliver/5afc8e857e68e806deef" class="laranja" target="_blank">Template da página inicial - ver código</a></p>
+        <p><a href="https://gist.github.com/vagnerolliver/a6bd419e0539ab15fa92" class="laranja" target="_blank">Template da página categoria - ver código</a></p>
+        <p><a href="https://gist.github.com/vagnerolliver/7d82996f6c0423285c39" class="laranja" target="_blank">Template da página produto - ver código</a></p>
+        <p><a href="https://gist.github.com/vagnerolliver/b669860c5954f54265d5" class="laranja" target="_blank">CSS do Template Zendesk - ver código</a></p>
+        <p><a href="https://gist.github.com/vagnerolliver/0d6939482c66d4d62d67" class="laranja" target="_blank">JS do Template Zendesk - ver código</a></p>
+        <p>Selecione o template ou arquivo a ser atualizado <a href="http://www.vnda.com.br/images/editar-tema-pagina-inicial.png" target="_blank"><img src="http://www.vnda.com.br/images/editar-tema-pagina-inicial.png"></a></p>
+
+        <p> </p><br>
+        <p> </p><br>
+
+        <h3 id="novocarrinho">Novo Carrinho/ Novo Checkout</h3>
+        <p>A partir da implantação do novo carrinho e do novo checkout, não são mais necessárias as edição dos arquivos cart.liquid e checkout.liqud.</p>
+        <p>Toda a customização deve ser realizada em um arquivo chamado <strong>custom.css</strong>. Nele, basta sobrescrever os estilos padrões do carrinho e checkout pelas cores padrões do layout da loja.</p>
+        <p>Exemplo de custom.css: <a href="https://github.com/georgeduartevnda/custom.css/blob/master/custom.css" target="_blank" class="laranja">custom.css</a> </p>
+        <p> </p><br>
+        <p> </p><br>
+        <p> </p><br>
+        <p> </p><br>
+
+
+        <h3 id="pedido-finalizado">Pedido Finalizado por Boleto Moip e Cobre Grátis</h3>
+        <h4>Moip</h4>
+        <pre>
+<span><</span>a target="_blank" href="#" id="print-button" style="display:none">IMPRIMIR<span><</span>/a>
+
+<span><</span>script type="text/javascript">
+  $(function(){
+    $("#moip-script").on("success", function() {
+       // função para retirar algum efeito de loader da página
+    });
+  });
+<span><</span>/script>
+        </pre>
+        <p>A integração com o moip faz o mapeamento na página de pedido concluído para exibir e inserir o link do botao de imprimir. A validação do link é feita através da tag html <span><</span>a> de  atributo id definido como "print-button". Este processo pode levar alguns segundos por isso
+        usamos um loader e um script padrão que será executado sempre que uma requisão for conclúida.</p>
+
+        <h4>Cobre Grátis</h4>
+        <p>Para o Cobre Grátis o link é carregado no .liquid pela tag {{ order.slip_url }}</p>
+
+        <p></p><br>
+        <pre>
+ {% if store.settings.slip_gateway == 'cobre_gratis' %}
+ {% else %}
+   // moip
+ {% endif %}
+        </pre>
+        <p>obs: validar no front qual a integração que a loja usa.</p>
+        <p>Exemplo de página de pedido finalizado <a href="https://github.com/vagnerolliver/Pedido-Finalizado" class="laranja" target="_blank">aqui</a></p>
+
+        <h3 id="produto-com-2-atributos-liquid">Produtos c/ 2 Atributos - via Liquid</h3>
+
+        <p>
+          Partindo da premissa em que os atributos de um produtos são Cor(atributo_1) e Tamanho(atributo_2) respectivamente,
+          e que ao abrir a página de produtos é listado apenas as cores e ao selecionar uma cor é listados as combinações de tamanho compátiveis com este atributo.
+        </p>
+        <p>Para isso criaremos um arquivo _variants.liquid com as seguintes manipulações de dados:
+          <a href="https://github.com/georgeduartevnda/variants/blob/master/_variants_example.liquid" class="laranja" target="_blank">_variants_example.liquid</a>
+        </p>
+
+        <p> </p><br>
+        <p> </p><br>
+
+      <h3 id="produto-com-2-atributos">Produtos c/ 2 Atributos - via js</h3>
 
       <p>
         Partindo da premissa em que os atributos de um produtos são Cor(atributo_1) e Tamanho(atributo_2) respectivamente,
@@ -1773,18 +3018,20 @@ function onlyUnique(value, index, self) {
 }
       </pre>
       <p>Etapa 2 - Nessa etapa estão as funções:</p>
-
-     </div><!-- content -->
+      </div><!-- content -->
     <div class="dark-box">
 
     </div>
   </div>
+
   <!-- Google Tag Manager -->
-  <!-- <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script> -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script>
   <!-- End Google Tag Manager -->
 
   <script src="js/jquery-ui-1.9.1.custom.min.js"></script>
   <script src="js/jquery.tocify.js"></script>
+  <script src="js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+
 
   <script>
     $(function() {
