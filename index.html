@@ -37,7 +37,7 @@
       <p>filtros para alterar a saída de uma váriavel:</p>
 
       <pre>
-subtraction e.g. {{ 4 | minus:2 }} #=> 2
+subtração  {{ 4 | minus:2 }} #=> 2
       </pre>
       <p>
       minus
@@ -45,7 +45,7 @@ subtraction e.g. {{ 4 | minus:2 }} #=> 2
       <div></div><br>
 
       <pre>
-addition e.g. {{ '1' | plus:'1' }} #=> '11', {{ 1 | plus:1 }} #=> 2
+adição {{ '1' | plus:'1' }} #=> '11', {{ 1 | plus:1 }} #=> 2
       </pre>
       <p>
       plus
@@ -53,7 +53,7 @@ addition e.g. {{ '1' | plus:'1' }} #=> '11', {{ 1 | plus:1 }} #=> 2
       <div></div><br>
 
       <pre>
-multiplication e.g {{ 5 | times:4 }} #=> 20
+multiplicação {{ 5 | times:4 }} #=> 20
       </pre>
       <p>
       times
@@ -61,14 +61,14 @@ multiplication e.g {{ 5 | times:4 }} #=> 20
       <div></div><br>
 
       <pre>
-division e.g. {{ 10 | divided_by:2 }} #=> 5
+divisão {{ 10 | divided_by:2 }} #=> 5
       </pre>
       <p>
       divided_by
       </p>
       <div></div><br>
       <pre>
-get the first element of the passed in array
+retorna o primeiro elemento do array 
       </pre>
       <p>
       first
@@ -264,16 +264,14 @@ convert an input string to uppercase
       <div></div><br>
 
 
-      <h3 id="Tags_nativas">Tags Nativas</h3>
-      <p>
-        Tags are used for the logic in your template. New tags are very easy to code, so I hope to get many contributions to the standard tag library after releasing this code.
-        Here is a list of currently supported tags:</p>
-      </p>
+      <h3 id="Tags_nativas">Tags Nativas do .liquid</h3>
+      <p>Tags são usadas para a lógica, criar variáveis, includes dentre outras técnicas e recurso nativos da linguagem para auxiliar a implementação do seu template. Abaixo está uma lista de tag atualmente suportadas.</p>
 
       <pre>
 // Assigns some value to a variable
 
-You can store data in your own variables, to be used in output or other tags as desired. The simplest way to create a variable is with the assign tag, which has a pretty straightforward syntax:
+Y
+ou can store data in your own variables, to be used in output or other tags as desired. The simplest way to create a variable is with the assign tag, which has a pretty straightforward syntax:
 
 {% assign name = 'freestyle' %}
 
@@ -478,7 +476,7 @@ Instead of looping over an existing collection, you can define a range of number
       <div></div><br>
 
       <pre>
-      Includes another template; useful for partials
+       Includes another template; useful for partials
       </pre>
       <p>
       include
@@ -488,37 +486,39 @@ Instead of looping over an existing collection, you can define a range of number
       <div></div><br>
 
       <pre>
-Mirror of if statement
+        Mirror of if statement
       </pre>
       <p>
       unless
       </p>
       <div></div><br>
 
+      <!--
       <h3 id="tipos-de-marcacao">Tipos de Marcação</h3>
       <pre>
-{% assign order = "false" %}
-{% orders client_id:client.id %}
- {% assign order = "true" %}
- <span><</span>tr>
-  <span><</span>td<span>></span>{{ order.code }}<span><</span>/td<span>></span>
-  <span><</span>td<span>></span>{{ order.received_at }}<span><</span>/td<span>></span>
-  <span><</span>td<span>></span>{{ order | order_status }}<span><</span>/td<span>></span>
-  <span><</span>td<span>></span>{{ order.total | money_format }}<span><</span>/td<span>></span>
- <span><</span>/tr<span>></span>
-{% endorders %}
-{% if order == "false" %}
- <span><</span>tr<span>></span>
-  <span><</span>td colspan="3"<span>></span>Você ainda não tem pedidos<span><</span>/td<span>></span>
- <span><</span>/tr<span>></span>
-{% endif %}
+        {% assign order = "false" %}
+        {% orders client_id:client.id %}
+         {% assign order = "true" %}
+         <span><</span>tr>
+          <span><</span>td<span>></span>{{ order.code }}<span><</span>/td<span>></span>
+          <span><</span>td<span>></span>{{ order.received_at }}<span><</span>/td<span>></span>
+          <span><</span>td<span>></span>{{ order | order_status }}<span><</span>/td<span>></span>
+          <span><</span>td<span>></span>{{ order.total | money_format }}<span><</span>/td<span>></span>
+         <span><</span>/tr<span>></span>
+        {% endorders %}
+        {% if order == "false" %}
+         <span><</span>tr<span>></span>
+          <span><</span>td colspan="3"<span>></span>Você ainda não tem pedidos<span><</span>/td<span>></span>
+         <span><</span>/tr<span>></span>
+        {% endif %}
       </pre>
 
       <p><strong>Existem dois tipos de marcação no líquido:</strong></p>
       <p><i>Tags de Lógica:</i> são declarações condicionais. Eles são a afirmação de que diz o código e o que fazer.</p>
       <p><i>Tags de saída:</i> são as etiquetas de saída exibir o líquido encontrado entre ele.
         Você também pode usar <b>filtros para alterar a saída retornado.</b></p>
-      <p>Para usar o líquido, você vai precisar de recorrer a uma combinação de lógica e de saída de etiquetas usando operadores líquidos. Acções com liquidez muitos dos mesmos operadores como outras linguagens de programação:</p>
+      <p>Para usar o líquido, você vai precisar de recorrer a uma combinação de lógica e de saída de etiquetas usando operadores líquidos. Acções com liquidez muitos dos mesmos operadores como outras linguagens de programação:</p> -->
+      
       <!-- // -->
 
       <h2 id="templates">Templates</h2>
@@ -1964,10 +1964,27 @@ Para obter um filtro de ordenação de produtos dentro de tags, usamos a seguint
 OBS: O parâmetro de ordenamento deve ser passado para a tag, [ sort:params.order ] para que a ordem seja aplicada. <br>
 Os parâmetros de ordenamento não se aplicam a busca, que mostra os produtos em ordem de relevância em relação ao que foi pesquisado.
 </p>
+<!-- // -->
+
+<h3 id="include">{% include %}</h3>
+<pre> 
+// vnda_stg_demo/template/_header.liquid
+// vnda_stg_demo/template/_footer.liquid
+// vnda_stg_demo/layout.liquid
+// vnda_stg_demo/home.liquid
+.....
+
+Incluindo topo e rodape no arquivo layout.liquid
+{% include "template/header" %}
+{% include "template/footer" %}
+</pre>
+<p>Para reutilizar as parte de códigos que se repetem ao longo do desenvolvimento da loja usaremos a tag "{% include %}".<p>
+<p>Obs: é obrigatório para qualquer arquivo que não seja de template, como por exemplo: home.liquid, tag.liquid, product.liquid etc.., usar o underscore antes do nome do arquivo: "_nomedoarquivo.liquid", caso contrário seu include não vai funcionar.</p>
+<p>Ao passar o caminho do arquivo na tag include não o use undescore antes do nome.</p>
+<p>A regra do undescore não se aplica a diretórios.</p>
 
 <h2 id="recursos">Recursos</h3>
 <p>Novos recursos são inseridos na Vnda a cada semana garantindo um software sempre atual.</p>
-
 <!-- // -->
 
 <h3 id="adicionar-produto-ajax-por-$post">Adicionar Produto Ajax com $.post()</h3>
@@ -2370,9 +2387,41 @@ $.post(
 // lista o percentual de desconto
 {{ desconto }}
       </pre>
-      <p>Para listar o % (percentual) de desconto de um produto em promoção é necessário é criar variáveis e auxiliar na criação dos filtros das operações.</p>
-
+      <p>Para listar o % (percentual) de desconto de um produto em promoção é necessário é criar variáveis e auxiliar na criação dos filtros das operações.</p>s
       <!-- // -->
+
+<h3 id="calcular-frete-no-detalhe-do-produto">Calcular frete no detalhe do produto</h3>
+<pre>
+$.ajax({
+  url: "/frete_produto",
+  cache: false,
+  type: "POST",
+  dataType: "json",
+  data: {
+    product_id:99999, // informe um id válido de produto
+    zip: "93265340"
+  },
+  success: function(json) {
+    //console.log(json.error);
+    if(json.error == "Invalid zip or product_id"){
+        alert("Cep nao cadastrado no correios")
+    } else {
+        var methods = $.parseJSON(json.methods);
+        console.log(methods)
+    }
+  }
+});
+
+Retorno:
+[Object, Object, Object]
+</pre>
+<p>Para calcular o frente de um produto envie um formulário de dados via ajax passando os parâmetros product_id(id do produto ) e zip(cep) para url "/frete_produto". Api de frete esta configurada para retornar um objeto no formato json com as informações do local do cep digitado e dados de entrega: nome do método(sedex,pac etc..), prazo e preço.</p>
+<p>Rode o código do preview ao lado no console do navegador e em umas das página da sua loja, altere apenas o campo product_id com uma valor válido.</p>
+ 
+<p>Código publicado no <a href="https://github.com/vagnerolliver/calculando-frete-do-produto" class="laranja" target="_blank">github</a>, o mesmo usado no lojadamoto.com.br </p>
+
+<!-- -->
+
       <h3 id="como-listar-parcelas">Como Listar Parcelas</h3>
       <p>Para listar parcelas, podemos usar um dos seguintes exemplos de código:</p>
       <pre>
@@ -2407,7 +2456,8 @@ ou
         Então usamos o código abaixo na tela de produtos. Ele percorre as tags do produto em busca de uma que tenha o tipo "relacionado". Caso encontre, serão listados os produtos que também tem essa tag, ou seja, que estão relacionados entre si.
       </p>
 
-      <h3 id="filtro-de-marcas">Filtro de Marcas</h3>
+<!-- 
+<h3 id="filtro-de-marcas">Filtro de Marcas</h3>
 <pre>
 {% brand_filter tag_id:tag.name %}
 {% if brand.selected %}
@@ -2424,10 +2474,10 @@ ou
 {% endbrand_filter %}
 
 </pre>
-      <p>Para fazer um filtro de marcas, é preciso passar o parâmetro <strong> filter:brand:params.marca </strong> na chamada do loop de produtos.
-      <p>Para gerar o filtro de produtos, veja o código de exemplo:</p>
-      <br />
-      <br />
+<p>Para fazer um filtro de marcas, é preciso passar o parâmetro <strong> filter:brand:params.marca </strong> na chamada do loop de produtos.
+<p>Para gerar o filtro de produtos, veja o código de exemplo:</p>
+<br />
+<br />-->
 
       <!-- // -->
       <h3 id="exibir-images-estáticas">Exibir imagens estáticas</h3>
@@ -2446,24 +2496,15 @@ ou
 {{ "function.js" | javascript_tag }}
       </pre>
       <p>Para chamar os arquivos css e js salvos nas pastas "/stylesheets" e "/javascripts/" use os filtros "stylesheet_tag" e "javascript_tag".</p>
-
-<h3 id="incluir-módulos">Incluindo os módulos</h3>
-      <pre>
-{% include = "nome_do_arquivo" %}
-
-// No diretório raiz o nome do arquivo fica
-
-_nome_do_arquivo.liquid
-      </pre>
-      <p>Para reutilizar as parte de códigos que se repetem ao longo do desenvolvimento da loja, utilize a função "{% include %}"</p>
-
+<!-- // -->
+ 
       <h3 id="incluir-busca-swiftype">Incluir busca swiftype</h3>
       <pre>
 // mudanças no .liquid
 1) {{ meta_tags }} no layout, dentro do head
 
 2) em product
-{% contentfor meta_tags %}
+{% contentfor meta_tags %}a
   <span><</span>meta property="st:image" content="{{ product.image_url | resize: '185x' }}">
   <span><</span>meta property='st:type' content='products' />
   <span><</span>meta class="swiftype" name="name" data-type="string" content="{{ product.name }}" />
