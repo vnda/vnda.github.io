@@ -68,7 +68,7 @@ divisão {{ 10 | divided_by:2 }} #=> 5
       </p>
       <div></div><br>
       <pre>
-retorna o primeiro elemento do array
+retorna o elemento da primeira posição do array 
       </pre>
       <p>
       first
@@ -76,7 +76,7 @@ retorna o primeiro elemento do array
       <div></div><br>
 
       <pre>
-get the last element of the passed in array
+retorna o elemento da última posição do array 
       </pre>
       <p>
       last
@@ -84,7 +84,12 @@ get the last element of the passed in array
       <div></div><br>
 
       <pre>
-join elements of the array with certain character between them
+Junta-se aos elementos de uma matriz com o caráter passado como o parâmetro. O resultado é uma única cadeia.
+
+{{ product.tags | join: ',' }}
+
+Retorno:
+tag1, tag2, tag3
       </pre>
       <p>
       join
@@ -99,427 +104,470 @@ sort elements of the array
       </p>
       <div></div><br>
 
-      <pre>
+<!--  <pre>
 map/collect an array on a given property
       </pre>
       <p>
       map
       </p>
-      <div></div><br>
+      <div></div><br> -->
 
-      <pre>
-return the size of an array or string
-      </pre>
-      <p>
-      size
-      </p>
-      <div></div><br>
+<pre>
+retorna o tamanho de array ou string
 
-      <pre>
-escape a string
-      </pre>
-      <p>
-      escape
-      </p>
-      <div></div><br>
+{{ "esta é uma sequência de 38  caracteres" | split: " " | size }}
 
-      <pre>
+Retorno:
+38
+</pre>
+
+<p>
+size
+</p>
+<div></div><br>
+<pre>
+Codifica uma string
+
+{{ "<span><</span>p>Loren Ipsum<span><</span>/p>" | escape }}
+
+Retorno
+<span><</span>p>Loren Ipsum<span><</span>/p>
+  </pre>
+<p>
+escape
+</p>
+<div></div><br>
+
+<!--  <pre>
 returns an escaped version of html without affecting existing escaped entities
       </pre>
       <p>
       escape_once
       </p>
-      <div></div><br>
+      <div></div><br> -->
 
-      <pre>
-strip html from string
-      </pre>
-      <p>
-      strip_html
-      </p>
-      <div></div><br>
+<pre>
+Remove elementos html da string
 
-      <pre>
-strip all newlines (\n) from string
-      </pre>
-      <p>
-      strip_newlines
-      </p>
-      <div></div><br>
+{{ "<span><</span>h1>Olá Mundo<span><</span>/h1> World" | strip_html }}
 
-      <pre>
-replace each newline (\n) with html break
-      </pre>
-      <p>
-      newline_to_br
-      </p>
-      <div></div><br>
+Olá Mundo
+</pre>
+<p>
+strip_html
+</p>
+<div></div><br>
 
-      <pre>
-replace each occurrence e.g. {{ 'foofoo' | replace:'foo','bar' }} #=> 'barbar'
-      </pre>
-      <p>
-      replace
-      </p>
-      <div></div><br>
+<pre>
+Remove todas as novas linhas (\n) da string
+</pre>
+<p>
+strip_newlines
+</p>
+<div></div><br>
 
-      <pre>
-replace the first occurrence e.g. {{ 'barbar' | replace_first:'bar','foo' }} #=> 'foobar'
-      </pre>
-      <p>
-      replace_first
-      </p>
-      <div></div><br>
+<pre>
+Substitui each newline (\n) with html break(<span><</span>br>)
+</pre>
+<p>
+newline_to_br
+</p>
+<div></div><br>
 
-      <pre>
-remove each occurrence e.g. {{ 'foobarfoobar' | remove:'foo' }} #=> 'barbar'
-      </pre>
-      <p>
-      remove
-      </p>
-      <div></div><br>
+<pre>
+Substitui todas as ocorrências de uma cadeia com uma substring.      
+{{ 'Sites Ecommerce' | replace:'Sites','Sites para' }} 
 
-      <pre>
-remove the first occurrence e.g. {{ 'barbar' | remove_first:'bar' }} #=> 'bar'
-      </pre>
-      <p>
-      remove_first
-      </p>
-      <div></div><br>
+Retorno:
+Sites para Ecommerce
+</pre>
+<p>
+replace
+</p>
+<div></div><br>
 
-      <pre>
-truncate a string down to x characters. It also accepts a second parameter that will append to the string e.g. {{ 'foobarfoobar' | truncate: 5, '.' }} #=> 'foob.'
-      </pre>
-      <p>
-      truncate
-      </p>
-      <div></div><br>
+<pre>
+Substitui as primeira ocorrência de uma cadeia com uma substring. 
 
-      <pre>
-truncate a string down to x words
-      </pre>
-      <p>
-      truncatewords
-      </p>
-      <div></div><br>
+{{ 'barbar' | replace_first:'bar','foo' }} 
 
-      <pre>
-prepend a string e.g. {{ 'bar' | prepend:'foo' }} #=> 'foobar'
-      </pre>
-      <p>
-      prepend
-      </p>
-      <div></div><br>
+Retorno:
+foobar
+</pre>
+<p>
+replace_first
+</p>
+<div></div><br>
 
-      <pre>
-append a string e.g. {{ 'foo' | append:'bar' }} #=> 'foobar'
-      </pre>
-      <p>
-      append
-      </p>
-      <div></div><br>
+<pre>
+Remove as ocorrência de uma cadeia com uma substring.   
 
-      <pre>
-split a string on a matching pattern e.g. {{ "a~b" | split:"~" }} #=> ['a','b']
-      </pre>
-      <p>
-      split
-      </p>
-      <div></div><br>
+{{ 'foobarfoobar' | remove:'foo' }}
+
+Retorno:barbar
+</pre>
+<p>
+remove
+</p>
+<div></div><br>
+
+<pre>
+Remove a primeira ocorrência de uma cadeia com uma substring.   
+
+{{ 'barbar' | remove_first:'bar' }}
+
+Retorno: 
+bar
+</pre>
+<p>
+remove_first
+</p>
+<div></div><br>
+
+<pre>
+Trunca uma cadeia de caracteres para x caracteres. Ele também aceita um segundo parâmetro que será anexada à cadeia
+{{ 'foobarfoobar' | truncate: 5, '.' }} 
+
+Retorno:
+foob.
+</pre>
+
+<p>
+truncate
+</p>
+<div></div><br>
+
+<pre>
+Trunca uma cadeia de caracteres para x palavras. Ele também aceita um segundo parâmetro que será anexada à cadeia
+
+{{ 'truncar uma cadeia de caracteres para x palavras' | truncatewords: 2 }} 
+
+Retorno:
+truncar uma 
+</pre>
+<p>
+truncatewords
+</p>
+<div></div><br>
+
+<pre>
+Adiciona uma string no final da cadeia de caracteres
+
+{{ 'bar' | prepend:'foo' }}
+
+Retorno:
+foobar
+</pre>
+<p>
+prepend
+</p>
+<div></div><br>
+
+<pre>
+Adiciona uma string no inicio da cadeia de caracteres
+
+{{ 'foo' | append:'bar' }}
+
+Retorno:
+foobar
+</pre>
+<p>
+append
+</p>
+<div></div><br>
+
+<pre>
+Transforma um string em array de acordo com o valor informado no parâmetro
+
+{{ "a~b" | split:"~" }}
+
+Retorno:
+['a','b']
+
+{% assign array = "a~b" | split:"~" %}
+
+{{ array[0] }}
+Retorno: 
+a 
+
+{{ array[1] }}
+Retorno:
+b
+</pre>
+<p>
+split
+</p>
+
+<div></div><br>
 
 
-      <pre>
-remainder, e.g. {{ 3 | modulo:2 }} #=> 1
+<pre>
+Resto da divisão
 
-      </pre>
-      <p>
-      modulo
-      </p>
+{{ 3 | modulo:2 }}
 
-      <pre>
-reformat a date (syntax reference)
-      </pre>
-      <p>date</p>
-      <div></div><br>
+Retorno:
+1
+</pre>
+<p>
+modulo
+</p>
 
+<pre>
+Formata a date
 
-      <pre>capitalize words in the input sentence</pre>
-      <p>capitalize</p>
+{{ order.received_at | date: '%m/%d/%Y') }}
 
-      <div></div><br>
-<!--  capitalize - capitalize words in the input sentence
- -->
-      <pre>
-convert an input string to lowercase
-      </pre>
-      <p>downcase</p>
-      <div></div><br>
-
-      <pre>
-convert an input string to uppercase
-      </pre>
-      <p>
-      upcase
-      </p>
-      <div></div><br>
+</pre>
+<p>date</p>
+<div></div><br>
 
 
-      <h3 id="Tags_nativas">Tags Nativas do .liquid</h3>
-      <p>Tags são usadas para a lógica, criar variáveis, includes dentre outras técnicas e recurso nativos da linguagem para auxiliar a implementação do seu template. Abaixo está uma lista de tag atualmente suportadas.</p>
+<pre>
+Transforma a primeira letra da cadeia de caracteres em caixa alta
 
-      <pre>
-// Assigns some value to a variable
+{{ 'loren ipsum loren ipsun' | capitalize }}
 
-Y
-ou can store data in your own variables, to be used in output or other tags as desired. The simplest way to create a variable is with the assign tag, which has a pretty straightforward syntax:
+Retorno:
+Loren ipsum loren ipsun
+
+</pre>
+<p>capitalize</p>
+<div></div><br>
+
+<pre>
+Transforma a cadeia de caracteres em caixa baixa
+
+{{ 'LOREN IPSUN LOREN IPSUN' | downcase }}
+
+Retorno:
+loren ipsun loren ipsun
+</pre>
+<p>downcase</p>
+<div></div><br>
+
+<pre>
+Transforma a cadeia de caracteres em caixa alta
+
+{{ 'loren ipsun loren ipsun' | upcase }}
+
+Retorno:
+LOREN IPSUN LOREN IPSUN
+</pre>
+<p>
+upcase
+</p>
+<div></div><br>
+
+
+<h3 id="Tags_nativas">Tags Nativas do .liquid</h3>
+<p>Tags são usadas para a lógica, criar variáveis, includes dentre outras técnicas e recurso nativos da linguagem para auxiliar a implementação do seu template. Abaixo está uma lista de tag atualmente suportadas.</p>
+
+<h4 id="assign">{% assign %} - Criando Variáveis</h4>
+<pre>
+// Criando uma variável
 
 {% assign name = 'freestyle' %}
 
-{% for t in collections.tags %}{% if t == name %}
-  <p>Freestyle!</p>
-{% endif %}{% endfor %}
+{{ name }}
 
-Another way of doing this would be to assign true / false values to the variable:
+Retorno:
+freestyle
+</pre>
+<p>
+Criando Variáveis - {% assign %}
+</p>
+<div></div><br>
 
-{% assign freestyle = false %}
+<h4 id="capture">{% capture %} - Armazenando conteudo</h4>
 
-{% for t in collections.tags %}{% if t == 'freestyle' %}
-  {% assign freestyle = true %}
-{% endif %}{% endfor %}
+<pre>
+// Atualizando o conteúdo em lista_produto
+{% capture lista_produto %} 
+  <div> Item 1 </div>
+{% endcapture %}
+{% capture lista_produto %} 
+  <div> Item 2 </div>
+{% endcapture %}
+{% capture lista_produto %} 
+  <div> Item 3 </div>
+{% endcapture %}
+ 
+{{  lista_produto }}
 
-{% if freestyle %}
-  <span><</span>p>Freestyle!<span><</span>/p>
-{% endif %}
-      </pre>
-      <p>
-      assign
-      </p>
-      <div></div><br>
+retorno:
+Item 3
+</pre>
+<p>
+O {% capture %} é usado para atualizar conteúdo dentro da variável "nome_da_variavel", contrário da tag <a href="#contentfor" class="laranja">{% contentfor %}</a> que atualiza o conteúdo.
+</p>
+<div></div><br>
 
-      <pre>
-// Block tag that captures text into a variable
+<h4 id="case">{% case %} - Condicional</h4>
 
-If you want to combine a number of strings into a single string and save it to a variable, you can do that with the capture tag. This tag is a block which "captures" whatever is rendered inside it, then assigns the captured value to the given variable instead of rendering it to the screen.
+<pre>
 
-{% capture attribute_name %}{{ item.title | handleize }}-{{ i }}-color{% endcapture %}
-
-<span><</span>label for="{{ attribute_name }}">Color:<span><</span>/label>
-<span><</span>select name="attributes[{{ attribute_name }}]" id="{{ attribute_name }}">
-  <span><</span>option value="red">Red<span><</span>/option>
-  <span><</span>option value="green">Green<span><</span>/option>
-  <span><</span>option value="blue">Blue<span><</span>/option>
-<span><</span>/select>
-      </pre>
-      <p>
-      capture
-      </p>
-      <div></div><br>
-
-      <pre>
-// Block tag, its the standard case...when block
-
+{% assign condition = 2 %}
 {% case condition %}
 {% when 1 %}
-hit 1
+ caso 1 
 {% when 2 or 3 %}
-hit 2 or 3
+ caso 2 ou 3 
 {% else %}
-... else ...
+ nenhum dos casos 
 {% endcase %}
 
-{% case template %}
+Retorno:
+caso 2 ou 3
+</pre>
+<p>
+A instrução case é usada para executar ações diferentes com base em diferentes condições.
+</p>
+<div></div><br>
 
-{% when 'label' %}
-     // {{ label.title }}
-{% when 'product' %}
-     // {{ product.vendor | link_to_vendor }} / {{ product.title }}
-{% else %}
-     // {{page_title}}
-{% endcase %}
-      </pre>
-      <p>
-      case
-      </p>
-      <div></div><br>
 
-      <pre>
-Block tag, comments out the text in the block
+<h4 id="comment">{% comment %} - Comentários</h4>
+<pre>
+Fizemos 1 milhão de dólares {% comment %} em perdas {% endcomment %} este ano
 
-We made 1 million dollars {% comment %} in losses {% endcomment %} this year
-      </pre>
-      <p>
-      comment
-      </p>
-      <div></div><br>
+Retorno:
+Fizemos 1 milhão de dólares este ano
+</pre>
 
-      <pre>
-// Cycle is usually used within a loop to alternate between values, like colors or DOM classes.
+<p>
+Bloco de código que não será carregado na renderização do html na página
+</p>
+<div></div><br>
 
-{% cycle 'one', 'two', 'three' %}
-{% cycle 'one', 'two', 'three' %}
-{% cycle 'one', 'two', 'three' %}
-{% cycle 'one', 'two', 'three' %}
+<h4 id="cycle">{% cycle %} - Interações no loop  </h4>
+<pre>
+Lista de Produtos com 5 interações
+<span><</span>li class="{% cycle 'one', 'two', 'three' %}">Item {{ forloop.index }}<span><</span>/li>
+ 
+Retorno:
+<span><</span>li class="one">Item 1<span><</span>/li>
+<span><</span>li class="two">Item 2<span><</span>/li>
+<span><</span>li class="three">Item 3<span><</span>/li>
+<span><</span>li class="one">Item 4<span><</span>/li>
+<span><</span>li class="two">Item 5<span><</span>/li>
+</pre>
+<p>
+Cycle é usado geralmente dentro de um loop para alternar entre os valores, como cores ou classes css.
+</p>
+<div></div><br>
 
-resultado
-one
-two
-three
-one
-      </pre>
-      <p>
-      cycle
-      </p>
-      <div></div><br>
-
-      <pre>
-// Liquid allows for loops over collections:
-
+<h4 id="for">{% for %} - laço </h4>
+<pre>
 {% for item in array %}
-  {{ item }}
+{{ item }}
 {% endfor %}
 
 // When iterating a hash, item[0] contains the key, and item[1] contains the value:
 
 {% for item in hash %}
-  {{ item[0] }}: {{ item[1] }}
+{{ item[0] }}: {{ item[1] }}
 {% endfor %}
 
-// During every for loop, the following helper variables are available for extra styling needs:
+Durante cada loop for, as seguintes variáveis auxiliares estão disponíveis para necessidade adicionais
 
-forloop.length      # => length of the entire for loop
-forloop.index       # => index of the current iteration
-forloop.index0      # => index of the current iteration (zero based)
-forloop.rindex      # => how many items are still left?
-forloop.rindex0     # => how many items are still left? (zero based)
-forloop.first       # => is this the first iteration?
-forloop.last        # => is this the last iteration?
+forloop.length      # => tamanho de todo o ciclo for
+forloop.index       # => índice da iteração atual
+forloop.index0      # => índice da iteração atual (iniciando em zero)
+forloop.rindex      # => quantos itens ainda são deixados?
+forloop.rindex0     # => quantos itens ainda são deixados?? (iniciando em zero)
+forloop.first       # => É esta a primeira iteração
+forloop.last        # => É esta a última iteração
 
-There are several attributes you can use to influence which items you receive in your loop
+Há vários atributos que você pode usar para influenciar os itens que você recebe em seu loop
 
-limit:int lets you restrict how many items you get. offset:int lets you start the collection with the nth item.
+limite: int permite restringir quantos itens que você recebe. offset: int permite que você comece a coleção com o item enésimo.
 
 # array = [1,2,3,4,5,6]
 {% for item in array limit:2 offset:2 %}
-  {{ item }}
+{{ item }}
 {% endfor %}
-# results in 3,4
 
-Reversing the loop
+Retorno:
+3,4
+
+Invertendo o loop
 {% for item in collection reversed %} {{item}} {% endfor %}
 
-Instead of looping over an existing collection, you can define a range of numbers to loop through. The range can be defined by both literal and variable numbers:
+Em vez de um loop sobre uma coleção existente, você pode definir um intervalo de números para percorrer. O intervalo pode ser definido por ambos os números literais e variáveis:
 
 # if item.quantity is 4...
 {% for i in (1..item.quantity) %}
-  {{ i }}
+{{ i }}
 {% endfor %}
-# results in 1,2,3,4
-      </pre>
-      <p>
-      for
-      </p>
-      <div></div><br>
 
-      <pre>
-// Standard if/else block
+Retorno: 
+1,2,3,4
+</pre>
+<p>
+Loops em coleções de arrays:
+</p>
+<div></div><br>
 
-{% if user %}
-  Hello {{ user.name }}
-{% endif %}
-# Same as above
-{% if user != null %}
-  Hello {{ user.name }}
-{% endif %}
-{% if user.name == 'tobi' %}
-  Hello tobi
-{% elsif user.name == 'bob' %}
-  Hello bob
-{% endif %}
-{% if user.name == 'tobi' or user.name == 'bob' %}
-  Hello tobi or bob
-{% endif %}
-{% if user.name == 'bob' and user.age > 45 %}
-  Hello old bob
-{% endif %}
-{% if user.name != 'tobi' %}
-  Hello non-tobi
-{% endif %}
-# Same as above
-{% unless user.name == 'tobi' %}
-  Hello non-tobi
-{% endunless %}
-# Check for the size of an array
-{% if user.payments == empty %}
-   you never paid !
+<h4 id="if">{% if %} - Condicional</h4>
+
+<pre>
+{% if "online" == "online" %}
+  online  
 {% endif %}
 
-{% if user.payments.size > 0  %}
-   you paid !
+Retorno:
+online
+
+{% if "online" == "ofline" %}
+  ofline
+{% elsif "online" == "online" %}
+  online
 {% endif %}
-{% if user.age > 18 %}
-   Login here
+
+Retorno:
+online
+
+{% if "online" == "ofline" %}
+  ofline
+{% elsif "online" == "ofline" %}
+  online
 {% else %}
-   Sorry, you are too young
+  ofline
 {% endif %}
-# array = 1,2,3
-{% if array contains 2 %}
-   array includes 2
-{% endif %}
-# string = 'hello world'
-{% if string contains 'hello' %}
-   string includes 'hello'
-{% endif %}<br>
-      </pre>
-      <p>
-      if
-      </p>
-      <div></div><br>
 
-      <pre>
-       Includes another template; useful for partials
-      </pre>
-      <p>
-      include
-      </p>
-      <div></div><br>
+Retorno:
+ofline
 
-      <div></div><br>
+ 
+</pre>
+<p>
+If's são usadas para executar ações diferentes com base em diferentes condições.
+</p>
+<div></div><br>
 
-      <pre>
-        Mirror of if statement
-      </pre>
-      <p>
-      unless
-      </p>
-      <div></div><br>
 
-      <!--
-      <h3 id="tipos-de-marcacao">Tipos de Marcação</h3>
-      <pre>
-        {% assign order = "false" %}
-        {% orders client_id:client.id %}
-         {% assign order = "true" %}
-         <span><</span>tr>
-          <span><</span>td<span>></span>{{ order.code }}<span><</span>/td<span>></span>
-          <span><</span>td<span>></span>{{ order.received_at }}<span><</span>/td<span>></span>
-          <span><</span>td<span>></span>{{ order | order_status }}<span><</span>/td<span>></span>
-          <span><</span>td<span>></span>{{ order.total | money_format }}<span><</span>/td<span>></span>
-         <span><</span>/tr<span>></span>
-        {% endorders %}
-        {% if order == "false" %}
-         <span><</span>tr<span>></span>
-          <span><</span>td colspan="3"<span>></span>Você ainda não tem pedidos<span><</span>/td<span>></span>
-         <span><</span>/tr<span>></span>
-        {% endif %}
-      </pre>
+<h4 id="unless">{% unless %} - Condicional</h4>
+<pre>
+Criando um array com 5 posições apartir de um string
+{% assign array = "1,2,3,4,5" | split: ',' %}  
 
-      <p><strong>Existem dois tipos de marcação no líquido:</strong></p>
-      <p><i>Tags de Lógica:</i> são declarações condicionais. Eles são a afirmação de que diz o código e o que fazer.</p>
-      <p><i>Tags de saída:</i> são as etiquetas de saída exibir o líquido encontrado entre ele.
-        Você também pode usar <b>filtros para alterar a saída retornado.</b></p>
-      <p>Para usar o líquido, você vai precisar de recorrer a uma combinação de lógica e de saída de etiquetas usando operadores líquidos. Acções com liquidez muitos dos mesmos operadores como outras linguagens de programação:</p> -->
+Percorrendo a variável array
 
-      <!-- // -->
+{% for i in array %}
+  {% unless i == "3" %}
+    {{ i }}
+  {% endunless %}
+{% endfor %}
+
+Retorno:
+1,2,4,5
+
+</pre>
+<p>
+Executação as interação ao menos que o resultado da condição não seja verdadeiro
+</p>
+<div></div><br>
+
 
       <h2 id="templates">Templates</h2>
       <p>Os templates ficam na raiz da pasta compartilhada no Dropbox onde todos os arquivo são salvos na extensão .liquid</p>
@@ -1785,6 +1833,7 @@ que consome menos requisições para nossa api de menus.</p>
 
       <p>Aplicar no template [ tag.liquid ] [ {% opengraphfor tag %} ]</p>
       <p>Aplicar no template [ procudc.liquid ] [ {% opengraphfor product %} ]</p>
+      <p>Aplicar no template [ page.liquid ] [ {% opengraphfor page %} ]</p>
       <p>Para exibir título e descrição na home, usar a tag de "capa" para capturar de forma dinâmica title e description.</p>
 
 
@@ -2343,10 +2392,7 @@ $.post(
 
       <h3 id="validar-cpf">Biblioteca Jquery para validar cpf e cnpj</h3>
       <p><a href="https://gist.github.com/vagnerolliver/8e60807e5269162a58b7" target="_blank" class="laranja">Clique aqui</a> para ver os filtros disponíveis para usar no .liquid.</p>
-
-      <h3 id="variavel-head">Variável head</h3>
-      <p>Sempre adicionar a variável [ {{ head }} ] no head do html, pois é a partir dele que scripts como o do analytics e outros do gênero são carregados</p>
-
+ 
       <h3 id="breadcrumbs">Breadcrumbs</h3>
       <p>Veja exemplos de como fazer o breadcrumb na tag e na página de produto.</p>
 <pre>
