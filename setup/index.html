@@ -2562,6 +2562,66 @@ ou
 <br />
 <br />-->
 
+<h3 id="exibir-menu-para-tag">Como exibir o menu para uma determinda tag</h3>
+<pre>
+para url http://www.loja.com.br/masculino/luvas -->
+{% if tag.name == "masculino" or params.parent == "masculino" %}
+//carrega uma posição de menu %
+{% menus position:"masculino" %}
+...
+{% endmenus %}
+{% endif %}
+
+<a href="#mapeamento-da-tag-params">entenda a tag {{ params }}</a>
+      </pre>
+      <p>Para chamar um menu em uma determinada categoria na página de tag será necessário veficar o nome da tag, entretanto, se necessário incluir o menu em todas categorias filhas use params.parent </p>
+      <p>Note que no ex ao lado que é nessário chamar a posição de menu masculino em 2 cenários, um para quando a tag for masculino ou para quando a tag for "luvas". Leve em consideração que "luvas" é filha de "masculino".</p>
+<!-- // -->
+
+<h3 id="como-incluir-favicon">Como incluir Favicon?</h3>
+<pre>
+Chamando um favicon salvo na raiz da pasta "/public"
+{{ "favicon.ico" | favicon_tag }}
+// Retorno
+<span><</span>link href="nomedaloja/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
+
+
+Chamando um favicon salvo na raiz da pasta "/public/images"
+// Retorno
+{{ "images/favicon.ico" | favicon_tag }}
+<span><</span>link href="nomedaloja/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
+</pre>
+<p>1. Para incluir uma favicon por uma tag de .liquid, é preciso informar o filtro "favicon_tag" {{ "favicon.ico" | <b>favicon_tag</b> }}.</p>
+<p></p><br />
+<p>2. Para incluir direto por html, informe o caminho relativo da pasta que esta salvo o favicon.ico.</p>
+<p>2.1 Caminho relativo da pasta "/public"<br />
+<span><</span>link href="/favicon" rel="shortcut icon" /></p>
+<p>2.2 Caminho relativo na raiz da pasta "/images"<br />
+<span><</span>link href="/images/favicon.ico" rel="shortcut icon" />
+</p>
+<!-- // -->
+
+<h3 id="precos-na-tag">Como listar menor e maior preço</h3>
+<pre>
+{% variants product_id: product.id %}
+  {% if product.on_sale %}
+    {% assign price = product | apply_discount, variant.price %}
+  {% else %}
+    {% assign price = variant.price %}
+  {% endif %}
+
+  {% if forloop.first %}
+    {% assign min_price = price %}
+    {% assign max_price = price %}
+  {% else %}
+    {% if price < min_price %}{% assign min_price = price %}{% endif %}
+    {% if price > max_price %}{% assign max_price = price %}{% endif %}
+  {% endif %}
+{% endvariants %}
+min: {{ min_price | money_format }}
+max: {{ max_price | money_format }}
+</pre>
+<p>Na tela de tag, podemos exibir o preço menor e maior entre as variantes do produto.</p>
       <!-- // -->
       <h3 id="exibir-images-estáticas">Exibir imagens estáticas</h3>
       <p>* devem estar no diretório /public/images</p>
@@ -2642,31 +2702,7 @@ ou
       <p>
         5 - As informações que precisam ser colocadas no admin
       </p>
-
       <!-- // -->
-
-      <h3 id="como-incluir-favicon">Como incluir Favicon?</h3>
-      <pre>
-Chamando um favicon salvo na raiz da pasta "/public"
-{{ "favicon.ico" | favicon_tag }}
-// Retorno
-<span><</span>link href="nomedaloja/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
-
-
-Chamando um favicon salvo na raiz da pasta "/public/images"
-// Retorno
-{{ "images/favicon.ico" | favicon_tag }}
-<span><</span>link href="nomedaloja/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
-      </pre>
-      <p>1. Para incluir uma favicon por uma tag de .liquid, é preciso informar o filtro "favicon_tag" {{ "favicon.ico" | <b>favicon_tag</b> }}.</p>
-      <p></p><br />
-      <p>2. Para incluir direto por html, informe o caminho relativo da pasta que esta salvo o favicon.ico.</p>
-      <p>2.1 Caminho relativo da pasta "/public"<br />
-      <span><</span>link href="/favicon" rel="shortcut icon" /></p>
-      <p>2.2 Caminho relativo na raiz da pasta "/images"<br />
-      <span><</span>link href="/images/favicon.ico" rel="shortcut icon" />
-      </p>
-
 
       <h3 id="mapeamento-da-tag-params">Mapeamento da tag params</h3>
       <pre>
@@ -2693,22 +2729,6 @@ par url http://www.loja.com.br/masculino/bermudas
       <p>É possível fazer o mapeamento dos parâmetros de cada template pela tag {{ params }}.</p>
       <p>Para cada template é feito um mapeamento da url de acordo com o parâmetro disponível.</p>
       <p>Veja um caso de uso para chamar uma posição de menu ou para tag "masculino" ou "feminino" <a href="#exibir-menu-para-tag" class="laranja">mais detalhes aqui.</a></p>
-
-      <!-- // -->
-      <h3 id="exibir-menu-para-tag">Como exibir o menu para uma determinda tag</h3>
-      <pre>
-para url http://www.loja.com.br/masculino/luvas -->
-{% if tag.name == "masculino" or params.parent == "masculino" %}
-//carrega uma posição de menu %
-  {% menus position:"masculino" %}
-  ...
-  {% endmenus %}
-{% endif %}
-
-<a href="#mapeamento-da-tag-params">entenda a tag {{ params }}</a>
-      </pre>
-      <p>Para chamar um menu em uma determinada categoria na página de tag será necessário veficar o nome da tag, entretanto, se necessário incluir o menu em todas categorias filhas use params.parent </p>
-      <p>Note que no ex ao lado que é nessário chamar a posição de menu masculino em 2 cenários, um para quando a tag for masculino ou para quando a tag for "luvas". Leve em consideração que "luvas" é filha de "masculino".</p>
 
       <!-- // -->
       <h3 id="metricas-google-analytics">Métricas Google Analytics</h3>
@@ -3093,6 +3113,7 @@ function onlyUnique(value, index, self) {
 
     </div>
   </div>
+ 
   <!-- Google Tag Manager -->
   <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script>
   <!-- End Google Tag Manager -->
