@@ -28,7 +28,7 @@
     <div id="headings" class="tocify">
     </div>
   </div>
-  <div class="page-wrapper">
+   <div class="page-wrapper">
     <div class="content">
       <h2 id="entendendo-o-.liquid">Entendendo o .liquid</h2>
       <p>Liquid é a linguagem de programação responsável por implementar os templates desenvolvidos e utilizados pela Vnda.</p>
@@ -2428,62 +2428,6 @@ $.post(
 
 </pre>
      
-<h3 id="contentful">Contentful - script para o front da loja</h3>
-<pre>
-1) 
-function product_for_reference(reference, callback){
-
-  var client = contentful.createClient({
-    space: '{{ store.settings.contentful_space }}',
-    accessToken: '{{ store.settings.contentful_token }}',
-    secure: true,
-    host: 'cdn.contentful.com'
-  });
-
-  client.contentTypes({name: "Product"}, function(err, content_type) {
-    var product_id = content_type[0].sys.id;
-    client.entries({content_type: product_id, "fields.reference[match]": reference}, function(err, entries) {
-   
-      if(typeof entries[0] === 'undefined'){
-       callback(null);
-      } else {
-        callback(entries[0].fields);
-      }
-    });
-  });
-}
-</pre>
-<p>1- Função principal, responsável por filtrar as Entries com os parâmetros "reference" e "callback".product_for_reference(reference, callback)</p>
-<p>Parâmetro reference = responsável por indentificar quais são as entries do produto</p>
-<p>Parâmetro callback  = esse parâmetro é uma função que carrega todos os campos de uma entries quando houver. callback(entries[0].fields);</p>
-<p><a href="/img/contentfull.png" data-featherlight="image"><img src="/img/contentfull.png"></a></p>
-<p>2- Função para injetar no html o conteúdo de um entries. append_recipes(product)</p>
-<p>Parâmetro product = é o callback da função product_for_reference(reference, callback), neste caso o callback deve carregar um objeto no formato json das entries.</p>
-<p>3-Por último a chamada da função no .liquid através da referencia do produto {{ product.reference }}</p>
-<pre>
-2) 
-function append_recipes(product){
-  recipes_quantity = product.recipes.length;
-
-  if(recipes_quantity > 3){ recipes_quantity = 3; }
-
-  for(i = 0;i < recipes_quantity; i++){
-    console.log(product.recipes[i].fields.imagem.fields.file.url)
-    console.log(product.recipes[i].fields.title)
-    console.log(product.recipes[i].fields.description)
-  }
-} 
-</pre> 
-<div></div><br>
-<pre>
-3)
-// via .liquid
-<span><</span>script type="text/javascript">
-  var product_ref = '{{ product.reference }}';
-  product_for_reference(product_ref, append_recipes);
-<span><</span>/script> 
-</pre>
-      <!-- // -->
       <h3 id="listar-percentual-desconto-no-produto-em-promoção">Listar Percentual de Desconto no produto em promoção</h3> <!-- // -->
       <pre>
 //variável que armazena o preço original
@@ -2669,69 +2613,6 @@ max: {{ max_price | money_format }}
       <p>Para chamar os arquivos css e js salvos nas pastas "/stylesheets" e "/javascripts/" use os filtros "stylesheet_tag" e "javascript_tag".</p>
 <!-- // -->
 
-      <h3 id="incluir-busca-swiftype">Incluir busca swiftype</h3>
-      <pre>
-// mudanças no .liquid
-1) {{ meta_tags }} no layout, dentro do head
-
-2) em product
-{% contentfor meta_tags %}a
-  <span><</span>meta property="st:image" content="{{ product.image_url | resize: '185x' }}">
-  <span><</span>meta property='st:type' content='products' />
-  <span><</span>meta class="swiftype" name="name" data-type="string" content="{{ product.name }}" />
-  {% if product.on_sale%}
-  <span><</span>meta class="swiftype" name="price" data-type="float" content="{{ product | apply_discount | money_format }}" />
-  <span><</span>meta class="swiftype" name="original-price" data-type="float" content="{{ product.price  | money_format}}" />
-  {% else %}
-  <span><</span>meta class="swiftype" name="price" data-type="float" content="{{ product.price | money_format }}" />
-  <span><</span>meta class="swiftype" name="original-price" data-type="float" content="{{ product.price | money_format }}" />
-  {% endif %}
-  <span><</span>meta class="swiftype" name="on_sale" data-type="enum" content="{{ product.on_sale }}" />
-  <span><</span>meta class="swiftype" name="available" data-type="enum" content="{{ product.available }}" />
-  <span><</span>meta class="swiftype" name="score_booster" data-type="float" content="{% if product.available %}1{% else %}0{% endif %}" />
-{% endcontentfor %}
-
-3) ajustar meta property="st:image com o tamanho da imagem usada no liquid da busca
-      </pre>
-      <p>
-        Os processos para implementar a busca do swiftype são:<br>
-        1 - Acrescentar meta tags no .liquid<br>
-      </p>
-      <div></div><br />
-      <pre>
-<a href="http://www.vnda.com.br/images/print-1.png" target="_blank">print 1</a>
-<a href="http://www.vnda.com.br/images/print-2.png" target="_blank">print 2</a>
-<a href="http://www.vnda.com.br/images/print-3.png" target="_blank">print 3</a>
-<a href="http://www.vnda.com.br/images/print-4.png" target="_blank">print 4</a>
-      </pre>
-       <p>
-        2 - Criar engine de busca<br>
-      </p>
-      <div></div><br>
-
-      <pre>
-<a href="http://www.vnda.com.br/images/print-5.png" target="_blank">print 5</a>
-      </pre>
-      <p>
-        3- Nessa etapa, ele vai buscar o conteúdo em todo o site<br>
-      </p>
-      <div></div><br>
-      <pre>
-<a href="http://www.vnda.com.br/images/print-6.png" target="_blank">print 6</a>
-<a href="http://www.vnda.com.br/images/print-7.png" target="_blank">print 7</a>
-      </pre>
-      <p>
-      4 - Depois que já tiverem sido encontradas todas as páginas, colocar o filtro<br>
-      </p>
-      <div></div><br>
-      <pre>
-<a href="http://www.vnda.com.br/images/print-8.png" target="_blank">print 8</a>
-      </pre>
-      <p>
-        5 - As informações que precisam ser colocadas no admin
-      </p>
-      <!-- // -->
- 
      <h3 id="mapeamento-da-tag-params">Mapeamento da tag params</h3>
       <pre>
 <span><</span>pre>{{ params }}<</span>/pre>
@@ -2887,24 +2768,6 @@ Para trocar a imagem principal façar uma função javascript que compare valor 
 O valor do input das variantes sempre deve ser o sku.
       </pre>
       <p>Configurar produto no admin "admin > products > midias > images": ao clicar nas fotos do produto ficará disponível no modal com as variantes que podem ser selecionadas <a href="http://www.vnda.com.br/images/guides/screenshot-modal-midia.png"><img src="http://www.vnda.com.br/images/guides/screenshot-modal-midia.png"></a></p>
-
-
-      <!-- / / -->
-      <h3 id="template-do-zendesk">Personalizando o Template Zendesk</h3>
-        <p>Faça o login em https://cadenceatendimento.zendesk.com ou https://cadenceatendimento.zendesk.com/agent</p>
-        <p>Com seu usuário logado acesse o <a href="http://www.vnda.com.br/images/painel-de-personalizacao.png" class="laranja" target="_blank">painel de personalização <img src="http://www.vnda.com.br/images/painel-de-personalizacao.png"></a></p>
-        <p>Clique [mudar tema ] e selecione o template <a href="http://www.vnda.com.br/images/mudar-tema.png" class="laranja" target="_blank">Temas personalizados<img src="http://www.vnda.com.br/images/mudar-tema.png"></a><a href="http://www.vnda.com.br/images/mudar-tema.png" class="laranja" target="_blank"><img src="http://www.vnda.com.br/images/tema-personalizado.png"></a></p>
-        <p>Utilize o editor de código do zendesk para atualizar as páginas, css e javascript do tema<a href="http://www.vnda.com.br/img/editor-zendesk.png" class="laranja" target="_blank"><img src="http://www.vnda.com.br/images/editor-zendesk.png"></a></p>
-        <p>Abra os links abaixo, copie os código e atualize-os arquivos usando o editor.</p>
-        <p><a href="https://gist.github.com/vagnerolliver/5afc8e857e68e806deef" class="laranja" target="_blank">Template da página inicial - ver código</a></p>
-        <p><a href="https://gist.github.com/vagnerolliver/a6bd419e0539ab15fa92" class="laranja" target="_blank">Template da página categoria - ver código</a></p>
-        <p><a href="https://gist.github.com/vagnerolliver/7d82996f6c0423285c39" class="laranja" target="_blank">Template da página produto - ver código</a></p>
-        <p><a href="https://gist.github.com/vagnerolliver/b669860c5954f54265d5" class="laranja" target="_blank">CSS do Template Zendesk - ver código</a></p>
-        <p><a href="https://gist.github.com/vagnerolliver/0d6939482c66d4d62d67" class="laranja" target="_blank">JS do Template Zendesk - ver código</a></p>
-        <p>Selecione o template ou arquivo a ser atualizado <a href="http://www.vnda.com.br/images/editar-tema-pagina-inicial.png" target="_blank"><img src="http://www.vnda.com.br/images/editar-tema-pagina-inicial.png"></a></p>
-
-        <p> </p><br>
-        <p> </p><br>
 
         <h3 id="novocarrinho">Novo Carrinho/ Novo Checkout</h3>
         <p>A partir da implantação do novo carrinho e do novo checkout, não são mais necessárias as edição dos arquivos cart.liquid e checkout.liqud.</p>
@@ -3132,11 +2995,143 @@ function onlyUnique(value, index, self) {
 }
       </pre>
       <p>Etapa 2 - Nessa etapa estão as funções:</p>
+
+      <!-- -->
+
+<h2 id="integracoes">Integrações</h2>
+<p>Dicas de integrações com api's ou softwares de terceiros que agregram valor ou otimizam operações na loja.</p>
+<!-- // -->
+
+<h3 id="contentful">Contentful - script para o front da loja</h3>
+<pre>
+1) 
+function product_for_reference(reference, callback){
+
+  var client = contentful.createClient({
+    space: '{{ store.settings.contentful_space }}',
+    accessToken: '{{ store.settings.contentful_token }}',
+    secure: true,
+    host: 'cdn.contentful.com'
+  });
+
+  client.contentTypes({name: "Product"}, function(err, content_type) {
+    var product_id = content_type[0].sys.id;
+    client.entries({content_type: product_id, "fields.reference[match]": reference}, function(err, entries) {
+   
+      if(typeof entries[0] === 'undefined'){
+       callback(null);
+      } else {
+        callback(entries[0].fields);
+      }
+    });
+  });
+}
+</pre>
+<p>1- Função principal, responsável por filtrar as Entries com os parâmetros "reference" e "callback".product_for_reference(reference, callback)</p>
+<p>Parâmetro reference = responsável por indentificar quais são as entries do produto</p>
+<p>Parâmetro callback  = esse parâmetro é uma função que carrega todos os campos de uma entries quando houver. callback(entries[0].fields);</p>
+<p><a href="/img/contentfull.png" data-featherlight="image"><img src="/img/contentfull.png"></a></p>
+<p>2- Função para injetar no html o conteúdo de um entries. append_recipes(product)</p>
+<p>Parâmetro product = é o callback da função product_for_reference(reference, callback), neste caso o callback deve carregar um objeto no formato json das entries.</p>
+<p>3-Por último a chamada da função no .liquid através da referencia do produto {{ product.reference }}</p>
+<pre>
+2) 
+function append_recipes(product){
+  recipes_quantity = product.recipes.length;
+
+  if(recipes_quantity > 3){ recipes_quantity = 3; }
+
+  for(i = 0;i < recipes_quantity; i++){
+    console.log(product.recipes[i].fields.imagem.fields.file.url)
+    console.log(product.recipes[i].fields.title)
+    console.log(product.recipes[i].fields.description)
+  }
+} 
+</pre> 
+<div></div><br>
+<pre>
+3)
+// via .liquid
+<span><</span>script type="text/javascript">
+  var product_ref = '{{ product.reference }}';
+  product_for_reference(product_ref, append_recipes);
+<span><</span>/script> 
+</pre>
+<!-- // -->
+
+<h3 id="incluir-busca-swiftype">Incluir busca swiftype</h3>
+<pre>
+// mudanças no .liquid
+1) {{ meta_tags }} no layout, dentro do head
+
+2) em product
+{% contentfor meta_tags %}a
+<span><</span>meta property="st:image" content="{{ product.image_url | resize: '185x' }}">
+<span><</span>meta property='st:type' content='products' />
+<span><</span>meta class="swiftype" name="name" data-type="string" content="{{ product.name }}" />
+{% if product.on_sale%}
+<span><</span>meta class="swiftype" name="price" data-type="float" content="{{ product | apply_discount | money_format }}" />
+<span><</span>meta class="swiftype" name="original-price" data-type="float" content="{{ product.price  | money_format}}" />
+{% else %}
+<span><</span>meta class="swiftype" name="price" data-type="float" content="{{ product.price | money_format }}" />
+<span><</span>meta class="swiftype" name="original-price" data-type="float" content="{{ product.price | money_format }}" />
+{% endif %}
+<span><</span>meta class="swiftype" name="on_sale" data-type="enum" content="{{ product.on_sale }}" />
+<span><</span>meta class="swiftype" name="available" data-type="enum" content="{{ product.available }}" />
+<span><</span>meta class="swiftype" name="score_booster" data-type="float" content="{% if product.available %}1{% else %}0{% endif %}" />
+{% endcontentfor %}
+
+3) ajustar meta property="st:image com o tamanho da imagem usada no liquid da busca
+</pre>
+<p>
+  Os processos para implementar a busca do swiftype são:<br>
+  1 - Acrescentar meta tags no .liquid<br>
+</p>
+ 
+<p>2 - Criar engine de busca<br>
+<a href="/img/swiftype/print-1.png" data-featherlight="image" ><img src="/img/swiftype/print-1.png"></a>
+<a href="/img/swiftype/print-2.png" data-featherlight="image" ><img src="/img/swiftype/print-2.png"></a>
+<a href="/img/swiftype/print-3.png" data-featherlight="image" ><img src="/img/swiftype/print-3.png"></a>
+<a href="/img/swiftype/print-4.png" data-featherlight="image" ><img src="/img/swiftype/print-4.png"></a>
+</p>
+
+ 
+<p>3- Nessa etapa, ele vai buscar o conteúdo em todo o site<br>
+<a href="/img/swiftype/print-5.png" data-featherlight="image" ><img src="/img/swiftype/print-5.png"></a>
+</p>
+ 
+<p>4 - Depois que já tiverem sido encontradas todas as páginas, colocar o filtro<br>
+<a href="/img/swiftype/print-6.png" data-featherlight="image" ><img src="/img/swiftype/print-6.png"></a>
+<a href="/img/swiftype/print-7.png" data-featherlight="image" ><img src="/img/swiftype/print-7.png"></a>
+</p>
+<p>5 - As informações que precisam ser colocadas no admin<br>
+<a href="/img/swiftype/print-8.png" data-featherlight="image" ><img src="/img/swiftype/print-8.png"></a>
+<!-- // -->
+
+<h3 id="template-do-zendesk">Personalizando o Template Zendesk</h3>
+<p>Faça o login em https://cadenceatendimento.zendesk.com ou https://cadenceatendimento.zendesk.com/agent</p>
+<p>Com seu usuário logado acesse o <a href="/img/zendesk/painel-de-personalizacao.png" data-featherlight="image" class="laranja">painel de personalização <img src="/img/zendesk/painel-de-personalizacao.png"></a></p>
+<p>Clique [mudar tema ] e selecione o template <a href="/img/zendesk/mudar-tema.png" data-featherlight="image" class="laranja">Temas personalizados<img src="/img/zendesk/mudar-tema.png"></a>
+<a href="/img/zendesk/mudar-tema.png" data-featherlight="image" class="laranja"><img src="/img/zendesk/mudar-tema.png"></a></p>
+<p>Utilize o editor de código do zendesk para atualizar as páginas, css e javascript do tema<a href="/img/zendesk/editor-zendesk.png" data-featherlight="image" class="laranja"><img src="/img/zendesk/editor-zendesk.png"></a></p>
+<p>Abra os links abaixo, copie os código e atualize-os arquivos usando o editor.</p>
+<p><a href="https://gist.github.com/vagnerolliver/5afc8e857e68e806deef" class="laranja" target="_blank">Template da página inicial - ver código</a></p>
+<p><a href="https://gist.github.com/vagnerolliver/a6bd419e0539ab15fa92" class="laranja" target="_blank">Template da página categoria - ver código</a></p>
+<p><a href="https://gist.github.com/vagnerolliver/7d82996f6c0423285c39" class="laranja" target="_blank">Template da página produto - ver código</a></p>
+<p><a href="https://gist.github.com/vagnerolliver/b669860c5954f54265d5" class="laranja" target="_blank">CSS do Template Zendesk - ver código</a></p>
+<p><a href="https://gist.github.com/vagnerolliver/0d6939482c66d4d62d67" class="laranja" target="_blank">JS do Template Zendesk - ver código</a></p>
+<p>Selecione o template ou arquivo a ser atualizado <a href="/img/zendesk/editar-tema-pagina-inicial.png" data-featherlight="image"><img src="/img/zendesk/editar-tema-pagina-inicial.png"></a></p>
+
+<p> </p><br>
+<p> </p><br>
+
       </div><!-- content -->
+
     <div class="dark-box">
 
     </div>
   </div>
+
 
   <!-- Google Tag Manager -->
   <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script>
