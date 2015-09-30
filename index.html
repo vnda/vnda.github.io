@@ -508,6 +508,16 @@ Loops em coleções de arrays:
 </p>
 <div></div><br>
 
+
+<!-- // -->
+<h5 id="break">{% break %} sair da interação</h5>
+<p>A linguagem aceita a tag {% break %} para sair d laço de interações, por exemplo: {% for %} nativo da linguagem e até mesmo das tags personalizadas {% tags %}, {% products %}, {% banner %} {% menus %}  etc ...</p>
+
+<!-- // -->
+<h5 id="continue">{% continue %} ir para próxima interação</h5>
+<p>Pula para o próximo laço da interação use a tag {% continue %}.</p>
+  
+
 <h4 id="if">{% if %} - Condicional</h4>
 
 <pre>
@@ -2417,44 +2427,62 @@ $.post(
 <span><</span>a href="{{ product.url }}" title="{{ product.name }}"<span>></span>{{ product.name }}<span><</span>/a<span>></span>
 
 </pre>
-      <!--
-      <h3 id="contentful">Contentful</h3>
-      <p>Função que retorna as entries(Entradas que representam o conteúdo textual. Dados de uma entrada que adere a um certo tipo de conteúdo no contentful)</p>
-      <pre>
-         function product_for_reference(reference, callback){
-            var client = contentful.createClient({
-              space: '{{ store.settings.contentful_space }}',
-              accessToken: '{{ store.settings.contentful_token }}',
-              secure: true,
-              host: 'cdn.contentful.com'
-            });
+     
+<h3 id="contentful">Contentful - script para o front da loja</h3>
+<pre>
+1) 
+function product_for_reference(reference, callback){
 
-            client.contentTypes({name: "Product"}, function(err, content_type) {
-              var product_id = content_type[0].sys.id;
-              client.entries({content_type: product_id, "fields.reference[match]": reference}, function(err, entries) {
-                console.log(entries);
-                if(typeof entries[0] === 'undefined'){
-                  callback(null);
-                } else {
-                  callback(entries[0].fields);
-                }
-              });
-            });
-          }
-      </pre><div></div><br />
-      <p>Função para inserir o dados de um entrie no html</p>
-      <pre>
-        function cadence_downloads(product){
-          // product.post é uma entrie cadastrada no admin do contentful
-          var post = product.post;
+  var client = contentful.createClient({
+    space: '{{ store.settings.contentful_space }}',
+    accessToken: '{{ store.settings.contentful_token }}',
+    secure: true,
+    host: 'cdn.contentful.com'
+  });
 
-          if(!jQuery.isEmptyObject(post)){
-            $('#post .titulo').attr('href', 'http:' + media[0].fields.file.title);
-            $('#post a').attr('href', 'http:' + media[0].fields.file.url);
-            $('#post .conteudo').attr('href', 'http:' + media[0].fields.file.content);
-          }
-        }
-      </pre>// -->
+  client.contentTypes({name: "Product"}, function(err, content_type) {
+    var product_id = content_type[0].sys.id;
+    client.entries({content_type: product_id, "fields.reference[match]": reference}, function(err, entries) {
+   
+      if(typeof entries[0] === 'undefined'){
+       callback(null);
+      } else {
+        callback(entries[0].fields);
+      }
+    });
+  });
+}
+</pre>
+<p>1- Função principal, responsável por filtrar as Entries com os parâmetros "reference" e "callback".product_for_reference(reference, callback)</p>
+<p>Parâmetro reference = responsável por indentificar quais são as entries do produto</p>
+<p>Parâmetro callback  = esse parâmetro é uma função que carrega todos os campos de uma entries quando houver. callback(entries[0].fields);</p>
+<p><a href="/img/contentfull.png" data-featherlight="image"><img src="/img/contentfull.png"></a></p>
+<p>2- Função para injetar no html o conteúdo de um entries. append_recipes(product)</p>
+<p>Parâmetro product = é o callback da função product_for_reference(reference, callback), neste caso o callback deve carregar um objeto no formato json das entries.</p>
+<p>3-Por último a chamada da função no .liquid através da referencia do produto {{ product.reference }}</p>
+<pre>
+2) 
+function append_recipes(product){
+  recipes_quantity = product.recipes.length;
+
+  if(recipes_quantity > 3){ recipes_quantity = 3; }
+
+  for(i = 0;i < recipes_quantity; i++){
+    console.log(product.recipes[i].fields.imagem.fields.file.url)
+    console.log(product.recipes[i].fields.title)
+    console.log(product.recipes[i].fields.description)
+  }
+} 
+</pre> 
+<div></div><br>
+<pre>
+3)
+// via .liquid
+<span><</span>script type="text/javascript">
+  var product_ref = '{{ product.reference }}';
+  product_for_reference(product_ref, append_recipes);
+<span><</span>/script> 
+</pre>
       <!-- // -->
       <h3 id="listar-percentual-desconto-no-produto-em-promoção">Listar Percentual de Desconto no produto em promoção</h3> <!-- // -->
       <pre>
@@ -2470,7 +2498,7 @@ $.post(
 // lista o percentual de desconto
 {{ desconto }}
       </pre>
-      <p>Para listar o % (percentual) de desconto de um produto em promoção é necessário é criar variáveis e auxiliar na criação dos filtros das operações.</p>s
+      <p>Para listar o % (percentual) de desconto de um produto em promoção é necessário é criar variáveis e auxiliar na criação dos filtros das operações.</p> 
       <!-- // -->
 
 <h3 id="calcular-frete-no-detalhe-do-produto">Calcular frete no detalhe do produto</h3>
@@ -2693,7 +2721,7 @@ max: {{ max_price | money_format }}
 <a href="http://www.vnda.com.br/images/print-7.png" target="_blank">print 7</a>
       </pre>
       <p>
-        4 - Depois que já tiverem sido encontradas todas as páginas, colocar o filtro<br>
+      4 - Depois que já tiverem sido encontradas todas as páginas, colocar o filtro<br>
       </p>
       <div></div><br>
       <pre>
@@ -2703,8 +2731,8 @@ max: {{ max_price | money_format }}
         5 - As informações que precisam ser colocadas no admin
       </p>
       <!-- // -->
-
-      <h3 id="mapeamento-da-tag-params">Mapeamento da tag params</h3>
+ 
+     <h3 id="mapeamento-da-tag-params">Mapeamento da tag params</h3>
       <pre>
 <span><</span>pre>{{ params }}<</span>/pre>
 
@@ -2860,10 +2888,6 @@ O valor do input das variantes sempre deve ser o sku.
       </pre>
       <p>Configurar produto no admin "admin > products > midias > images": ao clicar nas fotos do produto ficará disponível no modal com as variantes que podem ser selecionadas <a href="http://www.vnda.com.br/images/guides/screenshot-modal-midia.png"><img src="http://www.vnda.com.br/images/guides/screenshot-modal-midia.png"></a></p>
 
-       <!-- // -->
-      <h3 id="dicas-loop">Dicas loop</h3>
-      <p>A linguagem aceita a tag {% break %} para sair de algum  laço de loop de {% tags %} .. {% products %} {% for %}  etc ...</p>
-      <p>Se precisar pular para o próximo laço de um loop use a tag {% continue %}.</p>
 
       <!-- / / -->
       <h3 id="template-do-zendesk">Personalizando o Template Zendesk</h3>
