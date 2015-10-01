@@ -3108,8 +3108,31 @@ function append_recipes(product){
 <a href="/img/swiftype/print-8.png" data-featherlight="image" ><img src="/img/swiftype/print-8.png"></a>
 <!-- // -->
 
+<h3 id="Flickr">Flickr - criando galeria com jflickrfeed</h3>
+<pre>
+<span><</span>script src="jflickrfeed.min.js"><span><</span>/script>
+
+<span><</span>ul class="slides"><span><</span>/ul>
+
+$('.slides').jflickrfeed({
+  limit: 14,
+  qstrings: {
+    id: '136314260@N04', // user name
+    tags: 'A-CASA'
+  },
+  itemTemplate: '<span><</span>li><span><</span>img src="{{ image }}" alt="{{title}}" class="img-responsive" /><span><</span>/li>'
+}); 
+</pre>
+<p>Através do plugin jflickrfeed.js é possível criar galerias de fotos.</p>
+<p>O modelo de cadastro no flickr deve ser organizado por tags, ou seja, ao executar a função do jflickrfeed preencha os atributos id e tags da conta e monte o html no atributo itemTemplate</p>
+<p>Segue o github <a href="https://github.com/vagnerolliver/jflickrfeed-js" class="laranja" target="_blank">/jflickrfeed-js</a> um exemplo pronto.</p>
+<!-- // -->
+
+<h3 id="Google-Maps-v3">Google Maps v3</h3>
+<p>Carregando as lojas cadastradas no admin/lojas no mapa  google com apiv3 do google maps</p>
+<!-- // -->
+
 <h3 id="template-do-zendesk">Personalizando o Template Zendesk</h3>
-<p>Faça o login em https://cadenceatendimento.zendesk.com ou https://cadenceatendimento.zendesk.com/agent</p>
 <p>Com seu usuário logado acesse o <a href="/img/zendesk/painel-de-personalizacao.png" data-featherlight="image" class="laranja">painel de personalização <img src="/img/zendesk/painel-de-personalizacao.png"></a></p>
 <p>Clique [mudar tema ] e selecione o template <a href="/img/zendesk/mudar-tema.png" data-featherlight="image" class="laranja">Temas personalizados<img src="/img/zendesk/mudar-tema.png"></a>
 <a href="/img/zendesk/mudar-tema.png" data-featherlight="image" class="laranja"><img src="/img/zendesk/mudar-tema.png"></a></p>
@@ -3124,12 +3147,29 @@ function append_recipes(product){
 
 <p> </p><br>
 <p> </p><br>
+<!-- // -->
 
+<h3 id="vimeo">Vimeo</h3>
+<pre>
+// Alterar os dados abaixo para sua conta
+var vimeoUserName = '940516';
+
+// Tipo de dados do callback
+ var videosCallback = 'showThumbs';
+
+// Url para fazer a requisão
+var videosUrl = 'https://vimeo.com/api/v2/channel/' + vimeoUserName + '/videos.json?callback=' + videosCallback;
+
+Faça o download: https://vimeo.com/api/v2/channel/940516/videos.json?callback=showThumbs
+
+Função completa publicada no <a href="https://github.com/vagnerolliver/Vimeo-Api-videosCallback/blob/master/galeria-vimeo.html" target="_blank">github</a>
+</pre>
+<p>Vimeo disponibiliza em sua api de integrações recursos de callback com respostas no formato json que facilmente com ajuda de jquery você pode criar galerias e consequemente efeitos lightbox após o carramento na página.</p>
+<p>Disponibilizamos no github um exemplo de <a href="https://github.com/vagnerolliver/Vimeo-Api-videosCallback/edit/master/galeria-vimeo.html" class="laranja" target="_blank">galeria de vídeos</a>.</p>
+<p>Importante: formato json da resposta de requisação da api do vimeo<a href="/img/vimeo.png" class="laranja" data-featherlight="image"><img src="/img/vimeo.png"></a></p>
       </div><!-- content -->
 
-    <div class="dark-box">
-
-    </div>
+    <div class="dark-box"></div>
   </div>
 
 
