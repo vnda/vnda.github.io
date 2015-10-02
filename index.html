@@ -2477,9 +2477,9 @@ Retorno:
 
 <!-- -->
 
-      <h3 id="como-listar-parcelas">Como Listar Parcelas</h3>
-      <p>Para listar parcelas, podemos usar um dos seguintes exemplos de código:</p>
-      <pre>
+<h3 id="como-listar-parcelas">Como Listar Parcelas</h3>
+<p>Para listar parcelas, podemos usar um dos seguintes exemplos de código:</p>
+<pre>
 // produto com desconto
 {{ product | apply_discount | installment_number }}x de {{  product | apply_discount | installments | money_format }}
 ou
@@ -2491,11 +2491,40 @@ ou
 ou
 {% assign preco =  product.price %}
 {{ preco | installment_number }}x de {{ preco | money_format }}
+</pre>
+<!-- // -->
 
+<h3 id="como-listar-juros-das-parcelas">Como Listar Juros das Parcelas</h3>
+<pre>
+// Juros das parcelas do produto
+{% product_installments product_id:product.id %}
+  OU {{ max_without_interest.number }}X DE
+  {{ max_without_interest.price | money_format }}
+  {% if max_with_interest.number %}
+    OU {{ max_with_interest.number }}X DE
+    {{ max_with_interest.price | money_format }} com {{ max_with_interest.interest_rate }}% de juros a.m.
+  {% endif %}
+{% endproduct_installments %}
+</pre>
+<p>Listando os juros das parcelas do produto.</p>
+<div></div><br>
+<pre>
+// Juros das parcela nas variantes
+<span class="err">{% product_installments variant_sku:variant.sku %}</span>
+  OU {{ max_without_interest.number }}X DE
+  {{ max_without_interest.price | money_format }}
+  {% if max_with_interest.number %}
+    OU {{ max_with_interest.number }}X DE
+    {{ max_with_interest.price | money_format }} com {{ max_with_interest.interest_rate }}% de juros a.m.
+  {% endif %}
+{% endproduct_installments %}
+</pre>
+<p>Listando os juros das parcelas da variantes </p>
+<p>O que muda nesse caso são os parâmetros, de product_id para variant_sku: <span class="laranja">{% product_installments variant_sku:variant.sku %}</span></p>
+<p>Não esquece que esse deve estar dentro do loop de {% variants %}</p>
+<!-- // -->
 
-      </pre>
-      <!-- // -->
-      <h3 id="como-relacionar-produtos">Como relacionar produtos</h3>
+  <h3 id="como-relacionar-produtos">Como relacionar produtos</h3>
       <pre>
 {% assign product_id = product.id %}
 {% tags product_id:product.id type:"relacionado" limit:1 %}
@@ -2543,7 +2572,6 @@ para url http://www.loja.com.br/masculino/luvas -->
 ...
 {% endmenus %}
 {% endif %}
-
 <a href="#mapeamento-da-tag-params">entenda a tag {{ params }}</a>
       </pre>
       <p>Para chamar um menu em uma determinada categoria na página de tag será necessário veficar o nome da tag, entretanto, se necessário incluir o menu em todas categorias filhas use params.parent </p>
@@ -2641,6 +2669,7 @@ par url http://www.loja.com.br/masculino/bermudas
 
       <!-- // -->
       <h3 id="metricas-google-analytics">Métricas Google Analytics</h3>
+
       <h4 id="mensuracao-de-banners">Mensuração de banners</h4>
       <pre>
 {% banners position: "capa-grande" %}
@@ -3129,7 +3158,26 @@ $('.slides').jflickrfeed({
 <!-- // -->
 
 <h3 id="Google-Maps-v3">Google Maps v3</h3>
-<p>Carregando as lojas cadastradas no admin/lojas no mapa  google com apiv3 do google maps</p>
+<p>Inserindo o mapa do google em uma página do site  <a href="/img/places/retex.png" data-featherlight="image"><img src="/img/places/lojas.png"></a></p> 
+<p>
+Api de places carrega os dados cadastrados no  <a href="/img/places/lojas.png" data-featherlight="image" class="laranja">admin/lojas</a> em forma de um objeto  <a href="/img/places/place-js.png" class="laranja" data-featherlight="image">json.</a><img src="/img/places/lojas.png"><br> 
+**obs: para ativar o recurso do places solicite via email para dev@vnda.com.br.</p>
+<p>
+Passo 1 - após efetivado o cadastro será gerado um token que servirá como parâmetro na url abaixo:<br>
+http://vnda-places.herokuapp.com/places.js?token=[token]&callback=<br>
+**obs: o arquivo places.js da api está configurado para aceitar o parâmetro callback e executar, no <a href="https://github.com/vagnerolliver/Integracao-o-com-o-google-maps" class="laranja" target="_blank">exemplo a seguir</a> vamos executar a função loadShops que carregara todas as lojas cadastradas.
+</p>
+<p>
+Passo 2 - cadastrar uma loja  no <a href="/img/places/lojas.png" data-featherlight="image" class="laranja">admin/lojas/nova</a><a href="/img/places/editar-lojas.png" data-featherlight="image"><img src="/img/places/editar-lojas.png"></a><br>
+Após efetivar o cadastro confira a url do passo 1, o retorno será como este: <a href="/img/places/place-js.png" data-featherlight="image"><img src="/img/places/place-js.png"></a><br>
+**obs: para facilitar a leitura do arquivo instale a extensão para chrome JSON FORMATER.
+</p>
+<p>
+Passo 3 - criar função que vai iniciar o mapa na página do site.<br>
+**obs: o script do passo 4 é um exemplo que pode ser tomado com base para criar outros tipos de aplicações que vão variar conforme a necessidade do layout. Ao encontrar dúvidas procure <a href="/img/places/place-js.png" class="laranja" target="_blank">estudar a documentação do google maps</a> e como manipular objetos no javascript. 
+</p>
+Passo 4 - Modelo usado na loja da <a href="http://www.retex.com.br/p/encontre-uma-loja-retex" class="laranja" target="_blank">Retex</a> - <a href="https://github.com/vagnerolliver/Integracao-o-com-o-google-maps" class="laranja" target="_blank">ver cógido no github</a></p> 
+
 <!-- // -->
 
 <h3 id="template-do-zendesk">Personalizando o Template Zendesk</h3>
