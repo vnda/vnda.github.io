@@ -14,7 +14,7 @@
    </head>
   <body>
   
-     <div class="page-wrapper">
+  <div class="page-wrapper">
     <div class="content">
       <h2 id="entendendo-o-.liquid">Entendendo o .liquid</h2>
       <p>Liquid é a linguagem de programação responsável por implementar os templates desenvolvidos e utilizados pela Vnda.</p>
@@ -1800,38 +1800,54 @@ que consome menos requisições para nossa api de menus.</p>
                   <p>Listar atributos cor (deprecate)</p>
   </pre>
 
-      <h3 id="opengraphfor">{% opengraphfor %}</h3>
-      <pre>
-{% unless opengraph %}
-  {% if template == "tag" %}
-    {% opengraphfor tag %}
-
-  {% elsif template == "product" %}
-    {% opengraphfor product %}
-
+<h3 id="opengraphfor">{% opengraphfor %}</h3>
+<pre>
+// Colar o código abaixo antes do fechamendo da tag <span><</span>head>
+{% if template == "home" %}
+  {% tag id:"capa" %}
+    {% assign meta_title = tag.title %}
+    {% assign meta_description = tag.description | strip_html %}
+    {% assign meta_image = tag.image_url | strip_html %}
+  {% endtag %}
+  <span><</span>meta property="og:description" content="{{ meta_description }}">
+  <span><</span>meta property="og:image" content="{{ meta_image }}" />
+  <span><</span>meta property="og:url" content="{{ home_url }}" />
+  <span><</span>meta name="description" content="{{ meta_description }}">
+  <span><</span>meta name="image" content="{{ meta_image }}" />
+  <span><</span>meta meta="url" content="{{ home_url }}" />
+{% else %}
+  {% case template %}
+  {% when 'tag' %}{% opengraphfor tag %}{{ opengraph }}
+  {% when 'product' %}{% opengraphfor product %}{{ opengraph }}
+  {% when 'page' %}{% opengraphfor page %}{{ opengraph }}
+  {% when 'search' %}{% contentfor title %}{{ params.q }}{% endcontentfor %}
+  {% when 'finished' %}{% assign pretitle = 'Concluído' %}
+  {% endcase %}
+{% endif %}
+<span><</span>title>
+  {% if pretitle %}
+    {{ pretitle }} | {{ store.name }}
+  {% elsif title %}
+    {{ title }} | {{ store.name }}
   {% else %}
-    <span><</span>title<span>></span>
-      {% case template %}
-        {% when 'cart' %}{% assign pretitle = 'Carrinho' %}
-        {% when 'address' %}{% assign pretitle = 'Entrega' %}
-        {% when 'payment' %}{% assign pretitle = 'Pagamento' %}
-        {% when 'finished' %}{% assign pretitle = 'Concluido' %}
-      {% endcase %}
-      {% if pretitle %}{{ pretitle }} | {% endif %}{{ store.name }}
-    <span><</span>/title<span>></span>
+    {{ meta_title }}
   {% endif %}
-{% endunless %}
-{{ opengraph }}
-      </pre>
-      <p>Listar meta tags opengraph para facebook<br />
-      * Meta tags e opengraph devem ser dinâmicas <br />
-      * Usar {% opengraphfor %} para aplicar Meta Title e Description nas páginas internas da loja.</p>
+<span><</span>/title>
+</pre>
+<p>
+  Configura as meta tags de SEO para facebook e google.<br />
+  Carregue as informações informando o parâmetro {% opengraphfor nome_do_template %} e exiba as metatags usando o {{ opengraph }} antes do fechamento da tag <span><</span>head>.
+</p>
 
-      <p>Aplicar no template [ tag.liquid ] [ {% opengraphfor tag %} ]</p>
-      <p>Aplicar no template [ procudc.liquid ] [ {% opengraphfor product %} ]</p>
-      <p>Aplicar no template [ page.liquid ] [ {% opengraphfor page %} ]</p>
-      <p>Para exibir título e descrição na home, usar a tag de "capa" para capturar de forma dinâmica title e description.</p>
+<p>
+  <b>**obs:templates disponíveis são:</b><br />
+  para o template de tag {% opengraphfor tag %}<br />
+  para o template de produto {% opengraphfor product %}<br />
+  para o template de página institucional {% opengraphfor page %}
+</p>
+<p>Para exibir as metas da home, crie uma tag auxiliar como por exemplo "capa" e nela configure com os campos title, description e imagem para que possam ser carregadas apartir do código de exemplo ao lado.</p>
 
+<!-- // -->
 
 <h3 id="contentfor">{% contentfor %}</h3>
 <pre>
@@ -1884,7 +1900,6 @@ Item 6
 
 </pre>
 <p>O {% contentfor nome_da_variavel %} é usado para adicionar conteúdo dentro da variável  "nome_da_variavel" sem remover o conteúdo atual, contrário da tag {% capture %} que remove o conteúdo anterior.
-
 <!-- // -->
 
 <h3 id="aggregations">{% aggregations %}</h3>
