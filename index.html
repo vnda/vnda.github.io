@@ -603,7 +603,6 @@ Executação as interação ao menos que o resultado da condição não seja ver
         {{ tag.description }}
         {{ tag.type }}
         {{ tag.image_url }}
-        {{ products_count }} // quantidade de produtos encontrados na tag
       </pre>
       <p></p>
       <p>Dentro do template tag.liquid é possível exibir informações da tag em questão, que foram cadastradas no admin usando as seguintes variáveis:</p>
@@ -1654,6 +1653,15 @@ OU
       <p>Listar tag pelo "id"</p>
       <p>Assim que uma tag é cadastrado no admin se torna acessível desde que seja no .liquid informado o parêmentro id</p>
       <!-- // -->
+
+<h3 id="product_count">{% product_count %} </h3>
+<pre>
+{% product_count tag:tag.name parent_tag:parent_tag.name %}
+  {{ product_count }}
+{% endproduct_count %}
+</pre>
+<p>Lista quantidade de produtos encontrados na tag</p>
+ <!-- // -->            
 
       <h3 id="menus">{% menus %}</h3>
       <pre>

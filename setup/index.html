@@ -1611,8 +1611,8 @@ OU
           Para usar outra ordenação, basta incluir o parãmetro sort na tag que lista os produtos.<br />
         </p>
         <p>
-          Produtos podem ser ordenados por “price”, “price,desc”, “newest”, “newest,desc”<br />
-        (newest é baseado na data de cadastro do produto), “name”, “name,desc”.</p>
+          Produtos podem ser ordenados por "price", "price,desc", "newest", "newest,desc"<br />
+          (newest é baseado na data de cadastro do produto), “name”, “name,desc”.</p>
         <div></div><br>
         <!-- // -->
         <h3 id="tags">{% tags %}</h3>
@@ -1640,6 +1640,13 @@ OU
       <p>Listar tag pelo "id"</p>
       <p>Assim que uma tag é cadastrado no admin se torna acessível desde que seja no .liquid informado o parêmentro id</p>
       <!-- // -->
+
+<h3 id="product_count">{% product_count %}</h3>
+<pre>
+{% product_count tag:tag.name parent_tag:parent_tag.name %}
+{{ product_count }}
+{% endproduct_count %}
+</pre>
 
       <h3 id="menus">{% menus %}</h3>
       <pre>
