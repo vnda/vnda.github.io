@@ -625,49 +625,49 @@ Executação as interação ao menos que o resultado da condição não seja ver
       <p>Listagem de produtos com a tag <a href="#products" class="laranja">{% products %}</a><br/><br/><br/><br/></p>
       <!-- // -->
 
-      <h4 id="paginacao">Configurando a páginação</h4>
-      <pre>
+<h4 id="paginacao-na-tag">Configurando a páginação na tag</h4>
+<pre>
 {% products tag:tag.name page:params.page per_page:20 %}
-  // executa no primeiro loop
-  {% if forloop.first %}
-    <span><<span>ul class="products"><span>
-  {% endif %}
-    // include com o arquivo com a listagem de produtos
-    {% include "list_product" %}
-  // executa no último loop
-  {% if forloop.last %}
-    <span><</span>/ul>
-    {% contentfor paginacao %}
-      // armazena o conteúdo de "<span><</span>nav>" para dentro variável <strong>paginacao</strong>
-      {% if pagination.total_pages > 1 %}
-      <span><</span>nav class="pagination"<span>></span>
-        <span><</span>span class="pagination"<span>></span>
-            Página {{ pagination.current_page }} de {{ pagination.total_pages }}
-            {% if pagination.prev_page %}
-                <span><</span>a href="{{ pagination.prev_url }}" class="previous"<span>></span>←<span><</span>/a<span>></span>
-            {% endif %}
-            {% for page in pagination.pages %}
-              <span><</span>li class="{% if current_url == page.url %} active {% endif %}"><span><</span>a href="{{ page.url }}">{{ page.number }} {% if current_url == page.url %}{% endif %}</a></li>
-            {% endfor %}
-            {% if pagination.next_page %}
-                <span><</span>a href="{{ pagination.next_url }}" class="next"<span>></span>→<span><</span>/a<span>></span>
-            {% endif %}
-        <span><</span>/span<span>></span>
-      <span><</span>/nav<span>></span>
-      {% endif %}
-    {% endcontentfor %}
-  {% endif %}
+// executa no primeiro loop
+{% if forloop.first %}
+<span><<span>ul class="products"><span>
+{% endif %}
+// include com o arquivo com a listagem de produtos
+{% include "list_product" %}
+// executa no último loop
+{% if forloop.last %}
+<span><</span>/ul>
+{% contentfor paginacao %}
+// armazena o conteúdo de "<span><</span>nav>" para dentro variável <strong>paginacao</strong>
+{% if pagination.total_pages > 1 %}
+<span><</span>nav class="pagination"<span>></span>
+<span><</span>span class="pagination"<span>></span>
+    Página {{ pagination.current_page }} de {{ pagination.total_pages }}
+    {% if pagination.prev_page %}
+        <span><</span>a href="{{ pagination.prev_url }}" class="previous"<span>></span>←<span><</span>/a<span>></span>
+    {% endif %}
+    {% for page in pagination.pages %}
+      <span><</span>li class="{% if current_url == page.url %} active {% endif %}"><span><</span>a href="{{ page.url }}">{{ page.number }} {% if current_url == page.url %}{% endif %}</a></li>
+    {% endfor %}
+    {% if pagination.next_page %}
+        <span><</span>a href="{{ pagination.next_url }}" class="next"<span>></span>→<span><</span>/a<span>></span>
+    {% endif %}
+<span><</span>/span<span>></span>
+<span><</span>/nav<span>></span>
+{% endif %}
+{% endcontentfor %}
+{% endif %}
 {% endproducts %}
 
 // exibe o conteúdo da variável <strong>paginacao</strong>s
 <span><</span>div>{{ paginacao }}<span><</span>/div>
-      </pre>
-      <p>O código da paginação deve ser executado pelo menos 1 vez dentro do loop de % products, o mesmo que é usado para carregar uma listagem de produtos.<br>ex: {% products %} {% if forloop.last %} // código {% endif %}{% endproducts %}</p>
-      <p>Use o {% if forloop.first %} ou {% if forloop.last %} incluir o script de paginação.</p>
-      <p>**importante: use o {% contentfor %} para armazenar o bloco da páginação e chamar em outra parte do código:</p>
-      <p>**a páginação funcionára só para páginas de tag.</p>
-      <p>**Por padrão, a tag é páginada em 25 itens. Para alterar, basta inserir um valor diferente para o parâmentro [ per_page: ] conforme mostrado no exemplo.</p>
-      <p>** É possível limitar a quantidade de itens de uma tag, usando o parâmetro [ limit:Valor_desejado]. Este limite desativa a paginação. É útil na página de busca, caso alguma busca possa retornar muitos resultados, para evitar perda de perorma</p>
+</pre>
+<p>O código da paginação deve ser executado pelo menos 1 vez dentro do loop de % products, o mesmo que é usado para carregar uma listagem de produtos.<br>ex: {% products %} {% if forloop.last %} // código {% endif %}{% endproducts %}</p>
+<p>Use o {% if forloop.first %} ou {% if forloop.last %} incluir o script de paginação.</p>
+<p>**importante: use o {% contentfor %} para armazenar o bloco da páginação e chamar em outra parte do código:</p>
+<p>**a páginação funcionára só para páginas de tag.</p>
+<p>**Por padrão, a tag é páginada em 25 itens. Para alterar, basta inserir um valor diferente para o parâmentro [ per_page: ] conforme mostrado no exemplo.</p>
+<p>** É possível limitar a quantidade de itens de uma tag, usando o parâmetro [ limit:Valor_desejado]. Este limite desativa a paginação. É útil na página de busca, caso alguma busca possa retornar muitos resultados, para evitar perda de perorma</p>
 
       <!-- // -->
 
@@ -1449,19 +1449,18 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
 
       <p>Mensagem de sucesso e de erro para o form de recuperar senha.</p>
 
-      <!-- // -->
-      <h3 id="search.liquid">Search.liquid</h3>
-      <pre>
+<!-- // -->
+<h3 id="search.liquid">Search.liquid</h3>
+<pre>
 <span><</span>form action="{{ search_url }}" method="post""<span>></span>
-  <span><</span>input type="search" name="q" <span>></span>
-  <span><</span>input type="submit" value="Atualizar Senha"<span>></span>
+<span><</span>input type="search" name="q" <span>></span>
+<span><</span>input type="submit" value="Atualizar Senha"<span>></span>
 <span><</span>/form<span>></span>
-      </pre>
-      <p> Template para a exibição dos resultados de uma busca. Para fazer uma busca, use um formulário apontando para /busca via método GET ou acesse diretamente a URL /busca?q=termo. Não use POST.</p>
-      <div></div><br>
-
-      <p>A lista de produtos que casam com o termo buscado estará na variável {{ products }}.</p>
-      <pre>
+</pre>
+<p> Template para a exibição dos resultados de uma busca. Para fazer uma busca, use um formulário apontando para /busca via método GET ou acesse diretamente a URL /busca?q=termo. Não use POST.</p>
+<div></div><br>
+<p>A lista de produtos que casam com o termo buscado estará na variável {{ products }}.</p>
+<pre>
 {% for product in products %}
   {{ product.image_url | resize: '234x' }}
     {{ product.url }}
@@ -1481,16 +1480,50 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
      Produto Esgotado
     {% endif %}
 {% endfor
-      </pre>
-      <p>Para montar o resultado da busca utilize {% for product in products %}, e detro desse loop é necessário chamas as tags corretas:</p>
-      <div></div><br>
-      <pre>
+</pre>
+<p>Para montar o resultado da busca utilize {% for product in products %}, e detro desse loop é necessário chamas as tags corretas:</p>
+<div></div><br>
+<pre>
 {% if flash.search.error %}
- {{ flash.search.error }}
+{{ flash.search.error }}
 {% endif %}
-      </pre>
-      <p>Se não exister resultados na busca usar {{ flash.search.error }}.</p>
-      <p>Para mostrar o termo da busca  {{ params.q | strip_html }}</p>
+</pre>
+<p>Se não exister resultados na busca usar {{ flash.search.error }}.</p>
+<p>Para mostrar o termo da busca  {{ params.q | strip_html }}</p>
+<p>**Não informe nenhum parâmetros, use utilize só esta chamada {% for product in products %} no liquid </p>
+
+
+<h4 id="paginacao-na-busca">Configurando a páginação na busca</h4>
+<pre>
+{% for product in products %}
+  // include com o arquivo com a listagem de produtos
+  {% include "list_product" %}
+{% endfor %}
+ 
+{% if pagination.total_pages > 1 %}
+<span><</span>nav class="pagination"<span>></span>
+<span><</span>span class="pagination"<span>></span>
+    Página {{ pagination.current_page }} de {{ pagination.total_pages }}
+    {% if pagination.prev_page %}
+        <span><</span>a href="{{ pagination.prev_url }}" class="previous"<span>></span>←<span><</span>/a<span>></span>
+    {% endif %}
+    {% for page in pagination.pages %}
+      <span><</span>li class="{% if current_url == page.url %} active {% endif %}"><span><</span>a href="{{ page.url }}">{{ page.number }} {% if current_url == page.url %}{% endif %}</a></li>
+    {% endfor %}
+    {% if pagination.next_page %}
+        <span><</span>a href="{{ pagination.next_url }}" class="next"<span>></span>→<span><</span>/a<span>></span>
+    {% endif %}
+<span><</span>/span<span>></span>
+<span><</span>/nav<span>></span>
+{% endif %}
+
+</pre>
+ <p>Páginação disponível para as lojas com Elasticsearch ativado.</p>
+ <p>*** O código da paginação não precisa ser incluído em algum dos loop das interações de {% for product in products %}.</p>
+ <p>*** Quantidade máxima de 20 produtos por página.</p>
+ 
+
+ 
 
       <h3 id="page.liquid">Page.liquid</h3>
       <p>Vnda permite que sejam criadas e alteradas páginas pelo Painel Administrativo. Isso é feito pelo próprio gestor da loja pois dispensa conhecimentos de programação. Neste template serão exibidas as páginas, de acordo com a URL digitada. </p>
