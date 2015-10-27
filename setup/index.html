@@ -29,7 +29,8 @@
     <div id="headings" class="tocify">
     </div>
   </div>
- <div class="page-wrapper">
+ 
+  <div class="page-wrapper">
     <div class="content">
       <h2 id="entendendo-o-.liquid">Entendendo o .liquid</h2>
       <p>Liquid é a linguagem de programação responsável por implementar os templates desenvolvidos e utilizados pela Vnda.</p>
@@ -1454,13 +1455,14 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
 <h3 id="search.liquid">Search.liquid</h3>
 <pre>
 <span><</span>form action="{{ search_url }}" method="post""<span>></span>
-<span><</span>input type="search" name="q" <span>></span>
-<span><</span>input type="submit" value="Atualizar Senha"<span>></span>
+  <span><</span>input type="search" name="q" <span>></span>
+  <span><</span>input type="submit" value="Pesquisar"<span>></span>
 <span><</span>/form<span>></span>
 </pre>
-<p> Template para a exibição dos resultados de uma busca. Para fazer uma busca, use um formulário apontando para /busca via método GET ou acesse diretamente a URL /busca?q=termo. Não use POST.</p>
+<p>Template para a exibição dos resultados de uma busca.</p>
+<p>Para realizar uma busca use um formulário com action="{{ search_url }}", <b>método GET</b> e com o campo type="search" name="q".</p>
+<p>**Url final: <i>https://www.nome_da_loja/busca?q=termo.</i></p>
 <div></div><br>
-<p>A lista de produtos que casam com o termo buscado estará na variável {{ products }}.</p>
 <pre>
 {% for product in products %}
   {{ product.image_url | resize: '234x' }}
@@ -1482,19 +1484,29 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
     {% endif %}
 {% endfor
 </pre>
-<p>Para montar o resultado da busca utilize {% for product in products %}, e detro desse loop é necessário chamas as tags corretas:</p>
+<p>O resultado da busca é armazenado na tag <b>{{ products }}</b>, use a tag {% for %} para percorrer e exibir as informações de produto deste array.</p>
+<p>**Mostra o termo da busca: {{ params.q | strip_html }}</p>
+<p>**Não é necessário informar <b>parâmetros</b> no {% for product in products %}.</p>
 <div></div><br>
+
+<h4 id="busca-padrao">Busca padrão</h4>
 <pre>
-{% if flash.search.error %}
-{{ flash.search.error }}
+// lojas que não usam o elasticsearch
+{% if products.size > 0  %}
+ Encontramos {{ products.size }} resultados(s) por: {{ params.q | strip_html }}.
 {% endif %}
 </pre>
-<p>Se não exister resultados na busca usar {{ flash.search.error }}.</p>
-<p>Para mostrar o termo da busca  {{ params.q | strip_html }}</p>
-<p>**Não informe nenhum parâmetros, use utilize só esta chamada {% for product in products %} no liquid </p>
+<p>**Verifica se a busca retornou algum resultado: {{ products.size }}.</p>
 
+<h4 id="busca-com-elasticsearch">Busca com Elasticsearch</h4>
+<pre>
+{% if pagination.total_hits > 0  %}
+ Encontramos {{ pagination.total_hits }} resultados(s) por: {{ params.q | strip_html }}.
+{% endif %}
+</pre>
+<p>**Verifica se a busca retornou algum resultado: {{ pagination.total_hits }}.</p>
 
-<h4 id="paginacao-na-busca">Configurando a páginação na busca</h4>
+<h5 id="paginacao-na-busca-elasticsearch">Páginação na busca com Elasticsearch</h5>
 <pre>
 {% for product in products %}
   // include com o arquivo com a listagem de produtos
@@ -1519,7 +1531,7 @@ payment_method: O valor desse campo deve ser sempre <b class='laranja'>slip</b> 
 {% endif %}
 
 </pre>
- <p>Páginação disponível para lojas com Elasticsearch ativado.</p>
+ <p>Páginação disponível para as lojas com Elasticsearch ativado.</p>
  <p>*** O código da paginação não precisa ser incluído em algum dos loop das interações de {% for product in products %}.</p>
  <p>*** Quantidade máxima de 20 produtos por página.</p>
  
@@ -3276,8 +3288,7 @@ Função completa publicada no <a href="https://github.com/vagnerolliver/Vimeo-A
       </div><!-- content -->
 
     <div class="dark-box"></div>
-  </div>
-  <!-- Google Tag Manager -->
+  </div> <!-- Google Tag Manager -->
   <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWR79T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NWR79T');</script>
   <!-- End Google Tag Manager -->
 
