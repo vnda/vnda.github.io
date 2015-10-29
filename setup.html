@@ -68,7 +68,7 @@ divisão {{ 10 | divided_by:2 }} #=> 5
       </p>
       <div></div><br>
       <pre>
-retorna o elemento da primeira posição do array 
+retorna o elemento da primeira posição do array
       </pre>
       <p>
       first
@@ -76,7 +76,7 @@ retorna o elemento da primeira posição do array
       <div></div><br>
 
       <pre>
-retorna o elemento da última posição do array 
+retorna o elemento da última posição do array
       </pre>
       <p>
       last
@@ -175,8 +175,8 @@ newline_to_br
 <div></div><br>
 
 <pre>
-Substitui todas as ocorrências de uma cadeia com uma substring.      
-{{ 'Sites Ecommerce' | replace:'Sites','Sites para' }} 
+Substitui todas as ocorrências de uma cadeia com uma substring.
+{{ 'Sites Ecommerce' | replace:'Sites','Sites para' }}
 
 Retorno:
 Sites para Ecommerce
@@ -187,9 +187,9 @@ replace
 <div></div><br>
 
 <pre>
-Substitui as primeira ocorrência de uma cadeia com uma substring. 
+Substitui as primeira ocorrência de uma cadeia com uma substring.
 
-{{ 'barbar' | replace_first:'bar','foo' }} 
+{{ 'barbar' | replace_first:'bar','foo' }}
 
 Retorno:
 foobar
@@ -200,7 +200,7 @@ replace_first
 <div></div><br>
 
 <pre>
-Remove as ocorrência de uma cadeia com uma substring.   
+Remove as ocorrência de uma cadeia com uma substring.
 
 {{ 'foobarfoobar' | remove:'foo' }}
 
@@ -212,11 +212,11 @@ remove
 <div></div><br>
 
 <pre>
-Remove a primeira ocorrência de uma cadeia com uma substring.   
+Remove a primeira ocorrência de uma cadeia com uma substring.
 
 {{ 'barbar' | remove_first:'bar' }}
 
-Retorno: 
+Retorno:
 bar
 </pre>
 <p>
@@ -226,7 +226,7 @@ remove_first
 
 <pre>
 Trunca uma cadeia de caracteres para x caracteres. Ele também aceita um segundo parâmetro que será anexada à cadeia
-{{ 'foobarfoobar' | truncate: 5, '.' }} 
+{{ 'foobarfoobar' | truncate: 5, '.' }}
 
 Retorno:
 foob.
@@ -240,10 +240,10 @@ truncate
 <pre>
 Trunca uma cadeia de caracteres para x palavras. Ele também aceita um segundo parâmetro que será anexada à cadeia
 
-{{ 'truncar uma cadeia de caracteres para x palavras' | truncatewords: 2 }} 
+{{ 'truncar uma cadeia de caracteres para x palavras' | truncatewords: 2 }}
 
 Retorno:
-truncar uma 
+truncar uma
 </pre>
 <p>
 truncatewords
@@ -287,8 +287,8 @@ Retorno:
 {% assign array = "a~b" | split:"~" %}
 
 {{ array[0] }}
-Retorno: 
-a 
+Retorno:
+a
 
 {{ array[1] }}
 Retorno:
@@ -383,16 +383,16 @@ Criando Variáveis - {% assign %}
 
 <pre>
 // Atualizando o conteúdo em lista_produto
-{% capture lista_produto %} 
+{% capture lista_produto %}
   <div> Item 1 </div>
 {% endcapture %}
-{% capture lista_produto %} 
+{% capture lista_produto %}
   <div> Item 2 </div>
 {% endcapture %}
-{% capture lista_produto %} 
+{% capture lista_produto %}
   <div> Item 3 </div>
 {% endcapture %}
- 
+
 {{  lista_produto }}
 
 retorno:
@@ -410,11 +410,11 @@ O {% capture %} é usado para atualizar conteúdo dentro da variável "nome_da_v
 {% assign condition = 2 %}
 {% case condition %}
 {% when 1 %}
- caso 1 
+ caso 1
 {% when 2 or 3 %}
- caso 2 ou 3 
+ caso 2 ou 3
 {% else %}
- nenhum dos casos 
+ nenhum dos casos
 {% endcase %}
 
 Retorno:
@@ -443,7 +443,7 @@ Bloco de código que não será carregado na renderização do html na página
 <pre>
 Lista de Produtos com 5 interações
 <span><</span>li class="{% cycle 'one', 'two', 'three' %}">Item {{ forloop.index }}<span><</span>/li>
- 
+
 Retorno:
 <span><</span>li class="one">Item 1<span><</span>/li>
 <span><</span>li class="two">Item 2<span><</span>/li>
@@ -500,7 +500,7 @@ Em vez de um loop sobre uma coleção existente, você pode definir um intervalo
 {{ i }}
 {% endfor %}
 
-Retorno: 
+Retorno:
 1,2,3,4
 </pre>
 <p>
@@ -516,13 +516,13 @@ Loops em coleções de arrays:
 <!-- // -->
 <h5 id="continue">{% continue %} ir para próxima interação</h5>
 <p>Pula para o próximo laço da interação use a tag {% continue %}.</p>
-  
+
 
 <h4 id="if">{% if %} - Condicional</h4>
 
 <pre>
 {% if "online" == "online" %}
-  online  
+  online
 {% endif %}
 
 Retorno:
@@ -548,7 +548,7 @@ online
 Retorno:
 ofline
 
- 
+
 </pre>
 <p>
 If's são usadas para executar ações diferentes com base em diferentes condições.
@@ -559,7 +559,7 @@ If's são usadas para executar ações diferentes com base em diferentes condiç
 <h4 id="unless">{% unless %} - Condicional</h4>
 <pre>
 Criando um array com 5 posições apartir de um string
-{% assign array = "1,2,3,4,5" | split: ',' %}  
+{% assign array = "1,2,3,4,5" | split: ',' %}
 
 Percorrendo a variável array
 
@@ -675,6 +675,80 @@ Executação as interação ao menos que o resultado da condição não seja ver
       <h3 id="product.liquid">Product.liquid</h3>
       <p>Template para exibição do produto, suas imagens, produtos relacionados. Aqui também fica o formulário que permite adicionar o item ao carrinho, neste formulário o cliente pode selecionar qual atributo do produto (cor, tamanho, etc) ele realmente quer.</p>
       <p>Para exibir o nome, preço, remarcações, disponibilidade, parcelas  utilize  tags dentro do loop <a href="#products" class="laranja">{% product %}</a></p>
+
+<pre>
+{{ product.name }}
+// Nome do produto
+
+{{ product.slug }}
+// Slug da url do produto
+
+{{ product.url }}
+// Url absoluta do produto
+
+{{ product.updated_at }}
+// Data da última atualização
+
+{{ product.id }}
+// ID numeral do produto
+
+{{ product.reference }}
+// Referência do produto
+
+{{ product.sku }}
+// SKU principal - Para exibir demais sku(s), usar tag variants
+
+{{ product.available }}
+// Disponibilidade (true/false)
+
+{{ product.stock }}
+// Quantidade em estoque
+
+{{ product.min_quantity }}
+// Quantidade mínima para compra
+
+{{ product.price | money_format }}
+// Preço normal
+
+{{ product.on_sale }}
+// Se esta em promoção (true/false)
+
+{{ product.sale_price money_format }}
+// Preço promocional
+
+{{ product.discount_id }}
+// ID de desconto, para exibir texto diferenciado
+
+{{ product.installments }}
+// Opções de parcelamento
+
+{{ product.description }}
+// Descrição do produto
+
+{{ product.rating }}
+// Avaliação - Em fase de testes
+
+{{ product.variants }}
+// Variantes do produto - Obsoleto
+
+{{ product.image_url }}
+// Imagem principal do produto
+
+{{ product.tag_names }}
+// Exibe o slug das tags presentes no produto
+
+{{ product.category_tags }}
+// Exibe um loop contendo informações das tags tipadas.
+
+Exemplo:
+{% for category in product.category_tags %}
+  {% if category.tag_type == "nome-do-tipo-da-tag" %}
+    {{ category.name }}
+    {{ category.title }}
+  {% endif %}
+{% endfor %}
+</pre>
+
       <!-- // -->
       <h4 id="enviar-produto-ao-carrinho">Enviar produto ao carrinho</h4>
       <p>
@@ -2402,7 +2476,7 @@ $.post(
 
       <h3 id="validar-cpf">Biblioteca Jquery para validar cpf e cnpj</h3>
       <p><a href="https://gist.github.com/vagnerolliver/8e60807e5269162a58b7" target="_blank" class="laranja">Clique aqui</a> para ver os filtros disponíveis para usar no .liquid.</p>
- 
+
       <h3 id="breadcrumbs">Breadcrumbs</h3>
       <p>Veja exemplos de como fazer o breadcrumb na tag e na página de produto.</p>
 <pre>
@@ -2427,10 +2501,10 @@ $.post(
 <span><</span>a href="{{ product.url }}" title="{{ product.name }}"<span>></span>{{ product.name }}<span><</span>/a<span>></span>
 
 </pre>
-     
+
 <h3 id="contentful">Contentful - script para o front da loja</h3>
 <pre>
-1) 
+1)
 function product_for_reference(reference, callback){
 
   var client = contentful.createClient({
@@ -2443,7 +2517,7 @@ function product_for_reference(reference, callback){
   client.contentTypes({name: "Product"}, function(err, content_type) {
     var product_id = content_type[0].sys.id;
     client.entries({content_type: product_id, "fields.reference[match]": reference}, function(err, entries) {
-   
+
       if(typeof entries[0] === 'undefined'){
        callback(null);
       } else {
@@ -2461,7 +2535,7 @@ function product_for_reference(reference, callback){
 <p>Parâmetro product = é o callback da função product_for_reference(reference, callback), neste caso o callback deve carregar um objeto no formato json das entries.</p>
 <p>3-Por último a chamada da função no .liquid através da referencia do produto {{ product.reference }}</p>
 <pre>
-2) 
+2)
 function append_recipes(product){
   recipes_quantity = product.recipes.length;
 
@@ -2472,8 +2546,8 @@ function append_recipes(product){
     console.log(product.recipes[i].fields.title)
     console.log(product.recipes[i].fields.description)
   }
-} 
-</pre> 
+}
+</pre>
 <div></div><br>
 <pre>
 3)
@@ -2481,7 +2555,7 @@ function append_recipes(product){
 <span><</span>script type="text/javascript">
   var product_ref = '{{ product.reference }}';
   product_for_reference(product_ref, append_recipes);
-<span><</span>/script> 
+<span><</span>/script>
 </pre>
       <!-- // -->
       <h3 id="listar-percentual-desconto-no-produto-em-promoção">Listar Percentual de Desconto no produto em promoção</h3> <!-- // -->
@@ -2498,7 +2572,7 @@ function append_recipes(product){
 // lista o percentual de desconto
 {{ desconto }}
       </pre>
-      <p>Para listar o % (percentual) de desconto de um produto em promoção é necessário é criar variáveis e auxiliar na criação dos filtros das operações.</p> 
+      <p>Para listar o % (percentual) de desconto de um produto em promoção é necessário é criar variáveis e auxiliar na criação dos filtros das operações.</p>
       <!-- // -->
 
 <h3 id="calcular-frete-no-detalhe-do-produto">Calcular frete no detalhe do produto</h3>
@@ -2731,7 +2805,7 @@ max: {{ max_price | money_format }}
         5 - As informações que precisam ser colocadas no admin
       </p>
       <!-- // -->
- 
+
      <h3 id="mapeamento-da-tag-params">Mapeamento da tag params</h3>
       <pre>
 <span><</span>pre>{{ params }}<</span>/pre>
