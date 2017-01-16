@@ -1927,6 +1927,85 @@ OU
 <p>Lista quantidade de produtos encontrados na tag</p>
  <!-- // -->
 
+  <h3 id="media">{% media %}</h3>
+
+<pre>
+Exemplos
+
+media/tumblr.liquid
+
+{% media from:'tumblr' username:'odderio.tumblr.com'  api_key:'lkrbxMqc4PZzC8EyNn7KVuZTQlkdF1oMZmuq3CCtHNaM7P8jeA' %}
+
+  <span><</span>h2>
+   <span><</span>a href="{{ post.url }}">{{ post.title }}<span><</span>/a>
+  <span><</span>/h2>
+
+ <span><</span>div class="infos">
+    <span><</span>p class="date-post">{{ post.timestamp | date: "%d/%m/%Y" }}<span><</span>/p>
+<span><</span>/div>
+
+<span><</span>div class="short-description">
+  <span><</span>p>{{ post.summary }}<span><</span>/p>
+<span><</span>/div>
+
+{% endmedia %}
+
+media/tumblr_post.liquid
+
+{% media from:'tumblr' media_id:media_id username:'odderio.tumblr.com'  api_key:'lkrbxMqc4PZzC8EyNn7KVuZTQlkdF1oMZmuq3CCtHNaM7P8jeA' %}
+
+  <span><</span>div class="topo-single-post">
+    <span><</span>h1>{{ post.title }}<span><</span>/h1>
+  <span><</span>/div>
+  
+  <span><</span>div class="single-post">
+    {{ post.body }}
+  <span><</span>/div>
+
+{% endmedia %}
+
+  </pre>
+  
+  <p>
+    A tag media pode ser usada em qualquer parte da loja. Caso seja necessário uma página específica para conteúdos provindos de rede sociais, a estrutura de arquivos padrão para criação das páginas em liquid segue o exemplo:
+  </p>
+  <p>
+    media/<br />
+    tumblr.liquid<br />
+    tumblr_post.liquid<br />
+    instagram.liquid<br />
+    instagram_post.liquid<br />
+  </p>
+  <p>
+    Neste caso, as urls são mapeadas em: <br />
+    http://urldaloja.com.br/m/tumblr e http://urldaloja.com.br/m/instagram.<br />
+  </p>
+  <p>
+    Caso haja necessidade de urls customizadas, as regras para a customização devem ser feitas diretamente no servidor web, específicos para cada loja. Pode se usar como exemplo a loja Odderio.com.br que usa a url /explore apontando para /m/tumblr
+  </p>
+  <p>
+    {% media %}<br />
+        &nbsp;&nbsp;Variáveis do conteúdo:<br />
+        &nbsp;&nbsp;post ( variável com todos os atributos do post )<br />
+        &nbsp;&nbsp;pagination ( variável com todos os campos da paginação )<br />
+        
+        &nbsp;&nbsp;Variáveis de controle do loop:<br />
+ 
+    {% endmedia %}<br />
+  </p>
+
+  <p><strong>Parâmetros</strong></p>
+
+  <p>
+    * from (Nome da rede social obrigatório)<br />
+    * username: (obrigatório se o campo "from" for "tumblr")<br />
+    * api_key (obrigatório se o campo "from" for "tumblr")<br />
+    * media_id (id do post)<br />
+    * per_page
+
+  </p>
+ <!-- // -->
+ 
       <h3 id="menus">{% menus %}</h3>
       <pre>
 {% menus position:"nome_da_posicao_do_menu_no_admin" %}
