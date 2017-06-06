@@ -309,11 +309,105 @@
 <a class="line-num" href="#line-96">96</a>   'http://demo.vnda.com.br/api<span class="kd">/v2/products/657</span><span class="s1">/videos</span>
             </pre>
               <p>Os vídeos podem ser listados por produto.</p>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+
+            <h2 id="Cupons">Cupons</h2>
+              <p>Cupons de desconto tem a finalidade de limitar a aplicação de promoções.</p>
+              <p>Para manipular cupons de desconto, é necessário possuir o ID de uma promoção já cadastrada</p>
+<pre>
+<a class="line-num" href="#line-97">97</a> <span class="nx">curl -X <span class="s1">GET</span></span>
+<a class="line-num" href="#line-98">98</a>   <span class="nx">-H "Accept: application/json"</span>
+<a class="line-num" href="#line-99">99</a>   -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
+<a class="line-num" href="#line-100">100</a>   'http://demo.vnda.com.br/api<span class="kd">/v2/discounts/22</span><span class="s1">/coupons</span>
+
+Response: <span class="s1">200 OK</span>
+[{"id":4,"discount_id":22,"code":"DESCONTO50","uses_per_code":0,"created_at":"2015-08-19T11:51:31.013-03:00","updated_at":"2015-08-19T11:51:31.013-03:00","uses_per_user":0}]
+</pre>
+              <p><strong>Listar</strong> cupons de uma promoção</p>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+
+<pre>
+<a class="line-num" href="#line-101">101</a> <span class="nx">curl -X <span class="s1">POST</span></span>
+<a class="line-num" href="#line-102">102</a>   <span class="nx">-H "Accept: application/json"</span>
+<a class="line-num" href="#line-103">103</a>   -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
+<a class="line-num" href="#line-104">104</a>   'http://demo.vnda.com.br/api<span class="kd">/v2/discounts/22</span><span class="s1">/coupons</span><span class="kd">?code=XYZ&uses_per_code=1</span>
+
+Response: <span class="s1">201 Created</span>
+{"id":5,"discount_id":22,"code":"XYZ","uses_per_code":1,"created_at":"2017-06-06T10:08:54.619-03:00","updated_at":"2017-06-06T10:08:54.619-03:00","uses_per_user":0}
+</pre>
+              <p><strong>Adicionar</strong> cupons a uma promoção</p>
+              <p>O parâmetro "code" é obrigatório e será o texto que o cliente deve informar no checkout para ativar a promoção.</p>
+              <p>O parâmetro "uses_per_code" indica quantas de vezes que o cupom pode ser utilizado (opcional, padrão 0, significa uso ilimitado).</p>
+
+              <br />
+              <br />
+              <br />
+
+<pre>
+<a class="line-num" href="#line-105">105</a> <span class="nx">curl -X <span class="s1">DELETE</span></span>
+<a class="line-num" href="#line-106">106</a>   <span class="nx">-H "Accept: application/json"</span>
+<a class="line-num" href="#line-107">107</a>   -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
+<a class="line-num" href="#line-108">108</a>   'http://demo.vnda.com.br/api<span class="kd">/v2/discounts/22</span><span class="s1">/coupons<span class="kd">/32</span</span>
+</pre>
+              <p><strong>Apagar</strong> cupons</p>
+              <p>Para pagar um cupom, é necessário saber o ID do mesmo</p>
+              <p>Em caso de sucesso, será retornado HTTP 204</p>
+              <p>Caso o cupom esteja em uso, será retornado HTTP 422</p>
+              <p>Caso o cupom não exista, será retornado HTTP 404</p>
+
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
 
 
     </div><!-- content -->
     <div class="dark-box">
-
     </div>
   </div>
   <!-- Google Tag Manager -->
