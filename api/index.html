@@ -318,6 +318,90 @@
               <br />
               <br />
 
+
+              <h2 id="Promoções">Promoções</h2>
+
+              <p>Existem promoções válidas para toda a loja (store) ou para cada carrinho (cart). Dependendo do tipo de promoção, estarão disponíveis diferentes regras de descontos.</p>
+              <p>As promoções podem valer em um deretminado período de datas ou a partir de uma data e sem prazo de encerramento.</p>
+
+              <pre>
+<span class="nx">curl -X <span class="s1">POST</span></span>
+  <span class="nx">-H "Accept: application/json"</span>
+  -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
+  'http://demo.vnda.com.br/api<span class="kd">/v2/discounts</span>
+
+Response <span class="s1">201 Created</span>
+{"id":15,"name":"nome do desconto","description":null,"facebook":false,"valid_to":"cart","seal_uid":null,"seal_url":null,"start_at":"2016-01-01T00:00:00.000-02:00","end_at":null,"rules":[]}
+              </pre>
+              <p><strong>Adicionar</strong> e <strong>Atualizar</strong> uma promoção.</p>
+              <ul>
+                <li>valid_to: "store" ou "cart", obrigatório</li>
+                <li>name: nome que identifique a promoção, obrigatório</li>
+                <li>start_at: data de início, obrigatório, ex 2017-03-26 18:15</li>
+                <li>end_at: data de encerramento, opcional, ex 2017-03-27 18:15</li>
+                <li>description: texto descrevendo a promoção promoção, opcional</li>
+                <li>enabled: 0 ou 1, opcional, padrão 1</li>
+              </ul>
+              <br />
+
+              <pre>
+<span class="nx">curl -X <span class="s1">PUT</span></span>
+  <span class="nx">-H "Accept: application/json"</span>
+  -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
+  'http://demo.vnda.com.br/api<span class="kd">/v2/discounts/15</span>
+
+Response <span class="s1">204 No content</span>
+            </pre>
+
+
+              <h2 id="Regras de desconto">Regras de desconto</h2>
+              <pre>
+<span class="nx">curl -X <span class="s1">POST</span></span>
+  <span class="nx">-H "Accept: application/json"</span>
+  -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
+  'http://demo.vnda.com.br/api<span class="kd">/v2/discounts/15</span><span class="s1">/rules</span>
+
+Response <span class="s1">201 Created</span>
+
+{"id":16,"amount":50.0,"type":null,"apply_to":"subtotal","min_quantity":1}
+
+
+<span class="nx">curl -X <span class="s1">PUT</span></span>
+  <span class="nx">-H "Accept: application/json"</span>
+  -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
+  'http://demo.vnda.com.br/api<span class="kd">/v2/discounts/15</span><span class="s1">/rules/1</span>
+
+Response <span class="s1">204 No content</span>
+
+
+<span class="nx">curl -X <span class="s1">DELETE</span></span>
+  <span class="nx">-H "Accept: application/json"</span>
+  -u 1393b0e9db3d83f2f0ba8de4cbfb97ed:1afc729e7125e4283a57a85057e9526b
+  'http://demo.vnda.com.br/api<span class="kd">/v2/discounts/15</span><span class="s1">/rules</span>
+
+Response <span class="s1">204 No content</span>
+              </pre>
+
+              <p>Estas regras adicionam descontos a cada promoção. A combinação adequada dos atributos abaixo produz diferentes tipos de descontos.</p>
+
+              <ul>
+                <li>apply_to: (product, tag, subtotal, total, shipping, gift), obrigatório</li>
+                <li>amount_type: (%, R$), obrigatório</li>
+                <li>amount: valor do desconto em decimal com 2 dígitos de precisão, obrigatório</li>
+                <li>product_id: código do produto, opcional</li>
+                <li>tag_id: código da tag, opcional</li>
+                <li>min_quantity: quantidade minima de itens, opcional</li>
+                <li>shipping_method, forma de entrega, opcional</li>
+                <li>min_subtotal: valor mínimo de subtotal, opcional</li>
+                <li>gift: (1-per-crt, cheaper, more-expensive), opcional</li>
+                <li>combinated_product_id, código do produto combinado, opcional</li>
+                <li>client_tag, código do cliente, opcional</li>
+                <li>regions: regiões para aplicação do frete, opcional</li>
+                <li>gift_quantity: quantidade de brindes, opcional</li>
+              </ul>
+
+
+
             <h2 id="Cupons">Cupons</h2>
               <p>Cupons de desconto tem a finalidade de limitar a aplicação de promoções.</p>
               <p>Para manipular cupons de desconto, é necessário possuir o ID de uma promoção já cadastrada</p>
